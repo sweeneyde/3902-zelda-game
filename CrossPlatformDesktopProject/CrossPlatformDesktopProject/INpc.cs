@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject
 {
-    public interface ISprite
+    public interface INpc
     {
         void Draw(Texture2D img, SpriteBatch spriteBatch, Vector2 vector);
         void Update();

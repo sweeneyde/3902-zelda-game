@@ -16,7 +16,7 @@ namespace CrossPlatformDesktopProject
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public List<IController> controllerList; // could also be defined as List <IController>
-        public ISprite sprite;
+        public INpc sprite;
         protected Texture2D img;
         private SpriteFont font;
 
