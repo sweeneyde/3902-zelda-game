@@ -54,9 +54,16 @@
     <Compile Include="Controllers\KeyController.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="Link\LinkIdleEast.cs" />
+    <Compile Include="Link\LinkIdleSouth.cs" />
+    <Compile Include="Link\LinkIdleNorth.cs" />
+    <Compile Include="Link\LinkWalkSouth.cs" />
+    <Compile Include="Link\LinkWalkNorth.cs" />
+    <Compile Include="Link\LinkWalkWest.cs" />
+    <Compile Include="Link\LinkWalkEast.cs" />
     <Compile Include="Link\Player.cs" />
-    <Compile Include="Link\LinkSpriteFactory.cs" />
-    <Compile Include="Link\LinkIdleLeft.cs" />
+    <Compile Include="Link\LinkTextureStorage.cs" />
+    <Compile Include="Link\LinkIdleWest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

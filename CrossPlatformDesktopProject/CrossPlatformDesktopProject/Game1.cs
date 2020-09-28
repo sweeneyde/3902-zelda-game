@@ -60,7 +60,7 @@ namespace CrossPlatformDesktopProject
         {
             font = Content.Load<SpriteFont>("NewFont");
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            LinkSpriteFactory.Instance.LoadAllResources(Content);
+            LinkTextureStorage.Instance.LoadAllResources(Content);
             
         }
 

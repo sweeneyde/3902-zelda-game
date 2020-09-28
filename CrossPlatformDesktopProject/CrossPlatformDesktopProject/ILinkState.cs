@@ -10,7 +10,7 @@ namespace CrossPlatformDesktopProject
 {
     public interface ILinkState
     {
-        void Draw(SpriteBatch spriteBatch, Vector2 vector);
+        void Draw(SpriteBatch spriteBatch, float xPos, float yPos);
         void Update();
     }
 }
