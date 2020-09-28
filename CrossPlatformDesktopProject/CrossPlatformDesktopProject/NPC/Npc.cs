@@ -18,7 +18,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public Npc()
         {
-            currentState = new BatWalkSouth(this);
+            currentState = new GoriyaWalkWest(this);
             xPos = 200;
             yPos = 200;
         }

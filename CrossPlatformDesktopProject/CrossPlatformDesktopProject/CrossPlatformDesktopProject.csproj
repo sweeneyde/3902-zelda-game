@@ -71,9 +71,17 @@
     <Compile Include="NPC\Gel\GelWalkSouth.cs" />
     <Compile Include="NPC\Gel\GelWalkNorth.cs" />
     <Compile Include="NPC\Gel\GelWalkWest.cs" />
+    <Compile Include="NPC\Goriya\GoriyaWalkSouth.cs" />
+    <Compile Include="NPC\Goriya\GoriyaWalkNorth.cs" />
+    <Compile Include="NPC\Goriya\GoriyaWalkWest.cs" />
+    <Compile Include="NPC\Goriya\GoriyaWalkEast.cs" />
     <Compile Include="NPC\NpcTextureStorage.cs" />
     <Compile Include="NPC\Npc.cs" />
     <Compile Include="NPC\Gel\GelWalkEast.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonWalkWest.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonWalkSouth.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonWalkNorth.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonWalkEast.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

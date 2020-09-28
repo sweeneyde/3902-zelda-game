@@ -50,14 +50,22 @@ namespace CrossPlatformDesktopProject.NPC
             return enemyTextureMirrored;
         }
 
-        public static Rectangle GEL_1 = new Rectangle(1 + 0 * 10, 11, 8, 16);
-        public static Rectangle GEL_2 = new Rectangle(10 + 0 * 10, 11, 8, 16);
         public static Rectangle BAT_1 = new Rectangle(3 + 18 * 10, 11, 16, 16);
         public static Rectangle BAT_2 = new Rectangle(0 + 20 * 10, 11, 16, 16);
-        public static Rectangle GORIYA_RIGHT_1 = new Rectangle(1 + 4 * 17, 11, 16, 16);
-        public static Rectangle GORIYA_RIGHT_2 = new Rectangle(1 + 5 * 17, 11, 16, 16);
 
-        public static Rectangle MIRRORED_LINK_IDLE_WEST = new Rectangle(320, 11, 16, 16);
-        public static Rectangle MIRRORED_LINK_STEP_WEST = new Rectangle(303, 11, 16, 16);
+        public static Rectangle GEL_1 = new Rectangle(1 + 0 * 10, 11, 8, 16);
+        public static Rectangle GEL_2 = new Rectangle(10 + 0 * 10, 11, 8, 16);
+
+        public static Rectangle GORIYA_RIGHT_1 = new Rectangle(6 + 25 * 10, 11, 16, 16);
+        public static Rectangle GORIYA_RIGHT_2 = new Rectangle(3 + 27 * 10, 11, 16, 16);
+        public static Rectangle GORIYA_LEFT_1 = new Rectangle(5 + 18 * 10, 11, 16, 16);
+        public static Rectangle GORIYA_LEFT_2 = new Rectangle(8 + 16 * 10, 11, 16, 16);
+        public static Rectangle GORIYA_UP_1 = new Rectangle(1 + 4 * 17, 11, 16, 16);
+        public static Rectangle GORIYA_UP_2 = new Rectangle(1 + 5 * 17, 11, 16, 16);
+        public static Rectangle GORIYA_DOWN_1 = new Rectangle(1 + 4 * 17, 11, 16, 16);
+        public static Rectangle GORIYA_DOWN_2 = new Rectangle(1 + 5 * 17, 11, 16, 16);
+
+        public static Rectangle SKELETON_1 = new Rectangle(3 + 18 * 10, 11, 16, 16);
+        public static Rectangle SKELETON_2 = new Rectangle(0 + 20 * 10, 11, 16, 16);
     }
 }
