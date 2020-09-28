@@ -4,11 +4,13 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>E:/Programs/VisualStudio/GameTemplate/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Fonty.spritefont</File>
-    <File>E:/Programs/VisualStudio/GameTemplate/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/NewFont.spritefont</File>
-    <File>E:/Programs/VisualStudio/GameTemplate/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/yoshi.png</File>
+    <File>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Fonty.spritefont</File>
+    <File>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet.png</File>
+    <File>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet_Mirrored.png</File>
+    <File>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/NewFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

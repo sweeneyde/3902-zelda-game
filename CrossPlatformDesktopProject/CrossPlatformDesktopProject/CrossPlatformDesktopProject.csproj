@@ -43,20 +43,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Commands\Quit.cs" />
-    <Compile Include="Commands\SetStanding Animated.cs" />
-    <Compile Include="Commands\SetMovingAnimated.cs" />
-    <Compile Include="Commands\SetMoving.cs" />
-    <Compile Include="Commands\SetStanding.cs" />
     <Compile Include="ICommand.cs" />
-    <Compile Include="Sprites\MovingSprite.cs" />
-    <Compile Include="Sprites\MovingAnimatedSprite.cs" />
+    <Compile Include="IEquipable.cs" />
+    <Compile Include="ILinkState.cs" />
+    <Compile Include="INpc.cs" />
+    <Compile Include="IObstacle.cs" />
+    <Compile Include="ISpriteFactory.cs" />
+    <Compile Include="IWorldItem.cs" />
     <Compile Include="Controllers\MouseController.cs" />
     <Compile Include="Controllers\KeyController.cs" />
-    <Compile Include="Sprites\AnimatedSprite.cs" />
-    <Compile Include="Sprites\StandingSprite.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="ISprite.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="Link\LinkIdleEast.cs" />
+    <Compile Include="Link\LinkIdleSouth.cs" />
+    <Compile Include="Link\LinkIdleNorth.cs" />
+    <Compile Include="Link\LinkWalkSouth.cs" />
+    <Compile Include="Link\LinkWalkNorth.cs" />
+    <Compile Include="Link\LinkWalkWest.cs" />
+    <Compile Include="Link\LinkWalkEast.cs" />
+    <Compile Include="Link\Player.cs" />
+    <Compile Include="Link\LinkTextureStorage.cs" />
+    <Compile Include="Link\LinkIdleWest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
