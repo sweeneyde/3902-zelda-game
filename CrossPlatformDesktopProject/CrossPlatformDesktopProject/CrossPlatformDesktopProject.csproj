@@ -57,7 +57,7 @@
     <Compile Include="Link\LinkIdleEast.cs" />
     <Compile Include="Link\LinkIdleSouth.cs" />
     <Compile Include="Link\LinkIdleNorth.cs" />
-    <Compile Include="Link\ObstacleTextureStorage.cs" />
+    <Compile Include="Obstacles\ObstacleTextureStorage.cs" />
     <Compile Include="Link\LinkWalkSouth.cs" />
     <Compile Include="Link\LinkWalkNorth.cs" />
     <Compile Include="Link\LinkWalkWest.cs" />
