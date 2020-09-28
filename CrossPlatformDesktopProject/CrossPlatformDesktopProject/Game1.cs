@@ -1,4 +1,5 @@
 ﻿using CrossPlatformDesktopProject.Commands;
+using CrossPlatformDesktopProject.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -16,9 +17,9 @@ namespace CrossPlatformDesktopProject
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public List<IController> controllerList; // could also be defined as List <IController>
-        public INpc sprite;
         protected Texture2D img;
         private SpriteFont font;
+        private Player player;
 
         public Game1()
         {
@@ -36,30 +37,17 @@ namespace CrossPlatformDesktopProject
         {
             controllerList = new List<IController>();
 
-            ///This could be moved to some kind of mapping function
             KeyboardController KC = new KeyboardController(this);
             KC.addCommand(Keys.D0, new Quit(this));
-            KC.addCommand(Keys.D1, new SetStanding(this));
-            KC.addCommand(Keys.D2, new SetMoving(this));
-            KC.addCommand(Keys.D3, new SetStandingAnimated(this));
-            KC.addCommand(Keys.D4, new SetMovingAnimated(this));
             
             controllerList.Add(KC);
             this.IsMouseVisible = true;
 
             MouseController MC = new MouseController(this);
-            MC.addRightCommand(new Rectangle(0,0, graphics.PreferredBackBufferWidth,
-graphics.PreferredBackBufferHeight), new Quit(this));
-            MC.addLeftCommand(new Rectangle(0, 0, graphics.PreferredBackBufferWidth/2,
-graphics.PreferredBackBufferHeight/2), new SetStanding(this));
-            MC.addLeftCommand(new Rectangle(graphics.PreferredBackBufferWidth/2, 0, graphics.PreferredBackBufferWidth,
-graphics.PreferredBackBufferHeight/2), new SetMoving(this));
-            MC.addLeftCommand(new Rectangle(0, graphics.PreferredBackBufferHeight / 2, graphics.PreferredBackBufferWidth/2,
-graphics.PreferredBackBufferHeight), new SetStandingAnimated(this));
-            MC.addLeftCommand(new Rectangle(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 2, graphics.PreferredBackBufferWidth,
-graphics.PreferredBackBufferHeight), new SetMovingAnimated(this));
 
             controllerList.Add(MC);
+
+            player = new Player();
 
             base.Initialize();
         }
@@ -70,11 +58,10 @@ graphics.PreferredBackBufferHeight), new SetMovingAnimated(this));
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            img = Content.Load<Texture2D>("yoshi");
-            sprite = new StandingSprite();
             font = Content.Load<SpriteFont>("NewFont");
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            LinkSpriteFactory.Instance.LoadAllResources(Content);
+            
         }
 
         /// <summary>
@@ -96,12 +83,12 @@ graphics.PreferredBackBufferHeight), new SetMovingAnimated(this));
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            player.Update();
             foreach (IController controller in controllerList)
             {
                 controller.Update();
             }
-
-            sprite.Update();
+            
 
             base.Update(gameTime);
         }
@@ -118,8 +105,10 @@ graphics.PreferredBackBufferHeight), new SetMovingAnimated(this));
             Vector2 center = new Vector2(graphics.PreferredBackBufferWidth/2,
 graphics.PreferredBackBufferHeight/2);
 
+            player.Draw(spriteBatch);
+
             spriteBatch.DrawString(this.font, "Credits\n Program Made By : James Cross \n Sprites From :https://www.mariouniverse.com/wp-content/img/sprites/snes/yi/yoshi.gif", new Vector2(graphics.PreferredBackBufferWidth / 4, 3 * graphics.PreferredBackBufferHeight / 4), Color.Black);
-            sprite.Draw(img, spriteBatch, center);
+
             spriteBatch.End();
 
             base.Draw(gameTime);
