@@ -11,7 +11,7 @@ namespace CrossPlatformDesktopProject.NPC.Gel
         private int delay_frame_index;
         private Npc npc;
 
-        private static int delay_frames = 6;
+        private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
             NpcTextureStorage.SKELETON_1,
             NpcTextureStorage.SKELETON_2

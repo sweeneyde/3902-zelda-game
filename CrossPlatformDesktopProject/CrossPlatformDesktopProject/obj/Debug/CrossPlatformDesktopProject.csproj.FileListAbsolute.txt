@@ -49,3 +49,4 @@ C:\Users\nerdy\source\repos\3902-zelda-game\CrossPlatformDesktopProject\CrossPla
 C:\Users\nerdy\source\repos\3902-zelda-game\CrossPlatformDesktopProject\CrossPlatformDesktopProject\bin\DesktopGL\AnyCPU\Debug\Content\goriya_up_down_sheet.xnb
 C:\Users\nerdy\source\repos\3902-zelda-game\CrossPlatformDesktopProject\CrossPlatformDesktopProject\bin\DesktopGL\AnyCPU\Debug\Content\skeleton_sheet.xnb
 C:\Users\nerdy\source\repos\3902-zelda-game\CrossPlatformDesktopProject\CrossPlatformDesktopProject\bin\DesktopGL\AnyCPU\Debug\Content\goriya_sheet.xnb
+C:\Users\nerdy\source\repos\3902-zelda-game\CrossPlatformDesktopProject\CrossPlatformDesktopProject\bin\DesktopGL\AnyCPU\Debug\Content\boss_sheet.xnb
