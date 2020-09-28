@@ -64,6 +64,16 @@
     <Compile Include="Link\Player.cs" />
     <Compile Include="Link\LinkTextureStorage.cs" />
     <Compile Include="Link\LinkIdleWest.cs" />
+    <Compile Include="NPC\Bat\BatWalkEast.cs" />
+    <Compile Include="NPC\Bat\BatWalkWest.cs" />
+    <Compile Include="NPC\Bat\BatWalkNorth.cs" />
+    <Compile Include="NPC\Bat\BatWalkSouth.cs" />
+    <Compile Include="NPC\Gel\GelWalkSouth.cs" />
+    <Compile Include="NPC\Gel\GelWalkNorth.cs" />
+    <Compile Include="NPC\Gel\GelWalkWest.cs" />
+    <Compile Include="NPC\NpcTextureStorage.cs" />
+    <Compile Include="NPC\Npc.cs" />
+    <Compile Include="NPC\Gel\GelWalkEast.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

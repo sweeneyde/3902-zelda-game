@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.Commands;
 using CrossPlatformDesktopProject.Link;
+using CrossPlatformDesktopProject.NPC;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -17,9 +18,9 @@ namespace CrossPlatformDesktopProject
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public List<IController> controllerList; // could also be defined as List <IController>
-        protected Texture2D img;
         private SpriteFont font;
         private Player player;
+        private Npc npc;
 
         public Game1()
         {
@@ -48,6 +49,7 @@ namespace CrossPlatformDesktopProject
             controllerList.Add(MC);
 
             player = new Player();
+            npc = new Npc();
 
             base.Initialize();
         }
@@ -61,7 +63,7 @@ namespace CrossPlatformDesktopProject
             font = Content.Load<SpriteFont>("NewFont");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkTextureStorage.Instance.LoadAllResources(Content);
-            
+            NpcTextureStorage.Instance.LoadAllResources(Content);
         }
 
         /// <summary>
@@ -84,6 +86,7 @@ namespace CrossPlatformDesktopProject
                 Exit();
 
             player.Update();
+            npc.Update();
             foreach (IController controller in controllerList)
             {
                 controller.Update();
@@ -106,6 +109,7 @@ namespace CrossPlatformDesktopProject
 graphics.PreferredBackBufferHeight/2);
 
             player.Draw(spriteBatch);
+            npc.Draw(spriteBatch);
 
             spriteBatch.DrawString(this.font, "Credits\n Program Made By : James Cross \n Sprites From :https://www.mariouniverse.com/wp-content/img/sprites/snes/yi/yoshi.gif", new Vector2(graphics.PreferredBackBufferWidth / 4, 3 * graphics.PreferredBackBufferHeight / 4), Color.Black);
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet.png</SourceFile>
-  <SourceTime>2020-09-28T05:24:37.3608342-04:00</SourceTime>
-  <DestFile>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Link_Spritesheet.xnb</DestFile>
-  <DestTime>2020-09-28T05:29:34.3575294-04:00</DestTime>
+  <SourceFile>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/enemiesflipped.png</SourceFile>
+  <SourceTime>2020-09-28T04:30:52.0092949-04:00</SourceTime>
+  <DestFile>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/enemiesflipped.xnb</DestFile>
+  <DestTime>2020-09-28T05:45:17.0942797-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
