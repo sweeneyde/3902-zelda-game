@@ -16,6 +16,7 @@ namespace CrossPlatformDesktopProject.Link
         public float xPos, yPos;
         public static float walking_speed = 3.0f;
         public static int frames_per_step = 6;
+        public static int frames_for_sword = 18;
 
         public Player()
         {
@@ -36,5 +37,4 @@ namespace CrossPlatformDesktopProject.Link
             currentState.Draw(spriteBatch, xPos, yPos);
         }
     }
-
 }

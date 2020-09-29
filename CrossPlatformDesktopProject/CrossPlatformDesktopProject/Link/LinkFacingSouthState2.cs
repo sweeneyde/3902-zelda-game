@@ -27,7 +27,11 @@ namespace CrossPlatformDesktopProject.Link
 
         void ILinkState.Update(ISet<ButtonKind> buttons)
         {
-            if (buttons.Contains(ButtonKind.DOWN))
+            if (buttons.Contains(ButtonKind.PRIMARY))
+            {
+                player.currentState = new LinkSword1South(player);
+            }
+            else if (buttons.Contains(ButtonKind.DOWN))
             {
                 player.yPos += Player.walking_speed;
                 if (--frames_left <= 0)

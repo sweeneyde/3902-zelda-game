@@ -27,7 +27,11 @@ namespace CrossPlatformDesktopProject.Link
 
         void ILinkState.Update(ISet<ButtonKind> buttons)
         {
-            if (buttons.Contains(ButtonKind.LEFT))
+            if (buttons.Contains(ButtonKind.PRIMARY))
+            {
+                player.currentState = new LinkSword1West(player);
+            }
+            else if (buttons.Contains(ButtonKind.LEFT))
             {
                 player.xPos -= Player.walking_speed;
                 if (--frames_left <= 0)
@@ -46,6 +50,10 @@ namespace CrossPlatformDesktopProject.Link
             else if (buttons.Contains(ButtonKind.RIGHT))
             {
                 player.currentState = new LinkFacingEastState1(player);
+            }
+            else if (buttons.Contains(ButtonKind.PRIMARY))
+            {
+                player.currentState = new LinkSword1West(player);
             }
         }
     }

@@ -56,8 +56,12 @@ namespace CrossPlatformDesktopProject.Link
         public static Rectangle LINK_STEP_EAST = new Rectangle(1 + 3 * 17, 11, 16, 16);
         public static Rectangle LINK_IDLE_NORTH = new Rectangle(1 + 4 * 17, 11, 16, 16);
         public static Rectangle LINK_STEP_NORTH = new Rectangle(1 + 5 * 17, 11, 16, 16);
-
         public static Rectangle MIRRORED_LINK_IDLE_WEST = new Rectangle(320, 11, 16, 16);
         public static Rectangle MIRRORED_LINK_STEP_WEST = new Rectangle(303, 11, 16, 16);
+
+        public static Rectangle LINK_SWORD_NORTH = new Rectangle(1 + 1*17, 97, 16, 28);
+        public static Rectangle LINK_SWORD_SOUTH = new Rectangle(1 + 1*17, 47, 16, 27);
+        public static Rectangle LINK_SWORD_EAST = new Rectangle(1 + 1*17, 78, 27, 16);
+        public static Rectangle MIRRORED_LINK_SWORD_WEST = new Rectangle(371 - 45, 78, 27, 16);
     }
 }
