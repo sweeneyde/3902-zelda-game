@@ -1,6 +1,5 @@
 ﻿using CrossPlatformDesktopProject;
-using CrossPlatformDesktopProject.NPC;
-using CrossPlatformDesktopProject.NPC.Gel;
+using CrossPlatformDesktopProject.WorldItem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -9,18 +8,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrossPlatformDesktopProject.NPC
+namespace CrossPlatformDesktopProject.WorldItem
 {
-    class Npc
+    class Item
     {
-        private INpc currentState;
+        private IWorldItem currentState;
         public float xPos, yPos;
 
-        public Npc()
+        public Item()
         {
-            currentState = new OldManIdle(this);
-            xPos = 200;
-            yPos = 200;
+            currentState = new TriforceIdle(this);
+            xPos = 300;
+            yPos = 300;
         }
 
         public void Update()

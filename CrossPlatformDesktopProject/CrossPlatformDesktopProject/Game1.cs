@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject.Commands;
 using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.NPC;
+using CrossPlatformDesktopProject.WorldItem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -18,9 +19,9 @@ namespace CrossPlatformDesktopProject
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public List<IController> controllerList; // could also be defined as List <IController>
-        private SpriteFont font;
         private Player player;
         private Npc npc;
+        private Item item;
 
         public Game1()
         {
@@ -50,6 +51,7 @@ namespace CrossPlatformDesktopProject
 
             player = new Player();
             npc = new Npc();
+            item = new Item();
 
             base.Initialize();
         }
@@ -60,10 +62,10 @@ namespace CrossPlatformDesktopProject
         /// </summary>
         protected override void LoadContent()
         {
-            font = Content.Load<SpriteFont>("NewFont");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkTextureStorage.Instance.LoadAllResources(Content);
             NpcTextureStorage.Instance.LoadAllResources(Content);
+            ItemTextureStorage.Instance.LoadAllResources(Content);
         }
 
         /// <summary>
@@ -87,6 +89,7 @@ namespace CrossPlatformDesktopProject
 
             player.Update();
             npc.Update();
+            item.Update();
             foreach (IController controller in controllerList)
             {
                 controller.Update();
@@ -105,13 +108,10 @@ namespace CrossPlatformDesktopProject
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            Vector2 center = new Vector2(graphics.PreferredBackBufferWidth/2,
-graphics.PreferredBackBufferHeight/2);
 
             player.Draw(spriteBatch);
             npc.Draw(spriteBatch);
-
-            spriteBatch.DrawString(this.font, "Credits\n Program Made By : James Cross \n Sprites From :https://www.mariouniverse.com/wp-content/img/sprites/snes/yi/yoshi.gif", new Vector2(graphics.PreferredBackBufferWidth / 4, 3 * graphics.PreferredBackBufferHeight / 4), Color.Black);
+            item.Draw(spriteBatch);
 
             spriteBatch.End();
 
