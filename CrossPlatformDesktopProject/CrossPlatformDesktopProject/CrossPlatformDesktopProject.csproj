@@ -57,6 +57,7 @@
     <Compile Include="Link\LinkIdleEast.cs" />
     <Compile Include="Link\LinkIdleSouth.cs" />
     <Compile Include="Link\LinkIdleNorth.cs" />
+    <Compile Include="Obstacles\ObstacleTextureStorage.cs" />
     <Compile Include="Link\LinkWalkSouth.cs" />
     <Compile Include="Link\LinkWalkNorth.cs" />
     <Compile Include="Link\LinkWalkWest.cs" />
@@ -64,6 +65,8 @@
     <Compile Include="Link\Player.cs" />
     <Compile Include="Link\LinkTextureStorage.cs" />
     <Compile Include="Link\LinkIdleWest.cs" />
+    <Compile Include="Obstacles\Block.cs" />
+    <Compile Include="Obstacles\Statue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

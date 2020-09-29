@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.Commands;
 using CrossPlatformDesktopProject.Link;
+using CrossPlatformDesktopProject.Obstacles;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -20,6 +21,8 @@ namespace CrossPlatformDesktopProject
         protected Texture2D img;
         private SpriteFont font;
         private Player player;
+        private Block block;
+        private Statue statue;
 
         public Game1()
         {
@@ -49,6 +52,10 @@ namespace CrossPlatformDesktopProject
 
             player = new Player();
 
+            block = new Block();
+
+            statue = new Statue();
+
             base.Initialize();
         }
 
@@ -61,6 +68,7 @@ namespace CrossPlatformDesktopProject
             font = Content.Load<SpriteFont>("NewFont");
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkTextureStorage.Instance.LoadAllResources(Content);
+            ObstacleTextureStorage.Instance.LoadAllResources(Content);
             
         }
 
@@ -107,7 +115,7 @@ graphics.PreferredBackBufferHeight/2);
 
             player.Draw(spriteBatch);
 
-            spriteBatch.DrawString(this.font, "Credits\n Program Made By : James Cross \n Sprites From :https://www.mariouniverse.com/wp-content/img/sprites/snes/yi/yoshi.gif", new Vector2(graphics.PreferredBackBufferWidth / 4, 3 * graphics.PreferredBackBufferHeight / 4), Color.Black);
+            block.Draw(spriteBatch, 200, 200);
 
             spriteBatch.End();
 
