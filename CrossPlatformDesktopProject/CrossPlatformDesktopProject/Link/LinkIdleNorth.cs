@@ -28,7 +28,7 @@ namespace CrossPlatformDesktopProject.Link
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
-        void ILinkState.Update()
+        void ILinkState.Update(ISet<ButtonKind> buttons)
         {
             my_frame_index++;
             my_frame_index %= my_source_frames.Count;

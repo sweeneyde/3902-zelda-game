@@ -33,7 +33,7 @@ namespace CrossPlatformDesktopProject.Link
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
-        void ILinkState.Update()
+        void ILinkState.Update(ISet<ButtonKind> buttons)
         {
             if (++delay_frame_index >= delay_frames)
             {
