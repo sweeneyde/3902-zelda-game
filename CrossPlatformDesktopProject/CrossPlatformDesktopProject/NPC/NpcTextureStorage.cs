@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -32,7 +31,6 @@ namespace CrossPlatformDesktopProject.NPC
         private static Texture2D goriyaTextureUpDown = null;
         private static Texture2D skeletonTexture = null;
         private static Texture2D bossTexture = null;
-        private static Texture2D npcTexture = null;
 
         private NpcTextureStorage()
         {
@@ -45,7 +43,6 @@ namespace CrossPlatformDesktopProject.NPC
             goriyaTextureUpDown = content.Load<Texture2D>("goriya_sheet");
             skeletonTexture = content.Load<Texture2D>("skeleton_sheet");
             bossTexture = content.Load<Texture2D>("boss_sheet");
-            npcTexture = content.Load<Texture2D>("npc_sheet");
         }
 
 
@@ -74,11 +71,6 @@ namespace CrossPlatformDesktopProject.NPC
             return bossTexture;
         }
 
-        public Texture2D getNpcSpriteSheet()
-        {
-            return npcTexture;
-        }
-
         public static Rectangle BAT_1 = new Rectangle(3 + 18 * 10, 11, 16, 16);
         public static Rectangle BAT_2 = new Rectangle(0 + 20 * 10, 11, 16, 16);
 
@@ -101,7 +93,5 @@ namespace CrossPlatformDesktopProject.NPC
         public static Rectangle BOSS_2 = new Rectangle(6 + 2 * 10, 11, 24, 32);
         public static Rectangle BOSS_3 = new Rectangle(1 + 5 * 10, 11, 24, 32);
         public static Rectangle BOSS_4 = new Rectangle(6 + 7 * 10, 11, 24, 32);
-
-        public static Rectangle OLD_MAN_IDLE = new Rectangle(1 + 0 * 10, 11, 16, 16);
     }
 }
