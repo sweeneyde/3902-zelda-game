@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +11,7 @@ namespace CrossPlatformDesktopProject
 {
     public interface INpc
     {
-        void Draw(Texture2D img, SpriteBatch spriteBatch, Vector2 vector);
+        void Draw(SpriteBatch spriteBatch, float xPos, float yPos);
         void Update();
     }
 }

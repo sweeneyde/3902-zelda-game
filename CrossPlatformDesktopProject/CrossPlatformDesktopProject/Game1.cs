@@ -1,6 +1,8 @@
 ﻿using CrossPlatformDesktopProject.Commands;
 using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.Obstacles;
+using CrossPlatformDesktopProject.NPC;
+using CrossPlatformDesktopProject.WorldItem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -23,6 +25,8 @@ namespace CrossPlatformDesktopProject
         private Player player;
         private Block block;
         private Statue statue;
+        private Npc npc;
+        private Item item;
 
         public Game1()
         {
@@ -56,6 +60,10 @@ namespace CrossPlatformDesktopProject
 
             statue = new Statue();
 
+            npc = new Npc();
+
+            item = new Item();
+
             base.Initialize();
         }
 
@@ -69,7 +77,8 @@ namespace CrossPlatformDesktopProject
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkTextureStorage.Instance.LoadAllResources(Content);
             ObstacleTextureStorage.Instance.LoadAllResources(Content);
-            
+            NpcTextureStorage.Instance.LoadAllResources(Content);
+            ItemTextureStorage.Instance.LoadAllResources(Content);
         }
 
         /// <summary>
@@ -92,6 +101,7 @@ namespace CrossPlatformDesktopProject
                 Exit();
 
             player.Update();
+            npc.Update();
             foreach (IController controller in controllerList)
             {
                 controller.Update();
@@ -116,6 +126,10 @@ graphics.PreferredBackBufferHeight/2);
             player.Draw(spriteBatch);
 
             block.Draw(spriteBatch, 200, 200);
+
+            npc.Draw(spriteBatch);
+
+            item.Draw(spriteBatch);
 
             spriteBatch.End();
 
