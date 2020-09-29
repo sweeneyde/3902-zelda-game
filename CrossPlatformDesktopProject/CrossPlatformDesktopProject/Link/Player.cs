@@ -12,12 +12,14 @@ namespace CrossPlatformDesktopProject.Link
 {
     class Player
     {
-        private ILinkState currentState;
+        public ILinkState currentState;
         public float xPos, yPos;
+        public static float walking_speed = 3.0f;
+        public static int frames_per_step = 6;
 
         public Player()
         {
-            currentState = new LinkWalkSouth(this);
+            currentState = new LinkFacingSouthState1(this);
             xPos = 100;
             yPos = 100;
         }
