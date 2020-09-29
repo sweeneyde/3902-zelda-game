@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/NewFont.spritefont</SourceFile>
@@ -19,4 +20,27 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput />
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/NewFont.spritefont</SourceFile>
+  <SourceTime>2020-09-17T01:07:43.6240564-04:00</SourceTime>
+  <DestFile>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/NewFont.xnb</DestFile>
+  <DestTime>2020-09-27T18:47:16.8388133-04:00</DestTime>
+  <Importer>FontDescriptionImporter</Importer>
+  <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
+  <Processor>FontDescriptionProcessor</Processor>
+  <ProcessorTime>2018-12-08T11:35:54-05:00</ProcessorTime>
+  <Parameters>
+    <Key>PremultiplyAlpha</Key>
+    <Value>True</Value>
+  </Parameters>
+  <Parameters>
+    <Key>TextureFormat</Key>
+    <Value>Compressed</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+>>>>>>> 6314e3851a74cd92c9e97e4d8b6ef11c15c56e54
 </PipelineBuildEvent>
