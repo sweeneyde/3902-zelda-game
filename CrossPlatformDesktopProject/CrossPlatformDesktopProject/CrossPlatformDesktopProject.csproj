@@ -91,9 +91,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorldItem\WorldItemTextureStorage.cs" />
-    <Compile Include="WorldItem\TriforceIdle.cs" />
-    <Compile Include="WorldItem\Item.cs" />
-    <Compile Include="WorldItem\HeartIdle.cs" />
+    <Compile Include="WorldItem\Triforce.cs" />
+    <Compile Include="WorldItem\Heart.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">

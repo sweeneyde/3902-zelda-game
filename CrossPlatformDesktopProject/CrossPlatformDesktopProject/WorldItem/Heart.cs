@@ -5,16 +5,16 @@ using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.WorldItem
 {
-    class HeartIdle : IWorldItem
+    class Heart : IWorldItem
     {
-        private Item item;
-
-        public HeartIdle(Item item)
+        public float xPos, yPos;
+        public Heart()
         {
-            this.item = item;
+            xPos = 300;
+            yPos = 300;
         }
 
-        void IWorldItem.Draw(SpriteBatch spriteBatch, float xPos, float yPos)
+        public void Draw(SpriteBatch spriteBatch)
         {
             Texture2D texture = ItemTextureStorage.Instance.getItemSpriteSheet();
             Rectangle source = ItemTextureStorage.HEART;
@@ -22,10 +22,6 @@ namespace CrossPlatformDesktopProject.WorldItem
                 (int)xPos, (int)yPos,
                 source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destination, source, Color.White);
-        }
-
-        void IWorldItem.Update()
-        {
         }
     }
 }

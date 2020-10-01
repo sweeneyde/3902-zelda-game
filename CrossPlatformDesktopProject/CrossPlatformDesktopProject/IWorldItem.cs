@@ -11,7 +11,6 @@ namespace CrossPlatformDesktopProject
 {
     public interface IWorldItem
     {
-        void Draw(SpriteBatch spriteBatch, float xPos, float yPos);
-        void Update();
+        void Draw(SpriteBatch spriteBatch);
     }
 }

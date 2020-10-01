@@ -5,16 +5,16 @@ using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.WorldItem
 {
-    class TriforceIdle : IWorldItem
+    class Triforce : IWorldItem
     {
-        private Item item;
-
-        public TriforceIdle(Item item)
+        public float xPos, yPos;
+        public Triforce()
         {
-            this.item = item;
+            xPos = 300;
+            yPos = 300;
         }
 
-        void IWorldItem.Draw(SpriteBatch spriteBatch, float xPos, float yPos)
+        public void Draw(SpriteBatch spriteBatch)
         {
             Texture2D texture = ItemTextureStorage.Instance.getItemSpriteSheet();
             Rectangle source = ItemTextureStorage.TRIFORCE;
@@ -22,10 +22,6 @@ namespace CrossPlatformDesktopProject.WorldItem
                 (int)xPos, (int)yPos,
                 source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destination, source, Color.White);
-        }
-
-        void IWorldItem.Update()
-        {
         }
     }
 }

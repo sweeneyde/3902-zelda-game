@@ -26,7 +26,8 @@ namespace CrossPlatformDesktopProject
         private Block block;
         private Statue statue;
         private Npc npc;
-        private Item item;
+        private Heart heart;
+        private Triforce triforce;
 
         public Game1()
         {
@@ -62,7 +63,9 @@ namespace CrossPlatformDesktopProject
 
             npc = new Npc();
 
-            item = new Item();
+            heart = new Heart();
+
+            triforce = new Triforce();
 
             base.Initialize();
         }
@@ -129,7 +132,7 @@ graphics.PreferredBackBufferHeight/2);
 
             npc.Draw(spriteBatch);
 
-            item.Draw(spriteBatch);
+            heart.Draw(spriteBatch);
 
             spriteBatch.End();
 
