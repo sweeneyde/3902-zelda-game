@@ -4,12 +4,28 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Fonty.spritefont</File>
-    <File>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet.png</File>
-    <File>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet_Mirrored.png</File>
-    <File>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/NewFont.spritefont</File>
+    <File>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/boss_sheet.png</File>
+    <File>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Dungeon Tileset.png</File>
+    <File>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/enemies.png</File>
+    <File>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/enemiesflipped.png</File>
+    <File>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Fonty.spritefont</File>
+    <File>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/goriya_sheet.png</File>
+    <File>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/item_sheet.png</File>
+    <File>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet.png</File>
+    <File>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet_Mirrored.png</File>
+    <File>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/NewFont.spritefont</File>
+    <File>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/npc_sheet.png</File>
+    <File>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/skeleton_sheet.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,10 +11,6 @@ namespace CrossPlatformDesktopProject
 {
     public interface IWorldItem
     {
-        void Update();
-
-        /* This Draw method's parameters are from the O.G. sprite drawing class*/
-        /* Change as needed*/
-        void Draw(Texture2D img, SpriteBatch spriteBatch, Vector2 vector);
+        void Draw(SpriteBatch spriteBatch);
     }
 }

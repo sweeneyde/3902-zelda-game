@@ -10,7 +10,7 @@ namespace CrossPlatformDesktopProject
 {
     public interface INpc
     {
-        void Draw(Texture2D img, SpriteBatch spriteBatch, Vector2 vector);
+        void Draw(SpriteBatch spriteBatch);
         void Update();
     }
 }
