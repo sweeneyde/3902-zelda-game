@@ -43,6 +43,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Commands\Quit.cs" />
+    <Compile Include="Controllers\ButtonKind.cs" />
+    <Compile Include="Controllers\KeyButtonChecker.cs" />
+    <Compile Include="Controllers\IButtonChecker.cs" />
     <Compile Include="IBossState.cs" />
     <Compile Include="ISkeletonState.cs" />
     <Compile Include="IGoriyaState.cs" />
@@ -59,6 +62,18 @@
     <Compile Include="Controllers\KeyController.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="Link\LinkSword1East.cs" />
+    <Compile Include="Link\LinkFacingEastState1.cs" />
+    <Compile Include="Link\LinkFacingEastState2.cs" />
+    <Compile Include="Link\LinkFacingNorthState1.cs" />
+    <Compile Include="Link\LinkFacingNorthState2.cs" />
+    <Compile Include="Link\LinkFacingSouthState1.cs" />
+    <Compile Include="Link\LinkFacingSouthState2.cs" />
+    <Compile Include="Link\LinkFacingWestState1.cs" />
+    <Compile Include="Link\LinkFacingWestState2.cs" />
+    <Compile Include="Link\LinkSword1North.cs" />
+    <Compile Include="Link\LinkSword1South.cs" />
+    <Compile Include="Link\LinkSword1West.cs" />
     <Compile Include="Link\LinkIdleEast.cs" />
     <Compile Include="Link\LinkIdleSouth.cs" />
     <Compile Include="Link\LinkIdleNorth.cs" />
@@ -88,13 +103,8 @@
     <Compile Include="NPC\Skeleton\SkeletonWalkWest.cs" />
     <Compile Include="NPC\Skeleton\SkeletonWalkEast.cs" />
     <Compile Include="Obstacles\ObstacleTextureStorage.cs" />
-    <Compile Include="Link\LinkWalkSouth.cs" />
-    <Compile Include="Link\LinkWalkNorth.cs" />
-    <Compile Include="Link\LinkWalkWest.cs" />
-    <Compile Include="Link\LinkWalkEast.cs" />
     <Compile Include="Link\Player.cs" />
     <Compile Include="Link\LinkTextureStorage.cs" />
-    <Compile Include="Link\LinkIdleWest.cs" />
     <Compile Include="Obstacles\Block.cs" />
     <Compile Include="Obstacles\Statue.cs" />
     <Compile Include="Program.cs" />

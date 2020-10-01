@@ -12,19 +12,24 @@ namespace CrossPlatformDesktopProject.Link
 {
     class Player
     {
-        private ILinkState currentState;
+        public ILinkState currentState;
         public float xPos, yPos;
+        public static float walking_speed = 3.0f;
+        public static int frames_per_step = 6;
+        public static int frames_for_sword = 18;
 
         public Player()
         {
-            currentState = new LinkWalkSouth(this);
+            currentState = new LinkFacingSouthState1(this);
             xPos = 100;
             yPos = 100;
         }
 
         public void Update()
         {
-            currentState.Update();
+            IButtonChecker instance = KeyButtonChecker.Instance;
+            ISet<ButtonKind> buttons = instance.GetPressedButtons();
+            currentState.Update(buttons);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -32,5 +37,4 @@ namespace CrossPlatformDesktopProject.Link
             currentState.Draw(spriteBatch, xPos, yPos);
         }
     }
-
 }
