@@ -1,6 +1,5 @@
 ﻿using CrossPlatformDesktopProject;
 using CrossPlatformDesktopProject.NPC;
-using CrossPlatformDesktopProject.NPC.Gel;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class Npc
+    class Boss : INpc
     {
-        private INpc currentState;
+        private IBossState currentState;
         public float xPos, yPos;
 
-        public Npc()
+        public Boss()
         {
-            currentState = new BatWalkWest(this);
+            currentState = new BossWalkEast(this);
             xPos = 400;
             yPos = 100;
         }

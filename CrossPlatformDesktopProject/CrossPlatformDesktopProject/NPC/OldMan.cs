@@ -4,16 +4,16 @@ using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class OldManIdle : INpc
+    class OldMan : INpc
     {
-        private Npc npc;
-
-        public OldManIdle(Npc npc)
+        public float xPos, yPos;
+        public OldMan()
         {
-            this.npc = npc;
+            xPos = 400;
+            yPos = 100;
         }
 
-        void INpc.Draw(SpriteBatch spriteBatch, float xPos, float yPos)
+        public void Draw(SpriteBatch spriteBatch)
         {
             Texture2D texture = NpcTextureStorage.Instance.getNpcSpriteSheet();
             Rectangle source = NpcTextureStorage.OLD_MAN_IDLE;
@@ -23,7 +23,7 @@ namespace CrossPlatformDesktopProject.NPC
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
-        void INpc.Update()
+        public void Update()
         {
         }
     }

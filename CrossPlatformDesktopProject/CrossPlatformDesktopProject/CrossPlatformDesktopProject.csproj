@@ -43,10 +43,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Commands\Quit.cs" />
+    <Compile Include="IBossState.cs" />
+    <Compile Include="ISkeletonState.cs" />
+    <Compile Include="IGoriyaState.cs" />
+    <Compile Include="IGelState.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IEquipable.cs" />
     <Compile Include="ILinkState.cs" />
     <Compile Include="INpc.cs" />
+    <Compile Include="IBatState.cs" />
     <Compile Include="IObstacle.cs" />
     <Compile Include="ISpriteFactory.cs" />
     <Compile Include="IWorldItem.cs" />
@@ -61,19 +66,23 @@
     <Compile Include="NPC\Bat\BatWalkSouth.cs" />
     <Compile Include="NPC\Bat\BatWalkNorth.cs" />
     <Compile Include="NPC\Bat\BatWalkEast.cs" />
+    <Compile Include="NPC\Bat\Bat.cs" />
     <Compile Include="NPC\Boss\BossWalkWest.cs" />
     <Compile Include="NPC\Boss\BossWalkEast.cs" />
+    <Compile Include="NPC\Boss\Boss.cs" />
+    <Compile Include="NPC\Gel\Gel.cs" />
     <Compile Include="NPC\Gel\GelWalkNorth.cs" />
     <Compile Include="NPC\Gel\GelWalkSouth.cs" />
     <Compile Include="NPC\Gel\GelWalkWest.cs" />
     <Compile Include="NPC\Gel\GelWalkEast.cs" />
+    <Compile Include="NPC\Goriya\Goriya.cs" />
     <Compile Include="NPC\Goriya\GoriyaWalkEast.cs" />
     <Compile Include="NPC\Goriya\GoriyaWalkNorth.cs" />
     <Compile Include="NPC\Goriya\GoriyaWalkSouth.cs" />
     <Compile Include="NPC\Goriya\GoriyaWalkWest.cs" />
     <Compile Include="NPC\NpcTextureStorage.cs" />
-    <Compile Include="NPC\Npc.cs" />
-    <Compile Include="NPC\OldMan\OldManIdle.cs" />
+    <Compile Include="NPC\OldMan.cs" />
+    <Compile Include="NPC\Skeleton\Skeleton.cs" />
     <Compile Include="NPC\Skeleton\SkeletonWalkNorth.cs" />
     <Compile Include="NPC\Skeleton\SkeletonWalkSouth.cs" />
     <Compile Include="NPC\Skeleton\SkeletonWalkWest.cs" />

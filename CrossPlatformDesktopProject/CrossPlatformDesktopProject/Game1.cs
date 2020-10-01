@@ -25,7 +25,12 @@ namespace CrossPlatformDesktopProject
         private Player player;
         private Block block;
         private Statue statue;
-        private Npc npc;
+        private Bat bat;
+        private Gel gel;
+        private Goriya goriya;
+        private Skeleton skeleton;
+        private Boss boss;
+        private OldMan oldman;
         private Heart heart;
         private Triforce triforce;
 
@@ -58,13 +63,16 @@ namespace CrossPlatformDesktopProject
             player = new Player();
 
             block = new Block();
-
             statue = new Statue();
 
-            npc = new Npc();
+            bat = new Bat();
+            boss = new Boss();
+            gel = new Gel();
+            goriya = new Goriya();
+            oldman = new OldMan();
+            skeleton = new Skeleton();
 
             heart = new Heart();
-
             triforce = new Triforce();
 
             base.Initialize();
@@ -104,7 +112,7 @@ namespace CrossPlatformDesktopProject
                 Exit();
 
             player.Update();
-            npc.Update();
+            bat.Update();
             foreach (IController controller in controllerList)
             {
                 controller.Update();
@@ -130,7 +138,7 @@ graphics.PreferredBackBufferHeight/2);
 
             block.Draw(spriteBatch, 200, 200);
 
-            npc.Draw(spriteBatch);
+            bat.Draw(spriteBatch);
 
             heart.Draw(spriteBatch);
 

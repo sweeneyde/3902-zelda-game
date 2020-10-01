@@ -8,9 +8,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject
 {
-    public interface INpc
+    public interface IGelState
     {
-        void Draw(SpriteBatch spriteBatch);
+        void Draw(SpriteBatch spriteBatch, float xPos, float yPos);
         void Update();
     }
 }
