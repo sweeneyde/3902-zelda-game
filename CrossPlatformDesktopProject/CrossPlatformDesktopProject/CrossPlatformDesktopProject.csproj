@@ -74,9 +74,6 @@
     <Compile Include="Link\LinkSword1North.cs" />
     <Compile Include="Link\LinkSword1South.cs" />
     <Compile Include="Link\LinkSword1West.cs" />
-    <Compile Include="Link\LinkIdleEast.cs" />
-    <Compile Include="Link\LinkIdleSouth.cs" />
-    <Compile Include="Link\LinkIdleNorth.cs" />
     <Compile Include="NPC\Bat\BatWalkWest.cs" />
     <Compile Include="NPC\Bat\BatWalkSouth.cs" />
     <Compile Include="NPC\Bat\BatWalkNorth.cs" />

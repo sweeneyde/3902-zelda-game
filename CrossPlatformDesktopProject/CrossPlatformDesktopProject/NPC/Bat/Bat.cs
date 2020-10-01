@@ -17,7 +17,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public Bat()
         {
-            currentState = new BatWalkNorth(this);
+            currentState = new BatWalkEast(this);
             xPos = 400;
             yPos = 100;
         }
