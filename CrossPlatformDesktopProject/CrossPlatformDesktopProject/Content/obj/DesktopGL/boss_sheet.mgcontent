@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/boss_sheet.png</SourceFile>
-  <SourceTime>2020-09-28T19:01:58.3487241-04:00</SourceTime>
-  <DestFile>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/boss_sheet.xnb</DestFile>
-  <DestTime>2020-09-29T01:33:32.0717806-04:00</DestTime>
+  <SourceFile>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/boss_sheet.png</SourceFile>
+  <SourceTime>2020-10-01T19:19:43.9017516-04:00</SourceTime>
+  <DestFile>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/boss_sheet.xnb</DestFile>
+  <DestTime>2020-10-02T17:51:34.7795191-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
