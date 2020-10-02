@@ -55,7 +55,7 @@
     <Compile Include="ILinkState.cs" />
     <Compile Include="INpc.cs" />
     <Compile Include="IBatState.cs" />
-    <Compile Include="IObstacle.cs" />
+    <Compile Include="Obstacles\IObstacle.cs" />
     <Compile Include="ISpriteFactory.cs" />
     <Compile Include="IWorldItem.cs" />
     <Compile Include="Controllers\MouseController.cs" />
