@@ -46,6 +46,7 @@
     <Compile Include="Controllers\ButtonKind.cs" />
     <Compile Include="Controllers\KeyButtonChecker.cs" />
     <Compile Include="Controllers\IButtonChecker.cs" />
+    <Compile Include="Link\Equipables\Boomerang.cs" />
     <Compile Include="IBossState.cs" />
     <Compile Include="ISkeletonState.cs" />
     <Compile Include="IGoriyaState.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Controllers\KeyController.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="Link\LinkUsingItemEast.cs" />
     <Compile Include="Link\LinkSword1East.cs" />
     <Compile Include="Link\LinkFacingEastState1.cs" />
     <Compile Include="Link\LinkFacingEastState2.cs" />

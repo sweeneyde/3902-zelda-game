@@ -51,6 +51,10 @@ namespace CrossPlatformDesktopProject.Link
             {
                 player.currentState = new LinkFacingWestState1(player);
             }
+            else if (buttons.Contains(ButtonKind.SECONDARY))
+            {
+                player.currentState = new LinkUsingItemEast(player);
+            }
         }
     }
 }
