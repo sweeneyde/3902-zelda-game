@@ -17,7 +17,8 @@ namespace CrossPlatformDesktopProject
         private Dictionary<Keys, ICommand> mappings;
 
         private List<Keys> acceptedStates;
-        private List<Keys> gameActionStates;
+        private List<Keys> gameActions;
+        private List<Keys> priorityActions;
 
         public KeyMapping(Game1 game, Player player)
         {
@@ -26,7 +27,8 @@ namespace CrossPlatformDesktopProject
 
             mappings = new Dictionary<Keys, ICommand>();
             acceptedStates = new List<Keys>();
-            gameActionStates = new List<Keys>();
+            gameActions = new List<Keys>();
+            priorityActions = new List<Keys>();
 
             setDefaults();
         }
@@ -39,7 +41,7 @@ namespace CrossPlatformDesktopProject
 
             //Game Commands
             this.addCommand(Keys.D0, new Quit(myGame));
-            gameActionStates.Add(Keys.D0);
+            gameActions.Add(Keys.D0);
 
             //Player Commands
             this.addCommand(Keys.W, new MoveUpCommand(myPlayer));
@@ -57,6 +59,10 @@ namespace CrossPlatformDesktopProject
 
             this.addCommand(Keys.RightShift, new SelectCommand(myPlayer));
             this.addCommand(Keys.Enter, new StartCommand(myPlayer));
+
+            priorityActions.Add(Keys.Space);
+            priorityActions.Add(Keys.E);
+
             acceptedStates.Remove(Keys.D0);
         }
 
@@ -73,15 +79,34 @@ namespace CrossPlatformDesktopProject
         //    }
         //}
 
-        public void callCommands(Keys[] pressedKeys)
+        public void callCommands(Keys[] heldKeys, Keys[] pressedKeys)
         {
             Keys[] currentState = pressedKeys;
 
-            foreach (Keys k in currentState)
+            foreach (Keys k in gameActions)
             {
-                if (gameActionStates.Contains(k))
+                if (currentState.Contains(k))
                 {
                     mappings[k].Execute();
+                    return;
+                }
+            }
+
+            foreach (Keys k in priorityActions)
+            {
+                if (currentState.Contains(k))
+                {
+                    mappings[k].Execute();
+                    return;
+                }
+            }
+
+            foreach (Keys k in currentState)
+            {
+                if (acceptedStates.Contains(k) && !heldKeys.Contains(k))
+                {
+                    mappings[k].Execute();
+                    return;
                 }
             }
 
@@ -90,7 +115,7 @@ namespace CrossPlatformDesktopProject
                 if (acceptedStates.Contains(k))
                 {
                     mappings[k].Execute();
-                    break;
+                    return;
                 }
             }
         }
