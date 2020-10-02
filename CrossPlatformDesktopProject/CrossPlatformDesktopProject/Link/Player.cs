@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject;
 using CrossPlatformDesktopProject.Equipables;
 using CrossPlatformDesktopProject.Link;
+using CrossPlatformDesktopProject.Link.Equipables;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -15,16 +16,18 @@ namespace CrossPlatformDesktopProject.Link
     class Player
     {
         public ILinkState currentState;
-        public IEquipable currentItem = null;
         public float xPos, yPos;
+        public static InventoryManager linkInventory;
         public static float walking_speed = 3.0f;
         public static int frames_per_step = 6;
         public static int frames_for_sword = 18;
         public bool itemInUse = false;
+        public IEquipable currentItem { get; set; }
 
         public Player()
         {
             currentState = new LinkFacingSouthState1(this);
+            linkInventory = new InventoryManager(this);
             xPos = 100;
             yPos = 100;
         }
@@ -32,36 +35,16 @@ namespace CrossPlatformDesktopProject.Link
         public void Update()
         {
             IButtonChecker instance = KeyButtonChecker.Instance;
-            if(currentItem != null)
-            {
-                Debug.Print("current item isn't null");
-                currentItem.Update();
-                Debug.Print(xPos.ToString());
-                Debug.Print(yPos.ToString());
-            }
-            else if (itemInUse)
-            {
-                itemInUse = false;
-            }
-           
+            
             ISet<ButtonKind> buttons = instance.GetPressedButtons();
             currentState.Update(buttons);
+            linkInventory.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             currentState.Draw(spriteBatch, xPos, yPos);
-            if(currentItem != null)
-            {
-                Debug.Print("current item isn't null");
-                currentItem.Draw(spriteBatch);
-                Debug.Print(xPos.ToString());
-                Debug.Print(yPos.ToString());
-            }
-            else if (itemInUse)
-            {
-                itemInUse = false;
-            }
+            linkInventory.Draw(spriteBatch);
 
         }
     }

@@ -22,11 +22,11 @@ namespace CrossPlatformDesktopProject.Equipables
         private Vector2 returnFlight;
         private int my_frame_index;
         private int delay_frame_index;
-        private float boomerangTravelDist = 40;
-        private float boomSpeed = 1.0f;
+        private float boomerangTravelDist = 400f;
+        private float boomSpeed = 50f;
         private bool reachedEnd = false;
 
-        private static int delay_frames = 20;
+        private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
             LinkTextureStorage.BOOMERANG_1, 
             LinkTextureStorage.BOOMERANG_2,
@@ -41,6 +41,7 @@ namespace CrossPlatformDesktopProject.Equipables
             currentPos = new Vector2(startX, startY);
             endPoint = GetEndpoint(startX, startY, envokedWith);
             flight = DirectionV(endPoint, currentPos);
+            reachedEnd = false;
             my_frame_index = 0;
             delay_frame_index = 0;
         }
@@ -58,18 +59,22 @@ namespace CrossPlatformDesktopProject.Equipables
 
         public void Update()
         {
+            if( !reachedEnd && (Math.Abs(currentPos.X - endPoint.X) < 1 && Math.Abs(currentPos.Y - endPoint.Y) < 1))
+            {
+                reachedEnd = true;
+            }
+
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
-                if (reachedEnd || currentPos.Equals(endPoint))
+                if (reachedEnd)
                 { 
-                    reachedEnd = true;
                     //Boomerang is going back to link.
                     returnFlight = DirectionV(new Vector2(player.xPos, player.yPos), currentPos);
                     currentPos += returnFlight * boomSpeed;    
                 } else
                 {
-                    
+                    flight = DirectionV(endPoint, currentPos);
                     //Boomerang is going away from link.
                     currentPos += flight * boomSpeed;
                     
@@ -78,9 +83,9 @@ namespace CrossPlatformDesktopProject.Equipables
                 my_frame_index %= my_source_frames.Count;
             }
 
-            if(currentPos.Equals(new Vector2(player.xPos, player.yPos)))
+            if(reachedEnd && (Math.Abs(currentPos.X - player.xPos) < 30 && Math.Abs(currentPos.Y - player.yPos) < 30))
             {
-                player.currentItem = null;
+                Player.linkInventory.TerminateBoomerang();    
             }
         }
 

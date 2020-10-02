@@ -71,6 +71,7 @@ namespace CrossPlatformDesktopProject.Link
 
         public static Rectangle BOOMERANG_1 = new Rectangle(65, 189, 5, 8);
         public static Rectangle BOOMERANG_2 = new Rectangle(73, 189, 7, 7);
-        public static Rectangle BOOMERANG_3 = new Rectangle(82, 189, 7, 6);
+        public static Rectangle BOOMERANG_3 = new Rectangle(82, 189, 7, 7);
+        //ADD MIRRORED BOOMERANG FOR FULL ROTATION
     }
 }

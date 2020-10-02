@@ -14,13 +14,11 @@ namespace CrossPlatformDesktopProject.Link
         {
             this.player = player;
             frames_left = Player.frames_per_step;
-            if (!player.itemInUse)
+            
+            if (!Player.linkInventory.EquipmentInUse())
             {
-                player.itemInUse = true;
-                player.currentItem = new Boomerang(player, ButtonKind.RIGHT);
-            }
-            
-            
+                Player.linkInventory.UseBoomerang(ButtonKind.RIGHT);
+            }     
         }
 
         void ILinkState.Draw(SpriteBatch spriteBatch, float xPos, float yPos)
