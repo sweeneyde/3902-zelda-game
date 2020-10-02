@@ -42,10 +42,19 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\StartCommand.cs" />
+    <Compile Include="Commands\SelectCommand.cs" />
+    <Compile Include="Commands\UseSecondaryCommand.cs" />
+    <Compile Include="Commands\UsePrimaryCommand.cs" />
+    <Compile Include="Commands\MoveDownCommand.cs" />
+    <Compile Include="Commands\MoveRightCommand.cs" />
+    <Compile Include="Commands\MoveLeftCommand.cs" />
+    <Compile Include="Commands\MoveUpCommand.cs" />
     <Compile Include="Commands\Quit.cs" />
     <Compile Include="Controllers\ButtonKind.cs" />
     <Compile Include="Controllers\KeyButtonChecker.cs" />
     <Compile Include="Controllers\IButtonChecker.cs" />
+    <Compile Include="Controllers\KeyMapping.cs" />
     <Compile Include="IBossState.cs" />
     <Compile Include="ISkeletonState.cs" />
     <Compile Include="IGoriyaState.cs" />

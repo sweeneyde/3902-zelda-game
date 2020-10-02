@@ -3,9 +3,9 @@
     "",
     "\\CrossPlatformDesktopProject",
     "\\CrossPlatformDesktopProject\\CrossPlatformDesktopProject",
-    "\\CrossPlatformDesktopProject\\CrossPlatformDesktopProject\\Commands",
-    "\\CrossPlatformDesktopProject\\CrossPlatformDesktopProject\\Controllers"
+    "\\CrossPlatformDesktopProject\\CrossPlatformDesktopProject\\Controllers",
+    "\\CrossPlatformDesktopProject\\CrossPlatformDesktopProject\\Link"
   ],
-  "SelectedNode": "\\CrossPlatformDesktopProject\\CrossPlatformDesktopProject\\Controllers\\KeyController.cs",
+  "SelectedNode": "\\CrossPlatformDesktopProject\\CrossPlatformDesktopProject\\Link\\Player.cs",
   "PreviewInSolutionExplorer": false
 }

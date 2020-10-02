@@ -25,32 +25,41 @@ namespace CrossPlatformDesktopProject.Link
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
-        void ILinkState.Update(ISet<ButtonKind> buttons)
+        void ILinkState.Update()
         {
-            if (buttons.Contains(ButtonKind.PRIMARY))
+        }
+
+        public void MoveDown()
+        {
+            player.currentState = new LinkFacingSouthState1(player);
+        }
+
+        public void MoveLeft()
+        {
+            player.currentState = new LinkFacingWestState1(player);
+        }
+
+        public void MoveRight()
+        {
+            player.currentState = new LinkFacingEastState1(player);
+        }
+
+        public void MoveUp()
+        {
+            player.yPos -= Player.walking_speed;
+            if (--frames_left <= 0)
             {
-                player.currentState = new LinkSword1North(player);
+                player.currentState = new LinkFacingNorthState1(player);
             }
-            else if (buttons.Contains(ButtonKind.UP))
-            {
-                player.yPos -= Player.walking_speed;
-                if (--frames_left <= 0)
-                {
-                    player.currentState = new LinkFacingNorthState1(player);
-                }
-            }
-            else if (buttons.Contains(ButtonKind.RIGHT))
-            {
-                player.currentState = new LinkFacingEastState1(player);
-            }
-            else if (buttons.Contains(ButtonKind.DOWN))
-            {
-                player.currentState = new LinkFacingSouthState1(player);
-            }
-            else if (buttons.Contains(ButtonKind.LEFT))
-            {
-                player.currentState = new LinkFacingWestState1(player);
-            }
+        }
+
+        public void UsePrimary()
+        {
+            player.currentState = new LinkSword1North(player);
+        }
+
+        public void UseSecondary()
+        {
         }
     }
 }

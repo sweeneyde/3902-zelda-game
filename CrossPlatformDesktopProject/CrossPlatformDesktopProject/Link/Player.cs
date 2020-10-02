@@ -27,9 +27,7 @@ namespace CrossPlatformDesktopProject.Link
 
         public void Update()
         {
-            IButtonChecker instance = KeyButtonChecker.Instance;
-            ISet<ButtonKind> buttons = instance.GetPressedButtons();
-            currentState.Update(buttons);
+            currentState.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)

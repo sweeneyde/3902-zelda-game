@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/nerdy/Source/Repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Fonty.spritefont</SourceFile>
-  <SourceTime>2020-09-29T01:16:33.7403111-04:00</SourceTime>
-  <DestFile>C:/Users/nerdy/Source/Repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/Fonty.xnb</DestFile>
-  <DestTime>2020-10-01T12:07:37.7056036-04:00</DestTime>
-  <SourceFile>C:/Users/nerdy/Source/Repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Fonty.spritefont</SourceFile>
-  <SourceTime>2020-09-29T01:16:33.7403111-04:00</SourceTime>
-  <DestFile>C:/Users/nerdy/Source/Repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/Fonty.xnb</DestFile>
-  <DestTime>2020-10-01T10:55:42.4934391-04:00</DestTime>
+  <SourceFile>C:/Users/Owner/Documents/GitHub/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Fonty.spritefont</SourceFile>
+  <SourceTime>2020-10-02T12:48:59.2177611-04:00</SourceTime>
+  <DestFile>C:/Users/Owner/Documents/GitHub/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/Fonty.xnb</DestFile>
+  <DestTime>2020-10-02T14:02:19.4694411-04:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>LocalizedFontProcessor</Processor>

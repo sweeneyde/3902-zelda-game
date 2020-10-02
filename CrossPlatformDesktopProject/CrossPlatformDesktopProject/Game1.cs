@@ -48,19 +48,12 @@ namespace CrossPlatformDesktopProject
         /// </summary>
         protected override void Initialize()
         {
+            player = new Player();
+
             controllerList = new List<IController>();
 
-            KeyboardController KC = new KeyboardController(this);
-            KC.addCommand(Keys.D0, new Quit(this));
-            
+            KeyboardController KC = new KeyboardController(this, player);
             controllerList.Add(KC);
-            this.IsMouseVisible = true;
-
-            MouseController MC = new MouseController(this);
-
-            controllerList.Add(MC);
-
-            player = new Player();
 
             block = new Block();
             statue = new Statue();
