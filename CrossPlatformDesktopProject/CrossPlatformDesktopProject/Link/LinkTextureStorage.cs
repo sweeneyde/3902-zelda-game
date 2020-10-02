@@ -45,12 +45,14 @@ namespace CrossPlatformDesktopProject.Link
         {
             linkTexture = content.Load<Texture2D>("Link_Spritesheet");
             linkTextureMirrored = content.Load<Texture2D>("Link_Spritesheet_Mirrored");
+
             linkBlackDamageTexture = content.Load<Texture2D>("link_damaged_black");
             linkBlueDamageTexture = content.Load<Texture2D>("link_damaged_blue");
             linkRedDamageTexture = content.Load<Texture2D>("link_damaged_red");
-            linkBlackDamageTexture = content.Load<Texture2D>("link_damaged_black_mirrored");
-            linkBlueDamageTexture = content.Load<Texture2D>("link_damaged_blue_mirrored");
-            linkRedDamageTexture = content.Load<Texture2D>("link_damaged_red_mirrored");
+
+            linkBlackDamageTextureMirrored = content.Load<Texture2D>("link_damaged_black_mirrored");
+            linkBlueDamageTextureMirrored = content.Load<Texture2D>("link_damaged_blue_mirrored");
+            linkRedDamageTextureMirrored = content.Load<Texture2D>("link_damaged_red_mirrored");
         }
 
         public Texture2D getLinkSpriteSheet()
