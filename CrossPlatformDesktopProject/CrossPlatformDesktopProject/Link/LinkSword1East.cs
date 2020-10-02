@@ -34,7 +34,7 @@ namespace CrossPlatformDesktopProject.Link
         {
             if (--frames_left <= 0)
             {
-                player.currentState = new LinkFacingEastState1(player);
+                player.currentState = new LinkFacingEastState(player);
             }
         }
     }
