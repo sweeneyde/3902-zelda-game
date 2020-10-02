@@ -32,34 +32,44 @@ namespace CrossPlatformDesktopProject.Link
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
-        void ILinkState.Update(ISet<ButtonKind> buttons)
+        void ILinkState.Update()
         {
-            if (buttons.Contains(ButtonKind.PRIMARY))
+        }
+
+        public void MoveDown()
+        {
+            player.currentState = new LinkFacingSouthState(player);
+        }
+
+        public void MoveLeft()
+        {
+            player.currentState = new LinkFacingWestState(player);
+        }
+
+        public void MoveRight()
+        {
+            player.xPos += Player.walking_speed;
+            if (--frames_left <= 0)
             {
-                player.currentState = new LinkSword1East(player);
-            }
-            else if (buttons.Contains(ButtonKind.RIGHT))
-            {
-                player.xPos += Player.walking_speed;
-                if (--frames_left <= 0)
-                {
-                    frames_left = Player.frames_per_step;
-                    my_source_index++;
-                    my_source_index %= my_sources.Count;
-                }
-            }
-            else if (buttons.Contains(ButtonKind.DOWN))
-            {
-                player.currentState = new LinkFacingSouthState(player);
-            }
-            else if (buttons.Contains(ButtonKind.UP))
-            {
-                player.currentState = new LinkFacingNorthState(player);
-            }
-            else if (buttons.Contains(ButtonKind.LEFT))
-            {
-                player.currentState = new LinkFacingWestState(player);
+                frames_left = Player.frames_per_step;
+                my_source_index++;
+                my_source_index %= my_sources.Count;
             }
         }
+
+        public void MoveUp()
+        {
+            player.currentState = new LinkFacingNorthState(player);
+        }
+
+        public void UsePrimary()
+        {
+            player.currentState = new LinkSword1East(player);
+        }
+
+        public void UseSecondary()
+        {
+        }
+
     }
 }
