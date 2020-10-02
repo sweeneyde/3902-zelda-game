@@ -1,4 +1,8 @@
 ﻿using CrossPlatformDesktopProject.Commands;
+using CrossPlatformDesktopProject.Link;
+using CrossPlatformDesktopProject.Obstacles;
+using CrossPlatformDesktopProject.NPC;
+using CrossPlatformDesktopProject.WorldItem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -16,9 +20,19 @@ namespace CrossPlatformDesktopProject
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public List<IController> controllerList; // could also be defined as List <IController>
-        public ISprite sprite;
         protected Texture2D img;
         private SpriteFont font;
+        private Player player;
+        private Block block;
+        private Statue statue;
+        private Bat bat;
+        private Gel gel;
+        private Goriya goriya;
+        private Skeleton skeleton;
+        private Boss boss;
+        private OldMan oldman;
+        private Heart heart;
+        private Triforce triforce;
 
         public Game1()
         {
@@ -36,30 +50,30 @@ namespace CrossPlatformDesktopProject
         {
             controllerList = new List<IController>();
 
-            ///This could be moved to some kind of mapping function
             KeyboardController KC = new KeyboardController(this);
             KC.addCommand(Keys.D0, new Quit(this));
-            KC.addCommand(Keys.D1, new SetStanding(this));
-            KC.addCommand(Keys.D2, new SetMoving(this));
-            KC.addCommand(Keys.D3, new SetStandingAnimated(this));
-            KC.addCommand(Keys.D4, new SetMovingAnimated(this));
             
             controllerList.Add(KC);
             this.IsMouseVisible = true;
 
             MouseController MC = new MouseController(this);
-            MC.addRightCommand(new Rectangle(0,0, graphics.PreferredBackBufferWidth,
-graphics.PreferredBackBufferHeight), new Quit(this));
-            MC.addLeftCommand(new Rectangle(0, 0, graphics.PreferredBackBufferWidth/2,
-graphics.PreferredBackBufferHeight/2), new SetStanding(this));
-            MC.addLeftCommand(new Rectangle(graphics.PreferredBackBufferWidth/2, 0, graphics.PreferredBackBufferWidth,
-graphics.PreferredBackBufferHeight/2), new SetMoving(this));
-            MC.addLeftCommand(new Rectangle(0, graphics.PreferredBackBufferHeight / 2, graphics.PreferredBackBufferWidth/2,
-graphics.PreferredBackBufferHeight), new SetStandingAnimated(this));
-            MC.addLeftCommand(new Rectangle(graphics.PreferredBackBufferWidth / 2, graphics.PreferredBackBufferHeight / 2, graphics.PreferredBackBufferWidth,
-graphics.PreferredBackBufferHeight), new SetMovingAnimated(this));
 
             controllerList.Add(MC);
+
+            player = new Player();
+
+            block = new Block();
+            statue = new Statue();
+
+            bat = new Bat();
+            boss = new Boss();
+            gel = new Gel();
+            goriya = new Goriya();
+            oldman = new OldMan();
+            skeleton = new Skeleton();
+
+            heart = new Heart();
+            triforce = new Triforce();
 
             base.Initialize();
         }
@@ -70,11 +84,12 @@ graphics.PreferredBackBufferHeight), new SetMovingAnimated(this));
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-            img = Content.Load<Texture2D>("yoshi");
-            sprite = new StandingSprite();
             font = Content.Load<SpriteFont>("NewFont");
+            spriteBatch = new SpriteBatch(GraphicsDevice);
+            LinkTextureStorage.Instance.LoadAllResources(Content);
+            ObstacleTextureStorage.Instance.LoadAllResources(Content);
+            NpcTextureStorage.Instance.LoadAllResources(Content);
+            ItemTextureStorage.Instance.LoadAllResources(Content);
         }
 
         /// <summary>
@@ -96,12 +111,13 @@ graphics.PreferredBackBufferHeight), new SetMovingAnimated(this));
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            player.Update();
+            bat.Update();
             foreach (IController controller in controllerList)
             {
                 controller.Update();
             }
-
-            sprite.Update();
+            
 
             base.Update(gameTime);
         }
@@ -118,8 +134,14 @@ graphics.PreferredBackBufferHeight), new SetMovingAnimated(this));
             Vector2 center = new Vector2(graphics.PreferredBackBufferWidth/2,
 graphics.PreferredBackBufferHeight/2);
 
-            spriteBatch.DrawString(this.font, "Credits\n Program Made By : James Cross \n Sprites From :https://www.mariouniverse.com/wp-content/img/sprites/snes/yi/yoshi.gif", new Vector2(graphics.PreferredBackBufferWidth / 4, 3 * graphics.PreferredBackBufferHeight / 4), Color.Black);
-            sprite.Draw(img, spriteBatch, center);
+            player.Draw(spriteBatch);
+
+            block.Draw(spriteBatch, 200, 200);
+
+            bat.Draw(spriteBatch);
+
+            heart.Draw(spriteBatch);
+
             spriteBatch.End();
 
             base.Draw(gameTime);
