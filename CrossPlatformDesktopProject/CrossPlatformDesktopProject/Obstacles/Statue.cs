@@ -15,15 +15,15 @@ namespace CrossPlatformDesktopProject.Obstacles
 
         public Statue()
         {
-            xPos = 250;
-            yPos = 250;
+            xPos = 200;
+            yPos = 200;
         }
         public void Update()
         {
             // Not needed for statues
         }
 
-        public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
+        public void Draw(SpriteBatch spriteBatch)
         {
             Texture2D texture = ObstacleTextureStorage.Instance.getObstacleSpriteSheet();
             Rectangle source = ObstacleTextureStorage.OBSTACLE_STATUE;
