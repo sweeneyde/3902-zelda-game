@@ -19,6 +19,7 @@ namespace CrossPlatformDesktopProject
         private List<Keys> acceptedStates;
         private List<Keys> gameActions;
         private List<Keys> priorityActions;
+        private Keys lastAction;
 
         public KeyMapping(Game1 game, Player player)
         {
@@ -29,6 +30,8 @@ namespace CrossPlatformDesktopProject
             acceptedStates = new List<Keys>();
             gameActions = new List<Keys>();
             priorityActions = new List<Keys>();
+
+            lastAction = Keys.W;
 
             setDefaults();
         }
@@ -106,8 +109,15 @@ namespace CrossPlatformDesktopProject
                 if (acceptedStates.Contains(k) && !heldKeys.Contains(k))
                 {
                     mappings[k].Execute();
+                    lastAction = k;
                     return;
                 }
+            }
+
+            if (currentState.Contains(lastAction))
+            {
+                mappings[lastAction].Execute();
+                return;
             }
 
             foreach (Keys k in currentState)
