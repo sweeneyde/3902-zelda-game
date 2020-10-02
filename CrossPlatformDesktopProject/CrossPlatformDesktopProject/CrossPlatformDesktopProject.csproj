@@ -51,9 +51,6 @@
     <Compile Include="Commands\MoveLeftCommand.cs" />
     <Compile Include="Commands\MoveUpCommand.cs" />
     <Compile Include="Commands\Quit.cs" />
-    <Compile Include="Controllers\ButtonKind.cs" />
-    <Compile Include="Controllers\KeyButtonChecker.cs" />
-    <Compile Include="Controllers\IButtonChecker.cs" />
     <Compile Include="Controllers\KeyMapping.cs" />
     <Compile Include="IBossState.cs" />
     <Compile Include="ISkeletonState.cs" />
