@@ -20,7 +20,7 @@ namespace CrossPlatformDesktopProject.Link
 
         public Player()
         {
-            currentState = new LinkFacingSouthState1(this);
+            currentState = new LinkFacingSouthState(this);
             xPos = 100;
             yPos = 100;
         }

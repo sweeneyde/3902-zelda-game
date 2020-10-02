@@ -64,7 +64,7 @@
     <Compile Include="ILinkState.cs" />
     <Compile Include="INpc.cs" />
     <Compile Include="IBatState.cs" />
-    <Compile Include="IObstacle.cs" />
+    <Compile Include="Obstacles\IObstacle.cs" />
     <Compile Include="ISpriteFactory.cs" />
     <Compile Include="IWorldItem.cs" />
     <Compile Include="Controllers\MouseController.cs" />
@@ -72,14 +72,10 @@
     <Compile Include="Game1.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="Link\LinkSword1East.cs" />
-    <Compile Include="Link\LinkFacingEastState1.cs" />
-    <Compile Include="Link\LinkFacingEastState2.cs" />
-    <Compile Include="Link\LinkFacingNorthState1.cs" />
-    <Compile Include="Link\LinkFacingNorthState2.cs" />
-    <Compile Include="Link\LinkFacingSouthState1.cs" />
-    <Compile Include="Link\LinkFacingSouthState2.cs" />
-    <Compile Include="Link\LinkFacingWestState1.cs" />
-    <Compile Include="Link\LinkFacingWestState2.cs" />
+    <Compile Include="Link\LinkFacingEastState.cs" />
+    <Compile Include="Link\LinkFacingNorthState.cs" />
+    <Compile Include="Link\LinkFacingSouthState.cs" />
+    <Compile Include="Link\LinkFacingWestState.cs" />
     <Compile Include="Link\LinkSword1North.cs" />
     <Compile Include="Link\LinkSword1South.cs" />
     <Compile Include="Link\LinkSword1West.cs" />

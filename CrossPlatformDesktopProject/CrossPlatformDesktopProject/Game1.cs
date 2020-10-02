@@ -33,6 +33,7 @@ namespace CrossPlatformDesktopProject
         private OldMan oldman;
         private Heart heart;
         private Triforce triforce;
+        private IObstacle obstacle;
 
         public Game1()
         {
@@ -55,8 +56,7 @@ namespace CrossPlatformDesktopProject
             KeyboardController KC = new KeyboardController(this, player);
             controllerList.Add(KC);
 
-            block = new Block();
-            statue = new Statue();
+            obstacle = new Block();
 
             bat = new Bat();
             boss = new Boss();
@@ -110,6 +110,8 @@ namespace CrossPlatformDesktopProject
             {
                 controller.Update();
             }
+
+            obstacle.Update();
             
 
             base.Update(gameTime);
@@ -129,7 +131,7 @@ graphics.PreferredBackBufferHeight/2);
 
             player.Draw(spriteBatch);
 
-            block.Draw(spriteBatch, 200, 200);
+            obstacle.Draw(spriteBatch);
 
             bat.Draw(spriteBatch);
 
