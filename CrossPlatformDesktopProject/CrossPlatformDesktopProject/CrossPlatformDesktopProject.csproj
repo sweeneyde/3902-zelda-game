@@ -79,6 +79,10 @@
     <Compile Include="NPC\Bat\BatWalkNorth.cs" />
     <Compile Include="NPC\Bat\BatWalkEast.cs" />
     <Compile Include="NPC\Bat\Bat.cs" />
+    <Compile Include="NPC\Bat\BatWalkSE.cs" />
+    <Compile Include="NPC\Bat\BatWalkSW.cs" />
+    <Compile Include="NPC\Bat\BatWalkNW.cs" />
+    <Compile Include="NPC\Bat\BatWalkNE.cs" />
     <Compile Include="NPC\Boss\BossWalkWest.cs" />
     <Compile Include="NPC\Boss\BossWalkEast.cs" />
     <Compile Include="NPC\Boss\Boss.cs" />

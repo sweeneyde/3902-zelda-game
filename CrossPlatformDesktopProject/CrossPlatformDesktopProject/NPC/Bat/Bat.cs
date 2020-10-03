@@ -1,10 +1,12 @@
 ﻿using CrossPlatformDesktopProject;
+using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.NPC;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,14 +14,15 @@ namespace CrossPlatformDesktopProject.NPC
 {
     class Bat : INpc
     {
-        private IBatState currentState;
+        public IBatState currentState;
         public float xPos, yPos;
 
         public Bat()
         {
-            currentState = new BatWalkEast(this);
             xPos = 400;
             yPos = 100;
+
+            currentState = new BatWalkEast(this);
         }
 
         public void Update()

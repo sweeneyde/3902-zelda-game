@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class BatWalkWest : IBatState
+    class BatWalkNE : IBatState
     {
         private int my_frame_index;
         private int delay_frame_index;
@@ -17,7 +17,7 @@ namespace CrossPlatformDesktopProject.NPC
             NpcTextureStorage.BAT_2
         };
 
-        public BatWalkWest(Bat bat)
+        public BatWalkNE(Bat bat)
         {
             this.bat = bat;
             my_frame_index = 0;
@@ -36,15 +36,16 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (bat.xPos == 400 && bat.yPos == 150)
+            if (bat.xPos == 400 && bat.yPos == 0)
             {
-                bat.currentState = new BatWalkNorth(bat);
+                bat.currentState = new BatWalkSW(bat);
             }
 
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
-                bat.xPos -= 5;
+                bat.yPos -= 5;
+                bat.xPos += 5;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
