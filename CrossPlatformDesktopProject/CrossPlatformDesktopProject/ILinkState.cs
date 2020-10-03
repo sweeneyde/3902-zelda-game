@@ -13,6 +13,12 @@ namespace CrossPlatformDesktopProject
     public interface ILinkState
     {
         void Draw(SpriteBatch spriteBatch, float xPos, float yPos);
-        void Update(ISet<ButtonKind> pressedButtons);
+        void Update();
+        void MoveUp();
+        void MoveDown();
+        void MoveLeft();
+        void MoveRight();
+        void UsePrimary();
+        void UseSecondary();
     }
 }

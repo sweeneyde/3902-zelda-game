@@ -30,12 +30,37 @@ namespace CrossPlatformDesktopProject.Link
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
-        void ILinkState.Update(ISet<ButtonKind> pressedButtons)
+        void ILinkState.Update()
         {
             if (--frames_left <= 0)
             {
                 player.currentState = new LinkFacingSouthState(player);
             }
+        }
+
+        public void MoveDown()
+        {
+        }
+
+        public void MoveLeft()
+        {
+        }
+
+        public void MoveRight()
+        {
+        }
+
+        public void MoveUp()
+        {
+        }
+
+
+        public void UsePrimary()
+        {
+        }
+
+        public void UseSecondary()
+        {
         }
     }
 }

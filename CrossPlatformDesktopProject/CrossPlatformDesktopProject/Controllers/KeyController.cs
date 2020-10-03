@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.Link;
+using CrossPlatformDesktopProject.Commands;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
@@ -10,35 +12,22 @@ namespace CrossPlatformDesktopProject
 {
     class KeyboardController : IController
     {
-        Game1 myGame;
-        Keys[] currentState;
-        List<Keys> acceptedStates;
-        private Dictionary<Keys, ICommand> mappings;
+        private Keys[] oldState;
+        private Keys[] currentState;
+        private KeyMapping keyMap;
 
-        public KeyboardController(Game1 game)
+        public KeyboardController(Game1 game, Player player)
         {
-            myGame = game;
-            mappings = new Dictionary<Keys, ICommand>();
-            acceptedStates = new List<Keys>();
+            oldState = Keyboard.GetState().GetPressedKeys();
+            keyMap = new KeyMapping(game, player);
         }
 
-        public void addCommand(Keys key, ICommand command)
-        {
-            mappings.Add(key, command);
-            acceptedStates.Add(key);
-        }
 
         public void Update()
         {
+            oldState = currentState;
             currentState = Keyboard.GetState().GetPressedKeys();
-
-            foreach (Keys k in currentState)
-            {
-                if (acceptedStates.Contains(k))
-                {
-                    mappings[k].Execute();
-                }
-            }
+            keyMap.callCommands(oldState, currentState);
         }
     }
 }
