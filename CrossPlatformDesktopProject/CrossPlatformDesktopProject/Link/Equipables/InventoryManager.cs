@@ -58,12 +58,6 @@ namespace CrossPlatformDesktopProject.Link.Equipables
             currentItem = bow;
         }
 
-        public void UseBow(ButtonKind envokedWith)
-        {
-            bow = new Bow(player, envokedWith);
-            currentItem = bow;
-        }
-
         public void UseBomb(ButtonKind envokedWith) 
         {
             bomb = new Bomb(player, envokedWith);
