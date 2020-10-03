@@ -14,6 +14,7 @@ namespace CrossPlatformDesktopProject
     {
         void Draw(SpriteBatch spriteBatch, float xPos, float yPos);
         void setTextureIndex(int index);
+        void TakeDamage();
         void Update();
         void MoveUp();
         void MoveDown();

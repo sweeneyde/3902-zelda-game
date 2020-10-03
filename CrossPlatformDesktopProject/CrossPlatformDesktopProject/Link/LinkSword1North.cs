@@ -44,6 +44,11 @@ namespace CrossPlatformDesktopProject.Link
             my_texture_index = index;
         }
 
+        void ILinkState.TakeDamage()
+        {
+            player.currentState = new LinkKnockedSouth(player);
+        }
+
         public void MoveDown()
         {
         }

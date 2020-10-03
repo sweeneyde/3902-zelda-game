@@ -10,32 +10,50 @@ namespace CrossPlatformDesktopProject.Link
 {
     class LinkKnockedEast : ILinkState
     {
-        private Texture2D my_texture;
+        private int my_texture_index;
         private Player player;
+        private int frames_left;
 
-        LinkKnockedEast(Player player)
+        public LinkKnockedEast(Player player)
         {
             this.player = player;
-            my_texture = LinkTextureStorage.Instance.linkBlackDamageTexture;
+            this.frames_left = Player.knockback_frames;
+            this.my_texture_index = 0;
         }
 
         void ILinkState.Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Rectangle source = LinkTextureStorage.Link;
+            Texture2D texture = LinkTextureStorage.Instance.getMirroredTextures()[my_texture_index];
+            Rectangle source = LinkTextureStorage.MIRRORED_LINK_IDLE_WEST;
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
                 source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
-
-        void ILinkState.SetTexture(Texture2D texture)
+        void ILinkState.setTextureIndex(int index)
         {
-            my_texture = texture;
+            my_texture_index = index;
         }
 
-        void ILinkState.Update(ISet<ButtonKind> pressedButtons)
+        void ILinkState.Update()
         {
-            throw new NotImplementedException();
+            player.xPos += Player.knockback_speed;
+            if (--frames_left <= 0)
+            {
+                player.currentState = new LinkFacingWestState(player);
+            }
         }
+        void ILinkState.TakeDamage()
+        {
+        }
+
+        // Controls are not allowed during knocked state.
+        void ILinkState.MoveDown() {}
+        void ILinkState.MoveLeft() {}
+        void ILinkState.MoveRight() {}
+        void ILinkState.MoveUp() {}
+        void ILinkState.UsePrimary() { }
+        void ILinkState.UseSecondary() { }
+
     }
 }

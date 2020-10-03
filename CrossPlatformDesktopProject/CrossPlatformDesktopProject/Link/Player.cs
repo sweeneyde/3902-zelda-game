@@ -20,12 +20,15 @@ namespace CrossPlatformDesktopProject.Link
         private static int frames_per_damage_color_change = 5;
         private static int damage_frames = 24;
 
+        public static float knockback_speed = 4.0f;
+        public static int knockback_frames = frames_per_damage_color_change * 5;
+
         private int damaged_frames_left;
         private int frames_until_color_change;
 
         public Player()
         {
-            currentState = new LinkFacingSouthState(this);
+            currentState = new LinkKnockedSouth(this);
             xPos = 100;
             yPos = 100;
             TakeDamage();
@@ -42,7 +45,7 @@ namespace CrossPlatformDesktopProject.Link
             {
                 damaged_frames_left = damage_frames;
                 frames_until_color_change = frames_per_damage_color_change;
-                // TODO: switch the frame to knockback
+                currentState.TakeDamage();
             }
         }
 
