@@ -51,7 +51,7 @@ namespace CrossPlatformDesktopProject.Equipables
         public void Draw(SpriteBatch spriteBatch)
         {
             Texture2D texture;
-            if (my_frame_index == 3 || my_frame_index == 4)
+            if(my_frame_index == 3 || my_frame_index == 4)
             {
                 texture = LinkTextureStorage.Instance.getLinkSpriteSheetMirrored();
             }
@@ -59,7 +59,7 @@ namespace CrossPlatformDesktopProject.Equipables
             {
                 texture = LinkTextureStorage.Instance.getLinkSpriteSheet();
             }
-
+                
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
                 (int)currentPos.X, (int)currentPos.Y,
