@@ -1,6 +1,8 @@
 ﻿using CrossPlatformDesktopProject.Commands;
 using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.Obstacles;
+using CrossPlatformDesktopProject.NPC;
+using CrossPlatformDesktopProject.WorldItem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -23,6 +25,15 @@ namespace CrossPlatformDesktopProject
         private Player player;
         private Block block;
         private Statue statue;
+        private Bat bat;
+        private Gel gel;
+        private Goriya goriya;
+        private Skeleton skeleton;
+        private Boss boss;
+        private OldMan oldman;
+        private Heart heart;
+        private Triforce triforce;
+        private IObstacle obstacle;
 
         public Game1()
         {
@@ -38,23 +49,24 @@ namespace CrossPlatformDesktopProject
         /// </summary>
         protected override void Initialize()
         {
-            controllerList = new List<IController>();
-
-            KeyboardController KC = new KeyboardController(this);
-            KC.addCommand(Keys.D0, new Quit(this));
-            
-            controllerList.Add(KC);
-            this.IsMouseVisible = true;
-
-            MouseController MC = new MouseController(this);
-
-            controllerList.Add(MC);
-
             player = new Player();
 
-            block = new Block();
+            controllerList = new List<IController>();
 
-            statue = new Statue();
+            KeyboardController KC = new KeyboardController(this, player);
+            controllerList.Add(KC);
+
+            obstacle = new Block();
+
+            bat = new Bat();
+            boss = new Boss();
+            gel = new Gel();
+            goriya = new Goriya();
+            oldman = new OldMan();
+            skeleton = new Skeleton();
+
+            heart = new Heart();
+            triforce = new Triforce();
 
             base.Initialize();
         }
@@ -69,7 +81,8 @@ namespace CrossPlatformDesktopProject
             spriteBatch = new SpriteBatch(GraphicsDevice);
             LinkTextureStorage.Instance.LoadAllResources(Content);
             ObstacleTextureStorage.Instance.LoadAllResources(Content);
-            
+            NpcTextureStorage.Instance.LoadAllResources(Content);
+            ItemTextureStorage.Instance.LoadAllResources(Content);
         }
 
         /// <summary>
@@ -92,10 +105,13 @@ namespace CrossPlatformDesktopProject
                 Exit();
 
             player.Update();
+            bat.Update();
             foreach (IController controller in controllerList)
             {
                 controller.Update();
             }
+
+            obstacle.Update();
             
 
             base.Update(gameTime);
@@ -115,7 +131,11 @@ graphics.PreferredBackBufferHeight/2);
 
             player.Draw(spriteBatch);
 
-            block.Draw(spriteBatch, 200, 200);
+            obstacle.Draw(spriteBatch);
+
+            bat.Draw(spriteBatch);
+
+            heart.Draw(spriteBatch);
 
             spriteBatch.End();
 

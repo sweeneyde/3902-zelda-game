@@ -20,16 +20,14 @@ namespace CrossPlatformDesktopProject.Link
 
         public Player()
         {
-            currentState = new LinkFacingSouthState1(this);
+            currentState = new LinkFacingSouthState(this);
             xPos = 100;
             yPos = 100;
         }
 
         public void Update()
         {
-            IButtonChecker instance = KeyButtonChecker.Instance;
-            ISet<ButtonKind> buttons = instance.GetPressedButtons();
-            currentState.Update(buttons);
+            currentState.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)

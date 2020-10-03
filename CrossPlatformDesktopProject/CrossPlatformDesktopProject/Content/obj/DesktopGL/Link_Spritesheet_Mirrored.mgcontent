@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet_Mirrored.png</SourceFile>
-  <SourceTime>2020-09-27T20:09:12.8499569-04:00</SourceTime>
+  <SourceTime>2020-10-01T19:19:43.8483951-04:00</SourceTime>
   <DestFile>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Link_Spritesheet_Mirrored.xnb</DestFile>
-  <DestTime>2020-09-27T20:11:29.458731-04:00</DestTime>
+  <DestTime>2020-10-02T17:51:35.30409-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
