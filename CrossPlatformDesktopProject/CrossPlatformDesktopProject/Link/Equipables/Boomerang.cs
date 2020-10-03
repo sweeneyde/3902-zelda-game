@@ -28,7 +28,7 @@ namespace CrossPlatformDesktopProject.Equipables
 
         private static int delay_frames = 5;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
-            LinkTextureStorage.BOOMERANG_1, 
+            LinkTextureStorage.BOOMERANG_1,
             LinkTextureStorage.BOOMERANG_2,
             LinkTextureStorage.BOOMERANG_3,
             LinkTextureStorage.BOOMERANG_4,
@@ -62,14 +62,14 @@ namespace CrossPlatformDesktopProject.Equipables
                 
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
-                (int)currentPos.X, (int)currentPos.Y, 
+                (int)currentPos.X, (int)currentPos.Y,
                 source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
         public void Update()
         {
-            if( !reachedEnd && (Math.Abs(currentPos.X - endPoint.X) < 1 && Math.Abs(currentPos.Y - endPoint.Y) < 1))
+            if (!reachedEnd && (Math.Abs(currentPos.X - endPoint.X) < 1 && Math.Abs(currentPos.Y - endPoint.Y) < 1))
             {
                 reachedEnd = true;
             }
@@ -78,24 +78,25 @@ namespace CrossPlatformDesktopProject.Equipables
             {
                 delay_frame_index = 0;
                 if (reachedEnd)
-                { 
+                {
                     //Boomerang is going back to link.
                     returnFlight = DirectionV(new Vector2(player.xPos, player.yPos), currentPos);
-                    currentPos += returnFlight * boomSpeed;    
-                } else
+                    currentPos += returnFlight * boomSpeed;
+                }
+                else
                 {
                     flight = DirectionV(endPoint, currentPos);
                     //Boomerang is going away from link.
                     currentPos += flight * boomSpeed;
-                    
+
                 }
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
 
-            if(reachedEnd && (Math.Abs(currentPos.X - player.xPos) < 30 && Math.Abs(currentPos.Y - player.yPos) < 30))
+            if (reachedEnd && (Math.Abs(currentPos.X - player.xPos) < 30 && Math.Abs(currentPos.Y - player.yPos) < 30))
             {
-                Player.linkInventory.TerminateBoomerang();    
+                Player.linkInventory.TerminateBoomerang();
             }
         }
 

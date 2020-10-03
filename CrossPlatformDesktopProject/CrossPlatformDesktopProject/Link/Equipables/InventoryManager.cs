@@ -19,6 +19,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
         public static Boomerang boomerang;
         public static Bow bow;
         //Gonna have bow & prolly bomb here too
+        public static Bomb bomb;
 
         public InventoryManager(Player player)
         {
@@ -26,6 +27,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
             this.player = player;
             //for now this is added here
             inventory.Add(boomerang);
+            inventory.Add(bomb);
         }
 
         /*This method is for later, just was sketching it up
@@ -56,6 +58,12 @@ namespace CrossPlatformDesktopProject.Link.Equipables
             currentItem = bow;
         }
 
+        public void UseBomb(ButtonKind envokedWith) 
+        {
+            bomb = new Bomb(player, envokedWith);
+            currentItem = bomb;
+        }
+
         public void TerminateBoomerang()
         {
             if(currentItem != null)
@@ -65,6 +73,15 @@ namespace CrossPlatformDesktopProject.Link.Equipables
             }
 
             
+        }
+
+        public void TerminateBomb()
+        {
+            if (currentItem != null)
+            {
+                currentItem = null;
+                bomb = null;
+            }
         }
 
         public void Update()

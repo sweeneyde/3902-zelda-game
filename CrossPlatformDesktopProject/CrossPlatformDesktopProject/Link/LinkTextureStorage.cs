@@ -88,5 +88,10 @@ namespace CrossPlatformDesktopProject.Link
         public static Rectangle ARROW_SOUTH = new Rectangle(38, 2, 5, 19);
         public static Rectangle ARROW_NORTH = new Rectangle(26, 0, 5, 19);
 
+        public static Rectangle BOMB = new Rectangle(129, 185, 8, 14);
+        public static Rectangle BOMB_EXPLOSION_1 = new Rectangle(138, 185, 16, 16);
+        public static Rectangle BOMB_EXPLOSION_2 = new Rectangle(155, 185, 16, 16);
+        public static Rectangle BOMB_EXPLOSION_3 = new Rectangle(172, 185, 16, 16);
+
     }
 }

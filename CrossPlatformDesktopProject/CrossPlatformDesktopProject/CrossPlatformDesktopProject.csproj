@@ -47,6 +47,7 @@
     <Compile Include="Controllers\KeyButtonChecker.cs" />
     <Compile Include="Controllers\IButtonChecker.cs" />
     <Compile Include="Link\Equipables\Boomerang.cs" />
+	<Compile Include="Link\Equipables\Bomb.cs" />
     <Compile Include="IBossState.cs" />
     <Compile Include="ISkeletonState.cs" />
     <Compile Include="IGoriyaState.cs" />
