@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Equipables
 {
-    class Boomerang : IEquipable
+    class Bow : IEquipable
     {
         private Player player;
         private Vector2 currentPos;
@@ -19,57 +19,44 @@ namespace CrossPlatformDesktopProject.Equipables
         private float startY;
         private Vector2 endPoint;
         private Vector2 flight;
-        private Vector2 returnFlight;
-        private int my_frame_index;
         private int delay_frame_index;
-        private float boomerangTravelDist = 400f;
-        private float boomSpeed = 50f;
+        private float arrowTravelDist = 1000f;
+        private float arrowSpeed = 50f;
         private bool reachedEnd = false;
+        private Texture2D texture;
+        private Rectangle source;
 
         private static int delay_frames = 5;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
-            LinkTextureStorage.BOOMERANG_1, 
-            LinkTextureStorage.BOOMERANG_2,
-            LinkTextureStorage.BOOMERANG_3,
-            LinkTextureStorage.BOOMERANG_4,
-            LinkTextureStorage.BOOMERANG_5
+            LinkTextureStorage.ARROW_EAST,
+            LinkTextureStorage.ARROW_WEST,
+            LinkTextureStorage.ARROW_SOUTH,
+            LinkTextureStorage.ARROW_NORTH
         };
 
-        public Boomerang(Player player, ButtonKind envokedWith)
+        public Bow(Player player, ButtonKind envokedWith)
         {
+            texture = LinkTextureStorage.Instance.getArrowSpriteSheet();
             this.player = player;
             startX = player.xPos;
             startY = player.yPos;
             currentPos = new Vector2(startX, startY);
-            endPoint = GetEndpoint(startX, startY, envokedWith);
-            flight = DirectionV(endPoint, currentPos);
+            endPoint = ArrowAssign(startX, startY, envokedWith);
             reachedEnd = false;
-            my_frame_index = 0;
             delay_frame_index = 0;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Texture2D texture;
-            if(my_frame_index == 3 || my_frame_index == 4)
-            {
-                texture = LinkTextureStorage.Instance.getLinkSpriteSheetMirrored();
-            }
-            else
-            {
-                texture = LinkTextureStorage.Instance.getLinkSpriteSheet();
-            }
-                
-            Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
-                (int)currentPos.X, (int)currentPos.Y, 
+                (int)currentPos.X, (int)currentPos.Y,
                 source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
         public void Update()
         {
-            if( !reachedEnd && (Math.Abs(currentPos.X - endPoint.X) < 1 && Math.Abs(currentPos.Y - endPoint.Y) < 1))
+            if (!reachedEnd && (Math.Abs(currentPos.X - endPoint.X) < 5 && Math.Abs(currentPos.Y - endPoint.Y) < 5))
             {
                 reachedEnd = true;
             }
@@ -78,24 +65,17 @@ namespace CrossPlatformDesktopProject.Equipables
             {
                 delay_frame_index = 0;
                 if (reachedEnd)
-                { 
-                    //Boomerang is going back to link.
-                    returnFlight = DirectionV(new Vector2(player.xPos, player.yPos), currentPos);
-                    currentPos += returnFlight * boomSpeed;    
-                } else
+                {
+                    //Here temp
+                    Player.linkInventory.TerminateBoomerang();
+                }
+                else
                 {
                     flight = DirectionV(endPoint, currentPos);
                     //Boomerang is going away from link.
-                    currentPos += flight * boomSpeed;
-                    
-                }
-                my_frame_index++;
-                my_frame_index %= my_source_frames.Count;
-            }
+                    currentPos += flight * arrowSpeed;
 
-            if(reachedEnd && (Math.Abs(currentPos.X - player.xPos) < 30 && Math.Abs(currentPos.Y - player.yPos) < 30))
-            {
-                Player.linkInventory.TerminateBoomerang();    
+                }
             }
         }
 
@@ -106,30 +86,34 @@ namespace CrossPlatformDesktopProject.Equipables
             return directionVector;
         }
 
-        private Vector2 GetEndpoint(float startX, float startY, ButtonKind envokedWith)
+        private Vector2 ArrowAssign(float startX, float startY, ButtonKind envokedWith)
         {
             float endX;
             float endY;
             switch (envokedWith)
             {
                 case ButtonKind.UP:
-                    endY = startY - boomerangTravelDist;
+                    endY = startY - arrowTravelDist;
                     endX = startX;
+                    source = my_source_frames[3];
                     break;
 
                 case ButtonKind.DOWN:
-                    endY = startY + boomerangTravelDist;
+                    endY = startY + arrowTravelDist;
                     endX = startX;
+                    source = my_source_frames[2];
                     break;
 
                 case ButtonKind.RIGHT:
                     endY = startY;
-                    endX = startX + boomerangTravelDist;
+                    endX = startX + arrowTravelDist;
+                    source = my_source_frames[0];
                     break;
 
                 case ButtonKind.LEFT:
                     endY = startY;
-                    endX = startX - boomerangTravelDist;
+                    endX = startX - arrowTravelDist;
+                    source = my_source_frames[1];
                     break;
 
                 default:

@@ -17,6 +17,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
         private IEquipable currentItem;
         /* Once the user picks up an item, they are initd*/
         public static Boomerang boomerang;
+        public static Bow bow;
         //Gonna have bow & prolly bomb here too
 
         public InventoryManager(Player player)
@@ -47,6 +48,12 @@ namespace CrossPlatformDesktopProject.Link.Equipables
         {
             boomerang = new Boomerang(player, envokedWith);
             currentItem = boomerang;
+        }
+        
+        public void UseBow(ButtonKind envokedWith)
+        {
+            bow = new Bow(player, envokedWith);
+            currentItem = bow;
         }
 
         public void TerminateBoomerang()

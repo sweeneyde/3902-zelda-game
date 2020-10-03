@@ -63,6 +63,7 @@
     <Compile Include="Controllers\KeyController.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="Link\Equipables\Bow.cs" />
     <Compile Include="Link\Equipables\InventoryManager.cs" />
     <Compile Include="Link\LinkUsingItemEast.cs" />
     <Compile Include="Link\LinkSword1East.cs" />

@@ -17,7 +17,7 @@ namespace CrossPlatformDesktopProject.Link
             
             if (!Player.linkInventory.EquipmentInUse())
             {
-                Player.linkInventory.UseBoomerang(ButtonKind.RIGHT);
+                Player.linkInventory.UseBow(ButtonKind.RIGHT);
             }     
         }
 
