@@ -28,10 +28,9 @@ namespace CrossPlatformDesktopProject.Link
 
         public Player()
         {
-            currentState = new LinkKnockedSouth(this);
+            currentState = new LinkFacingSouthState(this);
             xPos = 100;
             yPos = 100;
-            TakeDamage();
         }
 
         public bool IsDamaged()
