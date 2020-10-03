@@ -14,6 +14,6 @@ namespace CrossPlatformDesktopProject.Commands
         {
             myPlayer = player;
         }
-        public void Execute() => myPlayer.currentState.MoveDown();
+        public void Execute() => myPlayer.MoveDown();
     }
 }

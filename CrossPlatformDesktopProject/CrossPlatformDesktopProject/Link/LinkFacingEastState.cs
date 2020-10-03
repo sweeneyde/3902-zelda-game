@@ -14,17 +14,19 @@ namespace CrossPlatformDesktopProject.Link
             LinkTextureStorage.LINK_STEP_EAST,
         };
         private int my_source_index;
+        private int my_texture_index;
 
         public LinkFacingEastState(Player player)
         {
             this.player = player;
             frames_left = Player.frames_per_step;
             my_source_index = 0;
+            my_texture_index = 0;
         }
 
         void ILinkState.Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = LinkTextureStorage.Instance.getLinkSpriteSheet();
+            Texture2D texture = LinkTextureStorage.Instance.getTextures()[my_texture_index];
             Rectangle source = my_sources[my_source_index];
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
@@ -34,6 +36,10 @@ namespace CrossPlatformDesktopProject.Link
 
         void ILinkState.Update()
         {
+        }
+        void ILinkState.setTextureIndex(int index)
+        {
+            my_texture_index = index;
         }
 
         public void MoveDown()
@@ -70,6 +76,5 @@ namespace CrossPlatformDesktopProject.Link
         public void UseSecondary()
         {
         }
-
     }
 }

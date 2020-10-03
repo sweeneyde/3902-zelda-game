@@ -14,15 +14,17 @@ namespace CrossPlatformDesktopProject.Link
     {
         private Player player;
         private int frames_left;
+        private int my_texture_index;
         public LinkSword1East(Player player)
         {
             this.player = player;
             this.frames_left = Player.frames_for_sword;
+            my_texture_index = 0;
         }
 
         void ILinkState.Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = LinkTextureStorage.Instance.getLinkSpriteSheet();
+            Texture2D texture = LinkTextureStorage.Instance.getTextures()[my_texture_index];
             Rectangle source = LinkTextureStorage.LINK_SWORD_EAST;
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
@@ -36,6 +38,10 @@ namespace CrossPlatformDesktopProject.Link
             {
                 player.currentState = new LinkFacingEastState(player);
             }
+        }
+        void ILinkState.setTextureIndex(int index)
+        {
+            my_texture_index = index;
         }
 
         public void MoveDown()
