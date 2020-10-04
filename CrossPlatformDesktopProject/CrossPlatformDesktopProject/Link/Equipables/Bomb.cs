@@ -84,24 +84,24 @@ namespace CrossPlatformDesktopProject.Equipables
 
         public void Update()
         {
-            if (my_frame_index == 0)
+            delay_frame_index++;
+            switch (my_frame_index)
             {
-                if (++delay_frame_index >= explode_time)
-                {
-                    my_frame_index++;
-                    delay_frame_index = 0;
-                }
-                
-            } else
-            {
-                if (my_frame_index == 1)
-                {
-                    if (current_frame == 1 && ++delay_frame_index >= delay_frames)
+                case 0:
+                    if (delay_frame_index >= explode_time)
+                    {
+                        my_frame_index++;
+                        delay_frame_index = 0;
+                    }
+                    break;
+
+                case 1: 
+                    if (current_frame == 1 && delay_frame_index >= delay_frames)
                     {
                         current_frame++;
                         delay_frame_index = 0;
                         swap_frame_index++;
-                    } else if (current_frame == 2 && ++delay_frame_index >= delay_frames)
+                    } else if (current_frame == 2 && delay_frame_index >= delay_frames)
                     {
                         current_frame--;
                         delay_frame_index = 0;
@@ -111,20 +111,27 @@ namespace CrossPlatformDesktopProject.Equipables
                         my_frame_index++;
                         delay_frame_index = 0;
                     }
-                } else if (my_frame_index == 2 && ++delay_frame_index >= delay_frames)
-                {
-                    my_frame_index++;
-                    delay_frame_index = 0;
-                } else if (my_frame_index == 3 && ++delay_frame_index >= delay_frames)
-                {
-                    my_frame_index++;
-                }
-            }
-            if (my_frame_index > 3)
-            {
-                player.linkInventory.TerminateBomb();
-            }
+                    break;
 
+                case 2:
+                    if (delay_frame_index >= delay_frames)
+                    {
+                        my_frame_index++;
+                        delay_frame_index = 0;
+                    }
+                    break;
+
+                case 3:
+                    if (delay_frame_index >= delay_frames)
+                    {
+                        player.linkInventory.TerminateBomb();
+                    }
+                    break;
+
+                default:
+                    player.linkInventory.TerminateBomb();
+                    break;
+            }
         }
     }
 }
