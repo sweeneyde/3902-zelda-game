@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/nerdy/Source/Repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet_Mirrored.png</SourceFile>
-  <SourceTime>2020-10-03T18:17:21.5327834-04:00</SourceTime>
+  <SourceTime>2020-10-03T20:43:13.5188224-04:00</SourceTime>
   <DestFile>C:/Users/nerdy/Source/Repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/Link_Spritesheet_Mirrored.xnb</DestFile>
-  <DestTime>2020-10-03T18:21:45.9556318-04:00</DestTime>
+  <DestTime>2020-10-03T20:46:19.5418107-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

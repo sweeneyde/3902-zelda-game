@@ -42,7 +42,21 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\StartCommand.cs" />
+    <Compile Include="Commands\SelectCommand.cs" />
+    <Compile Include="Commands\TakeDamageCommand.cs" />
+    <Compile Include="Commands\UseSecondaryCommand.cs" />
+    <Compile Include="Commands\UsePrimaryCommand.cs" />
+    <Compile Include="Commands\MoveDownCommand.cs" />
+    <Compile Include="Commands\MoveRightCommand.cs" />
+    <Compile Include="Commands\MoveLeftCommand.cs" />
+    <Compile Include="Commands\MoveUpCommand.cs" />
     <Compile Include="Commands\Quit.cs" />
+    <Compile Include="Controllers\KeyMapping.cs" />
+    <Compile Include="IBossState.cs" />
+    <Compile Include="ISkeletonState.cs" />
+    <Compile Include="IGoriyaState.cs" />
+    <Compile Include="IGelState.cs" />
     <Compile Include="Controllers\ButtonKind.cs" />
     <Compile Include="Controllers\KeyButtonChecker.cs" />
     <Compile Include="Controllers\IButtonChecker.cs" />
@@ -52,6 +66,14 @@
     <Compile Include="NPC\Gel\IGelState.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IEquipable.cs" />
+    <Compile Include="Link\ILinkState.cs" />
+    <Compile Include="INpc.cs" />
+    <Compile Include="IBatState.cs" />
+    <Compile Include="Link\LinkKnockedEast.cs" />
+    <Compile Include="Link\LinkKnockedNorth.cs" />
+    <Compile Include="Link\LinkKnockedSouth.cs" />
+    <Compile Include="Link\LinkKnockedWest.cs" />
+    <Compile Include="Obstacles\IObstacle.cs" />
     <Compile Include="ILinkState.cs" />
     <Compile Include="NPC\INpc.cs" />
     <Compile Include="NPC\Bat\IBatState.cs" />
@@ -63,14 +85,10 @@
     <Compile Include="Game1.cs" />
     <Compile Include="IController.cs" />
     <Compile Include="Link\LinkSword1East.cs" />
-    <Compile Include="Link\LinkFacingEastState1.cs" />
-    <Compile Include="Link\LinkFacingEastState2.cs" />
-    <Compile Include="Link\LinkFacingNorthState1.cs" />
-    <Compile Include="Link\LinkFacingNorthState2.cs" />
-    <Compile Include="Link\LinkFacingSouthState1.cs" />
-    <Compile Include="Link\LinkFacingSouthState2.cs" />
-    <Compile Include="Link\LinkFacingWestState1.cs" />
-    <Compile Include="Link\LinkFacingWestState2.cs" />
+    <Compile Include="Link\LinkFacingEastState.cs" />
+    <Compile Include="Link\LinkFacingNorthState.cs" />
+    <Compile Include="Link\LinkFacingSouthState.cs" />
+    <Compile Include="Link\LinkFacingWestState.cs" />
     <Compile Include="Link\LinkSword1North.cs" />
     <Compile Include="Link\LinkSword1South.cs" />
     <Compile Include="Link\LinkSword1West.cs" />
