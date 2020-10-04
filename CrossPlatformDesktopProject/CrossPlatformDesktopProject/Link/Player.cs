@@ -106,6 +106,7 @@ namespace CrossPlatformDesktopProject.Link
         public void Draw(SpriteBatch spriteBatch)
         {
             currentState.Draw(spriteBatch, xPos, yPos);
+            linkInventory.Draw(spriteBatch);
         }
     }
 }
