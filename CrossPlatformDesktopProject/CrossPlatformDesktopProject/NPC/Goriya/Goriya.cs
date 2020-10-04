@@ -17,7 +17,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public Goriya()
         {
-            currentState = new GoriyaWalkEast(this);
+            currentState = new GoriyaAttackWest(this);
             xPos = 400;
             yPos = 100;
         }

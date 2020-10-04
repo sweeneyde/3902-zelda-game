@@ -55,6 +55,7 @@
     <Compile Include="Controllers\KeyMapping.cs" />
     <Compile Include="NPC\Boss\BossAttack.cs" />
     <Compile Include="NPC\Boss\IBossState.cs" />
+    <Compile Include="NPC\Goriya\GoriyaAttackWest.cs" />
     <Compile Include="NPC\Skeleton\ISkeletonState.cs" />
     <Compile Include="NPC\Goriya\IGoriyaState.cs" />
     <Compile Include="NPC\Gel\IGelState.cs" />
