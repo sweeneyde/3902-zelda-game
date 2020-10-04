@@ -12,7 +12,7 @@ namespace CrossPlatformDesktopProject.NPC
 {
     class Gel : INpc
     {
-        private IGelState currentState;
+        public IGelState currentState;
         public float xPos, yPos;
 
         public Gel()

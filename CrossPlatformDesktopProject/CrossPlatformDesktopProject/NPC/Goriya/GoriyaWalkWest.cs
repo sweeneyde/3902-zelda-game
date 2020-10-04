@@ -13,8 +13,8 @@ namespace CrossPlatformDesktopProject.NPC
 
         private static int delay_frames = 6;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
-            NpcTextureStorage.GORIYA_RIGHT_1,
-            NpcTextureStorage.GORIYA_RIGHT_2
+            NpcTextureStorage.GORIYA_LEFT_1,
+            NpcTextureStorage.GORIYA_LEFT_2
         };
 
         public GoriyaWalkWest(Goriya goriya)
@@ -26,7 +26,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = NpcTextureStorage.Instance.getEnemySpriteSheet();
+            Texture2D texture = NpcTextureStorage.Instance.getEnemySpriteSheetMirrored();
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
@@ -36,6 +36,11 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
+            if (goriya.xPos == 400 && goriya.yPos == 150)
+            {
+                goriya.currentState = new GoriyaWalkNorth(goriya);
+            }
+
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
@@ -43,7 +48,6 @@ namespace CrossPlatformDesktopProject.NPC
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
-
         }
     }
 }

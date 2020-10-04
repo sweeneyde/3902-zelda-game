@@ -112,7 +112,8 @@ namespace CrossPlatformDesktopProject
                 Exit();
 
             player.Update();
-            bat.Update();
+            boss.Update();
+
             foreach (IController controller in controllerList)
             {
                 controller.Update();
@@ -138,7 +139,7 @@ graphics.PreferredBackBufferHeight/2);
 
             block.Draw(spriteBatch, 200, 200);
 
-            bat.Draw(spriteBatch);
+            boss.Draw(spriteBatch);
 
             heart.Draw(spriteBatch);
 

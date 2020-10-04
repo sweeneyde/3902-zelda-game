@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace CrossPlatformDesktopProject
+namespace CrossPlatformDesktopProject.NPC
 {
-    public interface ISkeletonState
+    public interface IGoriyaState
     {
         void Draw(SpriteBatch spriteBatch, float xPos, float yPos);
         void Update();

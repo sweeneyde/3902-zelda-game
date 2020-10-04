@@ -36,6 +36,11 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
+            if (goriya.xPos == 450 && goriya.yPos == 100)
+            {
+                goriya.currentState = new GoriyaWalkSouth(goriya);
+            }
+
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
@@ -43,7 +48,6 @@ namespace CrossPlatformDesktopProject.NPC
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
-
         }
     }
 }

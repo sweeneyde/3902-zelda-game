@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace CrossPlatformDesktopProject
+namespace CrossPlatformDesktopProject.NPC
 {
-    public interface IBossState
+    public interface INpc
     {
-        void Draw(SpriteBatch spriteBatch, float xPos, float yPos);
+        void Draw(SpriteBatch spriteBatch);
         void Update();
     }
 }

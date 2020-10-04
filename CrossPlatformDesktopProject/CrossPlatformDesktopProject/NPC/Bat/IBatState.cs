@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace CrossPlatformDesktopProject
+namespace CrossPlatformDesktopProject.NPC
 {
     public interface IBatState
     {
