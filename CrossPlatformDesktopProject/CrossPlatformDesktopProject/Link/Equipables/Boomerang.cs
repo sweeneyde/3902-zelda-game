@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -112,32 +113,31 @@ namespace CrossPlatformDesktopProject.Equipables
         {
             float endX;
             float endY;
-            switch (player.currentState.GetType().Name)
+            if (player.currentState.GetType() == typeof(LinkUsingItemNorth))
             {
-                case "LinkFacingNorthState":
-                    endY = startY - boomerangTravelDist;
-                    endX = startX;
-                    break;
+                endY = startY - boomerangTravelDist;
+                endX = startX;
 
-                case "LinkFacingSouthState":
-                    endY = startY + boomerangTravelDist;
-                    endX = startX;
-                    break;
-
-                case "LinkFacingEastState":
-                    endY = startY;
-                    endX = startX + boomerangTravelDist;
-                    break;
-
-                case "LinkFacingWestState":
-                    endY = startY;
-                    endX = startX - boomerangTravelDist;
-                    break;
-
-                default:
-                    endX = startX;
-                    endY = startY;
-                    break;
+            }
+            else if (player.currentState.GetType() == typeof(LinkUsingItemSouth))
+            {
+                endY = startY + boomerangTravelDist;
+                endX = startX;
+            }
+            else if (player.currentState.GetType() == typeof(LinkUsingItemEast))
+            {
+                endY = startY;
+                endX = startX + boomerangTravelDist;
+            }
+            else if (player.currentState.GetType() == typeof(LinkUsingItemWest))
+            {
+                endY = startY;
+                endX = startX - boomerangTravelDist;
+            }
+            else
+            {
+                endX = startX;
+                endY = startY;
             }
 
             endPoint = new Vector2(endX, endY);

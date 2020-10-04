@@ -1,25 +1,25 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.Equipables;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.Link
 {
-    class LinkFacingEastState : ILinkState
+    class LinkUsingItemWest : ILinkState
     {
         private Player player;
         private int frames_left;
         private static List<Rectangle> my_sources = new List<Rectangle>
         {
-            LinkTextureStorage.LINK_IDLE_EAST,
-            LinkTextureStorage.LINK_STEP_EAST,
+            LinkTextureStorage.MIRRORED_LINK_USE_ITEM_WEST,
         };
         private int my_source_index;
         private int my_texture_index;
 
-        public LinkFacingEastState(Player player)
+        public LinkUsingItemWest(Player player)
         {
             this.player = player;
-            frames_left = Player.frames_per_step;
+            frames_left = 10;
             my_source_index = 0;
             my_texture_index = 0;
         }
@@ -36,7 +36,12 @@ namespace CrossPlatformDesktopProject.Link
 
         void ILinkState.Update()
         {
+            if (--frames_left <= 0)
+            {
+                player.currentState = new LinkFacingWestState(player);
+            }
         }
+
         void ILinkState.setTextureIndex(int index)
         {
             my_texture_index = index;
@@ -53,18 +58,18 @@ namespace CrossPlatformDesktopProject.Link
 
         public void MoveLeft()
         {
-            player.currentState = new LinkFacingWestState(player);
-        }
-
-        public void MoveRight()
-        {
-            player.xPos += Player.walking_speed;
+            player.xPos -= Player.walking_speed;
             if (--frames_left <= 0)
             {
                 frames_left = Player.frames_per_step;
                 my_source_index++;
                 my_source_index %= my_sources.Count;
             }
+        }
+
+        public void MoveRight()
+        {
+            player.currentState = new LinkFacingEastState(player);
         }
 
         public void MoveUp()
@@ -74,23 +79,19 @@ namespace CrossPlatformDesktopProject.Link
 
         public void UsePrimary()
         {
-            player.currentState = new LinkSword1East(player);
+            player.currentState = new LinkSword1West(player);
         }
 
         public void UseSecondary1()
         {
-            Player.linkInventory.UseBoomerang();
-            player.currentState = new LinkUsingItemEast(player);
         }
 
         public void UseSecondary2()
         {
-            player.currentState = new LinkUsingItemEast(player);
         }
 
         public void UseSecondary3()
         {
-            player.currentState = new LinkUsingItemEast(player);
         }
     }
 }

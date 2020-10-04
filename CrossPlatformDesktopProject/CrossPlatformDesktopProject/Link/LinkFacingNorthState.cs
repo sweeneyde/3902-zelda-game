@@ -79,17 +79,17 @@ namespace CrossPlatformDesktopProject.Link
 
         public void UseSecondary1()
         {
-            player.currentState = new LinkUsingItemEast(player);
+            player.currentState = new LinkUsingItemNorth(player);
         }
 
         public void UseSecondary2()
         {
-            player.currentState = new LinkUsingItemEast(player);
+            player.currentState = new LinkUsingItemNorth(player);
         }
 
         public void UseSecondary3()
         {
-            player.currentState = new LinkUsingItemEast(player);
+            player.currentState = new LinkUsingItemNorth(player);
         }
 
     }

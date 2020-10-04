@@ -78,17 +78,20 @@ namespace CrossPlatformDesktopProject.Link
         }
         public void UseSecondary1()
         {
+            linkInventory.UseBoomerang();
             currentState.UseSecondary1();
         }
 
         public void UseSecondary2()
         {
-            currentState.UseSecondary2();
+            linkInventory.UseBow();
+            currentState.UseSecondary1();
         }
 
         public void UseSecondary3()
         {
-            currentState.UseSecondary3();
+            linkInventory.UseBomb();
+            currentState.UseSecondary1();
         }
 
         public void Update()
@@ -106,6 +109,7 @@ namespace CrossPlatformDesktopProject.Link
         public void Draw(SpriteBatch spriteBatch)
         {
             currentState.Draw(spriteBatch, xPos, yPos);
+            linkInventory.Draw(spriteBatch);
         }
     }
 }
