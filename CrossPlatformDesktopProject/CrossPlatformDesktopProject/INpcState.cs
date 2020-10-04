@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject
 {
-    public interface IBossState
+    public interface INpcState
     {
         void Draw(SpriteBatch spriteBatch, float xPos, float yPos);
         void Update();

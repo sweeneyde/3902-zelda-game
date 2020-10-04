@@ -53,15 +53,11 @@
     <Compile Include="Commands\MoveUpCommand.cs" />
     <Compile Include="Commands\Quit.cs" />
     <Compile Include="Controllers\KeyMapping.cs" />
-    <Compile Include="IBossState.cs" />
-    <Compile Include="ISkeletonState.cs" />
-    <Compile Include="IGoriyaState.cs" />
-    <Compile Include="IGelState.cs" />
+    <Compile Include="INpcState.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IEquipable.cs" />
     <Compile Include="Link\ILinkState.cs" />
     <Compile Include="INpc.cs" />
-    <Compile Include="IBatState.cs" />
     <Compile Include="Link\LinkKnockedEast.cs" />
     <Compile Include="Link\LinkKnockedNorth.cs" />
     <Compile Include="Link\LinkKnockedSouth.cs" />
