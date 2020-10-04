@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/npc_sheet.png</SourceFile>
-  <SourceTime>2020-10-01T19:19:43.9067143-04:00</SourceTime>
-  <DestFile>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/npc_sheet.xnb</DestFile>
-  <DestTime>2020-10-02T17:51:35.3429876-04:00</DestTime>
+  <SourceFile>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/npc_sheet.png</SourceFile>
+  <SourceTime>2020-10-03T18:04:23.7325529-04:00</SourceTime>
+  <DestFile>C:/Users/nerdy/source/repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/npc_sheet.xnb</DestFile>
+  <DestTime>2020-10-04T03:01:19.8031163-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

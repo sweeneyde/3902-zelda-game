@@ -40,7 +40,7 @@ namespace CrossPlatformDesktopProject.NPC
         {
             if (boss.xPos == 448)
             {
-                boss.currentState = new BossWalkWest(boss);
+                boss.currentState = new BossAttack(boss);
             }
 
             if (++delay_frame_index >= delay_frames)
