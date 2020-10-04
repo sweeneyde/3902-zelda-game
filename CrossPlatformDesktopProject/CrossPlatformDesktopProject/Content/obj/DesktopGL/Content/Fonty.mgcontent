@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Brent/source/repos/3902-zelda-game-item-bomb/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Fonty.spritefont</SourceFile>
-  <SourceTime>2020-10-02T18:33:51-04:00</SourceTime>
-  <DestFile>C:/Users/Brent/source/repos/3902-zelda-game-item-bomb/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/Fonty.xnb</DestFile>
-  <DestTime>2020-10-02T19:05:49.3410475-04:00</DestTime>
+  <SourceFile>C:/Users/Brent/Source/Repos/sweeneyde/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Fonty.spritefont</SourceFile>
+  <SourceTime>2020-10-03T18:20:22-04:00</SourceTime>
+  <DestFile>C:/Users/Brent/Source/Repos/sweeneyde/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/Fonty.xnb</DestFile>
+  <DestTime>2020-10-03T22:04:55.3292514-04:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>LocalizedFontProcessor</Processor>

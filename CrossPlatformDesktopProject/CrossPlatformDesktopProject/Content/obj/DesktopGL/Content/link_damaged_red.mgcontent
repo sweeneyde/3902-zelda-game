@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Brent/Source/Repos/sweeneyde/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet_Mirrored.png</SourceFile>
+  <SourceFile>C:/Users/Brent/Source/Repos/sweeneyde/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/link_damaged_red.png</SourceFile>
   <SourceTime>2020-10-03T18:20:22-04:00</SourceTime>
-  <DestFile>C:/Users/Brent/Source/Repos/sweeneyde/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/Link_Spritesheet_Mirrored.xnb</DestFile>
-  <DestTime>2020-10-03T22:04:55.5382983-04:00</DestTime>
+  <DestFile>C:/Users/Brent/Source/Repos/sweeneyde/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/link_damaged_red.xnb</DestFile>
+  <DestTime>2020-10-03T22:04:55.4732839-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
