@@ -23,14 +23,9 @@ namespace CrossPlatformDesktopProject
         protected Texture2D img;
         private SpriteFont font;
         private Player player;
-        private Bat bat;
-        private Gel gel;
-        private Goriya goriya;
-        private Skeleton skeleton;
-        private Boss boss;
-        private OldMan oldman;
-        private Heart heart;
-        private Triforce triforce;
+        private INpc npc;
+        private IWorldItem worldItem;
+        private OldMan oldMan;
         private IObstacle obstacle;
 
         public Game1()
@@ -56,15 +51,11 @@ namespace CrossPlatformDesktopProject
 
             obstacle = new Block();
 
-            bat = new Bat();
-            boss = new Boss();
-            gel = new Gel();
-            goriya = new Goriya();
-            oldman = new OldMan();
-            skeleton = new Skeleton();
+            npc = new Bat();
 
-            heart = new Heart();
-            triforce = new Triforce();
+            worldItem = new Heart();
+
+            oldMan = new OldMan();
 
             base.Initialize();
         }
@@ -103,7 +94,7 @@ namespace CrossPlatformDesktopProject
                 Exit();
 
             player.Update();
-            bat.Update();
+            npc.Update();
             foreach (IController controller in controllerList)
             {
                 controller.Update();
@@ -131,9 +122,9 @@ graphics.PreferredBackBufferHeight/2);
 
             obstacle.Draw(spriteBatch);
 
-            bat.Draw(spriteBatch);
+            npc.Draw(spriteBatch);
 
-            heart.Draw(spriteBatch);
+            worldItem.Draw(spriteBatch);
 
             spriteBatch.End();
 

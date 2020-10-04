@@ -21,8 +21,6 @@ namespace CrossPlatformDesktopProject
         void MoveLeft();
         void MoveRight();
         void UsePrimary();
-        void UseSecondary1();
-        void UseSecondary2();
-        void UseSecondary3();
+        void UseSecondary();
     }
 }

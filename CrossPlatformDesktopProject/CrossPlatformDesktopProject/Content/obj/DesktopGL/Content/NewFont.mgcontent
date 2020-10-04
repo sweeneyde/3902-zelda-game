@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<<<<<<< HEAD
   <SourceFile>C:/Users/Brent/Source/Repos/sweeneyde/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/NewFont.spritefont</SourceFile>
   <SourceTime>2020-10-03T18:20:22-04:00</SourceTime>
   <DestFile>C:/Users/Brent/Source/Repos/sweeneyde/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/NewFont.xnb</DestFile>
   <DestTime>2020-10-03T22:04:55.5713051-04:00</DestTime>
+=======
+  <SourceFile>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/NewFont.spritefont</SourceFile>
+  <SourceTime>2020-09-30T19:13:17.6267739-04:00</SourceTime>
+  <DestFile>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/NewFont.xnb</DestFile>
+  <DestTime>2020-10-03T18:00:50.017921-04:00</DestTime>
+>>>>>>> master
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
