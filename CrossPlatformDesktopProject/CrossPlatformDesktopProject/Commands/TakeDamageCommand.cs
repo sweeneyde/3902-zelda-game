@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Commands
 {
-    class UseSecondaryCommand : ICommand
+    class TakeDamageCommand : ICommand
     {
         private Player myPlayer;
-        public UseSecondaryCommand(Player player)
+        public TakeDamageCommand(Player player)
         {
             myPlayer = player;
         }
-        public void Execute() => myPlayer.UseSecondary();
+        public void Execute() => myPlayer.TakeDamage();
     }
 }

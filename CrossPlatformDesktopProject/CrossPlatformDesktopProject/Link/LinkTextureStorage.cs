@@ -12,7 +12,7 @@ namespace CrossPlatformDesktopProject.Link
     class LinkTextureStorage : ISpriteFactory
     {
         private static LinkTextureStorage instance = null;
-        
+
         public static LinkTextureStorage Instance
         {
             get
@@ -53,6 +53,26 @@ namespace CrossPlatformDesktopProject.Link
             linkBlackDamageTextureMirrored = content.Load<Texture2D>("link_damaged_black_mirrored");
             linkBlueDamageTextureMirrored = content.Load<Texture2D>("link_damaged_blue_mirrored");
             linkRedDamageTextureMirrored = content.Load<Texture2D>("link_damaged_red_mirrored");*/
+        }
+
+        public List<Texture2D> getTextures() 
+        {
+            return new List<Texture2D> {
+                linkTexture,
+                linkBlackDamageTexture,
+                linkRedDamageTexture,
+                linkBlueDamageTexture,
+            };
+        }
+
+        public List<Texture2D> getMirroredTextures()
+        {
+            return new List<Texture2D> {
+                linkTextureMirrored,
+                linkBlueDamageTextureMirrored,
+                linkRedDamageTextureMirrored,
+                linkBlackDamageTextureMirrored,
+            };
         }
 
         public Texture2D getLinkSpriteSheet()

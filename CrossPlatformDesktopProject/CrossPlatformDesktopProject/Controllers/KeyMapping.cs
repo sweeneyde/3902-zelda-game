@@ -58,10 +58,12 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.Left, new MoveLeftCommand(myPlayer));
             
             this.addCommand(Keys.Space, new UsePrimaryCommand(myPlayer));
-            this.addCommand(Keys.E, new UseSecondaryCommand(myPlayer));
+            this.addCommand(Keys.D1, new UseSecondaryCommand(myPlayer));
 
             this.addCommand(Keys.RightShift, new SelectCommand(myPlayer));
             this.addCommand(Keys.Enter, new StartCommand(myPlayer));
+
+            this.addCommand(Keys.E, new TakeDamageCommand(myPlayer));
 
             priorityActions.Add(Keys.Space);
             priorityActions.Add(Keys.E);
