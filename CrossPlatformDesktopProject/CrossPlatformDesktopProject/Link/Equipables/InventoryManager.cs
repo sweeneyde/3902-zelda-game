@@ -49,20 +49,29 @@ namespace CrossPlatformDesktopProject.Link.Equipables
 
         public void UseBoomerang()
         {
-            boomerang = new Boomerang(player);
-            currentItem = boomerang;
+            if (currentItem == null)
+            {
+                boomerang = new Boomerang(player);
+                currentItem = boomerang;
+            }
         }
         
         public void UseBow()
         {
-            bow = new Bow(player);
-            currentItem = bow;
+            if (currentItem == null)
+            {
+                bow = new Bow(player);
+                currentItem = bow;
+            }
         }
 
         public void UseBomb() 
         {
-            bomb = new Bomb(player);
-            currentItem = bomb;
+            if (currentItem == null)
+            {
+                bomb = new Bomb(player);
+                currentItem = bomb;
+            }
         }
 
         public void TerminateBoomerang()
@@ -71,9 +80,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
             {
                 currentItem = null;
                 boomerang = null;
-            }
-
-            
+            }   
         }
 
         public void TerminateBomb()
@@ -105,17 +112,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
 
         public bool EquipmentInUse()
         {
-            bool inUse;
-            if(currentItem == null)
-            {
-                inUse = false;
-            } else
-            {
-                inUse = true;
-            }
-            return inUse;
+            return currentItem != null;
         }
-
-        
     }
 }

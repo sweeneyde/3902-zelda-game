@@ -122,7 +122,7 @@ namespace CrossPlatformDesktopProject.Equipables
             }
             if (my_frame_index > 3)
             {
-                Player.linkInventory.TerminateBomb();
+                player.linkInventory.TerminateBomb();
             }
 
         }

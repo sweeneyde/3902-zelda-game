@@ -97,7 +97,7 @@ namespace CrossPlatformDesktopProject.Equipables
 
             if (reachedEnd && (Math.Abs(currentPos.X - player.xPos) < 30 && Math.Abs(currentPos.Y - player.yPos) < 30))
             {
-                Player.linkInventory.TerminateBoomerang();
+                player.linkInventory.TerminateBoomerang();
             }
         }
 

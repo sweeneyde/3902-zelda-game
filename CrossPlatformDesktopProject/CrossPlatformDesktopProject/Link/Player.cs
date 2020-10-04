@@ -15,7 +15,7 @@ namespace CrossPlatformDesktopProject.Link
     {
         public ILinkState currentState;
         public float xPos, yPos;
-        public static InventoryManager linkInventory;
+        public InventoryManager linkInventory;
         public static float walking_speed = 3.0f;
         public static int frames_per_step = 6;
         public bool itemInUse = false;
@@ -26,6 +26,8 @@ namespace CrossPlatformDesktopProject.Link
 
         public static float knockback_speed = 4.0f;
         public static int knockback_frames = frames_per_damage_color_change * 5;
+
+        public static int use_item_frames = 10;
 
         private int damaged_frames_left;
         private int frames_until_color_change;
@@ -76,6 +78,20 @@ namespace CrossPlatformDesktopProject.Link
         {
             currentState.UsePrimary();
         }
+
+        public void UseBomb()
+        {
+            linkInventory.UseBomb();
+        }
+        public void UseBoomerang()
+        {
+            linkInventory.UseBoomerang();
+        }
+        public void UseBow()
+        {
+            linkInventory.UseBow();
+        }
+
         public void UseSecondary1()
         {
             currentState.UseSecondary1();

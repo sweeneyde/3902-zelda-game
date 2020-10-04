@@ -46,8 +46,8 @@
     <Compile Include="Commands\SelectCommand.cs" />
     <Compile Include="Commands\TakeDamageCommand.cs" />
     <Compile Include="Commands\UseSecondaryCommand1.cs" />
-	<Compile Include="Commands\UseSecondaryCommand2.cs" />
-	<Compile Include="Commands\UseSecondaryCommand3.cs" />
+    <Compile Include="Commands\UseSecondaryCommand2.cs" />
+    <Compile Include="Commands\UseSecondaryCommand3.cs" />
     <Compile Include="Commands\UsePrimaryCommand.cs" />
     <Compile Include="Commands\MoveDownCommand.cs" />
     <Compile Include="Commands\MoveRightCommand.cs" />
@@ -64,6 +64,9 @@
     <Compile Include="Link\LinkKnockedNorth.cs" />
     <Compile Include="Link\LinkKnockedSouth.cs" />
     <Compile Include="Link\LinkKnockedWest.cs" />
+    <Compile Include="Link\LinkUsingItemNorth.cs" />
+    <Compile Include="Link\LinkUsingItemSouth.cs" />
+    <Compile Include="Link\LinkUsingItemWest.cs" />
     <Compile Include="Obstacles\IObstacle.cs" />
     <Compile Include="ISpriteFactory.cs" />
     <Compile Include="IWorldItem.cs" />
@@ -71,10 +74,10 @@
     <Compile Include="Controllers\KeyController.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="IController.cs" />
-	<Compile Include="Link\Equipables\Bomb.cs" />
-	<Compile Include="Link\Equipables\Boomerang.cs" />
-	<Compile Include="Link\Equipables\Bow.cs" />
-	<Compile Include="Link\Equipables\InventoryManager.cs" />
+    <Compile Include="Link\Equipables\Bomb.cs" />
+    <Compile Include="Link\Equipables\Boomerang.cs" />
+    <Compile Include="Link\Equipables\Bow.cs" />
+    <Compile Include="Link\Equipables\InventoryManager.cs" />
     <Compile Include="Link\LinkSword1East.cs" />
     <Compile Include="Link\LinkFacingEastState.cs" />
     <Compile Include="Link\LinkFacingNorthState.cs" />
@@ -83,7 +86,7 @@
     <Compile Include="Link\LinkSword1North.cs" />
     <Compile Include="Link\LinkSword1South.cs" />
     <Compile Include="Link\LinkSword1West.cs" />
-	<Compile Include="Link\LinkUsingItemEast.cs" />
+    <Compile Include="Link\LinkUsingItemEast.cs" />
     <Compile Include="NPC\Bat\BatWalkWest.cs" />
     <Compile Include="NPC\Bat\BatWalkSouth.cs" />
     <Compile Include="NPC\Bat\BatWalkNorth.cs" />

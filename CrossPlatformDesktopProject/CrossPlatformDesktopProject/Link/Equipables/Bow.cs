@@ -67,14 +67,13 @@ namespace CrossPlatformDesktopProject.Equipables
                 if (reachedEnd)
                 {
                     //Here temp
-                    Player.linkInventory.TerminateBoomerang();
+                    player.linkInventory.TerminateBoomerang();
                 }
                 else
                 {
                     flight = DirectionV(endPoint, currentPos);
                     //Boomerang is going away from link.
                     currentPos += flight * arrowSpeed;
-
                 }
             }
         }
