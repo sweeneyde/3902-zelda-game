@@ -84,17 +84,17 @@ namespace CrossPlatformDesktopProject.Link
 
         public void UseSecondary1()
         {
-            
+            Player.linkInventory.UseBomb();
         }
 
         public void UseSecondary2()
         {
-            
+            Player.linkInventory.UseBoomerang();
         }
 
         public void UseSecondary3()
         {
-            
+            Player.linkInventory.UseBow();
         }
     }
 }
