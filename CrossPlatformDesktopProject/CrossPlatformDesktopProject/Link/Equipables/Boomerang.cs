@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -35,13 +36,13 @@ namespace CrossPlatformDesktopProject.Equipables
             LinkTextureStorage.BOOMERANG_5
         };
 
-        public Boomerang(Player player, ButtonKind envokedWith)
+        public Boomerang(Player player)
         {
             this.player = player;
             startX = player.xPos;
             startY = player.yPos;
             currentPos = new Vector2(startX, startY);
-            endPoint = GetEndpoint(startX, startY, envokedWith);
+            endPoint = GetEndpoint(startX, startY, player);
             flight = DirectionV(endPoint, currentPos);
             reachedEnd = false;
             my_frame_index = 0;
@@ -107,28 +108,28 @@ namespace CrossPlatformDesktopProject.Equipables
             return directionVector;
         }
 
-        private Vector2 GetEndpoint(float startX, float startY, ButtonKind envokedWith)
+        private Vector2 GetEndpoint(float startX, float startY, Player player)
         {
             float endX;
             float endY;
-            switch (envokedWith)
+            switch (player.currentState.GetType().Name)
             {
-                case ButtonKind.UP:
+                case "LinkFacingNorthState":
                     endY = startY - boomerangTravelDist;
                     endX = startX;
                     break;
 
-                case ButtonKind.DOWN:
+                case "LinkFacingSouthState":
                     endY = startY + boomerangTravelDist;
                     endX = startX;
                     break;
 
-                case ButtonKind.RIGHT:
+                case "LinkFacingEastState":
                     endY = startY;
                     endX = startX + boomerangTravelDist;
                     break;
 
-                case ButtonKind.LEFT:
+                case "LinkFacingWestState":
                     endY = startY;
                     endX = startX - boomerangTravelDist;
                     break;

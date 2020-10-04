@@ -34,14 +34,14 @@ namespace CrossPlatformDesktopProject.Equipables
             LinkTextureStorage.ARROW_NORTH
         };
 
-        public Bow(Player player, ButtonKind envokedWith)
+        public Bow(Player player)
         {
             texture = LinkTextureStorage.Instance.getArrowSpriteSheet();
             this.player = player;
             startX = player.xPos;
             startY = player.yPos;
             currentPos = new Vector2(startX, startY);
-            endPoint = ArrowAssign(startX, startY, envokedWith);
+            endPoint = ArrowAssign(startX, startY, player);
             reachedEnd = false;
             delay_frame_index = 0;
         }
@@ -86,31 +86,31 @@ namespace CrossPlatformDesktopProject.Equipables
             return directionVector;
         }
 
-        private Vector2 ArrowAssign(float startX, float startY, ButtonKind envokedWith)
+        private Vector2 ArrowAssign(float startX, float startY, Player player)
         {
             float endX;
             float endY;
-            switch (envokedWith)
+            switch (player.currentState.GetType().Name)
             {
-                case ButtonKind.UP:
+                case "LinkFacingNorthState":
                     endY = startY - arrowTravelDist;
                     endX = startX;
                     source = my_source_frames[3];
                     break;
 
-                case ButtonKind.DOWN:
+                case "LinkFacingSouthState":
                     endY = startY + arrowTravelDist;
                     endX = startX;
                     source = my_source_frames[2];
                     break;
 
-                case ButtonKind.RIGHT:
+                case "LinkFacingEastState":
                     endY = startY;
                     endX = startX + arrowTravelDist;
                     source = my_source_frames[0];
                     break;
 
-                case ButtonKind.LEFT:
+                case "LinkFacingWestState":
                     endY = startY;
                     endX = startX - arrowTravelDist;
                     source = my_source_frames[1];

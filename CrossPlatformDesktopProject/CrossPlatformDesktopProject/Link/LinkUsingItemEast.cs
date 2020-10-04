@@ -9,56 +9,91 @@ namespace CrossPlatformDesktopProject.Link
     {
         private Player player;
         private int frames_left;
+        private static List<Rectangle> my_sources = new List<Rectangle>
+        {
+            LinkTextureStorage.LINK_USE_ITEM_EAST,
+        };
+        private int my_source_index;
+        private int my_texture_index;
 
         public LinkUsingItemEast(Player player)
         {
             this.player = player;
-            frames_left = Player.frames_per_step;
-            
-            if (!Player.linkInventory.EquipmentInUse())
-            {
-                Player.linkInventory.UseBow(ButtonKind.RIGHT);
-            }     
+            frames_left = 10;
+            my_source_index = 0;
+            my_texture_index = 0;
         }
 
         void ILinkState.Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = LinkTextureStorage.Instance.getLinkSpriteSheet();
-            Rectangle source = LinkTextureStorage.LINK_USE_ITEM_EAST;
+            Texture2D texture = LinkTextureStorage.Instance.getTextures()[my_texture_index];
+            Rectangle source = my_sources[my_source_index];
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
                 source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
-        void ILinkState.Update(ISet<ButtonKind> buttons)
+        void ILinkState.Update()
         {
-            if (buttons.Contains(ButtonKind.PRIMARY))
+            if (--frames_left <= 0)
             {
-                player.currentState = new LinkSword1East(player);
+                player.currentState = new LinkFacingEastState(player);
             }
-            else if (buttons.Contains(ButtonKind.RIGHT))
+        }
+
+        void ILinkState.setTextureIndex(int index)
+        {
+            my_texture_index = index;
+        }
+        void ILinkState.TakeDamage()
+        {
+            player.currentState = new LinkKnockedWest(player);
+        }
+
+        public void MoveDown()
+        {
+            player.currentState = new LinkFacingSouthState(player);
+        }
+
+        public void MoveLeft()
+        {
+            player.currentState = new LinkFacingWestState(player);
+        }
+
+        public void MoveRight()
+        {
+            player.xPos += Player.walking_speed;
+            if (--frames_left <= 0)
             {
-                player.xPos += Player.walking_speed;
-                if (--frames_left <= 0)
-                {
-                    player.currentState = new LinkFacingEastState1(player);
-                }
+                frames_left = Player.frames_per_step;
+                my_source_index++;
+                my_source_index %= my_sources.Count;
             }
-            else if (buttons.Contains(ButtonKind.DOWN))
-            {
-                player.currentState = new LinkFacingSouthState1(player);
-            }
-            else if (buttons.Contains(ButtonKind.UP))
-            {
-                player.currentState = new LinkFacingNorthState1(player);
-            }
-            else if (buttons.Contains(ButtonKind.LEFT))
-            {
-                player.currentState = new LinkFacingWestState1(player);
-            }
+        }
+
+        public void MoveUp()
+        {
+            player.currentState = new LinkFacingNorthState(player);
+        }
+
+        public void UsePrimary()
+        {
+            player.currentState = new LinkSword1East(player);
+        }
+
+        public void UseSecondary1()
+        {
             
+        }
+
+        public void UseSecondary2()
+        {
             
+        }
+
+        public void UseSecondary3()
+        {
             
         }
     }

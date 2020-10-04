@@ -33,7 +33,7 @@ namespace CrossPlatformDesktopProject.Equipables
             LinkTextureStorage.BOMB_EXPLOSION_3
         };
 
-        public Bomb(Player player, ButtonKind envokedWith)
+        public Bomb(Player player)
         {
             this.player = player;
             usedX = player.xPos;
@@ -55,7 +55,7 @@ namespace CrossPlatformDesktopProject.Equipables
             Rectangle destination;
             if (my_frame_index == 0)
             {
-                destination = new Rectangle((int)currentPos.X + 40, (int)currentPos.Y, source.Width * 3, source.Height * 3);
+                destination = new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width * 3, source.Height * 3);
                 spriteBatch.Draw(texture, destination, source, Color.White);
             } else if (current_frame == 1 || my_frame_index >= 2)
             {

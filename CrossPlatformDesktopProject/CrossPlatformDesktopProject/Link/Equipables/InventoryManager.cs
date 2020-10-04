@@ -28,6 +28,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
             //for now this is added here
             inventory.Add(boomerang);
             inventory.Add(bomb);
+            inventory.Add(bow);
         }
 
         /*This method is for later, just was sketching it up
@@ -46,21 +47,21 @@ namespace CrossPlatformDesktopProject.Link.Equipables
         }
         */
 
-        public void UseBoomerang(ButtonKind envokedWith)
+        public void UseBoomerang()
         {
-            boomerang = new Boomerang(player, envokedWith);
+            boomerang = new Boomerang(player);
             currentItem = boomerang;
         }
         
-        public void UseBow(ButtonKind envokedWith)
+        public void UseBow()
         {
-            bow = new Bow(player, envokedWith);
+            bow = new Bow(player);
             currentItem = bow;
         }
 
-        public void UseBomb(ButtonKind envokedWith) 
+        public void UseBomb() 
         {
-            bomb = new Bomb(player, envokedWith);
+            bomb = new Bomb(player);
             currentItem = bomb;
         }
 

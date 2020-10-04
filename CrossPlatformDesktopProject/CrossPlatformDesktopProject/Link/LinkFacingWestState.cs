@@ -1,50 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CrossPlatformDesktopProject;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
-
+using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.Link
 {
-    class LinkSword1West : ILinkState
+    class LinkFacingWestState : ILinkState
     {
         private Player player;
         private int frames_left;
+        private static List<Rectangle> my_sources = new List<Rectangle>
+        {
+            LinkTextureStorage.MIRRORED_LINK_IDLE_WEST,
+            LinkTextureStorage.MIRRORED_LINK_STEP_WEST,
+        };
+        private int my_source_index;
         private int my_texture_index;
-        public LinkSword1West(Player player)
+
+        public LinkFacingWestState(Player player)
         {
             this.player = player;
-            this.frames_left = Player.frames_for_sword;
+            frames_left = Player.frames_per_step;
+            my_source_index = 0;
             my_texture_index = 0;
         }
 
         void ILinkState.Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
             Texture2D texture = LinkTextureStorage.Instance.getMirroredTextures()[my_texture_index];
-            Rectangle source = LinkTextureStorage.MIRRORED_LINK_SWORD_WEST;
+            Rectangle source = my_sources[my_source_index];
             Rectangle destination = new Rectangle(
-                (int)xPos - 33, (int)yPos,
+                (int)xPos, (int)yPos,
                 source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
         void ILinkState.Update()
         {
-            if (--frames_left <= 0)
-            {
-                player.currentState = new LinkFacingWestState(player);
-            }
         }
-
         void ILinkState.setTextureIndex(int index)
         {
             my_texture_index = index;
         }
-
         void ILinkState.TakeDamage()
         {
             player.currentState = new LinkKnockedEast(player);
@@ -52,34 +48,49 @@ namespace CrossPlatformDesktopProject.Link
 
         public void MoveDown()
         {
+            player.currentState = new LinkFacingSouthState(player);
         }
 
         public void MoveLeft()
         {
+            player.xPos -= Player.walking_speed;
+            if (--frames_left <= 0)
+            {
+                frames_left = Player.frames_per_step;
+                my_source_index++;
+                my_source_index %= my_sources.Count;
+            }
         }
 
         public void MoveRight()
         {
+            player.currentState = new LinkFacingEastState(player);
         }
 
         public void MoveUp()
         {
+            player.currentState = new LinkFacingNorthState(player);
         }
 
         public void UsePrimary()
         {
+            player.currentState = new LinkSword1West(player);
         }
 
         public void UseSecondary1()
         {
+            player.currentState = new LinkUsingItemEast(player);
         }
 
         public void UseSecondary2()
         {
+            player.currentState = new LinkUsingItemEast(player);
         }
 
         public void UseSecondary3()
         {
+            player.currentState = new LinkUsingItemEast(player);
         }
+
     }
 }
