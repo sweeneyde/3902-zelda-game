@@ -22,7 +22,7 @@ namespace CrossPlatformDesktopProject.Obstacles
             // Not needed for blocks
         }
 
-        public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
+        public void Draw(SpriteBatch spriteBatch)
         {
             Texture2D texture = ObstacleTextureStorage.Instance.getObstacleSpriteSheet();
             Rectangle source = ObstacleTextureStorage.OBSTACLE_BLOCK;
