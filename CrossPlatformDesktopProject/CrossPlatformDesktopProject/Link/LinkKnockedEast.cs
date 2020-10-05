@@ -23,7 +23,7 @@ namespace CrossPlatformDesktopProject.Link
 
         void ILinkState.Draw(SpriteBatch spriteBatch)
         {
-            Texture2D texture = LinkTextureStorage.Instance.getDamageTexture(my_texture_index);
+            Texture2D texture = LinkTextureStorage.Instance.getMirroredDamageTexture(my_texture_index);
             Rectangle source = LinkTextureStorage.MIRRORED_LINK_IDLE_WEST;
             player.DrawSprite(spriteBatch, texture, source);
         }
