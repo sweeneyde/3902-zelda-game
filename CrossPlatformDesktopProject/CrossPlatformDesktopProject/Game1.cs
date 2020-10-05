@@ -50,7 +50,7 @@ namespace CrossPlatformDesktopProject
 
             obstacle = new Block();
 
-            npc = new OldMan();
+            npc = new Boss();
 
             worldItem = new Heart();
 
@@ -91,7 +91,7 @@ namespace CrossPlatformDesktopProject
                 Exit();
 
             player.Update();
-            //npc.Update();
+            npc.Update();
             foreach (IController controller in controllerList)
             {
                 controller.Update();

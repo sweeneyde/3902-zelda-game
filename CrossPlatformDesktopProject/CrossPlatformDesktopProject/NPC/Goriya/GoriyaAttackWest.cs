@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class GoriyaAttackWest : IGoriyaState
+    class GoriyaAttackWest : INpcState
     {
         private int my_frame_index, my_frame_index_2;
         private int delay_frame_index, delay_frame_index_2;
