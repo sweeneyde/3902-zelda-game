@@ -74,6 +74,20 @@ namespace CrossPlatformDesktopProject.Link.Equipables
             }
         }
 
+        public void UseCurrentItem()
+        {
+            if(currentItem.GetType() == typeof(Bomb))
+            {
+                UseBomb();
+            } else if (currentItem.GetType() == typeof(Bow))
+            {
+                UseBow();
+            } else if (currentItem.GetType() == typeof(Boomerang))
+            {
+                UseBoomerang();
+            }
+        }
+
         public void TerminateBoomerang()
         {
             if(currentItem != null)

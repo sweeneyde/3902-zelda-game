@@ -5,40 +5,29 @@ using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.Link
 {
-    class LinkUsingItemNorth : ILinkState
+    class LinkUsingItemWest : ILinkState
     {
         private Player player;
         private int frames_left;
-<<<<<<< HEAD
-=======
         private static List<Rectangle> my_sources = new List<Rectangle>
         {
-            LinkTextureStorage.LINK_USE_ITEM_NORTH,
+            LinkTextureStorage.MIRRORED_LINK_USE_ITEM_WEST,
         };
         private int my_source_index;
->>>>>>> item-updates-states
         private int my_texture_index;
 
-        public LinkUsingItemNorth(Player player)
+        public LinkUsingItemWest(Player player)
         {
             this.player = player;
-<<<<<<< HEAD
-            frames_left = Player.use_item_frames;
-=======
             frames_left = 10;
             my_source_index = 0;
->>>>>>> item-updates-states
             my_texture_index = 0;
         }
 
         void ILinkState.Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
             Texture2D texture = LinkTextureStorage.Instance.getTextures()[my_texture_index];
-<<<<<<< HEAD
-            Rectangle source = LinkTextureStorage.LINK_USE_ITEM_NORTH;
-=======
             Rectangle source = my_sources[my_source_index];
->>>>>>> item-updates-states
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
                 source.Width * 3, source.Height * 3);
@@ -49,7 +38,7 @@ namespace CrossPlatformDesktopProject.Link
         {
             if (--frames_left <= 0)
             {
-                player.currentState = new LinkFacingNorthState(player);
+                player.currentState = new LinkFacingWestState(player);
             }
         }
 
@@ -59,19 +48,6 @@ namespace CrossPlatformDesktopProject.Link
         }
         void ILinkState.TakeDamage()
         {
-<<<<<<< HEAD
-            player.currentState = new LinkKnockedSouth(player);
-        }
-
-        public void MoveDown() { }
-        public void MoveLeft() { }
-        public void MoveRight() { }
-        public void MoveUp() { }
-        public void UsePrimary() { }
-        public void UseSecondary1() { }
-        public void UseSecondary2() { }
-        public void UseSecondary3() { }
-=======
             player.currentState = new LinkKnockedWest(player);
         }
 
@@ -82,7 +58,13 @@ namespace CrossPlatformDesktopProject.Link
 
         public void MoveLeft()
         {
-            player.currentState = new LinkFacingWestState(player);
+            player.xPos -= Player.walking_speed;
+            if (--frames_left <= 0)
+            {
+                frames_left = Player.frames_per_step;
+                my_source_index++;
+                my_source_index %= my_sources.Count;
+            }
         }
 
         public void MoveRight()
@@ -92,18 +74,12 @@ namespace CrossPlatformDesktopProject.Link
 
         public void MoveUp()
         {
-            player.yPos -= Player.walking_speed;
-            if (--frames_left <= 0)
-            {
-                frames_left = Player.frames_per_step;
-                my_source_index++;
-                my_source_index %= my_sources.Count;
-            }
+            player.currentState = new LinkFacingNorthState(player);
         }
 
         public void UsePrimary()
         {
-            player.currentState = new LinkSword1East(player);
+            player.currentState = new LinkSword1West(player);
         }
 
         public void UseSecondary1()
@@ -117,6 +93,5 @@ namespace CrossPlatformDesktopProject.Link
         public void UseSecondary3()
         {
         }
->>>>>>> item-updates-states
     }
 }
