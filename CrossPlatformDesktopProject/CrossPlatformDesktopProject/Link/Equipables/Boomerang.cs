@@ -79,17 +79,16 @@ namespace CrossPlatformDesktopProject.Equipables
             {
                 delay_frame_index = 0;
                 if (reachedEnd)
-                {
+                {    
                     //Boomerang is going back to link.
                     returnFlight = DirectionV(new Vector2(player.xPos, player.yPos), currentPos);
-                    currentPos += returnFlight * boomSpeed/2.7f;
+                    currentPos += returnFlight * boomSpeed/1.7f;
                 }
                 else
                 {
                     flight = DirectionV(endPoint, currentPos);
                     //Boomerang is going away from link.
                     currentPos += flight * boomSpeed;
-
                 }
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
