@@ -42,6 +42,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\NextNpcCommand.cs" />
+    <Compile Include="Commands\PrevNpcCommand.cs" />
     <Compile Include="Commands\PrevObstacleCommand.cs" />
     <Compile Include="Commands\NextObstacleCommand.cs" />
     <Compile Include="Commands\PrevWorldItemCommand.cs" />
@@ -60,10 +62,14 @@
     <Compile Include="Commands\Quit.cs" />
     <Compile Include="Controllers\KeyMapping.cs" />
     <Compile Include="INpcState.cs" />
+    <Compile Include="NPC\Boss\BossAttack.cs" />
+    <Compile Include="NPC\Goriya\GoriyaAttackNorth.cs" />
+    <Compile Include="NPC\Goriya\GoriyaAttackSouth.cs" />
+    <Compile Include="NPC\Goriya\GoriyaAttackEast.cs" />
+    <Compile Include="NPC\Goriya\GoriyaAttackWest.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IEquipable.cs" />
     <Compile Include="Link\ILinkState.cs" />
-    <Compile Include="INpc.cs" />
     <Compile Include="Link\LinkKnockedEast.cs" />
     <Compile Include="Link\LinkKnockedNorth.cs" />
     <Compile Include="Link\LinkKnockedSouth.cs" />
@@ -71,7 +77,12 @@
     <Compile Include="Link\LinkUsingItemNorth.cs" />
     <Compile Include="Link\LinkUsingItemSouth.cs" />
     <Compile Include="Link\LinkUsingItemWest.cs" />
+    <Compile Include="Obstacles\Stairs.cs" />
+    <Compile Include="Obstacles\PlainBlock.cs" />
+    <Compile Include="Obstacles\Sand.cs" />
+    <Compile Include="Obstacles\Statue2.cs" />
     <Compile Include="Obstacles\IObstacle.cs" />
+    <Compile Include="INpc.cs" />
     <Compile Include="ISpriteFactory.cs" />
     <Compile Include="IWorldItem.cs" />
     <Compile Include="Controllers\MouseController.cs" />
@@ -96,6 +107,10 @@
     <Compile Include="NPC\Bat\BatWalkNorth.cs" />
     <Compile Include="NPC\Bat\BatWalkEast.cs" />
     <Compile Include="NPC\Bat\Bat.cs" />
+    <Compile Include="NPC\Bat\BatWalkSE.cs" />
+    <Compile Include="NPC\Bat\BatWalkSW.cs" />
+    <Compile Include="NPC\Bat\BatWalkNW.cs" />
+    <Compile Include="NPC\Bat\BatWalkNE.cs" />
     <Compile Include="NPC\Boss\BossWalkWest.cs" />
     <Compile Include="NPC\Boss\BossWalkEast.cs" />
     <Compile Include="NPC\Boss\Boss.cs" />

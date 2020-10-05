@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.Obstacles;
 using CrossPlatformDesktopProject.WorldItem;
 using Microsoft.Xna.Framework.Graphics;
@@ -14,16 +16,20 @@ namespace CrossPlatformDesktopProject
     {
         private List<IWorldItem> worldItems;
         private List<IObstacle> obstacles;
+        private List<INpc> npcs;
         private int worldItemsIndex;
         private int obstaclesIndex;
+        private int npcIndex;
+
         private int cooldownFramesLeft;
-        private static int cooldownFramesStart = 10;
+        private static int cooldownFramesStart = 15;
         private Game1 game;
 
         public Sprint2ListStorage(Game1 game)
         {
             this.game = game;
             cooldownFramesLeft = 0;
+            worldItemsIndex = obstaclesIndex = npcIndex = 0;
 
             worldItems = new List<IWorldItem>
             {
@@ -38,6 +44,20 @@ namespace CrossPlatformDesktopProject
             {
                 new Statue(),
                 new Block(),
+                new Statue2(),
+                new Sand(),
+                new PlainBlock(),
+                new Stairs()
+            };
+
+            npcs = new List<INpc>
+            {
+                new Boss(),
+                new Bat(),
+                new Goriya(),
+                new Gel(),
+                new Skeleton(),
+                new OldMan(),
             };
         }
 
@@ -47,12 +67,14 @@ namespace CrossPlatformDesktopProject
             {
                 cooldownFramesLeft--;
             }
+            npcs[npcIndex].Update();
         }
 
         public void Draw(SpriteBatch sb)
         {
             worldItems[worldItemsIndex].Draw(sb);
             obstacles[obstaclesIndex].Draw(sb);
+            npcs[npcIndex].Draw(sb);
         }
 
         public void nextWorldItem()
@@ -88,6 +110,24 @@ namespace CrossPlatformDesktopProject
             {
                 obstaclesIndex += obstacles.Count - 1;
                 obstaclesIndex %= obstacles.Count;
+                cooldownFramesLeft = cooldownFramesStart;
+            }
+        }
+        public void nextNpc()
+        {
+            if (cooldownFramesLeft == 0)
+            {
+                npcIndex++;
+                npcIndex %= npcs.Count;
+                cooldownFramesLeft = cooldownFramesStart;
+            }
+        }
+        public void prevNpc()
+        {
+            if (cooldownFramesLeft == 0)
+            {
+                npcIndex += npcs.Count - 1;
+                npcIndex %= npcs.Count;
                 cooldownFramesLeft = cooldownFramesStart;
             }
         }

@@ -27,8 +27,6 @@ namespace CrossPlatformDesktopProject
         protected Texture2D img;
         private SpriteFont font;
         private Player player;
-        private INpc npc;
-        private OldMan oldMan;
 
         public Game1()
         {
@@ -52,9 +50,6 @@ namespace CrossPlatformDesktopProject
             controllerList.Add(KC);
 
             entityStorage = new Sprint2ListStorage(this);
-
-            npc = new Bat();
-            oldMan = new OldMan();
 
             base.Initialize();
         }
@@ -93,7 +88,6 @@ namespace CrossPlatformDesktopProject
                 Exit();
 
             player.Update();
-            npc.Update();
             foreach (IController controller in controllerList)
             {
                 controller.Update();
@@ -116,7 +110,6 @@ namespace CrossPlatformDesktopProject
 
             entityStorage.Draw(spriteBatch);
             player.Draw(spriteBatch);
-            npc.Draw(spriteBatch);
 
             spriteBatch.End();
             base.Draw(gameTime);
