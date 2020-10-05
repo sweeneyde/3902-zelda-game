@@ -4,6 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/ArrowSpriteSheet.png</File>
     <File>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/boss_sheet.png</File>
     <File>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Dungeon Tileset.png</File>
     <File>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/enemies.png</File>
@@ -24,6 +25,7 @@
     <File>C:/Users/sween/Documents/Visual Studio 2019/Cross_Sprint0/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/skeleton_sheet.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
