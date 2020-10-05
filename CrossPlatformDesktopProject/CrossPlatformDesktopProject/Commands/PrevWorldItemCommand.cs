@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Commands
 {
-    class CycleWorldItemU : ICommand
+    class PrevWorldItemCommand : ICommand
     {
         private Game1 myGame;
-        private Sprint2ListStorage sL;
-        public CycleWorldItemU(Game1 game, Sprint2ListStorage sL)
+        public PrevWorldItemCommand(Game1 game)
         {
             myGame = game;
-            this.sL = sL;
         }
-        public void Execute() => myGame.worldItem = Sprint2ListStorage.worldItems[sL.lastWorldItemIndex()];
+        public void Execute() => myGame.entityStorage.prevWorldItem();
     }
 }

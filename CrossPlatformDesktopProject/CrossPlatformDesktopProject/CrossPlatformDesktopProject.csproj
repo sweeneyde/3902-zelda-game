@@ -42,11 +42,11 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Commands\CycleObstaclesY.cs" />
-    <Compile Include="Commands\CycleObstaclesT.cs" />
+    <Compile Include="Commands\PrevObstacleCommand.cs" />
+    <Compile Include="Commands\NextObstacleCommand.cs" />
     <Compile Include="Commands\Sprint2ListStorage.cs" />
-    <Compile Include="Commands\CycleWorldItemU.cs" />
-    <Compile Include="Commands\CycleWorldItemI.cs" />
+    <Compile Include="Commands\PrevWorldItemCommand.cs" />
+    <Compile Include="Commands\NextWorldItemCommand.cs" />
     <Compile Include="Commands\StartCommand.cs" />
     <Compile Include="Commands\SelectCommand.cs" />
     <Compile Include="Commands\TakeDamageCommand.cs" />
