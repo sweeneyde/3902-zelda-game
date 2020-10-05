@@ -22,14 +22,11 @@ namespace CrossPlatformDesktopProject.Link
             my_texture_index = 0;
         }
 
-        void ILinkState.Draw(SpriteBatch spriteBatch, float xPos, float yPos)
+        void ILinkState.Draw(SpriteBatch spriteBatch)
         {
-            Texture2D texture = LinkTextureStorage.Instance.getMirroredTextures()[my_texture_index];
+            Texture2D texture = LinkTextureStorage.Instance.getMirroredDamageTexture(my_texture_index);
             Rectangle source = LinkTextureStorage.MIRRORED_LINK_SWORD_WEST;
-            Rectangle destination = new Rectangle(
-                (int)xPos - 33, (int)yPos,
-                source.Width * 3, source.Height * 3);
-            spriteBatch.Draw(texture, destination, source, Color.White);
+            player.DrawSprite(spriteBatch, texture, source, -33, 0);
         }
 
         void ILinkState.Update()

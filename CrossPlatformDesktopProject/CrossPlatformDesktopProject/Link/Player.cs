@@ -121,8 +121,16 @@ namespace CrossPlatformDesktopProject.Link
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            currentState.Draw(spriteBatch, xPos, yPos);
+            currentState.Draw(spriteBatch);
             linkInventory.Draw(spriteBatch);
+        }
+
+        public void DrawSprite(SpriteBatch spriteBatch, Texture2D texture, Rectangle source, int XOffset=0, int YOffset=0)
+        {
+            Rectangle destination = new Rectangle(
+                (int)xPos + XOffset, (int)yPos + YOffset,
+                source.Width * 3, source.Height * 3);
+            spriteBatch.Draw(texture, destination, source, Color.White);
         }
     }
 }
