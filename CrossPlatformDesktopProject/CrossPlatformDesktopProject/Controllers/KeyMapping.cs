@@ -95,13 +95,6 @@ namespace CrossPlatformDesktopProject
             acceptedStates.Add(key);
         }
 
-        //public void updateKeyCommand(Keys key, ICommand command)
-        //{
-        //    if(acceptedStates.Contains(key)){
-        //        mappings[key] = command;
-        //    }
-        //}
-
         public void callCommands(Keys[] heldKeys, Keys[] pressedKeys)
         {
             Keys[] currentState = pressedKeys;
