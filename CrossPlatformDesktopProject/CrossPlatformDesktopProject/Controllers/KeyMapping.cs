@@ -69,7 +69,8 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.Right, new MoveRightCommand(myPlayer));
             this.addCommand(Keys.Left, new MoveLeftCommand(myPlayer));
             
-            this.addCommand(Keys.Space, new UsePrimaryCommand(myPlayer));
+            this.addCommand(Keys.N, new UsePrimaryCommand(myPlayer));
+            this.addCommand(Keys.Z, new UsePrimaryCommand(myPlayer));
             this.addCommand(Keys.D1, new UseSecondaryCommand1(myPlayer));
             this.addCommand(Keys.D2, new UseSecondaryCommand2(myPlayer));
             this.addCommand(Keys.D3, new UseSecondaryCommand3(myPlayer));
@@ -81,7 +82,8 @@ namespace CrossPlatformDesktopProject
 
             
 
-            priorityActions.Add(Keys.Space);
+            priorityActions.Add(Keys.N);
+            priorityActions.Add(Keys.Z);
             priorityActions.Add(Keys.E);
 
             acceptedStates.Remove(Keys.D0);
