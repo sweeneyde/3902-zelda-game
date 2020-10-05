@@ -15,7 +15,7 @@ namespace CrossPlatformDesktopProject
         private Game1 myGame;
         private Player myPlayer;
         private Dictionary<Keys, ICommand> mappings;
-
+        private Sprint2ListStorage listStorage = new Sprint2ListStorage();
         private List<Keys> acceptedStates;
         private List<Keys> gameActions;
         private List<Keys> priorityActions;
@@ -44,7 +44,11 @@ namespace CrossPlatformDesktopProject
 
             //Game Commands
             this.addCommand(Keys.D0, new Quit(myGame));
+            this.addCommand(Keys.U, new CycleWorldItemU(myGame, listStorage));
+            this.addCommand(Keys.I, new CycleWorldItemI(myGame, listStorage));
             gameActions.Add(Keys.D0);
+            gameActions.Add(Keys.I);
+            gameActions.Add(Keys.U);
 
             //Player Commands
             this.addCommand(Keys.W, new MoveUpCommand(myPlayer));
@@ -66,6 +70,8 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.Enter, new StartCommand(myPlayer));
 
             this.addCommand(Keys.E, new TakeDamageCommand(myPlayer));
+
+            
 
             priorityActions.Add(Keys.Space);
             priorityActions.Add(Keys.E);

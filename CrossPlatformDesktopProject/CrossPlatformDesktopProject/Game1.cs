@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 
 namespace CrossPlatformDesktopProject
 {
@@ -24,7 +25,7 @@ namespace CrossPlatformDesktopProject
         private SpriteFont font;
         private Player player;
         private INpc npc;
-        private IWorldItem worldItem;
+        public IWorldItem worldItem { get; set; }
         private OldMan oldMan;
         private IObstacle obstacle;
 

@@ -82,7 +82,7 @@ namespace CrossPlatformDesktopProject.Equipables
                 {
                     //Boomerang is going back to link.
                     returnFlight = DirectionV(new Vector2(player.xPos, player.yPos), currentPos);
-                    currentPos += returnFlight * boomSpeed;
+                    currentPos += returnFlight * boomSpeed/2.7f;
                 }
                 else
                 {
