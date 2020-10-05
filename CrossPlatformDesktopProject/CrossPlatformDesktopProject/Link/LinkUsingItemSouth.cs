@@ -20,7 +20,7 @@ namespace CrossPlatformDesktopProject.Link
 
         void ILinkState.Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = LinkTextureStorage.Instance.getTextures()[my_texture_index];
+            Texture2D texture = LinkTextureStorage.Instance.getDamageTexture(my_texture_index);
             Rectangle source = LinkTextureStorage.LINK_USE_ITEM_SOUTH;
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,

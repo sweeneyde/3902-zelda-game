@@ -59,24 +59,30 @@ namespace CrossPlatformDesktopProject.Link
             arrowTexture = content.Load<Texture2D>("ArrowSpriteSheet");
         }
 
-        public List<Texture2D> getTextures() 
+        public Texture2D getDamageTexture(int index)
         {
-            return new List<Texture2D> {
-                linkTexture,
-                linkBlackDamageTexture,
-                linkRedDamageTexture,
-                linkBlueDamageTexture,
-            };
+            switch (index)
+            {
+                case 0: return linkTexture;
+                case 1: return linkBlueDamageTexture;
+                case 2: return linkRedDamageTexture;
+                case 3: return linkBlueDamageTexture;
+                default:
+                    throw new NotImplementedException();
+            }
         }
 
-        public List<Texture2D> getMirroredTextures()
+        public Texture2D getMirroredDamageTexture(int index)
         {
-            return new List<Texture2D> {
-                linkTextureMirrored,
-                linkBlueDamageTextureMirrored,
-                linkRedDamageTextureMirrored,
-                linkBlackDamageTextureMirrored,
-            };
+            switch (index)
+            {
+                case 0: return linkTextureMirrored;
+                case 1: return linkBlueDamageTextureMirrored;
+                case 2: return linkRedDamageTextureMirrored;
+                case 3: return linkBlueDamageTextureMirrored;
+                default:
+                    throw new NotImplementedException();
+            }
         }
 
         public Texture2D getLinkSpriteSheet()
