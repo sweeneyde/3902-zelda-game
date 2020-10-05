@@ -12,7 +12,7 @@ namespace CrossPlatformDesktopProject.NPC
 {
     class Bat : INpc
     {
-        private IBatState currentState;
+        private INpcState currentState;
         public float xPos, yPos;
 
         public Bat()

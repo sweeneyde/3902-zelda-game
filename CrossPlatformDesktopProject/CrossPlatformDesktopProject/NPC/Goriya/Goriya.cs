@@ -12,7 +12,7 @@ namespace CrossPlatformDesktopProject.NPC
 {
     class Goriya : INpc
     {
-        private IGoriyaState currentState;
+        private INpcState currentState;
         public float xPos, yPos;
 
         public Goriya()
