@@ -1,4 +1,4 @@
-.vs/GameProj/v16/.suo
+CrossPlatformDesktopProject/.vs/CrossPlatformDesktopProject/v16/.suo
 CrossPlatformDesktopProject/CrossPlatformDesktopProject/bin/DesktopGL/AnyCPU/Debug/CrossPlatformDesktopProject.exe
 CrossPlatformDesktopProject/CrossPlatformDesktopProject/bin/DesktopGL/AnyCPU/Debug/CrossPlatformDesktopProject.pdb
 CrossPlatformDesktopProject/CrossPlatformDesktopProject/bin/DesktopGL/AnyCPU/Debug/libopenal.1.dylib
@@ -22,3 +22,6 @@ CrossPlatformDesktopProject/CrossPlatformDesktopProject/obj/Debug/CrossPlatformD
 CrossPlatformDesktopProject/CrossPlatformDesktopProject/obj/Debug/CrossPlatformDesktopProject.exe
 CrossPlatformDesktopProject/CrossPlatformDesktopProject/obj/Debug/CrossPlatformDesktopProject.pdb
 CrossPlatformDesktopProject/CrossPlatformDesktopProject/obj/Release/.NETFramework,Version=v4.5.AssemblyAttributes.cs
+CrossPlatformDesktopProject/CrossPlatformDesktopProject/bin/DesktopGL/AnyCPU/Debug/Content/Link_Spritesheet.xnb
+CrossPlatformDesktopProject/CrossPlatformDesktopProject/bin/DesktopGL/*
+CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/*
