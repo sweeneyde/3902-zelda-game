@@ -42,6 +42,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\NextNpcCommand.cs" />
+    <Compile Include="Commands\PrevNpcCommand.cs" />
     <Compile Include="Commands\PrevObstacleCommand.cs" />
     <Compile Include="Commands\NextObstacleCommand.cs" />
     <Compile Include="Commands\PrevWorldItemCommand.cs" />
