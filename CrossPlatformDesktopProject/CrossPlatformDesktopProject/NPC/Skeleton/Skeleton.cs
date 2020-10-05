@@ -12,7 +12,7 @@ namespace CrossPlatformDesktopProject.NPC
 {
     class Skeleton : INpc
     {
-        public ISkeletonState currentState;
+        private INpcState currentState;
         public float xPos, yPos;
 
         public Skeleton()

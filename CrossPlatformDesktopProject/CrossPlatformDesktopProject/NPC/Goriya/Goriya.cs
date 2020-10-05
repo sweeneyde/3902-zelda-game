@@ -12,12 +12,12 @@ namespace CrossPlatformDesktopProject.NPC
 {
     class Goriya : INpc
     {
-        public IGoriyaState currentState;
+        private INpcState currentState;
         public float xPos, yPos;
 
         public Goriya()
         {
-            currentState = new GoriyaAttackWest(this);
+            currentState = new GoriyaWalkEast(this);
             xPos = 400;
             yPos = 100;
         }

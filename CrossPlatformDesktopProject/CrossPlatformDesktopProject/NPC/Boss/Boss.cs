@@ -12,7 +12,7 @@ namespace CrossPlatformDesktopProject.NPC
 {
     class Boss : INpc
     {
-        public IBossState currentState;
+        private INpcState currentState;
         public float xPos, yPos;
 
         public Boss()

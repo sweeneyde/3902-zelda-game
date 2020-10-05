@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class BatWalkNorth : IBatState
+    class BatWalkNorth : INpcState
     {
         private int my_frame_index;
         private int delay_frame_index;

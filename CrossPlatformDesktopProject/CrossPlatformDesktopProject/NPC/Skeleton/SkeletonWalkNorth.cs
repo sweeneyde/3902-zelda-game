@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class SkeletonWalkNorth : ISkeletonState
+    class SkeletonWalkNorth : INpcState
     {
         private int my_frame_index;
         private int delay_frame_index;

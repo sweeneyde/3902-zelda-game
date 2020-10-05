@@ -14,15 +14,14 @@ namespace CrossPlatformDesktopProject.NPC
 {
     class Bat : INpc
     {
-        public IBatState currentState;
+        private INpcState currentState;
         public float xPos, yPos;
 
         public Bat()
         {
+            currentState = new BatWalkEast(this);
             xPos = 400;
             yPos = 100;
-
-            currentState = new BatWalkEast(this);
         }
 
         public void Update()
