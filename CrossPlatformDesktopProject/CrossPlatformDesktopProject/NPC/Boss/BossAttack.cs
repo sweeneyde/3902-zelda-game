@@ -10,7 +10,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int my_frame_index, my_frame_index_2;
         private int delay_frame_index, delay_frame_index_2;
         private Boss boss;
-        private float attack1_x, attack2_x, attack3_x, attack1_y, attack2_y, attack3_y;
+        private float fireball1_x, fireball2_x, fireball3_x, fireball1_y, fireball2_y, fireball3_y;
 
         private static int delay_frames = 15;
         private static int delay_frames_2 = 2;
@@ -37,14 +37,14 @@ namespace CrossPlatformDesktopProject.NPC
             my_frame_index_2 = 0;
             delay_frame_index_2 = 0;
 
-            attack1_x = 370;
-            attack1_y = 100;
+            fireball1_x = 370;
+            fireball1_y = 100;
 
-            attack2_x = 370;
-            attack2_y = 120;
+            fireball2_x = 370;
+            fireball2_y = 120;
 
-            attack3_x = 370;
-            attack3_y = 140;
+            fireball3_x = 370;
+            fireball3_y = 140;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -57,13 +57,13 @@ namespace CrossPlatformDesktopProject.NPC
 
             Rectangle source_fireball = my_source_frames_fireball[my_frame_index_2];
             Rectangle destination_fireball_1 = new Rectangle(
-                (int)attack1_x, (int)attack1_y,
+                (int)fireball1_x, (int)fireball1_y,
                 source.Width, source.Height);
             Rectangle destination_fireball_2 = new Rectangle(
-                (int)attack2_x, (int)attack2_y,
+                (int)fireball2_x, (int)fireball2_y,
                 source.Width, source.Height);
             Rectangle destination_fireball_3 = new Rectangle(
-                (int)attack3_x, (int)attack3_y,
+                (int)fireball3_x, (int)fireball3_y,
                 source.Width, source.Height);
 
             spriteBatch.Draw(texture, destination, source, Color.White);
@@ -74,7 +74,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (attack2_x == 0)
+            if (fireball2_x == 0)
             {
                 boss.currentState = new BossWalkWest(boss);
             }
@@ -91,13 +91,13 @@ namespace CrossPlatformDesktopProject.NPC
                 delay_frame_index_2 = 0;
                 my_frame_index_2++;
 
-                attack1_x -= 5;
-                attack1_y -= 3;
+                fireball1_x -= 5;
+                fireball1_y -= 3;
 
-                attack2_x -= 5;
+                fireball2_x -= 5;
 
-                attack3_x -= 5;
-                attack3_y += 3;
+                fireball3_x -= 5;
+                fireball3_y += 3;
 
                 my_frame_index_2 %= my_source_frames_fireball.Count;
             }
