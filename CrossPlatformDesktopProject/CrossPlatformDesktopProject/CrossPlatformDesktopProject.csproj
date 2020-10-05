@@ -48,7 +48,6 @@
     <Compile Include="Commands\NextObstacleCommand.cs" />
     <Compile Include="Commands\PrevWorldItemCommand.cs" />
     <Compile Include="Commands\NextWorldItemCommand.cs" />
-    <Compile Include="Commands\ResetGame.cs" />
     <Compile Include="Commands\StartCommand.cs" />
     <Compile Include="Commands\SelectCommand.cs" />
     <Compile Include="Commands\TakeDamageCommand.cs" />
