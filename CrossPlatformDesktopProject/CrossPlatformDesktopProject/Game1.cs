@@ -105,7 +105,7 @@ namespace CrossPlatformDesktopProject
                 Exit();
 
             player.Update();
-            goriya.Update();
+            bat.Update();
 
             foreach (IController controller in controllerList)
             {
@@ -134,7 +134,7 @@ graphics.PreferredBackBufferHeight/2);
 
             obstacle.Draw(spriteBatch);
 
-            goriya.Draw(spriteBatch);
+            bat.Draw(spriteBatch);
 
             heart.Draw(spriteBatch);
 
