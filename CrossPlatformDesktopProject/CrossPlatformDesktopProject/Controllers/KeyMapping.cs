@@ -48,7 +48,7 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.U, new PrevWorldItemCommand(myGame));
             this.addCommand(Keys.I, new NextWorldItemCommand(myGame));
             this.addCommand(Keys.O, new PrevNpcCommand(myGame));
-            this.addCommand(Keys.P, new PrevNpcCommand(myGame));
+            this.addCommand(Keys.P, new NextNpcCommand(myGame));
 
             gameActions.Add(Keys.D0);
             gameActions.Add(Keys.T);
