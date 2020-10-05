@@ -128,7 +128,7 @@ namespace CrossPlatformDesktopProject
 
             foreach (Keys k in currentState)
             {
-                if (currentState.Contains(k) && !heldKeys.Contains(k))
+                if (!heldKeys.Contains(k) && acceptedStates.Contains(k))
                 {
                     mappings[k].Execute();
                     lastAction = k;
