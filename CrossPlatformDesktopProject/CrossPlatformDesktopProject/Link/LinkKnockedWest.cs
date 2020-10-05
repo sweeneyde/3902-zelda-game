@@ -21,14 +21,11 @@ namespace CrossPlatformDesktopProject.Link
             this.my_texture_index = 0;
         }
 
-        void ILinkState.Draw(SpriteBatch spriteBatch, float xPos, float yPos)
+        void ILinkState.Draw(SpriteBatch spriteBatch)
         {
             Texture2D texture = LinkTextureStorage.Instance.getDamageTexture(my_texture_index);
             Rectangle source = LinkTextureStorage.LINK_IDLE_EAST;
-            Rectangle destination = new Rectangle(
-                (int)xPos, (int)yPos,
-                source.Width * 3, source.Height * 3);
-            spriteBatch.Draw(texture, destination, source, Color.White);
+            player.DrawSprite(spriteBatch, texture, source);
         }
         void ILinkState.setTextureIndex(int index)
         {
