@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CrossPlatformDesktopProject.Link.Equipables;
 
 namespace CrossPlatformDesktopProject.Link
 {
@@ -14,8 +15,11 @@ namespace CrossPlatformDesktopProject.Link
     {
         public ILinkState currentState;
         public float xPos, yPos;
+        public InventoryManager linkInventory;
         public static float walking_speed = 3.0f;
         public static int frames_per_step = 6;
+        public bool itemInUse = false;
+        public IEquipable currentItem { get; set; }
         public static int frames_for_sword = 18;
         private static int frames_per_damage_color_change = 5;
         private static int damage_frames = 24;
@@ -23,12 +27,15 @@ namespace CrossPlatformDesktopProject.Link
         public static float knockback_speed = 4.0f;
         public static int knockback_frames = frames_per_damage_color_change * 5;
 
+        public static int use_item_frames = 10;
+
         private int damaged_frames_left;
         private int frames_until_color_change;
 
         public Player()
         {
             currentState = new LinkFacingSouthState(this);
+            linkInventory = new InventoryManager(this);
             xPos = 100;
             yPos = 100;
         }
@@ -71,9 +78,33 @@ namespace CrossPlatformDesktopProject.Link
         {
             currentState.UsePrimary();
         }
-        public void UseSecondary()
+
+        public void UseBomb()
         {
-            currentState.UseSecondary();
+            linkInventory.UseBomb();
+        }
+        public void UseBoomerang()
+        {
+            linkInventory.UseBoomerang();
+        }
+        public void UseBow()
+        {
+            linkInventory.UseBow();
+        }
+
+        public void UseSecondary1()
+        {
+            currentState.UseSecondary1();
+        }
+
+        public void UseSecondary2()
+        {
+            currentState.UseSecondary2();
+        }
+
+        public void UseSecondary3()
+        {
+            currentState.UseSecondary3();
         }
 
         public void Update()
@@ -85,11 +116,13 @@ namespace CrossPlatformDesktopProject.Link
                 damaged_frames_left--;
                 currentState.setTextureIndex(damaged_frames_left % 4);
             }
+            linkInventory.Update();
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             currentState.Draw(spriteBatch, xPos, yPos);
+            linkInventory.Draw(spriteBatch);
         }
     }
 }

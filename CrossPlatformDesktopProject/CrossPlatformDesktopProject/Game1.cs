@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 
 namespace CrossPlatformDesktopProject
 {
@@ -19,13 +20,15 @@ namespace CrossPlatformDesktopProject
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        public List<IController> controllerList; // could also be defined as List <IController>
+        public List<IController> controllerList;
+
+        public Sprint2ListStorage entityStorage;
+
         protected Texture2D img;
         private SpriteFont font;
         private Player player;
         private INpc npc;
-        private IWorldItem worldItem;
-        private IObstacle obstacle;
+        private OldMan oldMan;
 
         public Game1()
         {
@@ -48,11 +51,10 @@ namespace CrossPlatformDesktopProject
             KeyboardController KC = new KeyboardController(this, player);
             controllerList.Add(KC);
 
-            obstacle = new Block();
+            entityStorage = new Sprint2ListStorage(this);
 
             npc = new Boss();
-
-            worldItem = new Heart();
+            oldMan = new OldMan();
 
             base.Initialize();
         }
@@ -97,8 +99,7 @@ namespace CrossPlatformDesktopProject
                 controller.Update();
             }
 
-            obstacle.Update();
-            
+            entityStorage.Update();
 
             base.Update(gameTime);
         }
@@ -112,19 +113,12 @@ namespace CrossPlatformDesktopProject
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            Vector2 center = new Vector2(graphics.PreferredBackBufferWidth/2,
-graphics.PreferredBackBufferHeight/2);
 
+            entityStorage.Draw(spriteBatch);
             player.Draw(spriteBatch);
-
-            obstacle.Draw(spriteBatch);
-
             npc.Draw(spriteBatch);
 
-            worldItem.Draw(spriteBatch);
-
             spriteBatch.End();
-
             base.Draw(gameTime);
         }
 

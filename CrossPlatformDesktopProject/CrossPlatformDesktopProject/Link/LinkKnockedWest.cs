@@ -53,7 +53,9 @@ namespace CrossPlatformDesktopProject.Link
         void ILinkState.MoveRight() { }
         void ILinkState.MoveUp() { }
         void ILinkState.UsePrimary() { }
-        void ILinkState.UseSecondary() { }
+        void ILinkState.UseSecondary1() { }
+        void ILinkState.UseSecondary2() { }
+        void ILinkState.UseSecondary3() { }
 
     }
 }
