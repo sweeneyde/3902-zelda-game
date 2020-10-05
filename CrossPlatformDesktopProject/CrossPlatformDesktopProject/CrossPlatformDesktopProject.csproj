@@ -77,6 +77,10 @@
     <Compile Include="Link\LinkUsingItemNorth.cs" />
     <Compile Include="Link\LinkUsingItemSouth.cs" />
     <Compile Include="Link\LinkUsingItemWest.cs" />
+    <Compile Include="Obstacles\Stairs.cs" />
+    <Compile Include="Obstacles\PlainBlock.cs" />
+    <Compile Include="Obstacles\Sand.cs" />
+    <Compile Include="Obstacles\Statue2.cs" />
     <Compile Include="Obstacles\IObstacle.cs" />
     <Compile Include="INpc.cs" />
     <Compile Include="ISpriteFactory.cs" />
