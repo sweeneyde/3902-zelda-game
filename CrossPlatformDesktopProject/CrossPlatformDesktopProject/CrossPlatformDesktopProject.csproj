@@ -44,7 +44,6 @@
   <ItemGroup>
     <Compile Include="Commands\PrevObstacleCommand.cs" />
     <Compile Include="Commands\NextObstacleCommand.cs" />
-    <Compile Include="Commands\Sprint2ListStorage.cs" />
     <Compile Include="Commands\PrevWorldItemCommand.cs" />
     <Compile Include="Commands\NextWorldItemCommand.cs" />
     <Compile Include="Commands\StartCommand.cs" />
