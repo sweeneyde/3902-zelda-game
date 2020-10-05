@@ -25,7 +25,6 @@ namespace CrossPlatformDesktopProject
         private Player player;
         private INpc npc;
         private IWorldItem worldItem;
-        private OldMan oldMan;
         private IObstacle obstacle;
 
         public Game1()
@@ -51,11 +50,9 @@ namespace CrossPlatformDesktopProject
 
             obstacle = new Block();
 
-            npc = new Bat();
+            npc = new OldMan();
 
             worldItem = new Heart();
-
-            oldMan = new OldMan();
 
             base.Initialize();
         }
@@ -94,7 +91,7 @@ namespace CrossPlatformDesktopProject
                 Exit();
 
             player.Update();
-            npc.Update();
+            //npc.Update();
             foreach (IController controller in controllerList)
             {
                 controller.Update();
