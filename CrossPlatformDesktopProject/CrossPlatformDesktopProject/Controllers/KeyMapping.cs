@@ -49,6 +49,8 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.I, new NextWorldItemCommand(myGame));
             this.addCommand(Keys.O, new PrevNpcCommand(myGame));
             this.addCommand(Keys.P, new NextNpcCommand(myGame));
+            this.addCommand(Keys.Q, new Quit(myGame));
+            this.addCommand(Keys.R, new ResetGame(myGame));
 
             gameActions.Add(Keys.D0);
             gameActions.Add(Keys.T);
@@ -57,6 +59,8 @@ namespace CrossPlatformDesktopProject
             gameActions.Add(Keys.I);
             gameActions.Add(Keys.O);
             gameActions.Add(Keys.P);
+            gameActions.Add(Keys.Q);
+            gameActions.Add(Keys.R);
 
             //Player Commands
             this.addCommand(Keys.W, new MoveUpCommand(myPlayer));
@@ -124,7 +128,7 @@ namespace CrossPlatformDesktopProject
 
             foreach (Keys k in currentState)
             {
-                if (acceptedStates.Contains(k) && !heldKeys.Contains(k))
+                if (currentState.Contains(k) && !heldKeys.Contains(k))
                 {
                     mappings[k].Execute();
                     lastAction = k;
