@@ -15,7 +15,6 @@ namespace CrossPlatformDesktopProject
         private Game1 myGame;
         private Player myPlayer;
         private Dictionary<Keys, ICommand> mappings;
-
         private List<Keys> acceptedStates;
         private List<Keys> gameActions;
         private List<Keys> priorityActions;
@@ -44,7 +43,20 @@ namespace CrossPlatformDesktopProject
 
             //Game Commands
             this.addCommand(Keys.D0, new Quit(myGame));
+            this.addCommand(Keys.T, new NextObstacleCommand(myGame));
+            this.addCommand(Keys.Y, new PrevObstacleCommand(myGame));
+            this.addCommand(Keys.U, new PrevWorldItemCommand(myGame));
+            this.addCommand(Keys.I, new NextWorldItemCommand(myGame));
+            this.addCommand(Keys.O, new PrevNpcCommand(myGame));
+            this.addCommand(Keys.P, new NextNpcCommand(myGame));
+
             gameActions.Add(Keys.D0);
+            gameActions.Add(Keys.T);
+            gameActions.Add(Keys.Y);
+            gameActions.Add(Keys.U);
+            gameActions.Add(Keys.I);
+            gameActions.Add(Keys.O);
+            gameActions.Add(Keys.P);
 
             //Player Commands
             this.addCommand(Keys.W, new MoveUpCommand(myPlayer));
@@ -58,12 +70,16 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.Left, new MoveLeftCommand(myPlayer));
             
             this.addCommand(Keys.Space, new UsePrimaryCommand(myPlayer));
-            this.addCommand(Keys.D1, new UseSecondaryCommand(myPlayer));
+            this.addCommand(Keys.D1, new UseSecondaryCommand1(myPlayer));
+            this.addCommand(Keys.D2, new UseSecondaryCommand2(myPlayer));
+            this.addCommand(Keys.D3, new UseSecondaryCommand3(myPlayer));
 
             this.addCommand(Keys.RightShift, new SelectCommand(myPlayer));
             this.addCommand(Keys.Enter, new StartCommand(myPlayer));
 
             this.addCommand(Keys.E, new TakeDamageCommand(myPlayer));
+
+            
 
             priorityActions.Add(Keys.Space);
             priorityActions.Add(Keys.E);

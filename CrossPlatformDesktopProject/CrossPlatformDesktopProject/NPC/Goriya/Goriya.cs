@@ -1,18 +1,10 @@
-﻿using CrossPlatformDesktopProject;
-using CrossPlatformDesktopProject.NPC;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject.NPC
 {
     class Goriya : INpc
     {
-        private INpcState currentState;
+        public INpcState currentState;
         public float xPos, yPos;
 
         public Goriya()

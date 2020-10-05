@@ -35,3 +35,4 @@ C:\Users\nerdy\Source\Repos\3902-zelda-game\CrossPlatformDesktopProject\CrossPla
 C:\Users\nerdy\Source\Repos\3902-zelda-game\CrossPlatformDesktopProject\CrossPlatformDesktopProject\bin\DesktopGL\AnyCPU\Debug\Content\link_damaged_blue_mirrored.xnb
 C:\Users\nerdy\Source\Repos\3902-zelda-game\CrossPlatformDesktopProject\CrossPlatformDesktopProject\bin\DesktopGL\AnyCPU\Debug\Content\link_damaged_red.xnb
 C:\Users\nerdy\Source\Repos\3902-zelda-game\CrossPlatformDesktopProject\CrossPlatformDesktopProject\bin\DesktopGL\AnyCPU\Debug\Content\link_damaged_red_mirrored.xnb
+C:\Users\nerdy\Source\Repos\3902-zelda-game\CrossPlatformDesktopProject\CrossPlatformDesktopProject\bin\DesktopGL\AnyCPU\Debug\Content\ArrowSpriteSheet.xnb

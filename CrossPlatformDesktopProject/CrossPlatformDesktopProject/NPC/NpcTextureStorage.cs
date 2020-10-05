@@ -1,12 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -94,6 +88,10 @@ namespace CrossPlatformDesktopProject.NPC
         public static Rectangle GORIYA_DOWN_1 = new Rectangle(12 + 21 * 10, 11, 16, 16);
         public static Rectangle GORIYA_DOWN_2 = new Rectangle(9 + 23 * 10, 11, 16, 16);
 
+        public static Rectangle BOOMERANG_1 = new Rectangle(10 + 28 * 10, 11, 8, 16);
+        public static Rectangle BOOMERANG_2 = new Rectangle(9 + 29 * 10, 11, 8, 16);
+        public static Rectangle BOOMERANG_3 = new Rectangle(8 + 30 * 10, 11, 8, 16);
+
         public static Rectangle SKELETON_1 = new Rectangle(1 + 0 * 10, 59, 16, 16);
         public static Rectangle SKELETON_2 = new Rectangle(8 + 1 * 10, 59, 16, 16);
 
@@ -101,6 +99,11 @@ namespace CrossPlatformDesktopProject.NPC
         public static Rectangle BOSS_2 = new Rectangle(6 + 2 * 10, 11, 24, 32);
         public static Rectangle BOSS_3 = new Rectangle(1 + 5 * 10, 11, 24, 32);
         public static Rectangle BOSS_4 = new Rectangle(6 + 7 * 10, 11, 24, 32);
+
+        public static Rectangle BOSS_ATTACK_1 = new Rectangle(1 + 10 * 10, 11, 8, 15);
+        public static Rectangle BOSS_ATTACK_2 = new Rectangle(0 + 11 * 10, 11, 8, 15);
+        public static Rectangle BOSS_ATTACK_3 = new Rectangle(9 + 11 * 10, 11, 8, 15);
+        public static Rectangle BOSS_ATTACK_4 = new Rectangle(8 + 12 * 10, 11, 8, 15);
 
         public static Rectangle OLD_MAN_IDLE = new Rectangle(1 + 0 * 10, 11, 16, 16);
     }

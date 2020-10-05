@@ -1,5 +1,4 @@
-﻿using CrossPlatformDesktopProject.NPC;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
@@ -38,6 +37,11 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
+            if (boss.xPos == 448)
+            {
+                boss.currentState = new BossAttack(boss);
+            }
+
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
@@ -45,7 +49,6 @@ namespace CrossPlatformDesktopProject.NPC
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
-
         }
     }
 }

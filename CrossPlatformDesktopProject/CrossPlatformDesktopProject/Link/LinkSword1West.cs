@@ -70,7 +70,15 @@ namespace CrossPlatformDesktopProject.Link
         {
         }
 
-        public void UseSecondary()
+        public void UseSecondary1()
+        {
+        }
+
+        public void UseSecondary2()
+        {
+        }
+
+        public void UseSecondary3()
         {
         }
     }

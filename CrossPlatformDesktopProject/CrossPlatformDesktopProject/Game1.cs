@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Dynamic;
 
 namespace CrossPlatformDesktopProject
 {
@@ -19,13 +20,13 @@ namespace CrossPlatformDesktopProject
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        public List<IController> controllerList; // could also be defined as List <IController>
+        public List<IController> controllerList;
+
+        public Sprint2ListStorage entityStorage;
+
         protected Texture2D img;
         private SpriteFont font;
         private Player player;
-        private INpc npc;
-        private IWorldItem worldItem;
-        private IObstacle obstacle;
 
         public Game1()
         {
@@ -48,11 +49,7 @@ namespace CrossPlatformDesktopProject
             KeyboardController KC = new KeyboardController(this, player);
             controllerList.Add(KC);
 
-            obstacle = new Block();
-
-            npc = new OldMan();
-
-            worldItem = new Heart();
+            entityStorage = new Sprint2ListStorage(this);
 
             base.Initialize();
         }
@@ -91,14 +88,12 @@ namespace CrossPlatformDesktopProject
                 Exit();
 
             player.Update();
-            //npc.Update();
             foreach (IController controller in controllerList)
             {
                 controller.Update();
             }
 
-            obstacle.Update();
-            
+            entityStorage.Update();
 
             base.Update(gameTime);
         }
@@ -112,19 +107,11 @@ namespace CrossPlatformDesktopProject
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            Vector2 center = new Vector2(graphics.PreferredBackBufferWidth/2,
-graphics.PreferredBackBufferHeight/2);
 
+            entityStorage.Draw(spriteBatch);
             player.Draw(spriteBatch);
 
-            obstacle.Draw(spriteBatch);
-
-            npc.Draw(spriteBatch);
-
-            worldItem.Draw(spriteBatch);
-
             spriteBatch.End();
-
             base.Draw(gameTime);
         }
 
