@@ -46,9 +46,13 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.D0, new Quit(myGame));
             this.addCommand(Keys.U, new CycleWorldItemU(myGame, listStorage));
             this.addCommand(Keys.I, new CycleWorldItemI(myGame, listStorage));
+            this.addCommand(Keys.T, new CycleObstaclesT(myGame, listStorage));
+            this.addCommand(Keys.Y, new CycleObstaclesY(myGame, listStorage));
             gameActions.Add(Keys.D0);
             gameActions.Add(Keys.I);
             gameActions.Add(Keys.U);
+            gameActions.Add(Keys.T);
+            gameActions.Add(Keys.Y);
 
             //Player Commands
             this.addCommand(Keys.W, new MoveUpCommand(myPlayer));

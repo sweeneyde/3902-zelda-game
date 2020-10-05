@@ -26,8 +26,9 @@ namespace CrossPlatformDesktopProject
         private Player player;
         private INpc npc;
         public IWorldItem worldItem { get; set; }
+        public IObstacle obstacle { get; set; }
         private OldMan oldMan;
-        private IObstacle obstacle;
+        
 
         public Game1()
         {
