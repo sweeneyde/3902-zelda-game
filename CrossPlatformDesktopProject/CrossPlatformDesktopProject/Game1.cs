@@ -50,7 +50,7 @@ namespace CrossPlatformDesktopProject
 
             obstacle = new Block();
 
-            npc = new Boss();
+            npc = new Bat();
 
             worldItem = new Heart();
 

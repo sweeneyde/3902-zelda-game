@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class GoriyaAttackWest : INpcState
+    class GoriyaAttackNorth : INpcState
     {
         private int my_frame_index, my_frame_index_2;
         private int delay_frame_index, delay_frame_index_2;
@@ -16,8 +16,8 @@ namespace CrossPlatformDesktopProject.NPC
         private static int delay_frames = 6;
         private static int delay_frames_2 = 4;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
-            NpcTextureStorage.GORIYA_LEFT_1,
-            NpcTextureStorage.GORIYA_LEFT_2
+            NpcTextureStorage.GORIYA_UP_1,
+            NpcTextureStorage.GORIYA_UP_2
         };
 
         private static List<Rectangle> my_source_frames_boomerang = new List<Rectangle>{
@@ -26,7 +26,7 @@ namespace CrossPlatformDesktopProject.NPC
             NpcTextureStorage.BOOMERANG_3,
         };
 
-        public GoriyaAttackWest(Goriya goriya)
+        public GoriyaAttackNorth(Goriya goriya)
         {
             this.goriya = goriya;
             my_frame_index = 0;
@@ -38,12 +38,12 @@ namespace CrossPlatformDesktopProject.NPC
             travelMarker = 0;
 
             boomerang_x = 410;
-            boomerang_y = 160;
+            boomerang_y = 110;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = NpcTextureStorage.Instance.getEnemySpriteSheetMirrored();
+            Texture2D texture = NpcTextureStorage.Instance.getGoriyaUpDownSpriteSheet();
             Texture2D texture2 = NpcTextureStorage.Instance.getEnemySpriteSheet();
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
@@ -61,9 +61,9 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (boomerang_x == 400 && travelMarker == 1)
+            if (boomerang_y == 100 && travelMarker == 1)
             {
-                goriya.currentState = new GoriyaWalkNorth(goriya);
+                goriya.currentState = new GoriyaWalkEast(goriya);
             }
 
             if (++delay_frame_index >= delay_frames)
@@ -80,18 +80,18 @@ namespace CrossPlatformDesktopProject.NPC
 
                 if (travelMarker == 0)
                 {
-                    boomerang_x -= 10;
+                    boomerang_y -= 10;
                 }
                 else if (travelMarker == 1)
                 {
-                    boomerang_x += 10;
+                    boomerang_y += 10;
                 }
 
-                if (boomerang_x == 0)
+                if (boomerang_y == 0)
                 {
                     travelMarker = 1;
                 }
-                else if (boomerang_x == 410)
+                else if (boomerang_y == 110)
                 {
                     travelMarker = 0;
                 }

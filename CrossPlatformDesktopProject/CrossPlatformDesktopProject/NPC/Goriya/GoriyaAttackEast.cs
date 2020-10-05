@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class GoriyaAttackWest : INpcState
+    class GoriyaAttackEast : INpcState
     {
         private int my_frame_index, my_frame_index_2;
         private int delay_frame_index, delay_frame_index_2;
@@ -16,8 +16,8 @@ namespace CrossPlatformDesktopProject.NPC
         private static int delay_frames = 6;
         private static int delay_frames_2 = 4;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
-            NpcTextureStorage.GORIYA_LEFT_1,
-            NpcTextureStorage.GORIYA_LEFT_2
+            NpcTextureStorage.GORIYA_RIGHT_1,
+            NpcTextureStorage.GORIYA_RIGHT_2
         };
 
         private static List<Rectangle> my_source_frames_boomerang = new List<Rectangle>{
@@ -26,7 +26,7 @@ namespace CrossPlatformDesktopProject.NPC
             NpcTextureStorage.BOOMERANG_3,
         };
 
-        public GoriyaAttackWest(Goriya goriya)
+        public GoriyaAttackEast(Goriya goriya)
         {
             this.goriya = goriya;
             my_frame_index = 0;
@@ -37,14 +37,13 @@ namespace CrossPlatformDesktopProject.NPC
 
             travelMarker = 0;
 
-            boomerang_x = 410;
-            boomerang_y = 160;
+            boomerang_x = 460;
+            boomerang_y = 110;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = NpcTextureStorage.Instance.getEnemySpriteSheetMirrored();
-            Texture2D texture2 = NpcTextureStorage.Instance.getEnemySpriteSheet();
+            Texture2D texture = NpcTextureStorage.Instance.getEnemySpriteSheet();
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
@@ -55,15 +54,15 @@ namespace CrossPlatformDesktopProject.NPC
                 (int)boomerang_x, (int)boomerang_y,
                 source.Width * 2, source.Height * 3);
 
-            spriteBatch.Draw(texture2, destination_boomerang, source_fireball, Color.White);
+            spriteBatch.Draw(texture, destination_boomerang, source_fireball, Color.White);
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
         public void Update()
         {
-            if (boomerang_x == 400 && travelMarker == 1)
+            if (boomerang_x == 470 && travelMarker == 1)
             {
-                goriya.currentState = new GoriyaWalkNorth(goriya);
+                goriya.currentState = new GoriyaWalkSouth(goriya);
             }
 
             if (++delay_frame_index >= delay_frames)
@@ -80,18 +79,18 @@ namespace CrossPlatformDesktopProject.NPC
 
                 if (travelMarker == 0)
                 {
-                    boomerang_x -= 10;
+                    boomerang_x += 10;
                 }
                 else if (travelMarker == 1)
                 {
-                    boomerang_x += 10;
+                    boomerang_x -= 10;
                 }
 
-                if (boomerang_x == 0)
+                if (boomerang_x == 800)
                 {
                     travelMarker = 1;
                 }
-                else if (boomerang_x == 410)
+                else if (boomerang_x == 460)
                 {
                     travelMarker = 0;
                 }

@@ -38,7 +38,7 @@ namespace CrossPlatformDesktopProject.NPC
         {
             if (goriya.xPos == 450 && goriya.yPos == 150)
             {
-                goriya.currentState = new GoriyaWalkWest(goriya);
+                goriya.currentState = new GoriyaAttackSouth(goriya);
             }
 
             if (++delay_frame_index >= delay_frames)

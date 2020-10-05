@@ -55,6 +55,9 @@
     <Compile Include="Controllers\KeyMapping.cs" />
     <Compile Include="INpcState.cs" />
     <Compile Include="NPC\Boss\BossAttack.cs" />
+    <Compile Include="NPC\Goriya\GoriyaAttackNorth.cs" />
+    <Compile Include="NPC\Goriya\GoriyaAttackSouth.cs" />
+    <Compile Include="NPC\Goriya\GoriyaAttackEast.cs" />
     <Compile Include="NPC\Goriya\GoriyaAttackWest.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IEquipable.cs" />
