@@ -36,14 +36,14 @@ namespace CrossPlatformDesktopProject.NPC
             my_frame_index_2 = 0;
             delay_frame_index_2 = 0;
 
-            fireball1_x = 370;
-            fireball1_y = 100;
+            fireball1_x = boss.xPos - 10;
+            fireball1_y = boss.yPos + 10;
 
-            fireball2_x = 370;
-            fireball2_y = 120;
+            fireball2_x = boss.xPos - 10;
+            fireball2_y = boss.yPos + 30;
 
-            fireball3_x = 370;
-            fireball3_y = 140;
+            fireball3_x = boss.xPos - 10;
+            fireball3_y = boss.yPos + 50;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -73,7 +73,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (fireball2_x == 0)
+            if (fireball2_x < 3)
             {
                 boss.currentState = new BossWalkWest(boss);
             }

@@ -36,8 +36,8 @@ namespace CrossPlatformDesktopProject.NPC
 
             travelMarker = 0;
 
-            boomerang_x = 460;
-            boomerang_y = 110;
+            boomerang_x = goriya.xPos + 10;
+            boomerang_y = goriya.yPos + 10;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
