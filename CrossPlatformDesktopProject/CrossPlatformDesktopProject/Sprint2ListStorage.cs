@@ -44,6 +44,10 @@ namespace CrossPlatformDesktopProject
             {
                 new Statue(),
                 new Block(),
+                new Statue2(),
+                new Sand(),
+                new PlainBlock(),
+                new Stairs()
             };
 
             npcs = new List<INpc>
