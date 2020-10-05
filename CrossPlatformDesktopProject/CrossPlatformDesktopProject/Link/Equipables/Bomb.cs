@@ -43,7 +43,7 @@ namespace CrossPlatformDesktopProject.Equipables
             delay_frame_index = 0;
             explode_time = 100;
             current_frame = 1;
-            swap_frame = 8;
+            swap_frame = 6;
             swap_frame_index = 0;
             delay_frames = 5;
         }
