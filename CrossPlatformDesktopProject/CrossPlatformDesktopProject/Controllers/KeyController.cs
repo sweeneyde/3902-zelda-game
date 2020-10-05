@@ -19,6 +19,7 @@ namespace CrossPlatformDesktopProject
         public KeyboardController(Game1 game, Player player)
         {
             oldState = Keyboard.GetState().GetPressedKeys();
+            currentState = Keyboard.GetState().GetPressedKeys();
             keyMap = new KeyMapping(game, player);
         }
 
