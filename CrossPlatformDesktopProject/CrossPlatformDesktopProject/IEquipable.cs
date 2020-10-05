@@ -14,6 +14,6 @@ namespace CrossPlatformDesktopProject
 
         /* This Draw method's parameters are from the O.G. sprite drawing class*/
         /* Change as needed*/
-        void Draw(Texture2D img, SpriteBatch spriteBatch, Vector2 vector);
+        void Draw(SpriteBatch spriteBatch);
     }
 }

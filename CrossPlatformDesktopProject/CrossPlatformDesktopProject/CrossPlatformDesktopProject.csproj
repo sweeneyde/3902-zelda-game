@@ -42,10 +42,17 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\PrevObstacleCommand.cs" />
+    <Compile Include="Commands\NextObstacleCommand.cs" />
+    <Compile Include="Commands\Sprint2ListStorage.cs" />
+    <Compile Include="Commands\PrevWorldItemCommand.cs" />
+    <Compile Include="Commands\NextWorldItemCommand.cs" />
     <Compile Include="Commands\StartCommand.cs" />
     <Compile Include="Commands\SelectCommand.cs" />
     <Compile Include="Commands\TakeDamageCommand.cs" />
-    <Compile Include="Commands\UseSecondaryCommand.cs" />
+    <Compile Include="Commands\UseSecondaryCommand1.cs" />
+    <Compile Include="Commands\UseSecondaryCommand2.cs" />
+    <Compile Include="Commands\UseSecondaryCommand3.cs" />
     <Compile Include="Commands\UsePrimaryCommand.cs" />
     <Compile Include="Commands\MoveDownCommand.cs" />
     <Compile Include="Commands\MoveRightCommand.cs" />
@@ -62,6 +69,9 @@
     <Compile Include="Link\LinkKnockedNorth.cs" />
     <Compile Include="Link\LinkKnockedSouth.cs" />
     <Compile Include="Link\LinkKnockedWest.cs" />
+    <Compile Include="Link\LinkUsingItemNorth.cs" />
+    <Compile Include="Link\LinkUsingItemSouth.cs" />
+    <Compile Include="Link\LinkUsingItemWest.cs" />
     <Compile Include="Obstacles\IObstacle.cs" />
     <Compile Include="ISpriteFactory.cs" />
     <Compile Include="IWorldItem.cs" />
@@ -69,6 +79,10 @@
     <Compile Include="Controllers\KeyController.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="IController.cs" />
+    <Compile Include="Link\Equipables\Bomb.cs" />
+    <Compile Include="Link\Equipables\Boomerang.cs" />
+    <Compile Include="Link\Equipables\Bow.cs" />
+    <Compile Include="Link\Equipables\InventoryManager.cs" />
     <Compile Include="Link\LinkSword1East.cs" />
     <Compile Include="Link\LinkFacingEastState.cs" />
     <Compile Include="Link\LinkFacingNorthState.cs" />
@@ -77,6 +91,7 @@
     <Compile Include="Link\LinkSword1North.cs" />
     <Compile Include="Link\LinkSword1South.cs" />
     <Compile Include="Link\LinkSword1West.cs" />
+    <Compile Include="Link\LinkUsingItemEast.cs" />
     <Compile Include="NPC\Bat\BatWalkWest.cs" />
     <Compile Include="NPC\Bat\BatWalkSouth.cs" />
     <Compile Include="NPC\Bat\BatWalkNorth.cs" />
@@ -109,6 +124,9 @@
     <Compile Include="Obstacles\Statue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorldItem\DungeonMap.cs" />
+    <Compile Include="WorldItem\Rupee.cs" />
+    <Compile Include="WorldItem\DungeonKey.cs" />
     <Compile Include="WorldItem\WorldItemTextureStorage.cs" />
     <Compile Include="WorldItem\Triforce.cs" />
     <Compile Include="WorldItem\Heart.cs" />
