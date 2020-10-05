@@ -79,16 +79,19 @@ namespace CrossPlatformDesktopProject.Link
 
         public void UseSecondary1()
         {
+            player.UseBomb();
             player.currentState = new LinkUsingItemNorth(player);
         }
 
         public void UseSecondary2()
         {
+            player.UseBoomerang();
             player.currentState = new LinkUsingItemNorth(player);
         }
 
         public void UseSecondary3()
         {
+            player.UseBow();
             player.currentState = new LinkUsingItemNorth(player);
         }
 

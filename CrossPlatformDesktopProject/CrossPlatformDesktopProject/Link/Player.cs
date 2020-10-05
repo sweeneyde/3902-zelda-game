@@ -94,20 +94,17 @@ namespace CrossPlatformDesktopProject.Link
 
         public void UseSecondary1()
         {
-            linkInventory.UseBoomerang();
             currentState.UseSecondary1();
         }
 
         public void UseSecondary2()
         {
-            linkInventory.UseBow();
-            currentState.UseSecondary1();
+            currentState.UseSecondary2();
         }
 
         public void UseSecondary3()
         {
-            linkInventory.UseBomb();
-            currentState.UseSecondary1();
+            currentState.UseSecondary3();
         }
 
         public void Update()
