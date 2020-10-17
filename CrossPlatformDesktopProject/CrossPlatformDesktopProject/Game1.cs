@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Dynamic;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject
 {
@@ -23,6 +24,7 @@ namespace CrossPlatformDesktopProject
         public List<IController> controllerList;
 
         public Sprint2ListStorage entityStorage;
+        private CollisionDetector collisionController;
 
         protected Texture2D img;
         private SpriteFont font;
@@ -50,7 +52,10 @@ namespace CrossPlatformDesktopProject
             controllerList.Add(KC);
 
             entityStorage = new Sprint2ListStorage(this);
-
+            List<ICollider> colliders = entityStorage.getCollidables();
+            colliders.Add(player);
+            collisionController = new CollisionDetector(colliders);
+            
             base.Initialize();
         }
 
@@ -93,6 +98,7 @@ namespace CrossPlatformDesktopProject
                 controller.Update();
             }
 
+            collisionController.Update();
             entityStorage.Update();
 
             base.Update(gameTime);

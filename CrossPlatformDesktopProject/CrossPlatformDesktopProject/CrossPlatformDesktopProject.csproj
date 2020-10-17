@@ -42,6 +42,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CollisionHandler\Collision.cs" />
+    <Compile Include="CollisionHandler\CollisionDetection.cs" />
+    <Compile Include="CollisionHandler\CollisionResponse.cs" />
+    <Compile Include="ICollider.cs" />
     <Compile Include="Commands\NextNpcCommand.cs" />
     <Compile Include="Commands\PrevNpcCommand.cs" />
     <Compile Include="Commands\PrevObstacleCommand.cs" />

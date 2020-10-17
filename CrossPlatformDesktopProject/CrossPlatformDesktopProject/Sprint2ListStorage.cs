@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.Obstacles;
 using CrossPlatformDesktopProject.WorldItem;
@@ -75,6 +77,16 @@ namespace CrossPlatformDesktopProject
             worldItems[worldItemsIndex].Draw(sb);
             obstacles[obstaclesIndex].Draw(sb);
             npcs[npcIndex].Draw(sb);
+        }
+
+        public List<ICollider> getCollidables()
+        {
+            List<ICollider> colliders = new List<ICollider>();
+            foreach(INpc x in npcs)
+            {
+                colliders.Add((ICollider) x);
+            }
+            return colliders;
         }
 
         public void nextWorldItem()
