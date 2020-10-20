@@ -55,6 +55,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(enemySubject, playerType, CollisionSides.Up), typeof(TakeDamageCommand));
             }
             
+
         }
 
         public void UpdateDictionary(Tuple<ICollider, ICollider, CollisionSides> tuple, Type commandType)
@@ -68,20 +69,36 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             Type targetType = target.GetType();
             Tuple<Type, Type, CollisionSides> key = new Tuple<Type, Type, CollisionSides>(subjectType, targetType, side);
             if (keySet.Contains(key))
-            if (keySet.Contains(key))
             {
                 Type commandType = commandMap[key];
 
-                //Find constructor
+                //Command has only the target type as parameter
                 Type[] argumentTypes = { targetType };
-                ConstructorInfo cI = commandType.GetConstructor(argumentTypes);
+                ConstructorInfo commandConstructor = commandType.GetConstructor(argumentTypes);
+
+                //Command has target type and side as parameter
+                if(commandConstructor is null) {
+                    argumentTypes = new Type[]{ targetType, typeof(CollisionSides) };
+                    commandConstructor = commandType.GetConstructor(argumentTypes);
+                }
+                if(commandConstructor is null) { return; }
 
                 //Check constructor vs parameters
 
                 //Call command
-                ICommand commandClass = (ICommand)cI.Invoke(new object[] { target });
+                ICommand commandClass;
+                switch (commandConstructor.GetParameters().Length)
+                {
+                    case 1:
+                        commandClass = (ICommand)commandConstructor.Invoke(new object[] { target });
+                        break;
+                    case 2:
+                        commandClass = (ICommand)commandConstructor.Invoke(new object[] { target , side });
+                        break;
+                    default:
+                        return;
+                }
                 commandClass.Execute();
-
             }
         }
     }
