@@ -25,3 +25,9 @@ CrossPlatformDesktopProject/CrossPlatformDesktopProject/obj/Release/.NETFramewor
 CrossPlatformDesktopProject/CrossPlatformDesktopProject/bin/DesktopGL/AnyCPU/Debug/Content/Link_Spritesheet.xnb
 CrossPlatformDesktopProject/CrossPlatformDesktopProject/bin/DesktopGL/*
 CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/*
+*.exe
+*.cache
+*.suo
+.vs/*
+*.FileListAbsolute.txt
+*.xnb

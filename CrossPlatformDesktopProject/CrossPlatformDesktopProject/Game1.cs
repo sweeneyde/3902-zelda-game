@@ -119,6 +119,11 @@ namespace CrossPlatformDesktopProject
         {
             Exit();
         }
+
+        public void reset()
+        {
+            this.Initialize();
+        }
     }
 }
  

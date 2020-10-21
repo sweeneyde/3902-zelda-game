@@ -12,7 +12,7 @@ namespace CrossPlatformDesktopProject
 {
     public interface ILinkState
     {
-        void Draw(SpriteBatch spriteBatch, float xPos, float yPos);
+        void Draw(SpriteBatch spriteBatch);
         void setTextureIndex(int index);
         void TakeDamage();
         void Update();
