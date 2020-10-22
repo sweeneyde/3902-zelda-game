@@ -86,6 +86,10 @@ namespace CrossPlatformDesktopProject
             {
                 colliders.Add((ICollider) x);
             }
+            foreach(IObstacle x in obstacles)
+            {
+                colliders.Add((ICollider)x);
+            }
             return colliders;
         }
 

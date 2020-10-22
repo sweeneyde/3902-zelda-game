@@ -45,22 +45,60 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             Type[] objectTypes = { boomerangType, bowType, bombType };
 
             //Obstacle Types
+            var typeOfObstacle = typeof(IObstacle);
+            var obstacleTypes = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => typeOfObstacle.IsAssignableFrom(p));
 
             //Enemy on player
-            foreach(Type enemySubject in enemyTypes)
+            foreach (Type enemySubject in enemyTypes)
             {
                 commandMap.Add(new Tuple<Type,Type,CollisionSides>(enemySubject, playerType, CollisionSides.Down), typeof(TakeDamageCommand));
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(enemySubject, playerType, CollisionSides.Left), typeof(TakeDamageCommand));
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(enemySubject, playerType, CollisionSides.Right), typeof(TakeDamageCommand));
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(enemySubject, playerType, CollisionSides.Up), typeof(TakeDamageCommand));
             }
-            
+            foreach(Type obstacleSubject in obstacleTypes)
+            {
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, CollisionSides.Down), typeof(ResetCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, CollisionSides.Left), typeof(ResetCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, CollisionSides.Right), typeof(ResetCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, CollisionSides.Up), typeof(ResetCommand));
+            }
 
         }
 
-        public void UpdateDictionary(Tuple<ICollider, ICollider, CollisionSides> tuple, Type commandType)
+        public ICommand parseConstructor(ICollider subject, ICollider target, CollisionSides side, Type commandType)
         {
+            //Command has only the target type as parameter
+            Type targetType = target.GetType();
+            Type[] argumentTypes = { targetType };
+            ConstructorInfo commandConstructor = commandType.GetConstructor(argumentTypes);
 
+            //Command has target type and side as parameter
+            if (commandConstructor is null)
+            {
+                argumentTypes = new Type[] { targetType, typeof(CollisionSides) };
+                commandConstructor = commandType.GetConstructor(argumentTypes);
+            }
+            if (commandConstructor is null) { return null; }
+
+            //Check constructor vs parameters
+
+            //Call command
+            ICommand commandClass;
+            switch (commandConstructor.GetParameters().Length)
+            {
+                case 1:
+                    commandClass = (ICommand)commandConstructor.Invoke(new object[] { target });
+                    break;
+                case 2:
+                    commandClass = (ICommand)commandConstructor.Invoke(new object[] { target, side });
+                    break;
+                default:
+                    return null;
+            }
+            return commandClass;
         }
 
         public void HandleCollision(ICollider subject, ICollider target, CollisionSides side)
@@ -71,34 +109,8 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             if (keySet.Contains(key))
             {
                 Type commandType = commandMap[key];
-
-                //Command has only the target type as parameter
-                Type[] argumentTypes = { targetType };
-                ConstructorInfo commandConstructor = commandType.GetConstructor(argumentTypes);
-
-                //Command has target type and side as parameter
-                if(commandConstructor is null) {
-                    argumentTypes = new Type[]{ targetType, typeof(CollisionSides) };
-                    commandConstructor = commandType.GetConstructor(argumentTypes);
-                }
-                if(commandConstructor is null) { return; }
-
-                //Check constructor vs parameters
-
-                //Call command
-                ICommand commandClass;
-                switch (commandConstructor.GetParameters().Length)
-                {
-                    case 1:
-                        commandClass = (ICommand)commandConstructor.Invoke(new object[] { target });
-                        break;
-                    case 2:
-                        commandClass = (ICommand)commandConstructor.Invoke(new object[] { target , side });
-                        break;
-                    default:
-                        return;
-                }
-                commandClass.Execute();
+                ICommand commandClass = parseConstructor(subject, target, side, commandType);
+                if (commandClass != null) { commandClass.Execute(); }
             }
         }
     }

@@ -45,6 +45,7 @@
     <Compile Include="CollisionHandler\Collision.cs" />
     <Compile Include="CollisionHandler\CollisionDetection.cs" />
     <Compile Include="CollisionHandler\CollisionResponse.cs" />
+    <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="ICollider.cs" />
     <Compile Include="Commands\NextNpcCommand.cs" />
     <Compile Include="Commands\PrevNpcCommand.cs" />

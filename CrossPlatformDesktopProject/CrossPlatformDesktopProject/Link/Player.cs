@@ -16,7 +16,7 @@ namespace CrossPlatformDesktopProject.Link
     {
         public ILinkState currentState;
         
-        public float xPos, yPos;
+        public float xPos, yPos, previousXPos, previousYPos;
         public InventoryManager linkInventory;
         public static float walking_speed = 3.0f;
         public static int frames_per_step = 6;
@@ -122,6 +122,8 @@ namespace CrossPlatformDesktopProject.Link
                 currentState.setTextureIndex(damaged_frames_left % 4);
             }
             linkInventory.Update();
+            previousXPos = xPos;
+            previousYPos = yPos;
         }
 
         public void Draw(SpriteBatch spriteBatch)
