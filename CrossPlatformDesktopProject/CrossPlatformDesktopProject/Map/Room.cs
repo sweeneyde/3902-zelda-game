@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject
 {
-    public class Sprint2ListStorage
+    public class Room
     {
         private List<IWorldItem> worldItems;
         private List<IObstacle> obstacles;
@@ -25,7 +25,7 @@ namespace CrossPlatformDesktopProject
         private static int cooldownFramesStart = 15;
         private Game1 game;
 
-        public Sprint2ListStorage(Game1 game)
+        public Room(Game1 game)
         {
             this.game = game;
             cooldownFramesLeft = 0;
