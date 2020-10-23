@@ -3,17 +3,17 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class Boss : INpc
+    class Boomerang : INpc
     {
         public INpcState currentState;
         public float xPos, yPos;
         private Rectangle hitbox;
 
-        public Boss(Fireball fireball1, Fireball fireball2, Fireball fireball3)
+        public Boomerang()
         {
-            currentState = new BossWalkEast(this, fireball1, fireball2, fireball3);
-            xPos = 400;
-            yPos = 100;
+            currentState = new BoomerangIdle(this);
+            xPos = 0;
+            yPos = 0;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 

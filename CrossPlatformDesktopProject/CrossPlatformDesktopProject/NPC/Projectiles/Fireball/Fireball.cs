@@ -3,15 +3,15 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class Boss : INpc
+    class Fireball : INpc
     {
         public INpcState currentState;
         public float xPos, yPos;
         private Rectangle hitbox;
 
-        public Boss(Fireball fireball1, Fireball fireball2, Fireball fireball3)
+        public Fireball()
         {
-            currentState = new BossWalkEast(this, fireball1, fireball2, fireball3);
+            currentState = new FireballIdle(this);
             xPos = 400;
             yPos = 100;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);

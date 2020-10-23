@@ -21,6 +21,10 @@ namespace CrossPlatformDesktopProject
         private int obstaclesIndex;
         private int npcIndex;
 
+        private INpc fireball1;
+        private INpc fireball2;
+        private INpc fireball3;
+
         private int cooldownFramesLeft;
         private static int cooldownFramesStart = 15;
         private Game1 game;
@@ -30,6 +34,10 @@ namespace CrossPlatformDesktopProject
             this.game = game;
             cooldownFramesLeft = 0;
             worldItemsIndex = obstaclesIndex = npcIndex = 0;
+
+            fireball1 = new Fireball();
+            fireball2 = new Fireball();
+            fireball3 = new Fireball();
 
             worldItems = new List<IWorldItem>
             {
@@ -52,7 +60,7 @@ namespace CrossPlatformDesktopProject
 
             npcs = new List<INpc>
             {
-                new Boss(),
+                new Boss((Fireball) fireball1, (Fireball) fireball2, (Fireball) fireball3),
                 new Bat(),
                 new Goriya(),
                 new Gel(),
@@ -68,6 +76,10 @@ namespace CrossPlatformDesktopProject
                 cooldownFramesLeft--;
             }
             npcs[npcIndex].Update();
+
+            fireball1.Update();
+            fireball2.Update();
+            fireball3.Update();
         }
 
         public void Draw(SpriteBatch sb)
@@ -75,6 +87,10 @@ namespace CrossPlatformDesktopProject
             worldItems[worldItemsIndex].Draw(sb);
             obstacles[obstaclesIndex].Draw(sb);
             npcs[npcIndex].Draw(sb);
+
+            fireball1.Draw(sb);
+            fireball2.Draw(sb);
+            fireball3.Draw(sb);
         }
 
         public void nextWorldItem()
