@@ -24,6 +24,7 @@ namespace CrossPlatformDesktopProject
         private INpc fireball1;
         private INpc fireball2;
         private INpc fireball3;
+        private INpc boomerang;
 
         private int cooldownFramesLeft;
         private static int cooldownFramesStart = 15;
@@ -38,6 +39,7 @@ namespace CrossPlatformDesktopProject
             fireball1 = new Fireball();
             fireball2 = new Fireball();
             fireball3 = new Fireball();
+            boomerang = new Boomerang();
 
             worldItems = new List<IWorldItem>
             {
@@ -62,7 +64,7 @@ namespace CrossPlatformDesktopProject
             {
                 new Boss((Fireball) fireball1, (Fireball) fireball2, (Fireball) fireball3),
                 new Bat(),
-                new Goriya(),
+                new Goriya((Boomerang) boomerang),
                 new Gel(),
                 new Skeleton(),
                 new OldMan(),
@@ -80,6 +82,7 @@ namespace CrossPlatformDesktopProject
             fireball1.Update();
             fireball2.Update();
             fireball3.Update();
+            boomerang.Update();
         }
 
         public void Draw(SpriteBatch sb)
@@ -91,6 +94,7 @@ namespace CrossPlatformDesktopProject
             fireball1.Draw(sb);
             fireball2.Draw(sb);
             fireball3.Draw(sb);
+            boomerang.Draw(sb);
         }
 
         public void nextWorldItem()

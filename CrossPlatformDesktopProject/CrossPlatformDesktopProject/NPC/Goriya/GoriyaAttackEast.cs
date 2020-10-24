@@ -6,38 +6,25 @@ namespace CrossPlatformDesktopProject.NPC
 {
     class GoriyaAttackEast : INpcState
     {
-        private int my_frame_index, my_frame_index_2;
-        private int delay_frame_index, delay_frame_index_2;
-        private int travelMarker;
+        private int my_frame_index;
+        private int delay_frame_index;
         private Goriya goriya;
-        private float boomerang_x, boomerang_y;
+        private Boomerang boomerang;
 
         private static int delay_frames = 6;
-        private static int delay_frames_2 = 4;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
             NpcTextureStorage.GORIYA_RIGHT_1,
             NpcTextureStorage.GORIYA_RIGHT_2
         };
 
-        private static List<Rectangle> my_source_frames_boomerang = new List<Rectangle>{
-            NpcTextureStorage.BOOMERANG_1,
-            NpcTextureStorage.BOOMERANG_2,
-            NpcTextureStorage.BOOMERANG_3,
-        };
-
-        public GoriyaAttackEast(Goriya goriya)
+        public GoriyaAttackEast(Goriya goriya, Boomerang boomerang)
         {
             this.goriya = goriya;
+            this.boomerang = boomerang;
             my_frame_index = 0;
             delay_frame_index = 0;
 
-            my_frame_index_2 = 0;
-            delay_frame_index_2 = 0;
-
-            travelMarker = 0;
-
-            boomerang_x = goriya.xPos + 10;
-            boomerang_y = goriya.yPos + 10;
+            boomerang.currentState = new BoomerangRight(boomerang, goriya.xPos + 10, goriya.yPos + 10);
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -48,20 +35,15 @@ namespace CrossPlatformDesktopProject.NPC
                 (int)xPos, (int)yPos,
                 source.Width * 3, source.Height * 3);
 
-            Rectangle source_fireball = my_source_frames_boomerang[my_frame_index_2];
-            Rectangle destination_boomerang = new Rectangle(
-                (int)boomerang_x, (int)boomerang_y,
-                source.Width * 2, source.Height * 3);
-
-            spriteBatch.Draw(texture, destination_boomerang, source_fireball, Color.White);
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
         public void Update()
         {
-            if (boomerang_x == 470 && travelMarker == 1)
+            if (boomerang.xPos == 470 && boomerang.travelmarker == 1)
             {
-                goriya.currentState = new GoriyaWalkSouth(goriya);
+                boomerang.travelmarker = 0;
+                goriya.currentState = new GoriyaWalkSouth(goriya, boomerang);
             }
 
             if (++delay_frame_index >= delay_frames)
@@ -69,32 +51,6 @@ namespace CrossPlatformDesktopProject.NPC
                 delay_frame_index = 0;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
-            }
-
-            if (++delay_frame_index_2 >= delay_frames_2)
-            {
-                delay_frame_index_2 = 0;
-                my_frame_index_2++;
-
-                if (travelMarker == 0)
-                {
-                    boomerang_x += 10;
-                }
-                else if (travelMarker == 1)
-                {
-                    boomerang_x -= 10;
-                }
-
-                if (boomerang_x == 800)
-                {
-                    travelMarker = 1;
-                }
-                else if (boomerang_x == 460)
-                {
-                    travelMarker = 0;
-                }
-
-                my_frame_index_2 %= my_source_frames_boomerang.Count;
             }
         }
     }

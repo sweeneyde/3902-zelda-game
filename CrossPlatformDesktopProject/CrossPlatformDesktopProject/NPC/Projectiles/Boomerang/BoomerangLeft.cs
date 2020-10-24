@@ -8,10 +8,10 @@ namespace CrossPlatformDesktopProject.NPC
     {
         private int my_frame_index;
         private int delay_frame_index;
+        private int starting;
         private Boomerang boomerang;
-        private float fireball_x, fireball_y;
 
-        private static int delay_frames = 2;
+        private static int delay_frames = 4;
 
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
             NpcTextureStorage.BOOMERANG_1,
@@ -25,18 +25,20 @@ namespace CrossPlatformDesktopProject.NPC
             my_frame_index = 0;
             delay_frame_index = 0;
 
-            boomerang_x = xPos;
-            boomerang_y = yPos;
+            starting = (int)xPos;
+
+            boomerang.xPos = xPos;
+            boomerang.yPos = yPos;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = NpcTextureStorage.Instance.getBossSpriteSheet();
+            Texture2D texture = NpcTextureStorage.Instance.getEnemySpriteSheet();
 
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination_fireball = new Rectangle(
-                (int)fireball_x, (int)fireball_y,
-                NpcTextureStorage.BOSS_1.Width, NpcTextureStorage.BOSS_1.Height);
+                (int)boomerang.xPos, (int)boomerang.yPos,
+                NpcTextureStorage.GORIYA_LEFT_1.Width * 2, NpcTextureStorage.GORIYA_LEFT_1.Height * 3);
 
             spriteBatch.Draw(texture, destination_fireball, source, Color.White);
         }
@@ -48,8 +50,28 @@ namespace CrossPlatformDesktopProject.NPC
                 delay_frame_index = 0;
                 my_frame_index++;
 
-                fireball_x -= 5;
-                fireball_y -= 3;
+                if (boomerang.travelmarker == 1 && boomerang.xPos == starting)
+                {
+                    boomerang.currentState = new BoomerangIdle(boomerang);
+                }
+
+                if (boomerang.travelmarker == 0)
+                {
+                    boomerang.xPos -= 10;
+                }
+                else if (boomerang.travelmarker == 1)
+                {
+                    boomerang.xPos += 10;
+                }
+
+                if (boomerang.xPos == 0)
+                {
+                    boomerang.travelmarker = 1;
+                }
+                else if (boomerang.xPos == 410)
+                {
+                    boomerang.travelmarker = 0;
+                }
 
                 my_frame_index %= my_source_frames.Count;
             }

@@ -9,6 +9,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int my_frame_index;
         private int delay_frame_index;
         private Goriya goriya;
+        private Boomerang boomerang;
 
         private static int delay_frames = 6;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
@@ -16,9 +17,10 @@ namespace CrossPlatformDesktopProject.NPC
             NpcTextureStorage.GORIYA_DOWN_2
         };
 
-        public GoriyaWalkSouth(Goriya goriya)
+        public GoriyaWalkSouth(Goriya goriya, Boomerang boomerang)
         {
             this.goriya = goriya;
+            this.boomerang = boomerang;
             my_frame_index = 0;
             delay_frame_index = 0;
         }
@@ -37,7 +39,7 @@ namespace CrossPlatformDesktopProject.NPC
         {
             if (goriya.xPos == 450 && goriya.yPos == 150)
             {
-                goriya.currentState = new GoriyaAttackSouth(goriya);
+                goriya.currentState = new GoriyaAttackSouth(goriya, boomerang);
             }
 
             if (++delay_frame_index >= delay_frames)

@@ -7,6 +7,7 @@ namespace CrossPlatformDesktopProject.NPC
     {
         public INpcState currentState;
         public float xPos, yPos;
+        public int travelmarker;
         private Rectangle hitbox;
 
         public Boomerang()
@@ -14,23 +15,17 @@ namespace CrossPlatformDesktopProject.NPC
             currentState = new BoomerangIdle(this);
             xPos = 0;
             yPos = 0;
-            hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
+            travelmarker = 0;
         }
 
         public void Update()
         {
             currentState.Update();
-            hitbox = new Rectangle((int)xPos, (int)yPos, 100, 100);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             currentState.Draw(spriteBatch, xPos, yPos);
-        }
-
-        public Rectangle GetRectangle()
-        {
-            return hitbox;
         }
     }
 

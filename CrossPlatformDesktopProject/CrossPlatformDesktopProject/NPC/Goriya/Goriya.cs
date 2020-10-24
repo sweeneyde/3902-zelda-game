@@ -7,9 +7,9 @@ namespace CrossPlatformDesktopProject.NPC
         public INpcState currentState;
         public float xPos, yPos;
 
-        public Goriya()
+        public Goriya(Boomerang boomerang)
         {
-            currentState = new GoriyaWalkEast(this);
+            currentState = new GoriyaWalkEast(this, boomerang);
             xPos = 400;
             yPos = 100;
         }

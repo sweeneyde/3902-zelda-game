@@ -9,7 +9,6 @@ namespace CrossPlatformDesktopProject.NPC
         private int my_frame_index;
         private int delay_frame_index;
         private Fireball fireball;
-        private float fireball_x, fireball_y;
 
         private static int delay_frames = 2;
 
@@ -26,8 +25,8 @@ namespace CrossPlatformDesktopProject.NPC
             my_frame_index = 0;
             delay_frame_index = 0;
 
-            fireball_x = xPos;
-            fireball_y = yPos;
+            fireball.xPos = xPos;
+            fireball.yPos = yPos;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -36,7 +35,7 @@ namespace CrossPlatformDesktopProject.NPC
 
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination_fireball = new Rectangle(
-                (int)fireball_x, (int)fireball_y,
+                (int)fireball.xPos, (int)fireball.yPos,
                 NpcTextureStorage.BOSS_1.Width, NpcTextureStorage.BOSS_1.Height);
 
             spriteBatch.Draw(texture, destination_fireball, source, Color.White);
@@ -49,8 +48,8 @@ namespace CrossPlatformDesktopProject.NPC
                 delay_frame_index = 0;
                 my_frame_index++;
 
-                fireball_x -= 5;
-                fireball_y -= 3;
+                fireball.xPos -= 5;
+                fireball.yPos -= 3;
 
                 my_frame_index %= my_source_frames.Count;
             }

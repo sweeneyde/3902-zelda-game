@@ -9,7 +9,6 @@ namespace CrossPlatformDesktopProject.NPC
         private int my_frame_index;
         private int delay_frame_index;
         private Fireball fireball;
-        private float fireball_x, fireball_y;
 
         private static int delay_frames = 2;
 
@@ -26,8 +25,8 @@ namespace CrossPlatformDesktopProject.NPC
             my_frame_index = 0;
             delay_frame_index = 0;
 
-            fireball_x = xPos;
-            fireball_y = yPos;
+            fireball.xPos = xPos;
+            fireball.yPos = yPos;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
