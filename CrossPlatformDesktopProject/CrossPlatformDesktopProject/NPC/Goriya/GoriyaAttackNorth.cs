@@ -24,6 +24,7 @@ namespace CrossPlatformDesktopProject.NPC
             my_frame_index = 0;
             delay_frame_index = 0;
 
+            boomerang.travelmarker = 0;
             boomerang.currentState = new BoomerangUp(boomerang, goriya.xPos + 10, goriya.yPos + 10);
         }
 
@@ -42,7 +43,6 @@ namespace CrossPlatformDesktopProject.NPC
         {
             if (boomerang.yPos == 100 && boomerang.travelmarker == 1)
             {
-                boomerang.travelmarker = 0;
                 goriya.currentState = new GoriyaWalkEast(goriya, boomerang);
             }
 

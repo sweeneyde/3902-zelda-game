@@ -68,10 +68,6 @@ namespace CrossPlatformDesktopProject.NPC
                 {
                     boomerang.travelmarker = 1;
                 }
-                else if (boomerang.xPos == 410)
-                {
-                    boomerang.travelmarker = 0;
-                }
 
                 my_frame_index %= my_source_frames.Count;
             }
