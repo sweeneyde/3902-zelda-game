@@ -10,9 +10,11 @@ using CrossPlatformDesktopProject.Obstacles;
 using CrossPlatformDesktopProject.WorldItem;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace CrossPlatformDesktopProject
+// This file was for the temporary Sprint2 Storage
+
+namespace CrossPlatformDesktopProject.Levels
 {
-    public class Room
+    public class DevRoom
     {
         private List<IWorldItem> worldItems;
         private List<IObstacle> obstacles;
@@ -25,7 +27,7 @@ namespace CrossPlatformDesktopProject
         private static int cooldownFramesStart = 15;
         private Game1 game;
 
-        public Room(Game1 game)
+        public DevRoom(Game1 game)
         {
             this.game = game;
             cooldownFramesLeft = 0;

@@ -63,9 +63,11 @@
     <Compile Include="Commands\Quit.cs" />
     <Compile Include="Controllers\KeyMapping.cs" />
     <Compile Include="INpcState.cs" />
-    <Compile Include="Map\CSVParsers\RoomParser.cs" />
-    <Compile Include="Map\CSVParsers\MapParser.cs" />
-    <Compile Include="Map\Map.cs" />
+    <Compile Include="Levels\Background.cs" />
+    <Compile Include="Levels\CSVParser.cs" />
+    <Compile Include="Levels\Map.cs" />
+    <Compile Include="Levels\Room.cs" />
+    <Compile Include="Levels\RoomTextureStorage.cs" />
     <Compile Include="NPC\Boss\BossAttack.cs" />
     <Compile Include="NPC\Goriya\GoriyaAttackNorth.cs" />
     <Compile Include="NPC\Goriya\GoriyaAttackSouth.cs" />
@@ -142,7 +144,7 @@
     <Compile Include="Obstacles\Statue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Map\Room.cs" />
+    <Compile Include="Levels\DevRoom.cs" />
     <Compile Include="WorldItem\DungeonMap.cs" />
     <Compile Include="WorldItem\Rupee.cs" />
     <Compile Include="WorldItem\DungeonKey.cs" />
@@ -151,6 +153,7 @@
     <Compile Include="WorldItem\Heart.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MonoGame.Framework">
       <HintPath>$(MonoGameInstallDirectory)\MonoGame\v3.0\Assemblies\DesktopGL\MonoGame.Framework.dll</HintPath>
     </Reference>
@@ -208,11 +211,26 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="app.manifest" />
-    <None Include="Map\LevelCSV\Map.csv" />
+    <None Include="Levels\LevelCSV\Map.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\002.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\001.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\003.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\004.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\005.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\006.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\007.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\008.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\009.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\010.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\011.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\012.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\013.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\014.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\015.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\016.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\017.csv" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Map\LevelCSV\RoomCSV\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
