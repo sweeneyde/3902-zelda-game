@@ -52,17 +52,19 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 .Where(p => typeOfObstacle.IsAssignableFrom(p));
 
             //Enemy on player
-            foreach (CollisionSides side in Enum.GetValues(typeof(CollisionSides)))
+            foreach (Type enemySubject in enemyTypes)
             {
-                foreach (Type enemySubject in enemyTypes)
-                {
-                    commandMap.Add(new Tuple<Type,Type,CollisionSides>(enemySubject, playerType, side), typeof(TakeDamageCommand));
-                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Sword), enemySubject, side), typeof(EnemyTakeDamageCommand));
-                }
-                foreach(Type obstacleSubject in obstacleTypes)
-                {
-                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, side), typeof(ResetCommand));
-                }
+                commandMap.Add(new Tuple<Type,Type,CollisionSides>(enemySubject, playerType, CollisionSides.Down), typeof(TakeDamageCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(enemySubject, playerType, CollisionSides.Left), typeof(TakeDamageCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(enemySubject, playerType, CollisionSides.Right), typeof(TakeDamageCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(enemySubject, playerType, CollisionSides.Up), typeof(TakeDamageCommand));
+            }
+            foreach(Type obstacleSubject in obstacleTypes)
+            {
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, CollisionSides.Down), typeof(ResetCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, CollisionSides.Left), typeof(ResetCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, CollisionSides.Right), typeof(ResetCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, CollisionSides.Up), typeof(ResetCommand));
             }
 
             Type doorTarget = typeof(Door);

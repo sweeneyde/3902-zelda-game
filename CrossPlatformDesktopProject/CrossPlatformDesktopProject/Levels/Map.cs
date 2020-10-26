@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 ﻿using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
 using Microsoft.Xna.Framework;
-=======
-﻿using Microsoft.Xna.Framework;
->>>>>>> sword
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -57,7 +53,6 @@ namespace CrossPlatformDesktopProject.Levels
             currentRoom.Update();
         }
 
-<<<<<<< HEAD
         public void RemoveEntity(ICollider entity)
         {
             currentRoom.Remove(entity);
@@ -99,8 +94,6 @@ namespace CrossPlatformDesktopProject.Levels
             return null;
         }
 
-=======
->>>>>>> sword
         private void RoomUp()
         {
             string upRoomID = currentAdjacentList[0];

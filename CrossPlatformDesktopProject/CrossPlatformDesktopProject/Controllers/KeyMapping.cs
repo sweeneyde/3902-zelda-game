@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject
 {
@@ -77,7 +76,9 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.RightShift, new SelectCommand(myPlayer));
             this.addCommand(Keys.Enter, new StartCommand(myPlayer));
 
-            this.addCommand(Keys.E, new TakeDamageCommand(myPlayer, CollisionSides.Up));
+            this.addCommand(Keys.E, new TakeDamageCommand(myPlayer));
+
+            
 
             priorityActions.Add(Keys.N);
             priorityActions.Add(Keys.Z);

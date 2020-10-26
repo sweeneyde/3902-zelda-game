@@ -7,27 +7,17 @@ using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
-<<<<<<< HEAD
 using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.Obstacles;
 using CrossPlatformDesktopProject.WorldItem;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
-=======
-using CrossPlatformDesktopProject.NPC;
-using CrossPlatformDesktopProject.Obstacles;
-using CrossPlatformDesktopProject.WorldItem;
->>>>>>> sword
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject.Levels
 {
-<<<<<<< HEAD
     class Room
-=======
-    public class Room
->>>>>>> sword
     {
         private List<IWorldItem> worldItems;
         private List<IObstacle> obstacles;
@@ -68,7 +58,6 @@ namespace CrossPlatformDesktopProject.Levels
             npcs[npcIndex].Draw(sb);
         }
 
-<<<<<<< HEAD
         public List<Door> FindDoors(string[] adjacentRooms, Map myMap)
         {
             return background.FindDoorColliders(adjacentRooms, myMap);
@@ -104,9 +93,6 @@ namespace CrossPlatformDesktopProject.Levels
         }
 
         
-=======
-
->>>>>>> sword
 
         /*public void TestAccessMethod()
         {

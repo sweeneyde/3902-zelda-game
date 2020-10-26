@@ -33,8 +33,8 @@ namespace CrossPlatformDesktopProject.Levels
         {
             this.game = game;
             cooldownFramesLeft = 0;
-            worldItemsIndex = obstaclesIndex = 0;
-            npcIndex = 2;
+            worldItemsIndex = obstaclesIndex = npcIndex = 0;
+
             worldItems = new List<IWorldItem>
             {
                 new DungeonKey(),
@@ -83,12 +83,16 @@ namespace CrossPlatformDesktopProject.Levels
 
         public List<ICollider> getCollidables()
         {
-            return new List<ICollider>
+            List<ICollider> colliders = new List<ICollider>();
+            foreach(INpc x in npcs)
             {
-                worldItems[worldItemsIndex],
-                npcs[npcIndex],
-                obstacles[obstaclesIndex],
-            };
+                colliders.Add((ICollider) x);
+            }
+            foreach(IObstacle x in obstacles)
+            {
+                colliders.Add((ICollider)x);
+            }
+            return colliders;
         }
 
         public void nextWorldItem()
