@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Owner/Documents/GitHub/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet_Mirrored.png</SourceFile>
-  <SourceTime>2020-10-02T12:48:59.2187611-04:00</SourceTime>
-  <DestFile>C:/Users/Owner/Documents/GitHub/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/Link_Spritesheet_Mirrored.xnb</DestFile>
-  <DestTime>2020-10-21T18:16:30.9854363-04:00</DestTime>
+  <SourceFile>C:/Users/nerdy/Source/Repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet_Mirrored.png</SourceFile>
+  <SourceTime>2020-10-03T20:53:09.211444-04:00</SourceTime>
+  <DestFile>C:/Users/nerdy/Source/Repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/Link_Spritesheet_Mirrored.xnb</DestFile>
+  <DestTime>2020-10-26T18:30:02.0129615-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
