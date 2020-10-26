@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 ﻿using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
 using Microsoft.Xna.Framework;
+=======
+﻿using Microsoft.Xna.Framework;
+>>>>>>> sword
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -104,6 +108,7 @@ namespace CrossPlatformDesktopProject.Levels
                 sb.Draw(texture, rightDoorDest, RoomTextureStorage.RIGHT_OPEN_DOOR, Color.White);
             }
         }
+<<<<<<< HEAD
         public List<Door> FindDoorColliders(string[] adjacentRooms, Map currentMap)
         {
             List<Door> doors = new List<Door>();
@@ -125,5 +130,7 @@ namespace CrossPlatformDesktopProject.Levels
             }
             return doors;
         }
+=======
+>>>>>>> sword
     }
 }
