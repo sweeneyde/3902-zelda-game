@@ -9,11 +9,11 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos;
         private Rectangle hitbox;
 
-        public Boss()
+        public Boss(float xPos, float yPos, Fireball fireball1, Fireball fireball2, Fireball fireball3)
         {
-            currentState = new BossWalkEast(this);
-            xPos = 400;
-            yPos = 100;
+            currentState = new BossWalkEast(this, fireball1, fireball2, fireball3);
+            this.xPos = xPos;
+            this.yPos = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 
