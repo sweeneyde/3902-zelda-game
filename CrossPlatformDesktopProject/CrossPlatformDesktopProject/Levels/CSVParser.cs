@@ -26,7 +26,7 @@ namespace CrossPlatformDesktopProject.Levels
         private string[] commentTokens = { "#", "//", "/" };
         private string[] delimiters = { ",", ";" };
 
-        public CSVParser(Game1 game)
+       public CSVParser(Game1 game)
         {
             this.game = game;
             // Load paths on Init and store them as to save some time //
@@ -39,7 +39,7 @@ namespace CrossPlatformDesktopProject.Levels
             cwdPath = Directory.GetCurrentDirectory();
             levelPath = cwdPath.Replace(@"\bin\DesktopGL\AnyCPU\Debug", @"\Levels");
             Debug.Print("Current Working Directory: " + levelPath);
-
+      
             levelCSVPath = Path.Combine(levelPath, rootCSV);
 
             roomCSVPath = Path.Combine(levelCSVPath, roomCSV);
@@ -54,7 +54,7 @@ namespace CrossPlatformDesktopProject.Levels
 
         public void MapParse(Dictionary<string, string[]> mapMemory)
         {
-
+            
             using (TextFieldParser csvParser = new TextFieldParser(mapCSVPath))
             {
                 string[] readLine;
@@ -110,7 +110,7 @@ namespace CrossPlatformDesktopProject.Levels
                     i = 0;
                     // Read current line fields, pointer moves to the next line.
                     readLine = csvParser.ReadFields();
-                    while (i < readLine.Length)
+                    while(i < readLine.Length)
                     {
                         grabType = readLine[i];
                         i++;
@@ -126,13 +126,11 @@ namespace CrossPlatformDesktopProject.Levels
                         {
                             npcHolder.Add((INpc)grabObj);
                             Debug.Print("Added NPC");
-                        }
-                        else if (grabObj is IObstacle)
+                        } else if(grabObj is IObstacle)
                         {
                             obstacleHolder.Add((IObstacle)grabObj);
                             Debug.Print("Added Obstacle");
-                        }
-                        else if (grabObj is IWorldItem)
+                        } else if(grabObj is IWorldItem)
                         {
                             worldItemHolder.Add((IWorldItem)grabObj);
                             Debug.Print("Added World Item");

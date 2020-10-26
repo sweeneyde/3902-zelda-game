@@ -6,10 +6,12 @@ namespace CrossPlatformDesktopProject.NPC
     class OldMan : INpc
     {
         public float xPos, yPos;
+        private Rectangle hitbox;
         public OldMan()
         {
             xPos = 400;
             yPos = 100;
+            hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -20,6 +22,11 @@ namespace CrossPlatformDesktopProject.NPC
                 (int)xPos, (int)yPos,
                 source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destination, source, Color.White);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return hitbox;
         }
 
         public void Update()

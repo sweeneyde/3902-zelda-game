@@ -3,12 +3,14 @@ using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.Obstacles;
 using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.WorldItem;
+using CrossPlatformDesktopProject.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Dynamic;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject
 {
@@ -21,12 +23,16 @@ namespace CrossPlatformDesktopProject
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public List<IController> controllerList;
-
-        public Sprint2ListStorage entityStorage;
+        
+        public DevRoom entityStorage;
+        private CollisionDetector collisionController;
 
         protected Texture2D img;
         private SpriteFont font;
         private Player player;
+
+        //----------TEST------------//
+        private Map map;
 
         public Game1()
         {
@@ -42,6 +48,11 @@ namespace CrossPlatformDesktopProject
         /// </summary>
         protected override void Initialize()
         {
+            //--------------TEST----------//
+            map = new Map(this);
+            //map.TestAccess();
+
+            ///////////////////////////////
             player = new Player();
 
             controllerList = new List<IController>();
@@ -49,8 +60,11 @@ namespace CrossPlatformDesktopProject
             KeyboardController KC = new KeyboardController(this, player);
             controllerList.Add(KC);
 
-            entityStorage = new Sprint2ListStorage(this);
-
+            entityStorage = new DevRoom(this);
+            List<ICollider> colliders = entityStorage.getCollidables();
+            colliders.Add(player);
+            collisionController = new CollisionDetector(colliders);
+            
             base.Initialize();
         }
 
@@ -66,6 +80,7 @@ namespace CrossPlatformDesktopProject
             ObstacleTextureStorage.Instance.LoadAllResources(Content);
             NpcTextureStorage.Instance.LoadAllResources(Content);
             ItemTextureStorage.Instance.LoadAllResources(Content);
+            RoomTextureStorage.Instance.LoadAllResources(Content);
         }
 
         /// <summary>
@@ -93,6 +108,8 @@ namespace CrossPlatformDesktopProject
                 controller.Update();
             }
 
+            map.Update();
+            collisionController.Update();
             entityStorage.Update();
 
             base.Update(gameTime);
@@ -108,7 +125,7 @@ namespace CrossPlatformDesktopProject
 
             spriteBatch.Begin();
 
-            entityStorage.Draw(spriteBatch);
+            map.Draw(spriteBatch);
             player.Draw(spriteBatch);
 
             spriteBatch.End();

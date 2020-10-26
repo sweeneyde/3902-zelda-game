@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.Obstacles;
 using CrossPlatformDesktopProject.WorldItem;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace CrossPlatformDesktopProject
+// This file was for the temporary Sprint2 Storage
+
+namespace CrossPlatformDesktopProject.Levels
 {
-    public class Sprint2ListStorage
+    public class DevRoom
     {
         private List<IWorldItem> worldItems;
         private List<IObstacle> obstacles;
@@ -25,7 +29,7 @@ namespace CrossPlatformDesktopProject
         private static int cooldownFramesStart = 15;
         private Game1 game;
 
-        public Sprint2ListStorage(Game1 game)
+        public DevRoom(Game1 game)
         {
             this.game = game;
             cooldownFramesLeft = 0;
@@ -75,6 +79,20 @@ namespace CrossPlatformDesktopProject
             worldItems[worldItemsIndex].Draw(sb);
             obstacles[obstaclesIndex].Draw(sb);
             npcs[npcIndex].Draw(sb);
+        }
+
+        public List<ICollider> getCollidables()
+        {
+            List<ICollider> colliders = new List<ICollider>();
+            foreach(INpc x in npcs)
+            {
+                colliders.Add((ICollider) x);
+            }
+            foreach(IObstacle x in obstacles)
+            {
+                colliders.Add((ICollider)x);
+            }
+            return colliders;
         }
 
         public void nextWorldItem()
