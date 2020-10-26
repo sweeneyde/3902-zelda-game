@@ -12,10 +12,12 @@ namespace CrossPlatformDesktopProject.Obstacles
     class Block : IObstacle
     {
         public float xPos, yPos;
+        private Rectangle hitbox;
         public Block()
         {
             xPos = 200;
             yPos = 200;
+            hitbox = new Rectangle((int)xPos, (int)yPos, 50, 50);
         }
         public void Update()
         {
@@ -28,6 +30,11 @@ namespace CrossPlatformDesktopProject.Obstacles
             Rectangle source = ObstacleTextureStorage.OBSTACLE_BLOCK;
             Rectangle destination = new Rectangle((int)xPos, (int)yPos, source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destination, source, Color.White);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return hitbox;
         }
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Dynamic;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject
 {
@@ -24,6 +25,7 @@ namespace CrossPlatformDesktopProject
         public List<IController> controllerList;
         
         public DevRoom entityStorage;
+        private CollisionDetector collisionController;
 
         protected Texture2D img;
         private SpriteFont font;
@@ -58,8 +60,11 @@ namespace CrossPlatformDesktopProject
             KeyboardController KC = new KeyboardController(this, player);
             controllerList.Add(KC);
 
-            //entityStorage = new Room(this);
-
+            entityStorage = new DevRoom(this);
+            List<ICollider> colliders = entityStorage.getCollidables();
+            colliders.Add(player);
+            collisionController = new CollisionDetector(colliders);
+            
             base.Initialize();
         }
 
@@ -104,6 +109,8 @@ namespace CrossPlatformDesktopProject
             }
 
             map.Update();
+            collisionController.Update();
+            entityStorage.Update();
 
             base.Update(gameTime);
         }
