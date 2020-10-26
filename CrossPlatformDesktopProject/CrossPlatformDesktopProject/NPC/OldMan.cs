@@ -7,10 +7,10 @@ namespace CrossPlatformDesktopProject.NPC
     {
         public float xPos, yPos;
         private Rectangle hitbox;
-        public OldMan()
+        public OldMan(float xPos, float yPos)
         {
-            xPos = 400;
-            yPos = 100;
+            this.xPos = xPos;
+            this.yPos = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 
