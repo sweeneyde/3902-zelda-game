@@ -1,4 +1,5 @@
-﻿using CrossPlatformDesktopProject.Link;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.Link;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,13 @@ namespace CrossPlatformDesktopProject.Commands
     class TakeDamageCommand : ICommand
     {
         private Player myPlayer;
-        public TakeDamageCommand(Player player)
+        private CollisionSides mySide;
+        public TakeDamageCommand(Player player, CollisionSides side)
         {
             myPlayer = player;
+            mySide = side;
+
         }
-        public void Execute() => myPlayer.TakeDamage();
+        public void Execute() => myPlayer.TakeDamage(mySide);
     }
 }
