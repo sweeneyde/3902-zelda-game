@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace CrossPlatformDesktopProject
 {
@@ -49,6 +50,7 @@ namespace CrossPlatformDesktopProject
                 }
                 newID += currentID;
                 myGame.map.currentRoom = csvParser.RoomParse(newID);
+                myGame.map.map.TryGetValue(newID, out myGame.map.currentAdjacentList);
             }
 
             else if (oldState.LeftButton != ButtonState.Pressed && currentState.LeftButton == ButtonState.Pressed)
@@ -67,6 +69,7 @@ namespace CrossPlatformDesktopProject
                 }
                 newID += currentID;
                 myGame.map.currentRoom = csvParser.RoomParse(newID);
+                myGame.map.map.TryGetValue(newID, out myGame.map.currentAdjacentList);
             }
         }
 
