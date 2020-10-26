@@ -25,7 +25,7 @@ namespace CrossPlatformDesktopProject.NPC
             delay_frame_index = 0;
 
             boomerang.travelmarker = 0;
-            boomerang.currentState = new BoomerangDown(boomerang, goriya.xPos + 10, goriya.yPos + 10);
+            boomerang.currentState = new BoomerangDown(boomerang, goriya.xPos + 10, goriya.yPos + 10, true);
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)

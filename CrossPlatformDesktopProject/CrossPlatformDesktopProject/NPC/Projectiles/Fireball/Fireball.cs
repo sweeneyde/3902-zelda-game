@@ -7,13 +7,15 @@ namespace CrossPlatformDesktopProject.NPC
     {
         public INpcState currentState;
         public float xPos, yPos;
+        public bool start;
         private Rectangle hitbox;
 
         public Fireball()
         {
-            currentState = new FireballIdle(this);
-            xPos = 400;
-            yPos = 100;
+            currentState = new MiddleFireball(this, xPos, yPos, start);
+            xPos = 0;
+            yPos = 0;
+            start = false;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 

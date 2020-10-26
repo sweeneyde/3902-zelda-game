@@ -10,11 +10,11 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos;
         private Rectangle hitbox;
 
-        public Gel()
+        public Gel(float xPos, float yPos)
         {
             currentState = new GelWalkEast(this);
-            xPos = 400;
-            yPos = 100;
+            this.xPos = xPos;
+            this.yPos = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 

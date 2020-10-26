@@ -19,7 +19,7 @@ namespace CrossPlatformDesktopProject.NPC
             NpcTextureStorage.BOSS_ATTACK_4
         };
 
-        public BottomFireball(Fireball fireball, float xPos, float yPos)
+        public BottomFireball(Fireball fireball, float xPos, float yPos, bool start)
         {
             this.fireball = fireball;
             my_frame_index = 0;
@@ -27,31 +27,38 @@ namespace CrossPlatformDesktopProject.NPC
 
             fireball.xPos = xPos;
             fireball.yPos = yPos;
+            fireball.start = start;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = NpcTextureStorage.Instance.getBossSpriteSheet();
+            if (fireball.start == true)
+            {
+                Texture2D texture = NpcTextureStorage.Instance.getBossSpriteSheet();
 
-            Rectangle source = my_source_frames[my_frame_index];
-            Rectangle destination_fireball = new Rectangle(
-                (int)fireball.xPos, (int)fireball.yPos,
-                NpcTextureStorage.BOSS_1.Width, NpcTextureStorage.BOSS_1.Height);
+                Rectangle source = my_source_frames[my_frame_index];
+                Rectangle destination_fireball = new Rectangle(
+                    (int)fireball.xPos, (int)fireball.yPos,
+                    NpcTextureStorage.BOSS_1.Width, NpcTextureStorage.BOSS_1.Height);
 
-            spriteBatch.Draw(texture, destination_fireball, source, Color.White);
+                spriteBatch.Draw(texture, destination_fireball, source, Color.White);
+            }
         }
 
         public void Update()
         {
-            if (++delay_frame_index >= delay_frames)
+            if (fireball.start == true)
             {
-                delay_frame_index = 0;
-                my_frame_index++;
+                if (++delay_frame_index >= delay_frames)
+                {
+                    delay_frame_index = 0;
+                    my_frame_index++;
 
-                fireball.xPos -= 5;
-                fireball.yPos += 3;
+                    fireball.xPos -= 5;
+                    fireball.yPos += 3;
 
-                my_frame_index %= my_source_frames.Count;
+                    my_frame_index %= my_source_frames.Count;
+                }
             }
         }
     }

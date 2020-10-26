@@ -23,6 +23,9 @@ namespace CrossPlatformDesktopProject
         private int obstaclesIndex;
         private int npcIndex;
 
+        private float xPos = 400;
+        private float yPos = 100;
+
         private INpc fireball1;
         private INpc fireball2;
         private INpc fireball3;
@@ -64,12 +67,12 @@ namespace CrossPlatformDesktopProject
 
             npcs = new List<INpc>
             {
-                new Boss((Fireball) fireball1, (Fireball) fireball2, (Fireball) fireball3),
-                new Bat(),
-                new Goriya((GoriyaBoomerang) boomerang),
-                new Gel(),
-                new Skeleton(),
-                new OldMan(),
+                new Boss(xPos, yPos, (Fireball) fireball1, (Fireball) fireball2, (Fireball) fireball3),
+                new Bat(xPos, yPos),
+                new Goriya(xPos, yPos, (GoriyaBoomerang) boomerang),
+                new Gel(xPos, yPos),
+                new Skeleton(xPos, yPos),
+                new OldMan(xPos, yPos),
             };
         }
 

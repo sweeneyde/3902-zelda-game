@@ -19,7 +19,7 @@ namespace CrossPlatformDesktopProject.NPC
             NpcTextureStorage.BOOMERANG_3,
         };
 
-        public BoomerangLeft(GoriyaBoomerang boomerang, float xPos, float yPos)
+        public BoomerangLeft(GoriyaBoomerang boomerang, float xPos, float yPos, bool start)
         {
             this.boomerang = boomerang;
             my_frame_index = 0;
@@ -29,47 +29,54 @@ namespace CrossPlatformDesktopProject.NPC
 
             boomerang.xPos = xPos;
             boomerang.yPos = yPos;
+            boomerang.start = start;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = NpcTextureStorage.Instance.getEnemySpriteSheet();
+            if (boomerang.start == true)
+            {
+                Texture2D texture = NpcTextureStorage.Instance.getEnemySpriteSheet();
 
-            Rectangle source = my_source_frames[my_frame_index];
-            Rectangle destination_fireball = new Rectangle(
-                (int)boomerang.xPos, (int)boomerang.yPos,
-                NpcTextureStorage.GORIYA_LEFT_1.Width * 2, NpcTextureStorage.GORIYA_LEFT_1.Height * 3);
+                Rectangle source = my_source_frames[my_frame_index];
+                Rectangle destination_fireball = new Rectangle(
+                    (int)boomerang.xPos, (int)boomerang.yPos,
+                    NpcTextureStorage.GORIYA_LEFT_1.Width * 2, NpcTextureStorage.GORIYA_LEFT_1.Height * 3);
 
-            spriteBatch.Draw(texture, destination_fireball, source, Color.White);
+                spriteBatch.Draw(texture, destination_fireball, source, Color.White);
+            }
         }
 
         public void Update()
         {
-            if (++delay_frame_index >= delay_frames)
+            if (boomerang.start == true)
             {
-                delay_frame_index = 0;
-                my_frame_index++;
-
-                if (boomerang.travelmarker == 1 && boomerang.xPos == starting)
+                if (++delay_frame_index >= delay_frames)
                 {
-                    boomerang.currentState = new BoomerangIdle(boomerang);
-                }
+                    delay_frame_index = 0;
+                    my_frame_index++;
 
-                if (boomerang.travelmarker == 0)
-                {
-                    boomerang.xPos -= 10;
-                }
-                else if (boomerang.travelmarker == 1)
-                {
-                    boomerang.xPos += 10;
-                }
+                    if (boomerang.travelmarker == 1 && boomerang.xPos == starting)
+                    {
+                        boomerang.start = false;
+                    }
 
-                if (boomerang.xPos == 0)
-                {
-                    boomerang.travelmarker = 1;
-                }
+                    if (boomerang.travelmarker == 0)
+                    {
+                        boomerang.xPos -= 10;
+                    }
+                    else if (boomerang.travelmarker == 1)
+                    {
+                        boomerang.xPos += 10;
+                    }
 
-                my_frame_index %= my_source_frames.Count;
+                    if (boomerang.xPos == 0)
+                    {
+                        boomerang.travelmarker = 1;
+                    }
+
+                    my_frame_index %= my_source_frames.Count;
+                }
             }
         }
     }

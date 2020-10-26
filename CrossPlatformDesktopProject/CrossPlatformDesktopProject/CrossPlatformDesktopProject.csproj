@@ -84,7 +84,6 @@
     <Compile Include="Link\LinkUsingItemSouth.cs" />
     <Compile Include="Link\LinkUsingItemWest.cs" />
     <Compile Include="NPC\Projectiles\Boomerang\BoomerangLeft.cs" />
-    <Compile Include="NPC\Projectiles\Boomerang\BoomerangIdle.cs" />
     <Compile Include="NPC\Projectiles\Boomerang\BoomerangRight.cs" />
     <Compile Include="NPC\Projectiles\Boomerang\BoomerangDown.cs" />
     <Compile Include="NPC\Projectiles\Boomerang\BoomerangUp.cs" />
@@ -93,7 +92,6 @@
     <Compile Include="NPC\Projectiles\Fireball\MiddleFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\TopFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\Fireball.cs" />
-    <Compile Include="NPC\Projectiles\Fireball\FireballIdle.cs" />
     <Compile Include="Obstacles\Stairs.cs" />
     <Compile Include="Obstacles\PlainBlock.cs" />
     <Compile Include="Obstacles\Sand.cs" />

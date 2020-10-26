@@ -10,11 +10,11 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos;
         private Rectangle hitbox;
 
-        public Goriya(GoriyaBoomerang boomerang)
+        public Goriya(float xPos, float yPos, GoriyaBoomerang boomerang)
         {
             currentState = new GoriyaWalkEast(this, boomerang);
-            xPos = 400;
-            yPos = 100;
+            this.xPos = xPos;
+            this.yPos = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.Commands;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject.NPC
@@ -8,13 +9,15 @@ namespace CrossPlatformDesktopProject.NPC
         public INpcState currentState;
         public float xPos, yPos;
         public int travelmarker;
+        public bool start;
 
         public GoriyaBoomerang()
         {
-            currentState = new BoomerangIdle(this);
+            currentState = new BoomerangDown(this, xPos, yPos, start);
             xPos = 0;
             yPos = 0;
             travelmarker = 0;
+            start = false;
         }
 
         public void Update()
