@@ -2,6 +2,7 @@
 using CrossPlatformDesktopProject.Equipables;
 using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.NPC;
+using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections;
@@ -41,7 +42,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             //Object Types
             Type boomerangType = typeof(Boomerang);
             Type bombType = typeof(Bomb);
-            Type bowType = typeof(Gel);
+            Type bowType = typeof(Bow);
             Type[] objectTypes = { boomerangType, bowType, bombType };
 
             //Obstacle Types
@@ -66,12 +67,20 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, CollisionSides.Up), typeof(ResetCommand));
             }
 
+            Type doorTarget = typeof(Door);
+            commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, doorTarget, CollisionSides.Down), typeof(TransportRoomCommand));
+            commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, doorTarget, CollisionSides.Left), typeof(TransportRoomCommand));
+            commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, doorTarget, CollisionSides.Right), typeof(TransportRoomCommand));
+            commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, doorTarget, CollisionSides.Up), typeof(TransportRoomCommand));
+            
+
         }
 
         public ICommand parseConstructor(ICollider subject, ICollider target, CollisionSides side, Type commandType)
         {
             //Command has only the target type as parameter
             Type targetType = target.GetType();
+            Type subjectType = subject.GetType();
             Type[] argumentTypes = { targetType };
             ConstructorInfo commandConstructor = commandType.GetConstructor(argumentTypes);
 
@@ -81,12 +90,18 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 argumentTypes = new Type[] { targetType, typeof(CollisionSides) };
                 commandConstructor = commandType.GetConstructor(argumentTypes);
             }
+            if (commandConstructor is null)
+            {
+                argumentTypes = new Type[] { subjectType, targetType, typeof(CollisionSides) };
+                commandConstructor = commandType.GetConstructor(argumentTypes);
+            }
             if (commandConstructor is null) { return null; }
 
             //Check constructor vs parameters
 
             //Call command
             ICommand commandClass;
+            Console.WriteLine(commandConstructor.GetParameters().Length);
             switch (commandConstructor.GetParameters().Length)
             {
                 case 1:
@@ -94,6 +109,9 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                     break;
                 case 2:
                     commandClass = (ICommand)commandConstructor.Invoke(new object[] { target, side });
+                    break;
+                case 3:
+                    commandClass = (ICommand)commandConstructor.Invoke(new object[] { subject, target, side });
                     break;
                 default:
                     return null;
@@ -109,7 +127,9 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             if (keySet.Contains(key))
             {
                 Type commandType = commandMap[key];
+                Console.WriteLine(commandType);
                 ICommand commandClass = parseConstructor(subject, target, side, commandType);
+                
                 if (commandClass != null) { commandClass.Execute(); }
             }
         }

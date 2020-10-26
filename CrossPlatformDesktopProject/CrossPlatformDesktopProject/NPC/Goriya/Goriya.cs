@@ -21,13 +21,12 @@ namespace CrossPlatformDesktopProject.NPC
         public void Update()
         {
             currentState.Update();
-            hitbox = new Rectangle((int)xPos, (int)yPos, 100, 100);
+            hitbox = new Rectangle((int)xPos, (int)yPos, 40, 40);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             currentState.Draw(spriteBatch, xPos, yPos);
-            hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 
         public Rectangle GetRectangle()

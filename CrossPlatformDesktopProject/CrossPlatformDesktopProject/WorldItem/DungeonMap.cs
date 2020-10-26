@@ -8,10 +8,12 @@ namespace CrossPlatformDesktopProject.WorldItem
     class DungeonMap : IWorldItem
     {
         public float xPos, yPos;
+        private Rectangle hitbox;
         public DungeonMap()
         {
             xPos = 300;
             yPos = 300;
+            hitbox = new Rectangle((int)xPos, (int)yPos, 20, 20);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -22,6 +24,11 @@ namespace CrossPlatformDesktopProject.WorldItem
                 (int)xPos, (int)yPos,
                 source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destination, source, Color.White);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return hitbox;
         }
     }
 }

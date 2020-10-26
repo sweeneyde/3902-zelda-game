@@ -24,7 +24,6 @@ namespace CrossPlatformDesktopProject
         SpriteBatch spriteBatch;
         public List<IController> controllerList;
         
-        public DevRoom entityStorage;
         private CollisionDetector collisionController;
 
         protected Texture2D img;
@@ -54,17 +53,15 @@ namespace CrossPlatformDesktopProject
 
             ///////////////////////////////
             player = new Player();
-
+            
             controllerList = new List<IController>();
 
             KeyboardController KC = new KeyboardController(this, player);
             controllerList.Add(KC);
-
-            entityStorage = new DevRoom(this);
-            List<ICollider> colliders = entityStorage.getCollidables();
-            colliders.Add(player);
-            collisionController = new CollisionDetector(colliders);
             
+            collisionController = new CollisionDetector(map, player);
+            collisionController.AddColliders(player);
+
             base.Initialize();
         }
 
@@ -110,7 +107,7 @@ namespace CrossPlatformDesktopProject
 
             map.Update();
             collisionController.Update();
-            entityStorage.Update();
+            map.Update();
 
             base.Update(gameTime);
         }

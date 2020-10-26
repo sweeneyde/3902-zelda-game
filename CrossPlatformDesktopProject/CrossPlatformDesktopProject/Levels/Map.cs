@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -49,6 +51,47 @@ namespace CrossPlatformDesktopProject.Levels
         public void Update()
         {
             currentRoom.Update();
+        }
+
+        public void RemoveEntity(ICollider entity)
+        {
+            currentRoom.Remove(entity);
+        }
+
+        public List<ICollider> GetColliders()
+        {
+            return currentRoom.GetColliders(currentAdjacentList, this);
+        }
+        
+        public Door FindDoor(String roomCode)
+        {
+            String oldRoom = currentRoom.roomID;
+            if (currentAdjacentList[0].Equals(roomCode))
+            {
+                RoomUp();
+            }
+            else if(currentAdjacentList[1].Equals(roomCode))
+            {
+                RoomDown();
+            }
+            else if (currentAdjacentList[2].Equals(roomCode))
+            {
+                RoomLeft();
+            }
+            else
+            {
+                RoomRight();
+            }
+
+            List<Door> doors = currentRoom.FindDoors(currentAdjacentList, this);
+            foreach(Door x in doors)
+            {
+                if(x.myRoomKey == oldRoom)
+                {
+                    return x;
+                }
+            }
+            return null;
         }
 
         private void RoomUp()

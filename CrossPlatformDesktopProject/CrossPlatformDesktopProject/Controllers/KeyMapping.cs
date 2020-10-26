@@ -43,12 +43,6 @@ namespace CrossPlatformDesktopProject
 
             //Game Commands
             this.addCommand(Keys.D0, new Quit(myGame));
-            this.addCommand(Keys.T, new NextObstacleCommand(myGame));
-            this.addCommand(Keys.Y, new PrevObstacleCommand(myGame));
-            this.addCommand(Keys.U, new PrevWorldItemCommand(myGame));
-            this.addCommand(Keys.I, new NextWorldItemCommand(myGame));
-            this.addCommand(Keys.O, new PrevNpcCommand(myGame));
-            this.addCommand(Keys.P, new NextNpcCommand(myGame));
             this.addCommand(Keys.Q, new Quit(myGame));
             this.addCommand(Keys.R, new ResetGame(myGame));
 

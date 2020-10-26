@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.Levels;
+using CrossPlatformDesktopProject.Link;
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +15,18 @@ namespace CrossPlatformDesktopProject.CollisionHandler
         private static CollisionResponse responder = new CollisionResponse();
         private List<ICollider> room;
         private static int collisionMargin = 15;
+        private Map myMap;
+        private Player myPlayer;
 
-        public CollisionDetector(List<ICollider> colliders)
+        public CollisionDetector(Map map, Player player)
         {
-            room = colliders;
+            room = map.GetColliders();
+            myMap = map;
+            myPlayer = player;
+        }
+        public void AddColliders(ICollider collider)
+        {
+            room.Add(collider);
         }
 
         public Boolean CheckCollision(Rectangle subject, Rectangle target)
@@ -68,7 +78,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 xOverlap = 0;
             }
 
-            if (Math.Pow(xOverlap,2) > Math.Pow(yOverlap, 2))
+            if (Math.Pow(subject.Center.X - target.Center.X, 2) > Math.Pow(subject.Center.Y - target.Center.Y, 2))
             {
                 return x;
             } else
@@ -80,6 +90,8 @@ namespace CrossPlatformDesktopProject.CollisionHandler
 
         public void Update()
         {
+            room = myMap.GetColliders();
+            room.Add(myPlayer);
             Rectangle subjectRectangle, targetRectangle;
             foreach(ICollider subject in room)
             {
@@ -92,7 +104,6 @@ namespace CrossPlatformDesktopProject.CollisionHandler
 
                     if (CheckCollision(subjectRectangle, targetRectangle))
                     {
-                        Console.WriteLine("{0} hit {1} side of {2}", target, GetOrientation(subjectRectangle, targetRectangle), subject);
                         responder.HandleCollision(subject, target, GetOrientation(subjectRectangle, targetRectangle));
                     }
                 }
