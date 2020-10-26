@@ -9,7 +9,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int my_frame_index;
         private int delay_frame_index;
         private int starting;
-        private Boomerang boomerang;
+        private GoriyaBoomerang boomerang;
 
         private static int delay_frames = 4;
 
@@ -19,7 +19,7 @@ namespace CrossPlatformDesktopProject.NPC
             NpcTextureStorage.BOOMERANG_3,
         };
 
-        public BoomerangLeft(Boomerang boomerang, float xPos, float yPos)
+        public BoomerangLeft(GoriyaBoomerang boomerang, float xPos, float yPos)
         {
             this.boomerang = boomerang;
             my_frame_index = 0;

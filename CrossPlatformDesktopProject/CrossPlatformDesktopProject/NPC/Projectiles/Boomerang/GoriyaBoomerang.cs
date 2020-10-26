@@ -3,14 +3,13 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class Boomerang : INpc
+    class GoriyaBoomerang : INpc
     {
         public INpcState currentState;
         public float xPos, yPos;
         public int travelmarker;
-        private Rectangle hitbox;
 
-        public Boomerang()
+        public GoriyaBoomerang()
         {
             currentState = new BoomerangIdle(this);
             xPos = 0;
@@ -21,6 +20,15 @@ namespace CrossPlatformDesktopProject.NPC
         public void Update()
         {
             currentState.Update();
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle(
+                (int)xPos, (int)yPos, 
+                NpcTextureStorage.BOOMERANG_1.Width, 
+                NpcTextureStorage.BOOMERANG_1.Height
+            );
         }
 
         public void Draw(SpriteBatch spriteBatch)

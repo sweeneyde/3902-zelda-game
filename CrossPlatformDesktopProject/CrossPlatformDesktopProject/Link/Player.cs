@@ -8,13 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CrossPlatformDesktopProject.Link.Equipables;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.Link
 {
-    class Player
+    class Player : ICollider
     {
         public ILinkState currentState;
-        public float xPos, yPos;
+        
+        public float xPos, yPos, previousXPos, previousYPos;
         public InventoryManager linkInventory;
         public static float walking_speed = 3.0f;
         public static int frames_per_step = 6;
@@ -32,12 +34,15 @@ namespace CrossPlatformDesktopProject.Link
         private int damaged_frames_left;
         private int frames_until_color_change;
 
+        private Rectangle hitbox;
+
         public Player()
         {
             currentState = new LinkFacingSouthState(this);
             linkInventory = new InventoryManager(this);
             xPos = 100;
             yPos = 100;
+            hitbox = new Rectangle((int)xPos, (int)yPos, 0,0);
         }
 
         public bool IsDamaged()
@@ -117,6 +122,8 @@ namespace CrossPlatformDesktopProject.Link
                 currentState.setTextureIndex(damaged_frames_left % 4);
             }
             linkInventory.Update();
+            previousXPos = xPos;
+            previousYPos = yPos;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -130,7 +137,13 @@ namespace CrossPlatformDesktopProject.Link
             Rectangle destination = new Rectangle(
                 (int)xPos + XOffset, (int)yPos + YOffset,
                 source.Width * 3, source.Height * 3);
+            hitbox = destination;
             spriteBatch.Draw(texture, destination, source, Color.White);
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return hitbox;
         }
     }
 }

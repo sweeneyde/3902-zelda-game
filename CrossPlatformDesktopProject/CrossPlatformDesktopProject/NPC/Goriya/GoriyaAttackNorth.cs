@@ -9,7 +9,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int my_frame_index;
         private int delay_frame_index;
         private Goriya goriya;
-        private Boomerang boomerang;
+        private GoriyaBoomerang boomerang;
 
         private static int delay_frames = 6;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
@@ -17,7 +17,7 @@ namespace CrossPlatformDesktopProject.NPC
             NpcTextureStorage.GORIYA_UP_2
         };
 
-        public GoriyaAttackNorth(Goriya goriya, Boomerang boomerang)
+        public GoriyaAttackNorth(Goriya goriya, GoriyaBoomerang boomerang)
         {
             this.goriya = goriya;
             this.boomerang = boomerang;

@@ -7,7 +7,7 @@ namespace CrossPlatformDesktopProject.NPC
     class BoomerangIdle : INpcState
     {
 
-        public BoomerangIdle(Boomerang boomerang)
+        public BoomerangIdle(GoriyaBoomerang boomerang)
         {
 
         }

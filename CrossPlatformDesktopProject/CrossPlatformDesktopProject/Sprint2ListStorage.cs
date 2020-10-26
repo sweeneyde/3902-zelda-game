@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Runtime.Remoting.Messaging;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.Obstacles;
 using CrossPlatformDesktopProject.WorldItem;
@@ -39,7 +41,7 @@ namespace CrossPlatformDesktopProject
             fireball1 = new Fireball();
             fireball2 = new Fireball();
             fireball3 = new Fireball();
-            boomerang = new Boomerang();
+            boomerang = new GoriyaBoomerang();
 
             worldItems = new List<IWorldItem>
             {
@@ -64,7 +66,7 @@ namespace CrossPlatformDesktopProject
             {
                 new Boss((Fireball) fireball1, (Fireball) fireball2, (Fireball) fireball3),
                 new Bat(),
-                new Goriya((Boomerang) boomerang),
+                new Goriya((GoriyaBoomerang) boomerang),
                 new Gel(),
                 new Skeleton(),
                 new OldMan(),
@@ -95,6 +97,20 @@ namespace CrossPlatformDesktopProject
             fireball2.Draw(sb);
             fireball3.Draw(sb);
             boomerang.Draw(sb);
+        }
+
+        public List<ICollider> getCollidables()
+        {
+            List<ICollider> colliders = new List<ICollider>();
+            foreach(INpc x in npcs)
+            {
+                colliders.Add((ICollider) x);
+            }
+            foreach(IObstacle x in obstacles)
+            {
+                colliders.Add((ICollider)x);
+            }
+            return colliders;
         }
 
         public void nextWorldItem()
