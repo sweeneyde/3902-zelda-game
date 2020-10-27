@@ -40,7 +40,7 @@ namespace CrossPlatformDesktopProject.NPC
         {
             if (counter == 10)
             {
-                goriya.currentState = new GoriyaWalkWest(goriya, boomerang);
+                goriya.currentState = new GoriyaAttackSouth(goriya, boomerang);
             }
 
             if (++delay_frame_index >= delay_frames)

@@ -26,6 +26,7 @@ namespace CrossPlatformDesktopProject.Levels
         private int worldItemsIndex;
         private int obstaclesIndex;
         private int npcIndex;
+        private int length;
         public string roomID { get; }
 
         private Game1 game;
@@ -45,7 +46,10 @@ namespace CrossPlatformDesktopProject.Levels
 
         public void Update()
         {
-            npcs[npcIndex].Update();
+            for (npcIndex = 0; npcIndex < npcs.Count; npcIndex++)
+            {
+                npcs[npcIndex].Update();
+            }
         }
 
         public void Draw(SpriteBatch sb, string[] adjacents)
@@ -53,9 +57,18 @@ namespace CrossPlatformDesktopProject.Levels
 
             background.Draw(sb, adjacents);
 
-            worldItems[worldItemsIndex].Draw(sb);
-            obstacles[obstaclesIndex].Draw(sb);
-            npcs[npcIndex].Draw(sb);
+            for (worldItemsIndex = 0; worldItemsIndex < worldItems.Count; worldItemsIndex++)
+            {
+                worldItems[worldItemsIndex].Draw(sb);
+            }
+            for (obstaclesIndex = 0; obstaclesIndex < obstacles.Count; obstaclesIndex++)
+            {
+                obstacles[obstaclesIndex].Draw(sb);
+            }
+            for (npcIndex = 0; npcIndex < npcs.Count; npcIndex++)
+            {
+                npcs[npcIndex].Draw(sb);
+            }
         }
 
         public List<Door> FindDoors(string[] adjacentRooms, Map myMap)

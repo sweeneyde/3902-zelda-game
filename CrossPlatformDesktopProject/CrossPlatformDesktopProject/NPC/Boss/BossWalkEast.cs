@@ -46,7 +46,7 @@ namespace CrossPlatformDesktopProject.NPC
         {
             if (counter == 10)
             {
-                boss.currentState = new BossWalkWest(boss, fireball1, fireball2, fireball3);
+                boss.currentState = new BossAttack(boss, fireball1, fireball2, fireball3);
             }
 
             if (++delay_frame_index >= delay_frames)
