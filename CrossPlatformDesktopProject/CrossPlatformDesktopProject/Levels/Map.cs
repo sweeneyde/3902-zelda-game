@@ -1,5 +1,6 @@
-﻿using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
+using CrossPlatformDesktopProject.NPC;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
