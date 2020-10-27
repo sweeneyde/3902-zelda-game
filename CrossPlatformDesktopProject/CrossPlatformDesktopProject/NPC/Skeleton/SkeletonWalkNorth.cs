@@ -8,6 +8,7 @@ namespace CrossPlatformDesktopProject.NPC
     {
         private int my_frame_index;
         private int delay_frame_index;
+        private int counter;
         private Skeleton skeleton;
 
         private static int delay_frames = 10;
@@ -35,7 +36,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (skeleton.xPos == 400 && skeleton.yPos == 100)
+            if (counter == 10)
             {
                 skeleton.currentState = new SkeletonWalkEast(skeleton);
             }
@@ -44,6 +45,7 @@ namespace CrossPlatformDesktopProject.NPC
             {
                 delay_frame_index = 0;
                 skeleton.yPos -= 5;
+                counter++;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
