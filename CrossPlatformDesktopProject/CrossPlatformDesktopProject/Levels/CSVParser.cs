@@ -49,7 +49,6 @@ namespace CrossPlatformDesktopProject.Levels
 
             Debug.Print("Room CSV: " + roomCSVPath);
             Debug.Print("Map CSV Path: " + mapCSVPath);
-
         }
 
 
@@ -97,6 +96,10 @@ namespace CrossPlatformDesktopProject.Levels
             List<IObstacle> obstacleHolder = new List<IObstacle>();
             List<IWorldItem> worldItemHolder = new List<IWorldItem>();
             object[] args;
+            INpc goriyaBoomerang;
+            INpc topFireball;
+            INpc midFireball;
+            INpc botFireball;
 
             using (TextFieldParser csvParser = new TextFieldParser(roomPath))
             {
@@ -106,6 +109,11 @@ namespace CrossPlatformDesktopProject.Levels
                 //Read first line to grab RoomID for texture
                 readLine = csvParser.ReadFields();
                 roomTextureID = readLine[0];
+
+                goriyaBoomerang = new GoriyaBoomerang();
+                topFireball = new Fireball();
+                midFireball = new Fireball();
+                botFireball = new Fireball();
 
                 while (!csvParser.EndOfData)
                 {
@@ -120,15 +128,26 @@ namespace CrossPlatformDesktopProject.Levels
                         i++;
                         grabY = Int32.Parse(readLine[i]);
 
-                        args = new object[] { (float)grabX, (float)grabY};
-
                         Debug.Print(grabType);
                         Type resolvedType = Type.GetType(grabType);
+
+                        if (resolvedType == typeof(Goriya))
+                        {
+                            args = new object[] { (float)grabX, (float)grabY, (GoriyaBoomerang)goriyaBoomerang };
+                        } else if (resolvedType == typeof(Boss))
+                        {
+                            args = new object[] { (float)grabX, (float)grabY, (Fireball)topFireball, (Fireball)midFireball, (Fireball)botFireball };
+                        } else
+                        {
+                            args = new object[] { (float)grabX, (float)grabY };
+                        }
+
                         object grabObj = (Activator.CreateInstance(resolvedType, args));
 
                         if (grabObj is INpc)
                         {
                             npcHolder.Add((INpc)grabObj);
+                            npcHolder.Add(goriyaBoomerang);
                             Debug.Print("Added NPC");
                         } else if(grabObj is IObstacle)
                         {
