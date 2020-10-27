@@ -60,6 +60,12 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 .SelectMany(s => s.GetTypes())
                 .Where(p => typeOfObstacle.IsAssignableFrom(p));
 
+            //Obstacle Types
+            var typeOfItems = typeof(IWorldItem);
+            var itemTypes = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => typeOfItems.IsAssignableFrom(p));
+
             //Enemy on player
             foreach (CollisionSides side in Enum.GetValues(typeof(CollisionSides)))
             {
@@ -72,7 +78,10 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 {
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, side), typeof(ResetCommand));
                 }
-                commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(DungeonKey), side), typeof(KeyDisappearCommand));
+                foreach (Type worldItemTarget in itemTypes)
+                {
+                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, worldItemTarget, side), typeof(KeyDisappearCommand));
+                }
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(Door), side), typeof(TransportRoomCommand));
             }
         }
