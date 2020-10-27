@@ -52,7 +52,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
         public void Update()
         {
             room = myMap.GetColliders();
-            room.Add(myPlayer);
+            room.AddRange(myPlayer.GetColliders());
             Rectangle subjectRectangle, targetRectangle;
             foreach(ICollider subject in room)
             {

@@ -34,9 +34,5 @@ namespace CrossPlatformDesktopProject.WorldItem
             return getRectangle();
         }
 
-        public Rectangle GetRectangle()
-        {
-            return hitbox;
-        }
     }
 }

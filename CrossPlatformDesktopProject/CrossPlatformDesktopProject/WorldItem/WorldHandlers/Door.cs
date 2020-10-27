@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.WorldItem.WorldHandlers
 {
-    class Door : ICollider
+    public class Door : ICollider
     {
         private Rectangle hitbox;
         public Map myMap { get; private set; }

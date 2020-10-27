@@ -17,7 +17,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject.Levels
 {
-    class Room
+    public class Room
     {
         private List<IWorldItem> worldItems;
         private List<IObstacle> obstacles;
