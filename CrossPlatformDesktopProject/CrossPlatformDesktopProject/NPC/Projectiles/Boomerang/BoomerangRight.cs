@@ -9,6 +9,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int my_frame_index;
         private int delay_frame_index;
         private int starting;
+        private int counter;
         private GoriyaBoomerang boomerang;
 
         private static int delay_frames = 4;
@@ -64,13 +65,14 @@ namespace CrossPlatformDesktopProject.NPC
                     if (boomerang.travelmarker == 0)
                     {
                         boomerang.xPos += 10;
+                        counter++;
                     }
                     else if (boomerang.travelmarker == 1)
                     {
                         boomerang.xPos -= 10;
                     }
 
-                    if (boomerang.xPos == 800)
+                    if (counter == 15)
                     {
                         boomerang.travelmarker = 1;
                     }
