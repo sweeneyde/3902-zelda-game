@@ -12,9 +12,9 @@ namespace CrossPlatformDesktopProject
     public interface IEquipable
     {
         void Update();
-
         /* This Draw method's parameters are from the O.G. sprite drawing class*/
         /* Change as needed*/
         void Draw(SpriteBatch spriteBatch);
+        List<ICollider> GetColliders();
     }
 }

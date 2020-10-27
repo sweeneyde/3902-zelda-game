@@ -1,4 +1,5 @@
-﻿using CrossPlatformDesktopProject.Equipables;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.Equipables;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -113,6 +114,18 @@ namespace CrossPlatformDesktopProject.Link.Equipables
         public bool EquipmentInUse()
         {
             return currentItem != null;
+        }
+
+        public List<ICollider> GetColliders()
+        {
+            if (currentItem is null)
+            {
+                return new List<ICollider>();
+            }
+            else
+            {
+                return currentItem.GetColliders();
+            }
         }
     }
 }
