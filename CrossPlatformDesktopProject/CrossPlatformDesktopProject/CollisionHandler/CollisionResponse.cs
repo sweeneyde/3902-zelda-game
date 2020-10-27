@@ -2,6 +2,7 @@
 using CrossPlatformDesktopProject.Equipables;
 using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.Link;
+using CrossPlatformDesktopProject.Link.Equipables;
 using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.WorldItem;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
@@ -48,6 +49,10 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             Type bombType = typeof(Bomb);
             Type bowType = typeof(Bow);
             Type[] objectTypes = { boomerangType, bowType, bombType };
+
+            // Weapon Types
+            Type[] weaponTypes = {typeof(Sword), typeof(Boomerang), typeof(Smoke), typeof(Bow) };
+
 
             //Obstacle Types
             var typeOfObstacle = typeof(IObstacle);
