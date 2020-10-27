@@ -182,25 +182,25 @@ namespace CrossPlatformDesktopProject.Link
                 if (stateName.Contains("East"))
                 {
                     rect = new Rectangle(
-                        (int)xPos + 15, (int)yPos + 4,
+                        (int)xPos + 45, (int)yPos + 12,
                         Sword.LENGTH, Sword.BREADTH);
                 }
                 else if (stateName.Contains("West"))
                 {
                     rect = new Rectangle(
-                        (int)xPos + 1 - Sword.LENGTH, (int)yPos + 4,
+                        (int)xPos + 3 - Sword.LENGTH, (int)yPos + 12,
                         Sword.LENGTH, Sword.BREADTH);
                 }
                 else if (stateName.Contains("North"))
                 {
                     rect = new Rectangle(
-                        (int)xPos + 4, (int)yPos + 1 - Sword.LENGTH,
+                        (int)xPos + 12, (int)yPos + 3 - Sword.LENGTH,
                         Sword.BREADTH, Sword.LENGTH);
                 }
                 else if (stateName.Contains("South"))
                 {
                     rect = new Rectangle(
-                        (int)xPos + 4, (int)yPos + 15,
+                        (int)xPos + 12, (int)yPos + 45,
                         Sword.BREADTH, Sword.LENGTH);
                 }
                 else
