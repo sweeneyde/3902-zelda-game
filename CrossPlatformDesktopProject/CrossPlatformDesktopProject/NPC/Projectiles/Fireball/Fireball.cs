@@ -1,20 +1,21 @@
-﻿using CrossPlatformDesktopProject.CollisionHandler;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class Gel : INpc
+    class Fireball : INpc
     {
         public INpcState currentState;
         public float xPos, yPos;
+        public bool start;
         private Rectangle hitbox;
 
-        public Gel(float xPos, float yPos)
+        public Fireball()
         {
-            currentState = new GelWalkEast(this);
-            this.xPos = xPos;
-            this.yPos = yPos;
+            currentState = new MiddleFireball(this, xPos, yPos, start);
+            xPos = 0;
+            yPos = 0;
+            start = false;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 
@@ -33,7 +34,6 @@ namespace CrossPlatformDesktopProject.NPC
         {
             return hitbox;
         }
-        
     }
 
 }
