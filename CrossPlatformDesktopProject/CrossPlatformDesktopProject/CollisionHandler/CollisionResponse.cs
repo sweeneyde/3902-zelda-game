@@ -73,15 +73,8 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, side), typeof(ResetCommand));
                 }
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(DungeonKey), side), typeof(KeyDisappearCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(Door), side), typeof(TransportRoomCommand));
             }
-
-            Type doorTarget = typeof(Door);
-            commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, doorTarget, CollisionSides.Down), typeof(TransportRoomCommand));
-            commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, doorTarget, CollisionSides.Left), typeof(TransportRoomCommand));
-            commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, doorTarget, CollisionSides.Right), typeof(TransportRoomCommand));
-            commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, doorTarget, CollisionSides.Up), typeof(TransportRoomCommand));
-
-
         }
 
         public ICommand parseConstructor(ICollider subject, ICollider target, CollisionSides side, Type commandType)

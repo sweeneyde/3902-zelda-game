@@ -53,10 +53,18 @@ namespace CrossPlatformDesktopProject.Levels
         {
 
             background.Draw(sb, adjacents);
-
-            if (worldItems.Count > 0) { worldItems[worldItemsIndex].Draw(sb); }
-            if (obstacles.Count > 0) { obstacles[obstaclesIndex].Draw(sb); }
-            if (npcs.Count > 0) { npcs[npcIndex].Draw(sb); }
+            if (worldItems.Count > 0)
+            {
+                foreach (IWorldItem  x in worldItems) { x.Draw(sb); }
+            }
+            if (obstacles.Count > 0)
+            {
+                foreach (IObstacle x in obstacles) { x.Draw(sb); }
+            }
+            if (npcs.Count > 0)
+            {
+                foreach (INpc x in npcs) { x.Draw(sb); }
+            }
         }
 
         public List<Door> FindDoors(string[] adjacentRooms, Map myMap)
