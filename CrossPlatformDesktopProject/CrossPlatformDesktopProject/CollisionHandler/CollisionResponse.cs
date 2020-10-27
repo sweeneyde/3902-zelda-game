@@ -1,6 +1,7 @@
 ﻿using CrossPlatformDesktopProject.Commands;
 using CrossPlatformDesktopProject.Equipables;
 using CrossPlatformDesktopProject.Link;
+using CrossPlatformDesktopProject.Link.Equipables;
 using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
 using Microsoft.Xna.Framework;
@@ -40,7 +41,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             Type[] enemyTypes = { batType, bossType, gelType, goriyaType, skeletonType };
 
             // Weapon Types
-            Type[] weaponTypes = {typeof(Sword), typeof(Boomerang), typeof(Bomb), typeof(Bow) };
+            Type[] weaponTypes = {typeof(Sword), typeof(Boomerang), typeof(Smoke), typeof(Bow) };
 
             //Obstacle Types
             var typeOfObstacle = typeof(IObstacle);
