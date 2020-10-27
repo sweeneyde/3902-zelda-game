@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.Levels;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace CrossPlatformDesktopProject
 {
@@ -15,28 +17,17 @@ namespace CrossPlatformDesktopProject
         Game1 myGame;
         MouseState oldState;
         MouseState currentState;
-        private Dictionary<Rectangle, ICommand> mappingsLeft;
-        private Dictionary<Rectangle, ICommand> mappingsRight;
+        int currentID;
+        string newID;
+        CSVParser csvParser;
 
         public MouseController(Game1 game)
         {
             myGame = game;
-            mappingsLeft = new Dictionary<Rectangle, ICommand>();
-            mappingsRight = new Dictionary<Rectangle, ICommand>();
             oldState = Mouse.GetState();
             currentState = Mouse.GetState();
+            csvParser = new CSVParser(myGame);
         }
-
-        public void addLeftCommand(Rectangle rect, ICommand command)
-        {
-            mappingsLeft.Add(rect, command);
-        }
-
-        public void addRightCommand(Rectangle rect, ICommand command)
-        {
-            mappingsRight.Add(rect, command);
-        }
-
 
         public void Update()
         {
@@ -45,26 +36,40 @@ namespace CrossPlatformDesktopProject
 
             if (oldState.RightButton != ButtonState.Pressed && currentState.RightButton == ButtonState.Pressed)
             {
-                List<Rectangle> list = new List<Rectangle>(mappingsRight.Keys);
-
-                foreach (Rectangle rect in list)
+                currentID = Int32.Parse(myGame.map.currentRoom.roomID);
+                if (currentID < 17)
                 {
-                    mappingsRight[rect].Execute();
-                    
+                    currentID++;
                 }
+                if (currentID < 10)
+                {
+                    newID = "00";
+                } else 
+                {
+                    newID = "0";
+                }
+                newID += currentID;
+                myGame.map.currentRoom = csvParser.RoomParse(newID);
+                myGame.map.map.TryGetValue(newID, out myGame.map.currentAdjacentList);
             }
 
             else if (oldState.LeftButton != ButtonState.Pressed && currentState.LeftButton == ButtonState.Pressed)
             {
-                List<Rectangle> list = new List<Rectangle>(mappingsLeft.Keys);
-
-                foreach (Rectangle rect in list)
+                currentID = Int32.Parse(myGame.map.currentRoom.roomID);
+                if (currentID > 1)
                 {
-                    if (rect.Contains(currentState.X, currentState.Y))
-                    {
-                        mappingsLeft[rect].Execute();
-                    }
+                    currentID--;
                 }
+                if (currentID < 10)
+                {
+                    newID = "00";
+                } else 
+                {
+                    newID = "0";
+                }
+                newID += currentID;
+                myGame.map.currentRoom = csvParser.RoomParse(newID);
+                myGame.map.map.TryGetValue(newID, out myGame.map.currentAdjacentList);
             }
         }
 

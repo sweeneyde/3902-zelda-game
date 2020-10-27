@@ -24,14 +24,14 @@ namespace CrossPlatformDesktopProject
         SpriteBatch spriteBatch;
         public List<IController> controllerList;
         
-        private CollisionDetector collisionController;
+        public DevRoom entityStorage;
 
         protected Texture2D img;
         private SpriteFont font;
         private Player player;
 
         //----------TEST------------//
-        private Map map;
+        public Map map;
 
         public Game1()
         {
@@ -57,7 +57,12 @@ namespace CrossPlatformDesktopProject
             controllerList = new List<IController>();
 
             KeyboardController KC = new KeyboardController(this, player);
+            MouseController MC = new MouseController(this);
             controllerList.Add(KC);
+
+            controllerList.Add(MC);
+
+            entityStorage = new DevRoom(this);
             
             collisionController = new CollisionDetector(map, player);
             collisionController.AddColliders(player);
@@ -105,9 +110,12 @@ namespace CrossPlatformDesktopProject
                 controller.Update();
             }
 
-            map.Update();
+            List<ICollider> colliders = entityStorage.getCollidables();
+            colliders.AddRange(player.GetColliders());
+            var collisionController = new CollisionDetector(colliders);
             collisionController.Update();
             map.Update();
+            entityStorage.Update();
 
             base.Update(gameTime);
         }

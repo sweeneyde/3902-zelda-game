@@ -1,5 +1,6 @@
-﻿using CrossPlatformDesktopProject.Levels;
+using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.Link;
+
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -36,56 +37,16 @@ namespace CrossPlatformDesktopProject.CollisionHandler
 
         public CollisionSides GetOrientation(Rectangle subject, Rectangle target)
         {
-            //needs orientation logic
-            int xOverlap = 0;
-            int yOverlap = 0;
-            CollisionSides x;
-            CollisionSides y;
-            //get relative position
-            if(subject.Center.X - target.Center.X > 0)
-            {
-                //left of subject
-                xOverlap = subject.Center.X - target.Center.X - (subject.Width / 2) - (target.Width / 2);
-                x = CollisionSides.Left;
-
-            } else
-            {
-                //right of subject
-                xOverlap = target.Center.X - subject.Center.X - (subject.Width / 2) - (target.Width / 2);
-                x = CollisionSides.Right;
-
-            }
-
-            if (subject.Center.Y - target.Center.Y > 0)
-            {
-                // top of subject
-                yOverlap = subject.Center.Y - target.Center.Y - (subject.Height / 2) - (target.Height / 2);
-                y = CollisionSides.Up;
-            }
-            else
-            {
-                //bottom of subject
-                yOverlap = target.Center.Y - subject.Center.Y - (subject.Height / 2) - (target.Height / 2);
-                y = CollisionSides.Down;
-            }
-
-            if(yOverlap < -collisionMargin)
-            {
-                yOverlap = 0;
-            }
-            if (xOverlap < -collisionMargin)
-            {
-                xOverlap = 0;
-            }
-
-            if (Math.Pow(subject.Center.X - target.Center.X, 2) > Math.Pow(subject.Center.Y - target.Center.Y, 2))
-            {
-                return x;
-            } else
-            {
-                return y;
-            }
-            
+            float dx = subject.Center.X - target.Center.X;
+            float dy = subject.Center.Y - target.Center.Y;
+            CollisionSides xSide = dx > 0 ? CollisionSides.Left : CollisionSides.Right;
+            CollisionSides ySide = dy > 0 ? CollisionSides.Up : CollisionSides.Down;
+            float xGap = Math.Abs(dx) - (subject.Width / 2) - (target.Width / 2);
+            float yGap = Math.Abs(dy) - (subject.Height / 2) - (target.Height / 2);
+            float xOverlap = Math.Max(0, -xGap);
+            float yOverlap = Math.Max(0, -yGap);
+            // Choose the direction of the smaller overlap.
+            return yOverlap > xOverlap ? xSide : ySide;
         }
 
         public void Update()
@@ -104,7 +65,9 @@ namespace CrossPlatformDesktopProject.CollisionHandler
 
                     if (CheckCollision(subjectRectangle, targetRectangle))
                     {
-                        responder.HandleCollision(subject, target, GetOrientation(subjectRectangle, targetRectangle));
+                        CollisionSides orientation = GetOrientation(subjectRectangle, targetRectangle);
+                        Console.WriteLine("{0} hit {1} side of {2}", target, orientation, subject);
+                        responder.HandleCollision(subject, target, orientation);
                     }
                 }
             }

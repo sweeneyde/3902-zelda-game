@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CrossPlatformDesktopProject.Link.Equipables;
 using CrossPlatformDesktopProject.CollisionHandler;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CrossPlatformDesktopProject.Link
 {
@@ -137,13 +138,54 @@ namespace CrossPlatformDesktopProject.Link
             Rectangle destination = new Rectangle(
                 (int)xPos + XOffset, (int)yPos + YOffset,
                 source.Width * 3, source.Height * 3);
-            hitbox = destination;
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
         public Rectangle GetRectangle()
         {
-            return hitbox;
+            Rectangle sameSize = LinkTextureStorage.LINK_IDLE_EAST;
+            return new Rectangle((int)xPos, (int)yPos, sameSize.Width * 3, sameSize.Height * 3);
+        }
+
+        public List<ICollider> GetColliders()
+        {
+            var list = new List<ICollider>();
+            list.Add(this);
+            string stateName = this.currentState.GetType().Name;
+            if (stateName.Contains("Sword"))
+            {
+                Rectangle rect;
+                if (stateName.Contains("East"))
+                {
+                    rect = new Rectangle(
+                        (int)xPos + 45, (int)yPos + 12,
+                        Sword.LENGTH, Sword.BREADTH);
+                }
+                else if (stateName.Contains("West"))
+                {
+                    rect = new Rectangle(
+                        (int)xPos + 3 - Sword.LENGTH, (int)yPos + 12,
+                        Sword.LENGTH, Sword.BREADTH);
+                }
+                else if (stateName.Contains("North"))
+                {
+                    rect = new Rectangle(
+                        (int)xPos + 12, (int)yPos + 3 - Sword.LENGTH,
+                        Sword.BREADTH, Sword.LENGTH);
+                }
+                else if (stateName.Contains("South"))
+                {
+                    rect = new Rectangle(
+                        (int)xPos + 12, (int)yPos + 45,
+                        Sword.BREADTH, Sword.LENGTH);
+                }
+                else
+                {
+                    throw new NotImplementedException();
+                }
+                list.Add(new Sword(rect));
+            }
+            return list;
         }
     }
 }

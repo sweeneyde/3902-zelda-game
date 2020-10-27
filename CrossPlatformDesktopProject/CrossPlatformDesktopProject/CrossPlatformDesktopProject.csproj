@@ -46,6 +46,7 @@
     <Compile Include="CollisionHandler\CollisionDetection.cs" />
     <Compile Include="CollisionHandler\CollisionResponse.cs" />
     <Compile Include="Commands\TransportRoomCommand.cs" />
+    <Compile Include="Commands\EnemyTakeDamageCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="ICollider.cs" />
     <Compile Include="Commands\ResetGame.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Levels\Map.cs" />
     <Compile Include="Levels\Room.cs" />
     <Compile Include="Levels\RoomTextureStorage.cs" />
+    <Compile Include="Link\Sword.cs" />
     <Compile Include="NPC\Boss\BossAttack.cs" />
     <Compile Include="NPC\Goriya\GoriyaAttackNorth.cs" />
     <Compile Include="NPC\Goriya\GoriyaAttackSouth.cs" />
