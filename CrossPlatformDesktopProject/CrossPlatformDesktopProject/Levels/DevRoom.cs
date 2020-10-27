@@ -25,6 +25,14 @@ namespace CrossPlatformDesktopProject.Levels
         private int obstaclesIndex;
         private int npcIndex;
 
+        private float xPos = 400;
+        private float yPos = 100;
+
+        private INpc fireball1;
+        private INpc fireball2;
+        private INpc fireball3;
+        private INpc boomerang;
+
         private int cooldownFramesLeft;
         private static int cooldownFramesStart = 15;
         private Game1 game;
@@ -34,6 +42,11 @@ namespace CrossPlatformDesktopProject.Levels
             this.game = game;
             cooldownFramesLeft = 0;
             worldItemsIndex = obstaclesIndex = npcIndex = 0;
+
+            fireball1 = new Fireball();
+            fireball2 = new Fireball();
+            fireball3 = new Fireball();
+            boomerang = new GoriyaBoomerang();
 
             worldItems = new List<IWorldItem>
             {
@@ -56,12 +69,12 @@ namespace CrossPlatformDesktopProject.Levels
 
             npcs = new List<INpc>
             {
-                new Boss(),
-                new Bat(),
-                new Goriya(),
-                new Gel(),
-                new Skeleton(),
-                new OldMan(),
+                new Boss(xPos, yPos, (Fireball) fireball1, (Fireball) fireball2, (Fireball) fireball3),
+                new Bat(xPos, yPos),
+                new Goriya(xPos, yPos, (GoriyaBoomerang) boomerang),
+                new Gel(xPos, yPos),
+                new Skeleton(xPos, yPos),
+                new OldMan(xPos, yPos),
             };
         }
 
@@ -72,6 +85,11 @@ namespace CrossPlatformDesktopProject.Levels
                 cooldownFramesLeft--;
             }
             npcs[npcIndex].Update();
+
+            fireball1.Update();
+            fireball2.Update();
+            fireball3.Update();
+            boomerang.Update();
         }
 
         public void Draw(SpriteBatch sb)
@@ -79,6 +97,11 @@ namespace CrossPlatformDesktopProject.Levels
             worldItems[worldItemsIndex].Draw(sb);
             obstacles[obstaclesIndex].Draw(sb);
             npcs[npcIndex].Draw(sb);
+
+            fireball1.Draw(sb);
+            fireball2.Draw(sb);
+            fireball3.Draw(sb);
+            boomerang.Draw(sb);
         }
 
         public List<ICollider> getCollidables()

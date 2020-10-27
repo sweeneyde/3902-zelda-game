@@ -32,7 +32,7 @@ namespace CrossPlatformDesktopProject
         private Player player;
 
         //----------TEST------------//
-        private Map map;
+        public Map map;
 
         public Game1()
         {
@@ -58,7 +58,9 @@ namespace CrossPlatformDesktopProject
             controllerList = new List<IController>();
 
             KeyboardController KC = new KeyboardController(this, player);
+            MouseController MC = new MouseController(this);
             controllerList.Add(KC);
+            controllerList.Add(MC);
 
             entityStorage = new DevRoom(this);
             List<ICollider> colliders = entityStorage.getCollidables();

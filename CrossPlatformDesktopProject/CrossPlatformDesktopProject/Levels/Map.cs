@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Levels
 {
-    class Map
+    public class Map
     {
         // See documentation for CSV explanations
-        private Dictionary<string, string[]> map;
-        private string[] currentAdjacentList;
+        public Dictionary<string, string[]> map;
+        public string[] currentAdjacentList;
         private CSVParser csvParser;
         private Game1 game;
 
-        private Room currentRoom;
+        public Room currentRoom;
         /* Plan to preload
         private Room upRoom;
         private Room downRoom;

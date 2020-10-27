@@ -6,13 +6,14 @@ namespace CrossPlatformDesktopProject.NPC
 {
     class BossAttack : INpcState
     {
-        private int my_frame_index, my_frame_index_2;
-        private int delay_frame_index, delay_frame_index_2;
+        private int my_frame_index;
+        private int delay_frame_index;
         private Boss boss;
-        private float fireball1_x, fireball2_x, fireball3_x, fireball1_y, fireball2_y, fireball3_y;
+        private Fireball fireball1;
+        private Fireball fireball2;
+        private Fireball fireball3;
 
         private static int delay_frames = 15;
-        private static int delay_frames_2 = 2;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
             NpcTextureStorage.BOSS_1,
             NpcTextureStorage.BOSS_2,
@@ -20,30 +21,18 @@ namespace CrossPlatformDesktopProject.NPC
             NpcTextureStorage.BOSS_4
         };
 
-        private static List<Rectangle> my_source_frames_fireball = new List<Rectangle>{
-            NpcTextureStorage.BOSS_ATTACK_1,
-            NpcTextureStorage.BOSS_ATTACK_2,
-            NpcTextureStorage.BOSS_ATTACK_3,
-            NpcTextureStorage.BOSS_ATTACK_4
-        };
-
-        public BossAttack(Boss boss)
+        public BossAttack(Boss boss, Fireball fireball1, Fireball fireball2, Fireball fireball3)
         {
             this.boss = boss;
+            this.fireball1 = fireball1;
+            this.fireball2 = fireball2;
+            this.fireball3 = fireball3;
             my_frame_index = 0;
             delay_frame_index = 0;
 
-            my_frame_index_2 = 0;
-            delay_frame_index_2 = 0;
-
-            fireball1_x = boss.xPos - 10;
-            fireball1_y = boss.yPos + 10;
-
-            fireball2_x = boss.xPos - 10;
-            fireball2_y = boss.yPos + 30;
-
-            fireball3_x = boss.xPos - 10;
-            fireball3_y = boss.yPos + 50;
+            fireball1.currentState = new TopFireball(fireball1, boss.xPos - 10, boss.yPos + 10, true);
+            fireball2.currentState = new MiddleFireball(fireball2, boss.xPos - 10, boss.yPos + 30, true);
+            fireball3.currentState = new BottomFireball(fireball3, boss.xPos - 10, boss.yPos + 50, true);
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -54,28 +43,14 @@ namespace CrossPlatformDesktopProject.NPC
                 (int)xPos, (int)yPos,
                 source.Width * 3, source.Height * 3);
 
-            Rectangle source_fireball = my_source_frames_fireball[my_frame_index_2];
-            Rectangle destination_fireball_1 = new Rectangle(
-                (int)fireball1_x, (int)fireball1_y,
-                source.Width, source.Height);
-            Rectangle destination_fireball_2 = new Rectangle(
-                (int)fireball2_x, (int)fireball2_y,
-                source.Width, source.Height);
-            Rectangle destination_fireball_3 = new Rectangle(
-                (int)fireball3_x, (int)fireball3_y,
-                source.Width, source.Height);
-
             spriteBatch.Draw(texture, destination, source, Color.White);
-            spriteBatch.Draw(texture, destination_fireball_1, source_fireball, Color.White);
-            spriteBatch.Draw(texture, destination_fireball_2, source_fireball, Color.White);
-            spriteBatch.Draw(texture, destination_fireball_3, source_fireball, Color.White);
         }
 
         public void Update()
         {
-            if (fireball2_x < 3)
+            if (fireball2.xPos < 3)
             {
-                boss.currentState = new BossWalkWest(boss);
+                boss.currentState = new BossWalkWest(boss, fireball1, fireball2, fireball3);
             }
 
             if (++delay_frame_index >= delay_frames)
@@ -83,22 +58,6 @@ namespace CrossPlatformDesktopProject.NPC
                 delay_frame_index = 0;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
-            }
-
-            if (++delay_frame_index_2 >= delay_frames_2)
-            {
-                delay_frame_index_2 = 0;
-                my_frame_index_2++;
-
-                fireball1_x -= 5;
-                fireball1_y -= 3;
-
-                fireball2_x -= 5;
-
-                fireball3_x -= 5;
-                fireball3_y += 3;
-
-                my_frame_index_2 %= my_source_frames_fireball.Count;
             }
         }
     }
