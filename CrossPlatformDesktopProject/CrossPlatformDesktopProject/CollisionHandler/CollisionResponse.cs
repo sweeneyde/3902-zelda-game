@@ -1,7 +1,10 @@
 ﻿using CrossPlatformDesktopProject.Commands;
 using CrossPlatformDesktopProject.Equipables;
+using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.Link;
+using CrossPlatformDesktopProject.Link.Equipables;
 using CrossPlatformDesktopProject.NPC;
+using CrossPlatformDesktopProject.WorldItem;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
 using Microsoft.Xna.Framework;
 using System;
@@ -19,18 +22,20 @@ namespace CrossPlatformDesktopProject.CollisionHandler
     {
         private Dictionary<Tuple<Type, Type, CollisionSides>, Type> commandMap;
         private HashSet<Tuple<Type, Type, CollisionSides>> keySet;
+        public static Map myMap;
 
-        public CollisionResponse()
+        public CollisionResponse(Map map)
         {
             commandMap = new Dictionary<Tuple<Type, Type, CollisionSides>, Type>();
             BuildDictionary();
             keySet = new HashSet<Tuple<Type, Type, CollisionSides>>(commandMap.Keys);
+            myMap = map;
         }
 
         private void BuildDictionary()
         {
             Type playerType = typeof(Player);
-            
+
             //Enemy Types
             Type batType = typeof(Bat);
             Type bossType = typeof(Boss);
@@ -45,33 +50,40 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             Type bowType = typeof(Bow);
             Type[] objectTypes = { boomerangType, bowType, bombType };
 
+            // Weapon Types
+            Type[] weaponTypes = {typeof(Sword), typeof(Boomerang), typeof(Smoke), typeof(Bow) };
+
+
             //Obstacle Types
             var typeOfObstacle = typeof(IObstacle);
             var obstacleTypes = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
                 .Where(p => typeOfObstacle.IsAssignableFrom(p));
 
+            //Obstacle Types
+            var typeOfItems = typeof(IWorldItem);
+            var itemTypes = AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => typeOfItems.IsAssignableFrom(p));
+
             //Enemy on player
             foreach (CollisionSides side in Enum.GetValues(typeof(CollisionSides)))
             {
                 foreach (Type enemySubject in enemyTypes)
                 {
-                    commandMap.Add(new Tuple<Type,Type,CollisionSides>(enemySubject, playerType, side), typeof(TakeDamageCommand));
+                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(enemySubject, playerType, side), typeof(TakeDamageCommand));
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Sword), enemySubject, side), typeof(EnemyTakeDamageCommand));
                 }
-                foreach(Type obstacleSubject in obstacleTypes)
+                foreach (Type obstacleSubject in obstacleTypes)
                 {
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, side), typeof(ResetCommand));
                 }
+                foreach (Type worldItemTarget in itemTypes)
+                {
+                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, worldItemTarget, side), typeof(KeyDisappearCommand));
+                }
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(Door), side), typeof(TransportRoomCommand));
             }
-
-            Type doorTarget = typeof(Door);
-            commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, doorTarget, CollisionSides.Down), typeof(TransportRoomCommand));
-            commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, doorTarget, CollisionSides.Left), typeof(TransportRoomCommand));
-            commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, doorTarget, CollisionSides.Right), typeof(TransportRoomCommand));
-            commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, doorTarget, CollisionSides.Up), typeof(TransportRoomCommand));
-            
-
         }
 
         public ICommand parseConstructor(ICollider subject, ICollider target, CollisionSides side, Type commandType)
@@ -86,6 +98,11 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             if (commandConstructor is null)
             {
                 argumentTypes = new Type[] { targetType, typeof(CollisionSides) };
+                commandConstructor = commandType.GetConstructor(argumentTypes);
+            }
+            if (commandConstructor is null)
+            {
+                argumentTypes = new Type[] { targetType, typeof(Map) };
                 commandConstructor = commandType.GetConstructor(argumentTypes);
             }
             if (commandConstructor is null)
@@ -106,6 +123,14 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                     commandClass = (ICommand)commandConstructor.Invoke(new object[] { target });
                     break;
                 case 2:
+                    foreach(ParameterInfo p in commandConstructor.GetParameters())
+                    {
+                        if(p.ParameterType == typeof(Map))
+                        {
+                            commandClass = (ICommand)commandConstructor.Invoke(new object[] { target, myMap });
+                            return commandClass;
+                        }
+                    }
                     commandClass = (ICommand)commandConstructor.Invoke(new object[] { target, side });
                     break;
                 case 3:
@@ -127,7 +152,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 Type commandType = commandMap[key];
                 Console.WriteLine(commandType);
                 ICommand commandClass = parseConstructor(subject, target, side, commandType);
-                
+
                 if (commandClass != null) { commandClass.Execute(); }
             }
         }

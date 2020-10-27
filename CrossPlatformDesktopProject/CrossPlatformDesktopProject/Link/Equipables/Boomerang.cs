@@ -1,4 +1,5 @@
-﻿using CrossPlatformDesktopProject.Link;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Equipables
 {
-    class Boomerang : IEquipable
+    class Boomerang : IEquipable, ICollider
     {
         private Player player;
         private Vector2 currentPos;
@@ -62,9 +63,7 @@ namespace CrossPlatformDesktopProject.Equipables
             }
                 
             Rectangle source = my_source_frames[my_frame_index];
-            Rectangle destination = new Rectangle(
-                (int)currentPos.X, (int)currentPos.Y,
-                source.Width * 3, source.Height * 3);
+            Rectangle destination = this.GetRectangle();
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
@@ -141,6 +140,18 @@ namespace CrossPlatformDesktopProject.Equipables
 
             endPoint = new Vector2(endX, endY);
             return endPoint;
+        }
+        List<ICollider> IEquipable.GetColliders()
+        {
+            return new List<ICollider> { this };
+        }
+
+        public Rectangle GetRectangle()
+        {
+            Rectangle source = my_source_frames[my_frame_index];
+            return new Rectangle(
+                (int)currentPos.X, (int)currentPos.Y,
+                source.Width * 3, source.Height * 3);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -101,9 +102,18 @@ namespace CrossPlatformDesktopProject.Levels
 
         public void Remove(ICollider entity)
         {
-            //not yet implemented
-
-        }
+            if (worldItems.Contains((IWorldItem) entity))
+            {
+                worldItems.Remove((IWorldItem) entity);
+            } else if (npcs.Contains((INpc) entity))
+            {
+                npcs.Remove((INpc)entity);
+            }
+            else if (obstacles.Contains((IObstacle)entity))
+            {
+                obstacles.Remove((IObstacle)entity);
+            }
+    }
 
         
 

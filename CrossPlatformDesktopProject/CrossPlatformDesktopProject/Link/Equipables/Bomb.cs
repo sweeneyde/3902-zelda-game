@@ -1,4 +1,6 @@
-﻿using CrossPlatformDesktopProject.Link;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.Link;
+using CrossPlatformDesktopProject.Link.Equipables;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -57,29 +59,15 @@ namespace CrossPlatformDesktopProject.Equipables
             {
                 destination = new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width * 3, source.Height * 3);
                 spriteBatch.Draw(texture, destination, source, Color.White);
-            } else if (current_frame == 1 || my_frame_index >= 2)
+            }
+            else
             {
-                destination = new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width * 3, source.Height * 3);
-                spriteBatch.Draw(texture, destination, source, Color.White);
-                destination = new Rectangle((int)currentPos.X + 48, (int)currentPos.Y, source.Width * 3, source.Height * 3);
-                spriteBatch.Draw(texture, destination, source, Color.White);
-                destination = new Rectangle((int)currentPos.X + 24, (int)currentPos.Y + 38, source.Width * 3, source.Height * 3);
-                spriteBatch.Draw(texture, destination, source, Color.White);
-                destination = new Rectangle((int)currentPos.X - 24, (int)currentPos.Y - 38, source.Width * 3, source.Height * 3);
-                spriteBatch.Draw(texture, destination, source, Color.White);
-            } else if (current_frame == 2)
-            {
-                destination = new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width * 3, source.Height * 3);
-                spriteBatch.Draw(texture, destination, source, Color.White);
-                destination = new Rectangle((int)currentPos.X - 48, (int)currentPos.Y, source.Width * 3, source.Height * 3);
-                spriteBatch.Draw(texture, destination, source, Color.White);
-                destination = new Rectangle((int)currentPos.X + 24, (int)currentPos.Y - 38, source.Width * 3, source.Height * 3);
-                spriteBatch.Draw(texture, destination, source, Color.White);
-                destination = new Rectangle((int)currentPos.X - 24, (int)currentPos.Y + 38, source.Width * 3, source.Height * 3);
-                spriteBatch.Draw(texture, destination, source, Color.White);
-            } 
-            
-
+                foreach (var smoke in GetColliders())
+                {
+                    destination = smoke.GetRectangle();
+                    spriteBatch.Draw(texture, destination, source, Color.White);
+                }
+            }
         }
 
         public void Update()
@@ -131,6 +119,34 @@ namespace CrossPlatformDesktopProject.Equipables
                 default:
                     player.linkInventory.TerminateBomb();
                     break;
+            }
+        }
+
+    
+        public List<ICollider> GetColliders()
+        {
+            Rectangle source = my_source_frames[my_frame_index];
+            if (current_frame == 1 || my_frame_index >= 2)
+            {
+                return new List<ICollider>()
+                {
+                    new Smoke(new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width * 3, source.Height * 3)),
+                    new Smoke(new Rectangle((int)currentPos.X + 48, (int)currentPos.Y, source.Width * 3, source.Height * 3)),
+                    new Smoke(new Rectangle((int)currentPos.X + 24, (int)currentPos.Y + 38, source.Width * 3, source.Height * 3)),
+                    new Smoke(new Rectangle((int)currentPos.X - 24, (int)currentPos.Y - 38, source.Width * 3, source.Height * 3)),
+                };
+            }
+            else if (current_frame == 2) {
+                return new List<ICollider>()
+                {
+                    new Smoke(new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width * 3, source.Height * 3)),
+                    new Smoke(new Rectangle((int)currentPos.X - 48, (int)currentPos.Y, source.Width * 3, source.Height * 3)),
+                    new Smoke(new Rectangle((int)currentPos.X + 24, (int)currentPos.Y - 38, source.Width * 3, source.Height * 3)),
+                    new Smoke(new Rectangle((int)currentPos.X - 24, (int)currentPos.Y + 38, source.Width * 3, source.Height * 3)),
+                };
+            }
+            else {
+                return new List<ICollider>();
             }
         }
     }
