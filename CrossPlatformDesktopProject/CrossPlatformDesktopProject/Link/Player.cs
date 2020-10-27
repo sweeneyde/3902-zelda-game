@@ -35,15 +35,12 @@ namespace CrossPlatformDesktopProject.Link
         private int damaged_frames_left;
         private int frames_until_color_change;
 
-        private Rectangle hitbox;
-
         public Player()
         {
             currentState = new LinkFacingSouthState(this);
             linkInventory = new InventoryManager(this);
             xPos = 100;
             yPos = 100;
-            hitbox = new Rectangle((int)xPos, (int)yPos, 0,0);
         }
 
         public bool IsDamaged()
@@ -185,6 +182,7 @@ namespace CrossPlatformDesktopProject.Link
                 }
                 list.Add(new Sword(rect));
             }
+            list.AddRange(linkInventory.GetColliders());
             return list;
         }
     }

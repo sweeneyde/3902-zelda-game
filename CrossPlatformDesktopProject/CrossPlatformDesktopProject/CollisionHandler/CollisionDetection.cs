@@ -13,9 +13,8 @@ namespace CrossPlatformDesktopProject.CollisionHandler
 {
     class CollisionDetector
     {
-        private static CollisionResponse responder = new CollisionResponse();
+        private static CollisionResponse responder;
         private List<ICollider> room;
-        private static int collisionMargin = 15;
         private Map myMap;
         private Player myPlayer;
 
@@ -24,6 +23,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             room = map.GetColliders();
             myMap = map;
             myPlayer = player;
+            responder  = new CollisionResponse(myMap);
         }
         public void AddColliders(ICollider collider)
         {
@@ -52,6 +52,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
         public void Update()
         {
             room = myMap.GetColliders();
+            
             room.AddRange(myPlayer.GetColliders());
             Rectangle subjectRectangle, targetRectangle;
             foreach(ICollider subject in room)

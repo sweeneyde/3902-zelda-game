@@ -41,7 +41,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (boomerang.xPos == 470 && boomerang.travelmarker == 1)
+            if (boomerang.xPos == goriya.xPos && boomerang.travelmarker == 1)
             {
                 goriya.currentState = new GoriyaWalkSouth(goriya, boomerang);
             }
