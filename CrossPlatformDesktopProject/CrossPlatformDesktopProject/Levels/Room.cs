@@ -27,6 +27,7 @@ namespace CrossPlatformDesktopProject.Levels
         private int worldItemsIndex;
         private int obstaclesIndex;
         private int npcIndex;
+        private int length;
         public string roomID { get; }
 
         private Game1 game;
@@ -46,13 +47,17 @@ namespace CrossPlatformDesktopProject.Levels
 
         public void Update()
         {
-            npcs[npcIndex].Update();
+            for (npcIndex = 0; npcIndex < npcs.Count; npcIndex++)
+            {
+                npcs[npcIndex].Update();
+            }
         }
 
         public void Draw(SpriteBatch sb, string[] adjacents)
         {
 
             background.Draw(sb, adjacents);
+
             if (worldItems.Count > 0)
             {
                 foreach (IWorldItem  x in worldItems) { x.Draw(sb); }

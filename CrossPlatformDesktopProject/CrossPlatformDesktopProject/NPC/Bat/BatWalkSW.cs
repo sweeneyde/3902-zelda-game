@@ -8,6 +8,7 @@ namespace CrossPlatformDesktopProject.NPC
     {
         private int my_frame_index;
         private int delay_frame_index;
+        private int counter;
         private Bat bat;
 
         private static int delay_frames = 10;
@@ -35,7 +36,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (bat.xPos == 350 && bat.yPos == 50)
+            if (counter == 10)
             {
                 bat.currentState = new BatWalkSE(bat);
             }
@@ -45,6 +46,7 @@ namespace CrossPlatformDesktopProject.NPC
                 delay_frame_index = 0;
                 bat.yPos += 5;
                 bat.xPos -= 5;
+                counter++;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
