@@ -147,7 +147,6 @@ namespace CrossPlatformDesktopProject.Levels
                         if (grabObj is INpc)
                         {
                             npcHolder.Add((INpc)grabObj);
-                            npcHolder.Add(goriyaBoomerang);
                             Debug.Print("Added NPC");
                         } else if(grabObj is IObstacle)
                         {
