@@ -42,9 +42,10 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CollisionHandler\CollisionResponse.cs" />
     <Compile Include="CollisionHandler\Collision.cs" />
     <Compile Include="CollisionHandler\CollisionDetection.cs" />
-    <Compile Include="CollisionHandler\CollisionResponse.cs" />
+    <Compile Include="Commands\KeyDisappearCommand.cs" />
     <Compile Include="Commands\TransportRoomCommand.cs" />
     <Compile Include="Commands\EnemyTakeDamageCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />

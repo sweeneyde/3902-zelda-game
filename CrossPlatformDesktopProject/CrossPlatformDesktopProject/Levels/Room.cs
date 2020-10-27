@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -53,9 +54,9 @@ namespace CrossPlatformDesktopProject.Levels
 
             background.Draw(sb, adjacents);
 
-            worldItems[worldItemsIndex].Draw(sb);
-            obstacles[obstaclesIndex].Draw(sb);
-            npcs[npcIndex].Draw(sb);
+            if (worldItems.Count > 0) { worldItems[worldItemsIndex].Draw(sb); }
+            if (obstacles.Count > 0) { obstacles[obstaclesIndex].Draw(sb); }
+            if (npcs.Count > 0) { npcs[npcIndex].Draw(sb); }
         }
 
         public List<Door> FindDoors(string[] adjacentRooms, Map myMap)
@@ -88,9 +89,18 @@ namespace CrossPlatformDesktopProject.Levels
 
         public void Remove(ICollider entity)
         {
-            //not yet implemented
-
-        }
+            if (worldItems.Contains((IWorldItem) entity))
+            {
+                worldItems.Remove((IWorldItem) entity);
+            } else if (npcs.Contains((INpc) entity))
+            {
+                npcs.Remove((INpc)entity);
+            }
+            else if (obstacles.Contains((IObstacle)entity))
+            {
+                obstacles.Remove((IObstacle)entity);
+            }
+    }
 
         
 
