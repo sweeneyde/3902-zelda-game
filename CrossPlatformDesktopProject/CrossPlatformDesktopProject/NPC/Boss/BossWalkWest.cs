@@ -8,6 +8,7 @@ namespace CrossPlatformDesktopProject.NPC
     {
         private int my_frame_index;
         private int delay_frame_index;
+        private int counter;
         private Boss boss;
         private Fireball fireball1;
         private Fireball fireball2;
@@ -43,7 +44,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (boss.xPos == 400)
+            if (counter == 10)
             {
                 boss.currentState = new BossWalkEast(boss, fireball1, fireball2, fireball3);
             }
@@ -52,6 +53,7 @@ namespace CrossPlatformDesktopProject.NPC
             {
                 delay_frame_index = 0;
                 boss.xPos -= 3;
+                counter++;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }

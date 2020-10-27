@@ -8,6 +8,7 @@ namespace CrossPlatformDesktopProject.NPC
     {
         private int my_frame_index;
         private int delay_frame_index;
+        private int counter;
         private Goriya goriya;
         private GoriyaBoomerang boomerang;
 
@@ -37,15 +38,16 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (goriya.xPos == 400 && goriya.yPos == 100)
+            if (counter == 10)
             {
-                goriya.currentState = new GoriyaAttackNorth(goriya, boomerang);
+                goriya.currentState = new GoriyaWalkEast(goriya, boomerang);
             }
 
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
                 goriya.yPos -= 5;
+                counter++;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
