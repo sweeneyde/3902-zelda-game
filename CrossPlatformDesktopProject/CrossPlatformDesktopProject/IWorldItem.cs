@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject
 {
-    public interface IWorldItem
+    public interface IWorldItem : CollisionHandler.ICollider
     {
         void Draw(SpriteBatch spriteBatch);
     }
