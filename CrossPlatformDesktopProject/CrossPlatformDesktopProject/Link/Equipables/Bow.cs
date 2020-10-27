@@ -1,4 +1,5 @@
-﻿using CrossPlatformDesktopProject.Link;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Equipables
 {
-    class Bow : IEquipable
+    class Bow : IEquipable, ICollider
     {
         private Player player;
         private Vector2 currentPos;
@@ -48,9 +49,7 @@ namespace CrossPlatformDesktopProject.Equipables
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Rectangle destination = new Rectangle(
-                (int)currentPos.X, (int)currentPos.Y,
-                source.Width * 3, source.Height * 3);
+            Rectangle destination = GetRectangle();
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
@@ -123,6 +122,30 @@ namespace CrossPlatformDesktopProject.Equipables
 
             endPoint = new Vector2(endX, endY);
             return endPoint;
+        }
+
+        public List<ICollider> GetColliders()
+        {
+            if (this.reachedEnd)
+            {
+                return new List<ICollider>();
+            }
+            else
+            {
+                return new List<ICollider> { this };
+            }
+        }
+
+        Rectangle GetRectangle()
+        {
+            return new Rectangle(
+                (int)currentPos.X, (int)currentPos.Y,
+                source.Width * 3, source.Height * 3);
+        }
+
+        Rectangle ICollider.GetRectangle()
+        {
+            return GetRectangle();
         }
     }
 }

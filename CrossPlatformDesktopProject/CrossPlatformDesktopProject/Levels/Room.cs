@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -26,7 +27,6 @@ namespace CrossPlatformDesktopProject.Levels
         private int worldItemsIndex;
         private int obstaclesIndex;
         private int npcIndex;
-        private int length;
         public string roomID { get; }
 
         private Game1 game;
@@ -46,17 +46,13 @@ namespace CrossPlatformDesktopProject.Levels
 
         public void Update()
         {
-            for (npcIndex = 0; npcIndex < npcs.Count; npcIndex++)
-            {
-                npcs[npcIndex].Update();
-            }
+            npcs[npcIndex].Update();
         }
 
         public void Draw(SpriteBatch sb, string[] adjacents)
         {
 
             background.Draw(sb, adjacents);
-
             if (worldItems.Count > 0)
             {
                 foreach (IWorldItem  x in worldItems) { x.Draw(sb); }
@@ -101,9 +97,18 @@ namespace CrossPlatformDesktopProject.Levels
 
         public void Remove(ICollider entity)
         {
-            //not yet implemented
-
-        }
+            if (worldItems.Contains((IWorldItem) entity))
+            {
+                worldItems.Remove((IWorldItem) entity);
+            } else if (npcs.Contains((INpc) entity))
+            {
+                npcs.Remove((INpc)entity);
+            }
+            else if (obstacles.Contains((IObstacle)entity))
+            {
+                obstacles.Remove((IObstacle)entity);
+            }
+    }
 
         
 
