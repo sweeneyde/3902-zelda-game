@@ -9,11 +9,11 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos;
         private Rectangle hitbox;
 
-        public Skeleton()
+        public Skeleton(float xPos, float yPos)
         {
             currentState = new SkeletonWalkEast(this);
-            xPos = 400;
-            yPos = 100;
+            this.xPos = xPos;
+            this.yPos = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 

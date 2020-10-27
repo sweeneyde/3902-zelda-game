@@ -9,11 +9,11 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos;
         private Rectangle hitbox;
 
-        public Bat()
+        public Bat(float xPos, float yPos)
         {
             currentState = new BatWalkEast(this);
-            xPos = 400;
-            yPos = 100;
+            this.xPos = xPos;
+            this.yPos = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 
