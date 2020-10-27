@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using CrossPlatformDesktopProject.NPC;
 using Microsoft.VisualBasic.FileIO;
 
 namespace CrossPlatformDesktopProject.Levels
@@ -95,6 +96,7 @@ namespace CrossPlatformDesktopProject.Levels
             List<INpc> npcHolder = new List<INpc>();
             List<IObstacle> obstacleHolder = new List<IObstacle>();
             List<IWorldItem> worldItemHolder = new List<IWorldItem>();
+            object[] args;
 
             using (TextFieldParser csvParser = new TextFieldParser(roomPath))
             {
@@ -118,9 +120,11 @@ namespace CrossPlatformDesktopProject.Levels
                         i++;
                         grabY = Int32.Parse(readLine[i]);
 
+                        args = new object[] { (float)grabX, (float)grabY};
+
                         Debug.Print(grabType);
                         Type resolvedType = Type.GetType(grabType);
-                        object grabObj = (Activator.CreateInstance(resolvedType));
+                        object grabObj = (Activator.CreateInstance(resolvedType, args));
 
                         if (grabObj is INpc)
                         {

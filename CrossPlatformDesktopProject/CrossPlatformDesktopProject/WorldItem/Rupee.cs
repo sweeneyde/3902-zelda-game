@@ -8,10 +8,10 @@ namespace CrossPlatformDesktopProject.WorldItem
     class Rupee : IWorldItem
     {
         public float xPos, yPos;
-        public Rupee()
+        public Rupee(float xPos, float yPos)
         {
-            xPos = 300;
-            yPos = 300;
+            this.xPos = xPos;
+            this.yPos = yPos;
         }
 
         public void Draw(SpriteBatch spriteBatch)

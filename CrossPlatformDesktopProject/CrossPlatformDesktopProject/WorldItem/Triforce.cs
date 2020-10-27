@@ -8,10 +8,10 @@ namespace CrossPlatformDesktopProject.WorldItem
     class Triforce : IWorldItem
     {
         public float xPos, yPos;
-        public Triforce()
+        public Triforce(float xPos, float yPos)
         {
-            xPos = 300;
-            yPos = 300;
+            this.xPos = xPos;
+            this.yPos = yPos;
         }
 
         public void Draw(SpriteBatch spriteBatch)

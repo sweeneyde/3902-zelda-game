@@ -8,10 +8,10 @@ namespace CrossPlatformDesktopProject.WorldItem
     class Heart : IWorldItem
     {
         public float xPos, yPos;
-        public Heart()
+        public Heart(float xPos, float yPos)
         {
-            xPos = 300;
-            yPos = 300;
+            this.xPos = xPos;
+            this.yPos = yPos;
         }
 
         public void Draw(SpriteBatch spriteBatch)
