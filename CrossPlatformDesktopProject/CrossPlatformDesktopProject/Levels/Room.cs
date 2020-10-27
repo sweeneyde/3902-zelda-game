@@ -59,7 +59,7 @@ namespace CrossPlatformDesktopProject.Levels
 
             if (worldItems.Count > 0)
             {
-                foreach (IWorldItem x in worldItems) { x.Draw(sb); }
+                foreach (IWorldItem  x in worldItems) { x.Draw(sb); }
             }
             if (obstacles.Count > 0)
             {
