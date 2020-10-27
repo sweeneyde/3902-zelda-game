@@ -25,8 +25,12 @@ namespace CrossPlatformDesktopProject.Levels
         private int obstaclesIndex;
         private int npcIndex;
 
-        private float xPos = 400;
-        private float yPos = 100;
+        private float xPosNPC = 400;
+        private float yPosNPC = 100;
+        private float xPosItem = 300;
+        private float yPosItem = 300;
+        private float xPosBlock = 200;
+        private float yPosBlock = 200;
 
         private INpc fireball1;
         private INpc fireball2;
@@ -50,31 +54,31 @@ namespace CrossPlatformDesktopProject.Levels
 
             worldItems = new List<IWorldItem>
             {
-                new DungeonKey(),
-                new DungeonMap(),
-                new Rupee(),
-                new Heart(),
-                new Triforce(),
+                new DungeonKey(xPosItem, yPosItem),
+                new DungeonMap(xPosItem, yPosItem),
+                new Rupee(xPosItem, yPosItem),
+                new Heart(xPosItem, yPosItem),
+                new Triforce(xPosItem, yPosItem),
             };
 
             obstacles = new List<IObstacle>
             {
-                new Statue(),
-                new Block(),
-                new Statue2(),
-                new Sand(),
-                new PlainBlock(),
-                new Stairs()
+                new Statue(xPosItem, yPosItem),
+                new Block(xPosBlock, yPosBlock),
+                new Statue2(xPosItem, yPosItem),
+                new Sand(xPosItem, yPosItem),
+                new PlainBlock(xPosItem, yPosItem),
+                new Stairs(xPosBlock, yPosBlock)
             };
 
             npcs = new List<INpc>
             {
-                new Boss(xPos, yPos, (Fireball) fireball1, (Fireball) fireball2, (Fireball) fireball3),
-                new Bat(xPos, yPos),
-                new Goriya(xPos, yPos, (GoriyaBoomerang) boomerang),
-                new Gel(xPos, yPos),
-                new Skeleton(xPos, yPos),
-                new OldMan(xPos, yPos),
+                new Boss(xPosNPC, yPosNPC, (Fireball) fireball1, (Fireball) fireball2, (Fireball) fireball3),
+                new Bat(xPosNPC, yPosNPC),
+                new Goriya(xPosNPC, yPosNPC, (GoriyaBoomerang) boomerang),
+                new Gel(xPosNPC, yPosNPC),
+                new Skeleton(xPosNPC, yPosNPC),
+                new OldMan(xPosNPC, yPosNPC),
             };
         }
 

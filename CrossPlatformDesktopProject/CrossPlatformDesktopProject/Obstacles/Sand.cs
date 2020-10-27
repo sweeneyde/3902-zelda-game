@@ -13,10 +13,10 @@ namespace CrossPlatformDesktopProject.Obstacles
     {
         public float xPos, yPos;
         private Rectangle hitbox;
-        public Sand()
+        public Sand(float xPos, float yPos)
         {
-            xPos = 200;
-            yPos = 200;
+            this.xPos = xPos;
+            this.yPos = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 50, 50);
         }
         public void Update()
