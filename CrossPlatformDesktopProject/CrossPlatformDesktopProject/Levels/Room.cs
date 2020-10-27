@@ -7,9 +7,11 @@ using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.Obstacles;
 using CrossPlatformDesktopProject.WorldItem;
+using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -56,7 +58,41 @@ namespace CrossPlatformDesktopProject.Levels
             npcs[npcIndex].Draw(sb);
         }
 
+        public List<Door> FindDoors(string[] adjacentRooms, Map myMap)
+        {
+            return background.FindDoorColliders(adjacentRooms, myMap);
+        } 
 
+        public List<ICollider> GetColliders(string[] adjacentRooms, Map myMap)
+        {
+            List<ICollider> collidables = new List<ICollider>();
+            foreach(IWorldItem x in worldItems){
+                collidables.Add((ICollider) x);
+            }
+            foreach (IObstacle x in obstacles)
+            {
+                collidables.Add((ICollider)x);
+            }
+            foreach (INpc x in npcs)
+            {
+                collidables.Add((ICollider)x);
+            }
+
+        List<Door> doors = FindDoors(adjacentRooms, myMap);
+            foreach (Door x in doors)
+            {
+                collidables.Add((ICollider)x);
+            }
+            return collidables;
+        }
+
+        public void Remove(ICollider entity)
+        {
+            //not yet implemented
+
+        }
+
+        
 
         /*public void TestAccessMethod()
         {

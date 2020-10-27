@@ -9,6 +9,7 @@ namespace CrossPlatformDesktopProject.WorldItem
     class Triforce : IWorldItem
     {
         public float xPos, yPos;
+
         public Triforce(float xPos, float yPos)
         {
             this.xPos = xPos;

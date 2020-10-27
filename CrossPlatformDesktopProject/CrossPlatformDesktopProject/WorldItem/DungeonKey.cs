@@ -9,6 +9,7 @@ namespace CrossPlatformDesktopProject.WorldItem
     class DungeonKey : IWorldItem
     {
         public float xPos, yPos;
+
         public DungeonKey(float xPos, float yPos)
         {
             this.xPos = xPos;
@@ -35,5 +36,6 @@ namespace CrossPlatformDesktopProject.WorldItem
         {
             return getRectangle();
         }
+
     }
 }

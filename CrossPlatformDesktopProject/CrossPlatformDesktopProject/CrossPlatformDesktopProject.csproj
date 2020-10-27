@@ -45,15 +45,10 @@
     <Compile Include="CollisionHandler\Collision.cs" />
     <Compile Include="CollisionHandler\CollisionDetection.cs" />
     <Compile Include="CollisionHandler\CollisionResponse.cs" />
+    <Compile Include="Commands\TransportRoomCommand.cs" />
     <Compile Include="Commands\EnemyTakeDamageCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="ICollider.cs" />
-    <Compile Include="Commands\NextNpcCommand.cs" />
-    <Compile Include="Commands\PrevNpcCommand.cs" />
-    <Compile Include="Commands\PrevObstacleCommand.cs" />
-    <Compile Include="Commands\NextObstacleCommand.cs" />
-    <Compile Include="Commands\PrevWorldItemCommand.cs" />
-    <Compile Include="Commands\NextWorldItemCommand.cs" />
     <Compile Include="Commands\ResetGame.cs" />
     <Compile Include="Commands\StartCommand.cs" />
     <Compile Include="Commands\SelectCommand.cs" />
@@ -164,6 +159,7 @@
     <Compile Include="WorldItem\DungeonMap.cs" />
     <Compile Include="WorldItem\Rupee.cs" />
     <Compile Include="WorldItem\DungeonKey.cs" />
+    <Compile Include="WorldItem\WorldHandlers\Door.cs" />
     <Compile Include="WorldItem\WorldItemTextureStorage.cs" />
     <Compile Include="WorldItem\Triforce.cs" />
     <Compile Include="WorldItem\Heart.cs" />

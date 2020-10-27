@@ -9,6 +9,7 @@ namespace CrossPlatformDesktopProject.WorldItem
     class Rupee : IWorldItem
     {
         public float xPos, yPos;
+
         public Rupee(float xPos, float yPos)
         {
             this.xPos = xPos;
@@ -32,5 +33,6 @@ namespace CrossPlatformDesktopProject.WorldItem
         {
             return getRectangle();
         }
+
     }
 }

@@ -9,6 +9,7 @@ namespace CrossPlatformDesktopProject.WorldItem
     class Heart : IWorldItem
     {
         public float xPos, yPos;
+
         public Heart(float xPos, float yPos)
         {
             this.xPos = xPos;

@@ -9,6 +9,7 @@ namespace CrossPlatformDesktopProject.WorldItem
     class DungeonMap : IWorldItem
     {
         public float xPos, yPos;
+
         public DungeonMap(float xPos, float yPos)
         {
             this.xPos = xPos;

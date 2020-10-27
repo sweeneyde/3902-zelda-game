@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -102,6 +103,27 @@ namespace CrossPlatformDesktopProject.Levels
             {
                 sb.Draw(texture, rightDoorDest, RoomTextureStorage.RIGHT_OPEN_DOOR, Color.White);
             }
+        }
+        public List<Door> FindDoorColliders(string[] adjacentRooms, Map currentMap)
+        {
+            List<Door> doors = new List<Door>();
+            if (!adjacentRooms[0].Equals("-1"))
+            {
+                doors.Add(new Door(new Rectangle(0, topDoorDest.Center.Y, screenWidth, 1), currentMap, adjacentRooms[0]));
+            }
+            if (!adjacentRooms[1].Equals("-1"))
+            {
+                doors.Add(new Door(new Rectangle(0, bottomDoorDest.Center.Y, screenWidth, 1), currentMap, adjacentRooms[1]));
+            }
+            if (!adjacentRooms[2].Equals("-1"))
+            {
+                doors.Add(new Door(new Rectangle(leftDoorDest.Center.X, 0, 1, screenHeight), currentMap, adjacentRooms[2]));
+            }
+            if (!adjacentRooms[3].Equals("-1"))
+            {
+                doors.Add(new Door(new Rectangle(rightDoorDest.Center.X, 0, 1, screenHeight), currentMap, adjacentRooms[3]));
+            }
+            return doors;
         }
     }
 }

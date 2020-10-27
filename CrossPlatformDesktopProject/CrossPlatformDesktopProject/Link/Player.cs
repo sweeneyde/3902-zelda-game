@@ -61,30 +61,6 @@ namespace CrossPlatformDesktopProject.Link
             }
         }
 
-        public void TakeDamage(CollisionSides side)
-        {
-            if (IsDamaged())
-            {
-                return;
-            }
-            switch(side)
-            {
-                case CollisionSides.Up:
-                    currentState = new LinkFacingSouthState(this);
-                    break;
-                case CollisionSides.Down:
-                    currentState = new LinkFacingNorthState(this);
-                    break;
-                case CollisionSides.Left:
-                    currentState = new LinkFacingEastState(this);
-                    break;
-                case CollisionSides.Right:
-                    currentState = new LinkFacingWestState(this);
-                    break;
-            }
-            TakeDamage();
-        }
-
         public void MoveDown()
         {
             currentState.MoveDown();

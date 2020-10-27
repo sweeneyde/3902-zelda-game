@@ -1,4 +1,6 @@
-﻿using CrossPlatformDesktopProject.Link;
+using CrossPlatformDesktopProject.Levels;
+using CrossPlatformDesktopProject.Link;
+
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -14,10 +16,18 @@ namespace CrossPlatformDesktopProject.CollisionHandler
         private static CollisionResponse responder = new CollisionResponse();
         private List<ICollider> room;
         private static int collisionMargin = 15;
+        private Map myMap;
+        private Player myPlayer;
 
-        public CollisionDetector(List<ICollider> colliders)
+        public CollisionDetector(Map map, Player player)
         {
-            room = colliders;
+            room = map.GetColliders();
+            myMap = map;
+            myPlayer = player;
+        }
+        public void AddColliders(ICollider collider)
+        {
+            room.Add(collider);
         }
 
         public Boolean CheckCollision(Rectangle subject, Rectangle target)
@@ -41,6 +51,8 @@ namespace CrossPlatformDesktopProject.CollisionHandler
 
         public void Update()
         {
+            room = myMap.GetColliders();
+            room.AddRange(myPlayer.GetColliders());
             Rectangle subjectRectangle, targetRectangle;
             foreach(ICollider subject in room)
             {
