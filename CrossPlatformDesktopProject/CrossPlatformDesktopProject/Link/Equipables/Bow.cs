@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Equipables
 {
-    class Bow : IEquipable, ICollider
+    class Bow : IEquipable
     {
         private Player player;
         private Vector2 currentPos;
@@ -136,16 +136,11 @@ namespace CrossPlatformDesktopProject.Equipables
             }
         }
 
-        Rectangle GetRectangle()
+        public Rectangle GetRectangle()
         {
             return new Rectangle(
                 (int)currentPos.X, (int)currentPos.Y,
                 source.Width * 3, source.Height * 3);
-        }
-
-        Rectangle ICollider.GetRectangle()
-        {
-            return GetRectangle();
         }
     }
 }

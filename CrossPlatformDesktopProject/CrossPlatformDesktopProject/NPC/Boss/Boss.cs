@@ -1,5 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -8,6 +10,7 @@ namespace CrossPlatformDesktopProject.NPC
         public INpcState currentState;
         public float xPos, yPos;
         private Rectangle hitbox;
+        private List<ICollider> colliders;
 
         public Boss(float xPos, float yPos, Fireball fireball1, Fireball fireball2, Fireball fireball3)
         {
@@ -15,6 +18,7 @@ namespace CrossPlatformDesktopProject.NPC
             this.xPos = xPos;
             this.yPos = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
+            colliders = new List<ICollider> { this, fireball1, fireball2, fireball3};
         }
 
         public void Update()
@@ -31,6 +35,11 @@ namespace CrossPlatformDesktopProject.NPC
         public Rectangle GetRectangle()
         {
             return hitbox;
+        }
+
+        public List<ICollider> GetColliders()
+        {
+            return this.colliders;
         }
     }
 

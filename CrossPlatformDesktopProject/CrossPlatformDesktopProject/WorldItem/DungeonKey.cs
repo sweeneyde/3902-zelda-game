@@ -23,19 +23,19 @@ namespace CrossPlatformDesktopProject.WorldItem
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
                 source.Width * 3, source.Height * 3);
-            spriteBatch.Draw(texture, getRectangle(), source, Color.White);
+            spriteBatch.Draw(texture, GetRectangle(), source, Color.White);
         }
 
-        private Rectangle getRectangle()
+        public List<ICollider> GetColliders()
+        {
+            return new List<ICollider> { this };
+        }
+
+        public Rectangle GetRectangle()
         {
             return new Rectangle((int)xPos, (int)yPos,
                 ItemTextureStorage.RUPEE.Width * 3,
                 ItemTextureStorage.RUPEE.Height * 3);
         }
-        Rectangle ICollider.GetRectangle()
-        {
-            return getRectangle();
-        }
-
     }
 }

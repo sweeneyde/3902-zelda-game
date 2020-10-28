@@ -27,7 +27,6 @@ namespace CrossPlatformDesktopProject.Levels
         private int worldItemsIndex;
         private int obstaclesIndex;
         private int npcIndex;
-        private int length;
         public string roomID { get; }
 
         private Game1 game;
@@ -81,15 +80,15 @@ namespace CrossPlatformDesktopProject.Levels
         {
             List<ICollider> collidables = new List<ICollider>();
             foreach(IWorldItem x in worldItems){
-                collidables.Add((ICollider) x);
+                collidables.AddRange((List<ICollider>)x.GetColliders());
             }
             foreach (IObstacle x in obstacles)
             {
-                collidables.Add((ICollider)x);
+                collidables.AddRange((List<ICollider>)x.GetColliders());
             }
             foreach (INpc x in npcs)
             {
-                collidables.Add((ICollider)x);
+                collidables.AddRange((List<ICollider>)x.GetColliders());
             }
 
         List<Door> doors = FindDoors(adjacentRooms, myMap);
@@ -113,9 +112,30 @@ namespace CrossPlatformDesktopProject.Levels
             {
                 obstacles.Remove((IObstacle)entity);
             }
-    }
+        }
 
-        
+        public void Add(ICollider entity)
+        {
+            foreach (Type entityType in entity.GetType().GetInterfaces()) {
+                if (entityType == typeof(IWorldItem))
+                {
+                    worldItems.Add((IWorldItem)entity);
+                    return;
+                }
+                else if (entityType == typeof(INpc))
+                {
+                    npcs.Add((INpc)entity);
+                    return;
+                }
+                else if (entityType == typeof(IObstacle))
+                {
+                    obstacles.Add((IObstacle)entity);
+                    return;
+                }
+            }
+        }
+
+
 
         /*public void TestAccessMethod()
         {

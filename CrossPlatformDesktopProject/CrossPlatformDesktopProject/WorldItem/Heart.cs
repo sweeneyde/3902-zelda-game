@@ -20,19 +20,19 @@ namespace CrossPlatformDesktopProject.WorldItem
         {
             Texture2D texture = ItemTextureStorage.Instance.getItemSpriteSheet();
             Rectangle source = ItemTextureStorage.HEART;
-            spriteBatch.Draw(texture, getRectangle(), source, Color.White);
+            spriteBatch.Draw(texture, GetRectangle(), source, Color.White);
         }
 
-        private Rectangle getRectangle()
+        public List<ICollider> GetColliders()
+        {
+            return new List<ICollider> { this };
+        }
+
+        public Rectangle GetRectangle()
         {
             return new Rectangle((int)xPos, (int)yPos,
                 ItemTextureStorage.HEART.Width * 3,
                 ItemTextureStorage.HEART.Height * 3);
-        }
-
-        Rectangle ICollider.GetRectangle()
-        {
-            return getRectangle();
         }
     }
 }

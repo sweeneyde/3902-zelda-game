@@ -9,6 +9,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
 {
     public interface ICollider
     {
+        List<ICollider> GetColliders();
         Rectangle GetRectangle();
     }
 }

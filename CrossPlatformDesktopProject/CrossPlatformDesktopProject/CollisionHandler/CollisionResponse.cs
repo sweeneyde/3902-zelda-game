@@ -66,22 +66,35 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 .SelectMany(s => s.GetTypes())
                 .Where(p => typeOfItems.IsAssignableFrom(p));
 
-            //Enemy on player
+            
             foreach (CollisionSides side in Enum.GetValues(typeof(CollisionSides)))
             {
+                
                 foreach (Type enemySubject in enemyTypes)
                 {
+                    //Enemy on player
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(enemySubject, playerType, side), typeof(TakeDamageCommand));
+                    //Player on enemy
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Sword), enemySubject, side), typeof(EnemyTakeDamageCommand));
+                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Bow), enemySubject, side), typeof(EnemyTakeDamageCommand));
+                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Boomerang), enemySubject, side), typeof(EnemyTakeDamageCommand));
+                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Smoke), enemySubject, side), typeof(EnemyTakeDamageCommand));
                 }
+
+                //Obstacle on player
                 foreach (Type obstacleSubject in obstacleTypes)
                 {
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, side), typeof(ResetCommand));
                 }
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Bomb), playerType, side), typeof(ResetCommand));
+                //Player on WorldItems
                 foreach (Type worldItemTarget in itemTypes)
                 {
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, worldItemTarget, side), typeof(KeyDisappearCommand));
                 }
+
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Fireball), playerType, side), typeof(TakeDamageCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(GoriyaBoomerang), playerType, side), typeof(TakeDamageCommand));
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(Door), side), typeof(TransportRoomCommand));
             }
         }

@@ -22,5 +22,10 @@ namespace CrossPlatformDesktopProject.Link
         {
             return location;
         }
+
+        public List<ICollider> GetColliders()
+        {
+            return new List<ICollider> { this };
+        }
     }
 }

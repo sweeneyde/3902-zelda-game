@@ -16,6 +16,11 @@ namespace CrossPlatformDesktopProject.Link.Equipables
             this.position = position;
         }
 
+        public List<ICollider> GetColliders()
+        {
+            return new List<ICollider> { this };
+        }
+
         Rectangle ICollider.GetRectangle()
         {
             return position;

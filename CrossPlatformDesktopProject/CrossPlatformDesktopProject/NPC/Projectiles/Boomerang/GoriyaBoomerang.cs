@@ -1,6 +1,8 @@
-﻿using CrossPlatformDesktopProject.Commands;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.Commands;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -37,6 +39,11 @@ namespace CrossPlatformDesktopProject.NPC
         public void Draw(SpriteBatch spriteBatch)
         {
             currentState.Draw(spriteBatch, xPos, yPos);
+        }
+
+        public List<ICollider> GetColliders()
+        {
+            return new List<ICollider> { this };
         }
     }
 

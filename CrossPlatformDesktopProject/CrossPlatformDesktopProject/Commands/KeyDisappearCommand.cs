@@ -11,17 +11,17 @@ namespace CrossPlatformDesktopProject.Commands
 {
     class KeyDisappearCommand : ICommand
     {
-        private DungeonKey myKey;
+        private IWorldItem myItem;
         private Map myMap;
-        public KeyDisappearCommand(DungeonKey key, Map map)
+        public KeyDisappearCommand(IWorldItem item, Map map)
         {
-            myKey = key;
+            myItem = item; ;
             myMap = map;
         }
 
         public void Execute()
         {
-            myMap.RemoveEntity(myKey);
+            myMap.RemoveEntity(myItem);
         }
     }
 }

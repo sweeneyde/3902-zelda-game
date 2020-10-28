@@ -29,7 +29,6 @@ namespace CrossPlatformDesktopProject.NPC
             this.fireball3 = fireball3;
             my_frame_index = 0;
             delay_frame_index = 0;
-
             fireball1.currentState = new TopFireball(fireball1, boss.xPos - 10, boss.yPos + 10, true);
             fireball2.currentState = new MiddleFireball(fireball2, boss.xPos - 10, boss.yPos + 30, true);
             fireball3.currentState = new BottomFireball(fireball3, boss.xPos - 10, boss.yPos + 50, true);

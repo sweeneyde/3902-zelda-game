@@ -149,5 +149,11 @@ namespace CrossPlatformDesktopProject.Equipables
                 return new List<ICollider>();
             }
         }
+
+        public Rectangle GetRectangle()
+        {
+            Rectangle source = my_source_frames[my_frame_index];
+            return new Rectangle((int)usedX, (int)usedY, source.Width * 3, source.Height * 3);
+        }
     }
 }

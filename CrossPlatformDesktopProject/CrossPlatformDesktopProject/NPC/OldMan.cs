@@ -1,5 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -22,6 +24,11 @@ namespace CrossPlatformDesktopProject.NPC
                 (int)xPos, (int)yPos,
                 source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destination, source, Color.White);
+        }
+
+        public List<ICollider> GetColliders()
+        {
+            return new List<ICollider> { this };
         }
 
         public Rectangle GetRectangle()

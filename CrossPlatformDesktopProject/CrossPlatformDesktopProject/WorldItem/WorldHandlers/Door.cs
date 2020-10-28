@@ -26,5 +26,10 @@ namespace CrossPlatformDesktopProject.WorldItem.WorldHandlers
         {
             return hitbox;
         }
+
+        public List<ICollider> GetColliders()
+        {
+            return new List<ICollider> { this };
+        }
     }
 }

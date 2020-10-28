@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Equipables
 {
-    class Boomerang : IEquipable, ICollider
+    class Boomerang : IEquipable
     {
         private Player player;
         private Vector2 currentPos;
@@ -141,10 +141,6 @@ namespace CrossPlatformDesktopProject.Equipables
             endPoint = new Vector2(endX, endY);
             return endPoint;
         }
-        List<ICollider> IEquipable.GetColliders()
-        {
-            return new List<ICollider> { this };
-        }
 
         public Rectangle GetRectangle()
         {
@@ -152,6 +148,11 @@ namespace CrossPlatformDesktopProject.Equipables
             return new Rectangle(
                 (int)currentPos.X, (int)currentPos.Y,
                 source.Width * 3, source.Height * 3);
+        }
+
+        public List<ICollider> GetColliders()
+        {
+            return new List<ICollider> { this };
         }
     }
 }

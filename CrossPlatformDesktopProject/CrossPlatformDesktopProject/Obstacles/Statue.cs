@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -35,6 +36,11 @@ namespace CrossPlatformDesktopProject.Obstacles
         public Rectangle GetRectangle()
         {
             return hitbox;
+        }
+
+        public List<ICollider> GetColliders()
+        {
+            return new List<ICollider> { this };
         }
     }
 }

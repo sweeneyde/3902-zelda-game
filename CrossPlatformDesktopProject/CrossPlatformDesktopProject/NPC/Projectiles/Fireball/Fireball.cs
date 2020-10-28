@@ -1,5 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -33,6 +35,11 @@ namespace CrossPlatformDesktopProject.NPC
         public Rectangle GetRectangle()
         {
             return hitbox;
+        }
+
+        public List<ICollider> GetColliders()
+        {
+            return new List<ICollider> { this };
         }
     }
 

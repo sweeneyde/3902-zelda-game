@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject
 {
-    public interface IEquipable
+    public interface IEquipable : ICollider
     {
         void Update();
         /* This Draw method's parameters are from the O.G. sprite drawing class*/
