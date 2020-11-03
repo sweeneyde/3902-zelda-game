@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.GameStates;
 
 namespace CrossPlatformDesktopProject
 {
@@ -16,6 +17,7 @@ namespace CrossPlatformDesktopProject
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
         public List<IController> controllerList;
         
         public CollisionDetector collisionController;
@@ -59,6 +61,7 @@ namespace CrossPlatformDesktopProject
         {
             font = Content.Load<SpriteFont>("NewFont");
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            GameScreenTextureStorage.Instance.LoadAllResources(this);
             LinkTextureStorage.Instance.LoadAllResources(Content);
             ObstacleTextureStorage.Instance.LoadAllResources(Content);
             NpcTextureStorage.Instance.LoadAllResources(Content);
@@ -102,6 +105,7 @@ namespace CrossPlatformDesktopProject
 
         public void GoToRoom(Room room2)
         {
+            GameScreenTextureStorage.Instance.SaveScreen(spriteBatch);
             Room room1 = currentGamePlayState.CurrentRoom;
             currentGamePlayState = new GamePlayState(this, room2);
             currentState = new RoomTransitionState(this, room1, room2);

@@ -42,7 +42,8 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="RoomTransitionState.cs" />
+    <Compile Include="GameStates\Class1.cs" />
+    <Compile Include="GameStates\RoomTransitionState.cs" />
     <Compile Include="CollisionHandler\CollisionResponse.cs" />
     <Compile Include="CollisionHandler\Collision.cs" />
     <Compile Include="CollisionHandler\CollisionDetection.cs" />
@@ -50,7 +51,7 @@
     <Compile Include="Commands\TransportRoomCommand.cs" />
     <Compile Include="Commands\EnemyTakeDamageCommand.cs" />
     <Compile Include="Commands\ResetCommand.cs" />
-    <Compile Include="GamePlayState.cs" />
+    <Compile Include="GameStates\GamePlayState.cs" />
     <Compile Include="ICollider.cs" />
     <Compile Include="Commands\ResetGame.cs" />
     <Compile Include="Commands\StartCommand.cs" />
