@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Runtime.Remoting.Messaging;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using CrossPlatformDesktopProject.CollisionHandler;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.Obstacles;
 using CrossPlatformDesktopProject.WorldItem;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 // This file was for the temporary Sprint2 Storage
 

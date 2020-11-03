@@ -1,6 +1,5 @@
 ﻿using CrossPlatformDesktopProject.Levels;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 namespace CrossPlatformDesktopProject
 {
