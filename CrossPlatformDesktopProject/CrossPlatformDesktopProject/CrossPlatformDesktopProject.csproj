@@ -42,6 +42,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="RoomTransitionState.cs" />
     <Compile Include="CollisionHandler\CollisionResponse.cs" />
     <Compile Include="CollisionHandler\Collision.cs" />
     <Compile Include="CollisionHandler\CollisionDetection.cs" />

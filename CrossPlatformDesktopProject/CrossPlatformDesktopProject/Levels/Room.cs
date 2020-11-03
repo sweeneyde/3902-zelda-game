@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,9 +12,6 @@ namespace CrossPlatformDesktopProject.Levels
         private List<IObstacle> obstacles;
         private List<INpc> npcs;
         private Background background;
-        private int worldItemsIndex;
-        private int obstaclesIndex;
-        private int npcIndex;
         public string roomID { get; }
 
         private Game1 game;
@@ -22,38 +20,15 @@ namespace CrossPlatformDesktopProject.Levels
             return CSVParser.RoomParse(game, roomId);
         }
 
-        public Room NewRoomAbove()
-        {
-            string id = Map.adjacencies[roomID][0];
-            return Room.FromId(game, id);
-        }
-        public Room NewRoomBelow()
-        {
-            string id = Map.adjacencies[roomID][1];
-            return Room.FromId(game, id);
-        }
-        public Room NewRoomToLeft()
-        {
-            string id = Map.adjacencies[roomID][2];
-            return Room.FromId(game, id);
-        }
-        public Room NewRoomToRight()
-        {
-            string id = Map.adjacencies[roomID][3];
-            return Room.FromId(game, id);
-        }
-
-
         public Room(Game1 game,
                     List<INpc> npcList,
                     List<IObstacle> obList,
                     List<IWorldItem> itemList,
                     string name)
         {
+            if (!name.StartsWith("ROOM_")) throw new ArgumentException();
             roomID = name.Remove(0, 5);
             this.game = game;
-            worldItemsIndex = obstaclesIndex = npcIndex = 0;
-
             worldItems = itemList;
             obstacles = obList;
             npcs = npcList;
@@ -62,17 +37,16 @@ namespace CrossPlatformDesktopProject.Levels
 
         public void Update()
         {
-            for (npcIndex = 0; npcIndex < npcs.Count; npcIndex++)
+            foreach(INpc npc in npcs)
             {
-                npcs[npcIndex].Update();
+                npc.Update();
             }
         }
 
         public void Draw(SpriteBatch sb)
         {
-
             background.Draw(sb);
-            foreach (IWorldItem  x in worldItems) { x.Draw(sb); }
+            foreach (IWorldItem x in worldItems) { x.Draw(sb); }
             foreach (IObstacle x in obstacles) { x.Draw(sb); }
             foreach (INpc x in npcs) { x.Draw(sb); }
         }
@@ -81,7 +55,7 @@ namespace CrossPlatformDesktopProject.Levels
         {
             List<ICollider> collidables = new List<ICollider>();
             foreach(IWorldItem x in worldItems){
-                collidables.Add((ICollider) x);
+                collidables.Add((ICollider)x);
             }
             foreach (IObstacle x in obstacles)
             {
@@ -120,27 +94,6 @@ namespace CrossPlatformDesktopProject.Levels
             {
                 obstacles.Remove((IObstacle)entity);
             }
-    }
-
-        
-
-        /*public void TestAccessMethod()
-        {
-            foreach(IWorldItem item in worldItems)
-            {
-                Debug.Print(item.ToString());
-            }
-
-            foreach (IObstacle ob in obstacles)
-            {
-                Debug.Print(ob.ToString());
-            }
-
-            foreach (INpc npc in npcs)
-            {
-                Debug.Print(npc.ToString());
-            }
-        }*/
-
+        }
     }
 }

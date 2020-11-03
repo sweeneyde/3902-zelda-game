@@ -26,7 +26,6 @@ public class GamePlayState : IGameState
         }
         collisionDetector.Update();
         CurrentRoom.Update();
-        game.entityStorage.Update();
     }
 
     public void Draw(SpriteBatch sb)

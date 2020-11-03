@@ -1,15 +1,10 @@
-﻿using CrossPlatformDesktopProject.Commands;
-using CrossPlatformDesktopProject.Link;
-using CrossPlatformDesktopProject.Obstacles;
+﻿using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.WorldItem;
 using CrossPlatformDesktopProject.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Dynamic;
 using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject
@@ -19,17 +14,15 @@ namespace CrossPlatformDesktopProject
     /// </summary>
     public class Game1 : Game
     {
-
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         public List<IController> controllerList;
         
-        public DevRoom entityStorage;
         public CollisionDetector collisionController;
         private SpriteFont font;
         public Player player;
 
-        private IGameState currentState;
+        public IGameState currentState;
         public GamePlayState currentGamePlayState;
 
         public Game1()
@@ -54,7 +47,6 @@ namespace CrossPlatformDesktopProject
                 new KeyboardController(this, player),
                 new MouseController(this),
             };
-            entityStorage = new DevRoom(this);
 
             base.Initialize();
         }
@@ -100,17 +92,19 @@ namespace CrossPlatformDesktopProject
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            
             spriteBatch.Begin();
             currentState.Draw(spriteBatch);
             spriteBatch.End();
-            
+
             base.Draw(gameTime);
         }
 
-        public void GoToRoom(Room rm)
+        public void GoToRoom(Room room2)
         {
-            currentState = currentGamePlayState = new GamePlayState(this, rm);
+            Room room1 = currentGamePlayState.CurrentRoom;
+            currentGamePlayState = new GamePlayState(this, room2);
+            currentState = new RoomTransitionState(this, room1, room2);
         }
 
         public void quit()
