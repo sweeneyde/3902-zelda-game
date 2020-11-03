@@ -84,58 +84,47 @@ namespace CrossPlatformDesktopProject.CollisionHandler
 
         public ICommand parseConstructor(ICollider subject, ICollider target, CollisionSides side, Type commandType)
         {
-            //Command has only the target type as parameter
             Type targetType = target.GetType();
             Type subjectType = subject.GetType();
-            Type[] argumentTypes = { targetType };
-            ConstructorInfo commandConstructor = commandType.GetConstructor(argumentTypes);
 
-            //Command has target type and side as parameter
-            if (commandConstructor is null)
-            {
-                argumentTypes = new Type[] { targetType, typeof(CollisionSides) };
-                commandConstructor = commandType.GetConstructor(argumentTypes);
-            }
-            if (commandConstructor is null)
-            {
-                argumentTypes = new Type[] { targetType, typeof(Room) };
-                commandConstructor = commandType.GetConstructor(argumentTypes);
-            }
-            if (commandConstructor is null)
-            {
-                argumentTypes = new Type[] { subjectType, targetType, typeof(CollisionSides) };
-                commandConstructor = commandType.GetConstructor(argumentTypes);
-            }
-            if (commandConstructor is null) { return null; }
+            // Search for a valid constructor for this commandType.
+            List<Type[]> signatures = new List<Type[]> {
+                new Type[] { targetType },
+                new Type[] { targetType, typeof(CollisionSides) },
+                new Type[] { targetType, typeof(Room) },
+                new Type[] { subjectType, targetType, typeof(CollisionSides) },
+                new Type[] { typeof(Game1), subjectType, targetType, typeof(CollisionSides) }
+            };
 
-            //Check constructor vs parameters
+            ConstructorInfo commandConstructor = null;
+            foreach (Type[] signature in signatures)
+            {
+                commandConstructor = commandType.GetConstructor(signature);
+                if (commandConstructor != null) { break; }
+            }
+            if (commandConstructor == null) { return null;}
 
-            //Call command
-            ICommand commandClass;
-            Console.WriteLine(commandConstructor.GetParameters().Length);
+            // Now invoke the constructor.
             switch (commandConstructor.GetParameters().Length)
             {
                 case 1:
-                    commandClass = (ICommand)commandConstructor.Invoke(new object[] { target });
-                    break;
+                    return (ICommand)commandConstructor.Invoke(new object[] { target });
                 case 2:
-                    foreach(ParameterInfo p in commandConstructor.GetParameters())
+                    if (commandConstructor.GetParameters()[1].ParameterType == typeof(Room))
                     {
-                        if(p.ParameterType == typeof(Room))
-                        {
-                            commandClass = (ICommand)commandConstructor.Invoke(new object[] { target, myRoom });
-                            return commandClass;
-                        }
+                        return (ICommand)commandConstructor.Invoke(new object[] { target, myRoom });
                     }
-                    commandClass = (ICommand)commandConstructor.Invoke(new object[] { target, side });
-                    break;
+                    else
+                    {
+                        return (ICommand)commandConstructor.Invoke(new object[] { target, side });
+                    }
                 case 3:
-                    commandClass = (ICommand)commandConstructor.Invoke(new object[] { subject, target, side });
-                    break;
+                    return (ICommand)commandConstructor.Invoke(new object[] { subject, target, side });
+                case 4:
+                    return (ICommand)commandConstructor.Invoke(new object[] { myGame, subject, target, side });
                 default:
                     return null;
             }
-            return commandClass;
         }
 
         public void HandleCollision(ICollider subject, ICollider target, CollisionSides side)
@@ -149,7 +138,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 Console.WriteLine(commandType);
                 ICommand commandClass = parseConstructor(subject, target, side, commandType);
 
-                if (commandClass != null) { commandClass.Execute(myGame); }
+                if (commandClass != null) { commandClass.Execute(); }
             }
         }
     }

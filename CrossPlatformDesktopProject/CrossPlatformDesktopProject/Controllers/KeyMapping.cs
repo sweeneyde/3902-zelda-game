@@ -97,7 +97,7 @@ namespace CrossPlatformDesktopProject
             {
                 if (currentState.Contains(k))
                 {
-                    mappings[k].Execute(myGame);
+                    mappings[k].Execute();
                     return;
                 }
             }
@@ -106,7 +106,7 @@ namespace CrossPlatformDesktopProject
             {
                 if (currentState.Contains(k))
                 {
-                    mappings[k].Execute(myGame);
+                    mappings[k].Execute();
                     return;
                 }
             }
@@ -115,7 +115,7 @@ namespace CrossPlatformDesktopProject
             {
                 if (!heldKeys.Contains(k) && acceptedStates.Contains(k))
                 {
-                    mappings[k].Execute(myGame);
+                    mappings[k].Execute();
                     lastAction = k;
                     return;
                 }
@@ -123,7 +123,7 @@ namespace CrossPlatformDesktopProject
 
             if (currentState.Contains(lastAction))
             {
-                mappings[lastAction].Execute(myGame);
+                mappings[lastAction].Execute();
                 return;
             }
 
@@ -131,7 +131,7 @@ namespace CrossPlatformDesktopProject
             {
                 if (acceptedStates.Contains(k))
                 {
-                    mappings[k].Execute(myGame);
+                    mappings[k].Execute();
                     return;
                 }
             }

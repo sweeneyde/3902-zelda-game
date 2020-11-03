@@ -19,7 +19,7 @@ namespace CrossPlatformDesktopProject.Commands
             myPlayer = player;
             mySide = side;
         }
-        public void Execute(Game1 game)
+        public void Execute()
         {
             switch(mySide)
             {

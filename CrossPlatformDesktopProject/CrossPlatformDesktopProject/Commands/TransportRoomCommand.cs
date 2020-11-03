@@ -15,19 +15,21 @@ namespace CrossPlatformDesktopProject.Commands
     class TransportRoomCommand: ICommand
     {
         private Door myDoor;
+        private Game1 myGame;
         private Player myPlayer;
         private CollisionSides mySide;
-        public TransportRoomCommand(Player player, Door door, CollisionSides side)
+        public TransportRoomCommand(Game1 game, Player player, Door door, CollisionSides side)
         {
-            myDoor = door;
+            myGame = game;
             myPlayer = player;
+            myDoor = door;
             mySide = side;
         }
-        public void Execute(Game1 game)
+        public void Execute()
         {
             myPlayer.xPos = myDoor.PlayerXPosAfterTravel;
             myPlayer.yPos = myDoor.PlayerYPosAfterTravel;
-            game.GoToRoom(Room.FromId(game, myDoor.TargetRoomKey));
+            myGame.GoToRoom(Room.FromId(myGame, myDoor.TargetRoomKey));
         }
     }
 }

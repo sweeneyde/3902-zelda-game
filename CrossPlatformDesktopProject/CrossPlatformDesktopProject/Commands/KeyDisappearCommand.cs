@@ -19,7 +19,7 @@ namespace CrossPlatformDesktopProject.Commands
             myRoom = room;
         }
 
-        public void Execute(Game1 game)
+        public void Execute()
         {
             myRoom.Remove(myKey);
         }
