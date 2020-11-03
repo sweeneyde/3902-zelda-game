@@ -8,6 +8,6 @@ namespace CrossPlatformDesktopProject
 {
     public interface ICommand
     {
-        void Execute();
+        void Execute(Game1 game);
     }
 }

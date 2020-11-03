@@ -14,6 +14,6 @@ namespace CrossPlatformDesktopProject.Commands
         {
             myPlayer = player;
         }
-        public void Execute() => myPlayer.UsePrimary();
+        public void Execute(Game1 game) => myPlayer.UsePrimary();
     }
 }

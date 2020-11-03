@@ -25,13 +25,12 @@ namespace CrossPlatformDesktopProject
         public List<IController> controllerList;
         
         public DevRoom entityStorage;
-        private CollisionDetector collisionController;
-        protected Texture2D img;
+        public CollisionDetector collisionController;
         private SpriteFont font;
-        private Player player;
+        public Player player;
 
-        //----------TEST------------//
-        public Map map;
+        private IGameState currentState;
+        public GamePlayState currentGamePlayState;
 
         public Game1()
         {
@@ -48,21 +47,16 @@ namespace CrossPlatformDesktopProject
         protected override void Initialize()
         {
             //--------------TEST----------//
-            map = new Map(this);
-            //map.TestAccess();
 
             ///////////////////////////////
             player = new Player();
-            
-            controllerList = new List<IController>();
+            currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "013"));
 
-            KeyboardController KC = new KeyboardController(this, player);
-            MouseController MC = new MouseController(this);
-            controllerList.Add(KC);
-
-            controllerList.Add(MC);
-
-            collisionController = new CollisionDetector(map, player);
+            controllerList = new List<IController>()
+            {
+                new KeyboardController(this, player),
+                new MouseController(this),
+            };
             entityStorage = new DevRoom(this);
 
             base.Initialize();
@@ -99,20 +93,7 @@ namespace CrossPlatformDesktopProject
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            player.Update();
-            foreach (IController controller in controllerList)
-            {
-                controller.Update();
-            }
-
-            collisionController.Update();
-            map.Update();
-            entityStorage.Update();
-
-            base.Update(gameTime);
+            currentState.Update();
         }
 
         /// <summary>
@@ -124,12 +105,15 @@ namespace CrossPlatformDesktopProject
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-
-            map.Draw(spriteBatch);
-            player.Draw(spriteBatch);
-
+            currentState.Draw(spriteBatch);
             spriteBatch.End();
+            
             base.Draw(gameTime);
+        }
+
+        public void GoToRoom(Room rm)
+        {
+            currentState = currentGamePlayState = new GamePlayState(this, rm);
         }
 
         public void quit()

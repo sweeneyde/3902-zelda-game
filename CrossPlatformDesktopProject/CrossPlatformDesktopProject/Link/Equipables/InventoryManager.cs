@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Link.Equipables
 {
-    class InventoryManager
+    public class InventoryManager
     {
         public static List<IEquipable> inventory;
         private Player player;

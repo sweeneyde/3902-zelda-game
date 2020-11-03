@@ -12,16 +12,16 @@ namespace CrossPlatformDesktopProject.Commands
     class KeyDisappearCommand : ICommand
     {
         private DungeonKey myKey;
-        private Map myMap;
-        public KeyDisappearCommand(DungeonKey key, Map map)
+        private Room myRoom;
+        public KeyDisappearCommand(DungeonKey key, Room room)
         {
             myKey = key;
-            myMap = map;
+            myRoom = room;
         }
 
-        public void Execute()
+        public void Execute(Game1 game)
         {
-            myMap.RemoveEntity(myKey);
+            myRoom.Remove(myKey);
         }
     }
 }

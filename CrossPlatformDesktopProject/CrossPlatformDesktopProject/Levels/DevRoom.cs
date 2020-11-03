@@ -39,11 +39,9 @@ namespace CrossPlatformDesktopProject.Levels
 
         private int cooldownFramesLeft;
         private static int cooldownFramesStart = 15;
-        private Game1 game;
 
         public DevRoom(Game1 game)
         {
-            this.game = game;
             cooldownFramesLeft = 0;
 
             worldItemsIndex = obstaclesIndex = 0;

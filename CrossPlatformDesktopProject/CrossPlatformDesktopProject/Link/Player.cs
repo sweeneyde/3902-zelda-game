@@ -13,7 +13,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace CrossPlatformDesktopProject.Link
 {
-    class Player : ICollider
+    public class Player : ICollider
     {
         public ILinkState currentState;
         

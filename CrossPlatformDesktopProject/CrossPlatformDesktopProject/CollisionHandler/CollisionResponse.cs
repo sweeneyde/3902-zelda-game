@@ -4,17 +4,11 @@ using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.Link.Equipables;
 using CrossPlatformDesktopProject.NPC;
-using CrossPlatformDesktopProject.WorldItem;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
-using Microsoft.Xna.Framework;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.CollisionHandler
 {
@@ -22,14 +16,16 @@ namespace CrossPlatformDesktopProject.CollisionHandler
     {
         private Dictionary<Tuple<Type, Type, CollisionSides>, Type> commandMap;
         private HashSet<Tuple<Type, Type, CollisionSides>> keySet;
-        public static Map myMap;
+        public Room myRoom;
+        public Game1 myGame;
 
-        public CollisionResponse(Map map)
+        public CollisionResponse(Room room, Game1 game)
         {
+            myGame = game;
             commandMap = new Dictionary<Tuple<Type, Type, CollisionSides>, Type>();
             BuildDictionary();
             keySet = new HashSet<Tuple<Type, Type, CollisionSides>>(commandMap.Keys);
-            myMap = map;
+            myRoom = room;
         }
 
         private void BuildDictionary()
@@ -102,7 +98,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             }
             if (commandConstructor is null)
             {
-                argumentTypes = new Type[] { targetType, typeof(Map) };
+                argumentTypes = new Type[] { targetType, typeof(Room) };
                 commandConstructor = commandType.GetConstructor(argumentTypes);
             }
             if (commandConstructor is null)
@@ -125,9 +121,9 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 case 2:
                     foreach(ParameterInfo p in commandConstructor.GetParameters())
                     {
-                        if(p.ParameterType == typeof(Map))
+                        if(p.ParameterType == typeof(Room))
                         {
-                            commandClass = (ICommand)commandConstructor.Invoke(new object[] { target, myMap });
+                            commandClass = (ICommand)commandConstructor.Invoke(new object[] { target, myRoom });
                             return commandClass;
                         }
                     }
@@ -153,7 +149,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 Console.WriteLine(commandType);
                 ICommand commandClass = parseConstructor(subject, target, side, commandType);
 
-                if (commandClass != null) { commandClass.Execute(); }
+                if (commandClass != null) { commandClass.Execute(myGame); }
             }
         }
     }

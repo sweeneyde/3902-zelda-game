@@ -34,10 +34,6 @@ namespace CrossPlatformDesktopProject
 
             setDefaults();
         }
-
-        public void assignPlayer(Player player){
-            myPlayer = player;
-        }
         
         private void setDefaults(){
 
@@ -101,7 +97,7 @@ namespace CrossPlatformDesktopProject
             {
                 if (currentState.Contains(k))
                 {
-                    mappings[k].Execute();
+                    mappings[k].Execute(myGame);
                     return;
                 }
             }
@@ -110,7 +106,7 @@ namespace CrossPlatformDesktopProject
             {
                 if (currentState.Contains(k))
                 {
-                    mappings[k].Execute();
+                    mappings[k].Execute(myGame);
                     return;
                 }
             }
@@ -119,7 +115,7 @@ namespace CrossPlatformDesktopProject
             {
                 if (!heldKeys.Contains(k) && acceptedStates.Contains(k))
                 {
-                    mappings[k].Execute();
+                    mappings[k].Execute(myGame);
                     lastAction = k;
                     return;
                 }
@@ -127,7 +123,7 @@ namespace CrossPlatformDesktopProject
 
             if (currentState.Contains(lastAction))
             {
-                mappings[lastAction].Execute();
+                mappings[lastAction].Execute(myGame);
                 return;
             }
 
@@ -135,7 +131,7 @@ namespace CrossPlatformDesktopProject
             {
                 if (acceptedStates.Contains(k))
                 {
-                    mappings[k].Execute();
+                    mappings[k].Execute(myGame);
                     return;
                 }
             }

@@ -11,23 +11,24 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.CollisionHandler
 {
-    class CollisionDetector
+    public class CollisionDetector
     {
         private static CollisionResponse responder;
-        private List<ICollider> room;
-        private Map myMap;
+        private List<ICollider> colliders;
         private Player myPlayer;
+        private Room myRoom;
 
-        public CollisionDetector(Map map, Player player)
+        public CollisionDetector(Room room, Player player, Game1 game)
         {
-            room = map.GetColliders();
-            myMap = map;
+            myRoom = room;
+            colliders = room.GetColliders();
             myPlayer = player;
-            responder  = new CollisionResponse(myMap);
+            responder = new CollisionResponse(room, game);
         }
+
         public void AddColliders(ICollider collider)
         {
-            room.Add(collider);
+            colliders.Add(collider);
         }
 
         public Boolean CheckCollision(Rectangle subject, Rectangle target)
@@ -51,13 +52,12 @@ namespace CrossPlatformDesktopProject.CollisionHandler
 
         public void Update()
         {
-            room = myMap.GetColliders();
-            
-            room.AddRange(myPlayer.GetColliders());
+            colliders = myRoom.GetColliders();            
+            colliders.AddRange(myPlayer.GetColliders());
             Rectangle subjectRectangle, targetRectangle;
-            foreach(ICollider subject in room)
+            foreach(ICollider subject in colliders)
             {
-                foreach(ICollider target in room)
+                foreach(ICollider target in colliders)
                 {
                     if (subject == target) { continue; }
 

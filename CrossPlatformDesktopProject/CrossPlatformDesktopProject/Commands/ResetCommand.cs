@@ -14,14 +14,12 @@ namespace CrossPlatformDesktopProject.Commands
     {
         private Player myPlayer;
         private CollisionSides mySide;
-        private Map myMap;
         public ResetCommand(Player player, CollisionSides side)
         {
-            myMap = CollisionResponse.myMap;
             myPlayer = player;
             mySide = side;
         }
-        public void Execute()
+        public void Execute(Game1 game)
         {
             switch(mySide)
             {
@@ -43,7 +41,6 @@ namespace CrossPlatformDesktopProject.Commands
                     break;
                 default:
                     break;
-                
             }
         }
     }

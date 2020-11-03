@@ -15,7 +15,7 @@ namespace CrossPlatformDesktopProject.Commands
             this.npc = npc;
         }
 
-        public void Execute()
+        public void Execute(Game1 game)
         {
             Console.WriteLine("Enemy took damage!");
         }

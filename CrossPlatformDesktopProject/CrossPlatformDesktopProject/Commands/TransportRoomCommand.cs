@@ -15,39 +15,19 @@ namespace CrossPlatformDesktopProject.Commands
     class TransportRoomCommand: ICommand
     {
         private Door myDoor;
-        private Map myMap;
         private Player myPlayer;
         private CollisionSides mySide;
         public TransportRoomCommand(Player player, Door door, CollisionSides side)
         {
             myDoor = door;
-            myMap = myDoor.myMap;
             myPlayer = player;
             mySide = side;
         }
-        public void Execute()
+        public void Execute(Game1 game)
         {
-            Door targetDoor = myMap.FindDoor(myDoor.myRoomKey);
-            Rectangle targetRect = targetDoor.GetRectangle();
-            Console.WriteLine("Change room");
-            switch (mySide)
-            {
-                case CollisionSides.Left:
-                    myPlayer.xPos = targetRect.Center.X - myPlayer.GetRectangle().Width - 25;
-                    break;
-                case CollisionSides.Right:
-                    myPlayer.xPos = targetRect.Center.X + myPlayer.GetRectangle().Width + 15;
-                    break;
-                case CollisionSides.Up:
-                    myPlayer.yPos = targetRect.Center.Y - myPlayer.GetRectangle().Height - 30;
-                    break;
-                case CollisionSides.Down:
-                    myPlayer.yPos = targetRect.Center.Y + myPlayer.GetRectangle().Height;
-                    break;
-                default:
-                    break;
-            }
-
+            myPlayer.xPos = myDoor.PlayerXPosAfterTravel;
+            myPlayer.yPos = myDoor.PlayerYPosAfterTravel;
+            game.GoToRoom(Room.FromId(game, myDoor.TargetRoomKey));
         }
     }
 }

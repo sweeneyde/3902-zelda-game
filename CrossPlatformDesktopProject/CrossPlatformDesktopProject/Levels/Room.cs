@@ -1,19 +1,6 @@
-﻿using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Reflection;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CrossPlatformDesktopProject.CollisionHandler;
-using CrossPlatformDesktopProject.NPC;
-using CrossPlatformDesktopProject.Obstacles;
-using CrossPlatformDesktopProject.WorldItem;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject.Levels
@@ -27,12 +14,41 @@ namespace CrossPlatformDesktopProject.Levels
         private int worldItemsIndex;
         private int obstaclesIndex;
         private int npcIndex;
-        private int length;
         public string roomID { get; }
 
         private Game1 game;
-        
-        public Room(Game1 game, List<INpc> npcList, List<IObstacle> obList, List<IWorldItem> itemList, string name)
+        public static Room FromId(Game1 game, string roomId)
+        {
+            return CSVParser.RoomParse(game, roomId);
+        }
+
+        public Room NewRoomAbove()
+        {
+            string id = Map.adjacencies[roomID][0];
+            return Room.FromId(game, id);
+        }
+        public Room NewRoomBelow()
+        {
+            string id = Map.adjacencies[roomID][1];
+            return Room.FromId(game, id);
+        }
+        public Room NewRoomToLeft()
+        {
+            string id = Map.adjacencies[roomID][2];
+            return Room.FromId(game, id);
+        }
+        public Room NewRoomToRight()
+        {
+            string id = Map.adjacencies[roomID][3];
+            return Room.FromId(game, id);
+        }
+
+
+        public Room(Game1 game,
+                    List<INpc> npcList,
+                    List<IObstacle> obList,
+                    List<IWorldItem> itemList,
+                    string name)
         {
             roomID = name.Remove(0, 5);
             this.game = game;
@@ -41,8 +57,7 @@ namespace CrossPlatformDesktopProject.Levels
             worldItems = itemList;
             obstacles = obList;
             npcs = npcList;
-            background = new Background(game, name);
-
+            background = new Background(game, roomID);
         }
 
         public void Update()
@@ -53,31 +68,16 @@ namespace CrossPlatformDesktopProject.Levels
             }
         }
 
-        public void Draw(SpriteBatch sb, string[] adjacents)
+        public void Draw(SpriteBatch sb)
         {
 
-            background.Draw(sb, adjacents);
-
-            if (worldItems.Count > 0)
-            {
-                foreach (IWorldItem  x in worldItems) { x.Draw(sb); }
-            }
-            if (obstacles.Count > 0)
-            {
-                foreach (IObstacle x in obstacles) { x.Draw(sb); }
-            }
-            if (npcs.Count > 0)
-            {
-                foreach (INpc x in npcs) { x.Draw(sb); }
-            }
+            background.Draw(sb);
+            foreach (IWorldItem  x in worldItems) { x.Draw(sb); }
+            foreach (IObstacle x in obstacles) { x.Draw(sb); }
+            foreach (INpc x in npcs) { x.Draw(sb); }
         }
 
-        public List<Door> FindDoors(string[] adjacentRooms, Map myMap)
-        {
-            return background.FindDoorColliders(adjacentRooms, myMap);
-        } 
-
-        public List<ICollider> GetColliders(string[] adjacentRooms, Map myMap)
+        public List<ICollider> GetColliders()
         {
             List<ICollider> collidables = new List<ICollider>();
             foreach(IWorldItem x in worldItems){
@@ -92,10 +92,17 @@ namespace CrossPlatformDesktopProject.Levels
                 collidables.Add((ICollider)x);
             }
 
-        List<Door> doors = FindDoors(adjacentRooms, myMap);
-            foreach (Door x in doors)
+            string[] adjacentRooms = Map.adjacencies[roomID];
+            int width = game.GraphicsDevice.Viewport.Width;
+            int height = game.GraphicsDevice.Viewport.Height;
+            string[] strings = new string[] { "top", "bottom", "left", "right" };
+            
+            for (int i = 0; i < 4; i++)
             {
-                collidables.Add((ICollider)x);
+                if (adjacentRooms[i] != "-1")
+                {
+                    collidables.Add(new Door(strings[i], adjacentRooms[i], width, height));
+                }
             }
             return collidables;
         }

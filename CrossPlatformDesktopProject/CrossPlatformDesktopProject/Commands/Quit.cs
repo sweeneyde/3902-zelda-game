@@ -13,6 +13,6 @@ namespace CrossPlatformDesktopProject.Commands
         {
             myGame = game;
         }
-        public void Execute() => myGame.quit();
+        public void Execute(Game1 game) => myGame.quit();
     }
 }
