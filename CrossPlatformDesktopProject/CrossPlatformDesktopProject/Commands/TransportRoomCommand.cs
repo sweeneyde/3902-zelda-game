@@ -2,13 +2,6 @@
 using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Commands
 {
