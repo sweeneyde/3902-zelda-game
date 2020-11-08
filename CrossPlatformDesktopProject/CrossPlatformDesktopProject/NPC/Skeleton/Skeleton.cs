@@ -28,11 +28,17 @@ namespace CrossPlatformDesktopProject.NPC
             currentState.Draw(spriteBatch, xPos, yPos);
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
+        
+        public void TakeDamage()
+        {
+            currentState = new SkeletonTakeDamage(this);
+        }
 
         public Rectangle GetRectangle()
         {
             return hitbox;
         }
+
     }
 
 }

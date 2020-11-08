@@ -96,6 +96,7 @@
     <Compile Include="NPC\Projectiles\Fireball\MiddleFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\TopFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\Fireball.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonTakeDamage.cs" />
     <Compile Include="Obstacles\Stairs.cs" />
     <Compile Include="Obstacles\PlainBlock.cs" />
     <Compile Include="Obstacles\Sand.cs" />
