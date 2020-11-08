@@ -60,5 +60,9 @@ namespace CrossPlatformDesktopProject.NPC
                 }
             }
         }
+
+        public void TakeDamage()
+        {
+        }
     }
 }

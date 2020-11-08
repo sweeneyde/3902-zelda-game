@@ -51,5 +51,9 @@ namespace CrossPlatformDesktopProject.NPC
                 my_frame_index %= my_source_frames.Count;
             }
         }
+
+        public void TakeDamage()
+        {
+        }
     }
 }

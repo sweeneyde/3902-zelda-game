@@ -35,12 +35,15 @@ namespace CrossPlatformDesktopProject.Link
         private int damaged_frames_left;
         private int frames_until_color_change;
 
+        public int link_health;
+
         public Player()
         {
             currentState = new LinkFacingSouthState(this);
             linkInventory = new InventoryManager(this);
             xPos = 100;
             yPos = 100;
+            link_health = 0;
         }
 
         public bool IsDamaged()
@@ -56,6 +59,11 @@ namespace CrossPlatformDesktopProject.Link
                 frames_until_color_change = frames_per_damage_color_change;
                 currentState.TakeDamage();
             }
+        }
+
+        public void Die()
+        {
+            currentState.Die();
         }
 
         public void MoveDown()

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -26,6 +27,10 @@ namespace CrossPlatformDesktopProject.NPC
         public void Draw(SpriteBatch spriteBatch)
         {
             currentState.Draw(spriteBatch, xPos, yPos);
+        }
+
+        public void TakeDamage()
+        {
         }
 
         public Rectangle GetRectangle()

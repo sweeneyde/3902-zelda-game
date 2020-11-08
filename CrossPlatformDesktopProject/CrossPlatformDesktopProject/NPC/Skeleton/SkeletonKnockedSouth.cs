@@ -1,32 +1,35 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class BatWalkSE : INpcState
+    class SkeletonKnockedSouth : INpcState
     {
         private int my_frame_index;
         private int delay_frame_index;
         private int counter;
-        private Bat bat;
+        private int my_texture_index;
+        private Skeleton skeleton;
+        private int frames_left;
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
-            NpcTextureStorage.BAT_1,
-            NpcTextureStorage.BAT_2
+            NpcTextureStorage.SKELETON_1,
+            NpcTextureStorage.SKELETON_2
         };
 
-        public BatWalkSE(Bat bat)
+        public SkeletonKnockedSouth(Skeleton skeleton)
         {
-            this.bat = bat;
-            my_frame_index = 0;
-            delay_frame_index = 0;
+            this.skeleton = skeleton;
+            this.frames_left = Skeleton.knockback_frames;
+            this.my_texture_index = 0;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = NpcTextureStorage.Instance.getEnemySpriteSheet();
+            Texture2D texture = NpcTextureStorage.Instance.getSkeletonSpriteSheet();
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
@@ -36,22 +39,12 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (counter == 10)
+            skeleton.yPos += Skeleton.knockback_speed;
+            if (--frames_left <= 0)
             {
-                bat.currentState = new BatWalkEast(bat);
-            }
-
-            if (++delay_frame_index >= delay_frames)
-            {
-                delay_frame_index = 0;
-                bat.yPos += 5;
-                bat.xPos += 5;
-                counter++;
-                my_frame_index++;
-                my_frame_index %= my_source_frames.Count;
+                skeleton.currentState = new SkeletonWalkSouth(skeleton);
             }
         }
-
         public void TakeDamage()
         {
         }
