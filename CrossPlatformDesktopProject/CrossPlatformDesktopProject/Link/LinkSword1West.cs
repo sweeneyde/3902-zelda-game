@@ -33,7 +33,7 @@ namespace CrossPlatformDesktopProject.Link
         {
             if (--frames_left <= 0)
             {
-                player.currentState = new LinkFacingWestState(player);
+                player.currentState = new LinkCantMove(player);
             }
         }
 
@@ -46,11 +46,6 @@ namespace CrossPlatformDesktopProject.Link
         {
             player.link_health++;
             player.currentState = new LinkKnockedEast(player);
-        }
-
-        void ILinkState.Die()
-        {
-            player.currentState = new LinkSword1East(player);
         }
 
         public void MoveDown()

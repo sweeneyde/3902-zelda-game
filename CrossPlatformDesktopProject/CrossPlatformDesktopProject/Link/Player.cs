@@ -61,11 +61,6 @@ namespace CrossPlatformDesktopProject.Link
             }
         }
 
-        public void Die()
-        {
-            currentState.Die();
-        }
-
         public void MoveDown()
         {
             currentState.MoveDown();

@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Link
 {
-    class LinkKnockedEast : ILinkState
+    class LinkCantMove : ILinkState
     {
         private int my_texture_index;
         private Player player;
         private int frames_left;
 
-        public LinkKnockedEast(Player player)
+        public LinkCantMove(Player player)
         {
             this.player = player;
             this.frames_left = Player.knockback_frames;
@@ -23,9 +23,9 @@ namespace CrossPlatformDesktopProject.Link
 
         void ILinkState.Draw(SpriteBatch spriteBatch)
         {
-            Texture2D texture = LinkTextureStorage.Instance.getMirroredDamageTexture(my_texture_index);
-            Rectangle source = LinkTextureStorage.MIRRORED_LINK_IDLE_WEST;
-            player.DrawSprite(spriteBatch, texture, source);
+            Texture2D texture = LinkTextureStorage.Instance.getDamageTexture(my_texture_index);
+            Rectangle source = LinkTextureStorage.LINK_IDLE_SOUTH;
+            //player.DrawSprite(spriteBatch, texture, source);
         }
         void ILinkState.setTextureIndex(int index)
         {
@@ -34,10 +34,10 @@ namespace CrossPlatformDesktopProject.Link
 
         void ILinkState.Update()
         {
-            player.xPos += Player.knockback_speed;
+            player.yPos -= Player.knockback_speed;
             if (--frames_left <= 0)
             {
-                player.currentState = new LinkFacingWestState(player);
+                player.currentState = new LinkFacingSouthState(player);
             }
         }
         void ILinkState.TakeDamage()
@@ -45,10 +45,10 @@ namespace CrossPlatformDesktopProject.Link
         }
 
         // Controls are not allowed during knocked state.
-        void ILinkState.MoveDown() {}
-        void ILinkState.MoveLeft() {}
-        void ILinkState.MoveRight() {}
-        void ILinkState.MoveUp() {}
+        void ILinkState.MoveDown() { }
+        void ILinkState.MoveLeft() { }
+        void ILinkState.MoveRight() { }
+        void ILinkState.MoveUp() { }
         void ILinkState.UsePrimary() { }
         void ILinkState.UseSecondary1() { }
         void ILinkState.UseSecondary2() { }

@@ -70,6 +70,7 @@
     <Compile Include="Levels\Map.cs" />
     <Compile Include="Levels\Room.cs" />
     <Compile Include="Levels\RoomTextureStorage.cs" />
+    <Compile Include="Link\LinkCantMove.cs" />
     <Compile Include="Link\Equipables\Smoke.cs" />
     <Compile Include="Link\Sword.cs" />
     <Compile Include="NPC\Boss\BossAttack.cs" />

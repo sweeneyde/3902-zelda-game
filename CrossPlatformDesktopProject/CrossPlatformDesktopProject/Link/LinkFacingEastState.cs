@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.Commands;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
@@ -22,11 +23,6 @@ namespace CrossPlatformDesktopProject.Link
             frames_left = Player.frames_per_step;
             my_source_index = 0;
             my_texture_index = 0;
-
-            if (player.link_health == 3)
-            {
-                player.Die();
-            }
         }
 
         void ILinkState.Draw(SpriteBatch spriteBatch)
@@ -47,11 +43,6 @@ namespace CrossPlatformDesktopProject.Link
         {
             player.link_health++;
             player.currentState = new LinkKnockedWest(player);
-        }
-
-        void ILinkState.Die()
-        {
-            player.currentState = new LinkSword1East(player);
         }
 
         public void MoveDown()

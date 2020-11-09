@@ -102,6 +102,9 @@ namespace CrossPlatformDesktopProject
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            if (player.link_health == 3)
+                Exit();
+
             player.Update();
             foreach (IController controller in controllerList)
             {

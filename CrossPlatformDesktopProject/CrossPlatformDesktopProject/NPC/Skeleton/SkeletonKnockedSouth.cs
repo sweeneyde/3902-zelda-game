@@ -7,10 +7,8 @@ namespace CrossPlatformDesktopProject.NPC
 {
     class SkeletonKnockedSouth : INpcState
     {
-        private int my_frame_index;
-        private int delay_frame_index;
-        private int counter;
-        private int my_texture_index;
+        private int my_frame_index = 0;
+        private int delay_frame_index = 0;
         private Skeleton skeleton;
         private int frames_left;
 
@@ -24,7 +22,6 @@ namespace CrossPlatformDesktopProject.NPC
         {
             this.skeleton = skeleton;
             this.frames_left = Skeleton.knockback_frames;
-            this.my_texture_index = 0;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -43,6 +40,13 @@ namespace CrossPlatformDesktopProject.NPC
             if (--frames_left <= 0)
             {
                 skeleton.currentState = new SkeletonWalkSouth(skeleton);
+            }
+
+            if (++delay_frame_index >= delay_frames)
+            {
+                delay_frame_index = 0;
+                my_frame_index++;
+                my_frame_index %= my_source_frames.Count;
             }
         }
         public void TakeDamage()

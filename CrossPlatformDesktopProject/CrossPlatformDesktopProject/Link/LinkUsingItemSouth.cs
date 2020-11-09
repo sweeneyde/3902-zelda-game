@@ -43,11 +43,6 @@ namespace CrossPlatformDesktopProject.Link
             player.currentState = new LinkKnockedNorth(player);
         }
 
-        void ILinkState.Die()
-        {
-            player.currentState = new LinkSword1East(player);
-        }
-
         public void MoveDown() { }
         public void MoveLeft() { }
         public void MoveRight() { }
