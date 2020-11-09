@@ -42,7 +42,9 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             Type gelType = typeof(Gel);
             Type goriyaType = typeof(Goriya);
             Type skeletonType = typeof(Skeleton);
-            Type[] enemyTypes = { batType, bossType, gelType, goriyaType, skeletonType };
+            Type fireballType = typeof(Fireball);
+            Type goriyaBoomerangType = typeof(GoriyaBoomerang);
+            Type[] enemyTypes = { batType, bossType, gelType, goriyaType, skeletonType, fireballType, goriyaBoomerangType };
 
             //Object Types
             Type boomerangType = typeof(Boomerang);
