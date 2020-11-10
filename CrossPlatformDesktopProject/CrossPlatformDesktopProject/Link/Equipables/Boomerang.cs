@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Equipables
 {
-    class Boomerang : IEquipable, ICollider
+    public class Boomerang : IEquipable, ICollider
     {
         private Player player;
         private Vector2 currentPos;
