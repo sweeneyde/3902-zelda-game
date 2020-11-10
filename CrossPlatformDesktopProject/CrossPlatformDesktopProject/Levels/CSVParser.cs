@@ -1,33 +1,60 @@
-﻿using CrossPlatformDesktopProject.NPC;
-using Microsoft.VisualBasic.FileIO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+using CrossPlatformDesktopProject.NPC;
+using Microsoft.VisualBasic.FileIO;
 
 namespace CrossPlatformDesktopProject.Levels
 {
-    static class CSVParser
+    class CSVParser
     {
-        private static string cwdPath = Directory.GetCurrentDirectory();
-        private static string levelPath = cwdPath.Replace(@"\bin\DesktopGL\AnyCPU\Debug", @"\Levels");
-        private static string rootCSV = "LevelCSV";
-        private static string roomCSV = "RoomCSV";
-        private static string mapCSV = "Map.csv";
-        private static string levelCSVPath = Path.Combine(levelPath, rootCSV);
-        private static string roomCSVPath = Path.Combine(levelCSVPath, roomCSV);
-        public static string mapCSVPath = Path.Combine(levelCSVPath, mapCSV);
+        private string levelCSVPath;
+        private string roomCSVPath;
+        private string mapCSVPath;
+        private string cwdPath;
+        private string levelPath;
+        private Game1 game;
 
-        private static string[] commentTokens = { "#", "//", "/" };
-        private static string[] delimiters = { ",", ";" };
+        private string rootCSV = "LevelCSV";
+        private string roomCSV = "RoomCSV";
+        private string mapCSV = "Map.csv";
+        private string[] commentTokens = { "#", "//", "/" };
+        private string[] delimiters = { ",", ";" };
 
-        /// <summary>
-        /// Look at the mapCSVPath and parse it into an adjacency list of room ids.
-        /// </summary>
-        /// <returns>A Dictionary that maps room id --> [] </returns>
-        public static Dictionary<string, string[]> ParseRoomAdjacencies()
+       public CSVParser(Game1 game)
         {
-            Dictionary<string, string[]> mapMemory = new Dictionary<string, string[]>();
+            this.game = game;
+            // Load paths on Init and store them as to save some time //
+            // We want the path to ...\Level\LevelCSV\ because then we can access
+            // "\RoomCSV\" & "\Map.csv" respectively. This is all the CSV info we need.
+
+            // Retrieve assembly cwd: Path.GetDirectoryName(Assembly.GetAssembly(typeof("string assemblyName")).Location);
+            // Debug for now
+
+            cwdPath = Directory.GetCurrentDirectory();
+            levelPath = cwdPath.Replace(@"\bin\DesktopGL\AnyCPU\Debug", @"\Levels");
+            Debug.Print("Current Working Directory: " + levelPath);
+      
+            levelCSVPath = Path.Combine(levelPath, rootCSV);
+
+            roomCSVPath = Path.Combine(levelCSVPath, roomCSV);
+
+            mapCSVPath = Path.Combine(levelCSVPath, mapCSV);
+
+            Debug.Print("Room CSV: " + roomCSVPath);
+            Debug.Print("Map CSV Path: " + mapCSVPath);
+        }
+
+
+        public void MapParse(Dictionary<string, string[]> mapMemory)
+        {
+            
             using (TextFieldParser csvParser = new TextFieldParser(mapCSVPath))
             {
                 string[] readLine;
@@ -45,10 +72,10 @@ namespace CrossPlatformDesktopProject.Levels
                     mapMemory.Add(roomIDGrab, adjacentsGrab);
                 }
             }
-            return mapMemory;
+
         }
 
-        public static Room RoomParse(Game1 game, string roomID)
+        public Room RoomParse(string roomID)
         {
             int i;
             string grabType;

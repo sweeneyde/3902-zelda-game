@@ -1,13 +1,19 @@
-﻿using CrossPlatformDesktopProject.CollisionHandler;
-using CrossPlatformDesktopProject.Link.Equipables;
+﻿using CrossPlatformDesktopProject;
+using CrossPlatformDesktopProject.Link;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CrossPlatformDesktopProject.Link.Equipables;
+using CrossPlatformDesktopProject.CollisionHandler;
+using System.Security.Cryptography.X509Certificates;
 
 namespace CrossPlatformDesktopProject.Link
 {
-    public class Player : ICollider
+    class Player : ICollider
     {
         public ILinkState currentState;
         

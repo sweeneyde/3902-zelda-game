@@ -14,8 +14,10 @@ namespace CrossPlatformDesktopProject.Commands
     {
         private Player myPlayer;
         private CollisionSides mySide;
+        private Map myMap;
         public ResetCommand(Player player, CollisionSides side)
         {
+            myMap = CollisionResponse.myMap;
             myPlayer = player;
             mySide = side;
         }
@@ -41,6 +43,7 @@ namespace CrossPlatformDesktopProject.Commands
                     break;
                 default:
                     break;
+                
             }
         }
     }

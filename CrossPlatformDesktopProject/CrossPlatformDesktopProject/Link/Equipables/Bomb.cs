@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Equipables
 {
-    public class Bomb : IEquipable
+    class Bomb : IEquipable
     {
         private Player player;
         private Vector2 currentPos;

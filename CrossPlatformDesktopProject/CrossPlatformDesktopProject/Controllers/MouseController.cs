@@ -19,12 +19,14 @@ namespace CrossPlatformDesktopProject
         MouseState currentState;
         int currentID;
         string newID;
+        CSVParser csvParser;
 
         public MouseController(Game1 game)
         {
             myGame = game;
             oldState = Mouse.GetState();
             currentState = Mouse.GetState();
+            csvParser = new CSVParser(myGame);
         }
 
         public void Update()
@@ -34,7 +36,7 @@ namespace CrossPlatformDesktopProject
 
             if (oldState.RightButton != ButtonState.Pressed && currentState.RightButton == ButtonState.Pressed)
             {
-                currentID = Int32.Parse(myGame.currentGamePlayState.CurrentRoom.roomID);
+                currentID = Int32.Parse(myGame.map.currentRoom.roomID);
                 if (currentID < 17)
                 {
                     currentID++;
@@ -47,12 +49,13 @@ namespace CrossPlatformDesktopProject
                     newID = "0";
                 }
                 newID += currentID;
-                myGame.GoToRoom(Room.FromId(myGame, newID));
+                myGame.map.currentRoom = csvParser.RoomParse(newID);
+                myGame.map.map.TryGetValue(newID, out myGame.map.currentAdjacentList);
             }
 
             else if (oldState.LeftButton != ButtonState.Pressed && currentState.LeftButton == ButtonState.Pressed)
             {
-                currentID = Int32.Parse(myGame.currentGamePlayState.CurrentRoom.roomID);
+                currentID = Int32.Parse(myGame.map.currentRoom.roomID);
                 if (currentID > 1)
                 {
                     currentID--;
@@ -65,7 +68,8 @@ namespace CrossPlatformDesktopProject
                     newID = "0";
                 }
                 newID += currentID;
-                myGame.GoToRoom(Room.FromId(myGame, newID));
+                myGame.map.currentRoom = csvParser.RoomParse(newID);
+                myGame.map.map.TryGetValue(newID, out myGame.map.currentAdjacentList);
             }
         }
 
