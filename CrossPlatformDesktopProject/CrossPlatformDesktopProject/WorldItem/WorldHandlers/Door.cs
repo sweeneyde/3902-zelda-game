@@ -1,27 +1,58 @@
 ﻿using CrossPlatformDesktopProject.CollisionHandler;
-using CrossPlatformDesktopProject.Levels;
-using Microsoft.VisualBasic.CompilerServices;
+using CrossPlatformDesktopProject.Link;
 using Microsoft.Xna.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.WorldItem.WorldHandlers
 {
     public class Door : ICollider
     {
         private Rectangle hitbox;
-        public Map myMap { get; private set; }
-        public String myRoomKey { get; private set; }
-        public Door(Rectangle collider, Map map, String roomCode)
+        public String TargetRoomKey { get; private set; }
+        public float PlayerXPosAfterTravel { get; }
+        public float PlayerYPosAfterTravel { get; }
+
+        public Door(string direction, String NextRoomCode, int screenWidth, int screenHeight)
         {
-            //x,y is center
-            hitbox = collider;
-            myMap = map;
-            myRoomKey = roomCode;
+            int doorWidth = (screenWidth * 31) / 255;
+            int doorHeight = (screenHeight * 31) / 175;
+            int ymid = (screenHeight / 2) - (doorHeight / 2) + 1;
+            int xmid = (screenWidth / 2) - (doorWidth / 2);
+
+            TargetRoomKey = NextRoomCode;
+            int STEP = 60;
+            int LINKSIZE = LinkTextureStorage.LINK_IDLE_EAST.Width * 3;
+            int THICKNESS = 40;
+            int XMID_LINK = (screenWidth / 2) - (LINKSIZE / 2);
+            int YMID_LINK = (screenHeight / 2) - (LINKSIZE / 2);
+
+            switch (direction)
+            {
+                case "top":
+                    hitbox = new Rectangle(xmid, 0, doorWidth, THICKNESS);
+                    PlayerXPosAfterTravel = XMID_LINK;
+                    PlayerYPosAfterTravel = screenHeight - STEP - LINKSIZE;
+                    break;
+                case "bottom":
+                    hitbox = new Rectangle(xmid, screenHeight - THICKNESS, doorWidth, THICKNESS);
+                    PlayerXPosAfterTravel = XMID_LINK;
+                    PlayerYPosAfterTravel = STEP;
+                    break;
+                case "left":
+                    hitbox = new Rectangle(0, ymid, THICKNESS, doorHeight);
+                    PlayerXPosAfterTravel = screenWidth - STEP - LINKSIZE;
+                    PlayerYPosAfterTravel = YMID_LINK;
+                    break;
+                case "right":
+                    hitbox = new Rectangle(screenWidth - THICKNESS, ymid, THICKNESS, doorHeight);
+                    PlayerXPosAfterTravel = STEP;
+                    PlayerYPosAfterTravel = YMID_LINK;
+                    break;
+                default:
+                    throw new Exception();
+            }
         }
+
         public Rectangle GetRectangle()
         {
             return hitbox;

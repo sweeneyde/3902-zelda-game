@@ -1,16 +1,12 @@
-﻿using CrossPlatformDesktopProject.Commands;
-using CrossPlatformDesktopProject.Link;
-using CrossPlatformDesktopProject.Obstacles;
+﻿using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.WorldItem;
 using CrossPlatformDesktopProject.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Dynamic;
 using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.GameStates;
 
 namespace CrossPlatformDesktopProject
 {
@@ -19,19 +15,17 @@ namespace CrossPlatformDesktopProject
     /// </summary>
     public class Game1 : Game
     {
-
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
         public List<IController> controllerList;
         
-        public DevRoom entityStorage;
-        private CollisionDetector collisionController;
-        protected Texture2D img;
+        public CollisionDetector collisionController;
         private SpriteFont font;
-        private Player player;
+        public Player player;
 
-        //----------TEST------------//
-        public Map map;
+        public IGameState currentState;
+        public GamePlayState currentGamePlayState;
 
         public Game1()
         {
@@ -47,23 +41,14 @@ namespace CrossPlatformDesktopProject
         /// </summary>
         protected override void Initialize()
         {
-            //--------------TEST----------//
-            map = new Map(this);
-            //map.TestAccess();
-
-            ///////////////////////////////
             player = new Player();
-            
-            controllerList = new List<IController>();
+            currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "013"));
 
-            KeyboardController KC = new KeyboardController(this, player);
-            MouseController MC = new MouseController(this);
-            controllerList.Add(KC);
-
-            controllerList.Add(MC);
-
-            collisionController = new CollisionDetector(map, player);
-            entityStorage = new DevRoom(this);
+            controllerList = new List<IController>()
+            {
+                new KeyboardController(this, player),
+                new MouseController(this),
+            };
 
             base.Initialize();
         }
@@ -76,6 +61,7 @@ namespace CrossPlatformDesktopProject
         {
             font = Content.Load<SpriteFont>("NewFont");
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            GameScreenTextureStorage.Instance.LoadAllResources(this);
             LinkTextureStorage.Instance.LoadAllResources(Content);
             ObstacleTextureStorage.Instance.LoadAllResources(Content);
             NpcTextureStorage.Instance.LoadAllResources(Content);
@@ -99,20 +85,7 @@ namespace CrossPlatformDesktopProject
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            player.Update();
-            foreach (IController controller in controllerList)
-            {
-                controller.Update();
-            }
-
-            collisionController.Update();
-            map.Update();
-            entityStorage.Update();
-
-            base.Update(gameTime);
+            currentState.Update();
         }
 
         /// <summary>
@@ -122,14 +95,20 @@ namespace CrossPlatformDesktopProject
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-
+            
             spriteBatch.Begin();
-
-            map.Draw(spriteBatch);
-            player.Draw(spriteBatch);
-
+            currentState.Draw(spriteBatch);
             spriteBatch.End();
+
             base.Draw(gameTime);
+        }
+
+        public void GoToRoom(Room room2)
+        {
+            GameScreenTextureStorage.Instance.SaveScreen(spriteBatch);
+            Room room1 = currentGamePlayState.CurrentRoom;
+            currentGamePlayState = new GamePlayState(this, room2);
+            currentState = new RoomTransitionState(this, room1, room2);
         }
 
         public void quit()
