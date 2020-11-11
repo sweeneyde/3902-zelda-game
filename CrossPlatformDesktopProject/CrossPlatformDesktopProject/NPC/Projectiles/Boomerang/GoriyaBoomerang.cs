@@ -11,7 +11,6 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos;
         public int travelmarker;
         public bool start;
-        private Rectangle hitbox;
 
         public GoriyaBoomerang()
         {
@@ -20,13 +19,11 @@ namespace CrossPlatformDesktopProject.NPC
             yPos = 0;
             travelmarker = 0;
             start = false;
-            hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 
         public void Update()
         {
             currentState.Update();
-            hitbox = new Rectangle((int)xPos, (int)yPos, 25, 30);
         }
 
         public Rectangle GetRectangle()
