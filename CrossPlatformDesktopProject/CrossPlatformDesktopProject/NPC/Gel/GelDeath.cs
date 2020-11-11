@@ -8,7 +8,7 @@ namespace CrossPlatformDesktopProject.NPC
     {
         private int my_frame_index;
         private int delay_frame_index;
-        private int counter;
+        private int counter; // use counter to make sure that death animation only happens once
         private Gel gel;
 
         private static int delay_frames = 6;
@@ -25,7 +25,7 @@ namespace CrossPlatformDesktopProject.NPC
             gel.hitbox = new Rectangle((int)gel.xPos, (int)gel.yPos, 0, 0);
         }
 
-        public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
+        public void Draw(SpriteBatch spriteBatch, float xPos, float yPos) // make sure to set source = transparent frame if counter has been reached
         {
         }
 
