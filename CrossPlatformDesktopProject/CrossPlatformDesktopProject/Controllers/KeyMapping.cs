@@ -34,10 +34,6 @@ namespace CrossPlatformDesktopProject
 
             setDefaults();
         }
-
-        public void assignPlayer(Player player){
-            myPlayer = player;
-        }
         
         private void setDefaults(){
 
