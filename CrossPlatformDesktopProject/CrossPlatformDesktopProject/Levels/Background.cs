@@ -1,13 +1,5 @@
-﻿using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Levels
 {
@@ -46,22 +38,18 @@ namespace CrossPlatformDesktopProject.Levels
             bottomDoorDest = new Rectangle((screenWidth / 2) - (doorWidth / 2), screenHeight - doorHeight, doorWidth, doorHeight);
         }
 
-        public void Draw(SpriteBatch sb, string[] adjacents)
+        public void Draw(SpriteBatch sb)
         {
-            RoomTextureStorage textureInstance = RoomTextureStorage.Instance;
-            Texture2D texture = textureInstance.getRoomSpriteSheet();
+            Texture2D texture = RoomTextureStorage.Instance.getRoomSpriteSheet();
 
             Rectangle borderSource = RoomTextureStorage.BORDER;
             Rectangle borderDestination = new Rectangle(0, 0, screenWidth, screenHeight);
             sb.Draw(texture, borderDestination, borderSource, Color.White);
+
+            DoorCheck(sb, Map.adjacencies[roomTextureID], texture);
+
             //Recover source image from CSV string
-
-            DoorCheck(sb, adjacents, texture);
-
-            FieldInfo propInfo = typeof(RoomTextureStorage).GetField(roomTextureID);
-            object rectType = propInfo.GetValue(typeof(RoomTextureStorage));
-            Rectangle source = (Rectangle)rectType;
-
+            Rectangle source = RoomTextureStorage.ROOM_RECTS[roomTextureID];
             Rectangle destination = new Rectangle(destinationWidth, destinationHeight, innerWidth, innerHeight);
             sb.Draw(texture, destination, source, Color.White);
         }
@@ -103,27 +91,6 @@ namespace CrossPlatformDesktopProject.Levels
             {
                 sb.Draw(texture, rightDoorDest, RoomTextureStorage.RIGHT_OPEN_DOOR, Color.White);
             }
-        }
-        public List<Door> FindDoorColliders(string[] adjacentRooms, Map currentMap)
-        {
-            List<Door> doors = new List<Door>();
-            if (!adjacentRooms[0].Equals("-1"))
-            {
-                doors.Add(new Door(new Rectangle(0, topDoorDest.Center.Y, screenWidth, 1), currentMap, adjacentRooms[0]));
-            }
-            if (!adjacentRooms[1].Equals("-1"))
-            {
-                doors.Add(new Door(new Rectangle(0, bottomDoorDest.Center.Y, screenWidth, 1), currentMap, adjacentRooms[1]));
-            }
-            if (!adjacentRooms[2].Equals("-1"))
-            {
-                doors.Add(new Door(new Rectangle(leftDoorDest.Center.X, 0, 1, screenHeight), currentMap, adjacentRooms[2]));
-            }
-            if (!adjacentRooms[3].Equals("-1"))
-            {
-                doors.Add(new Door(new Rectangle(rightDoorDest.Center.X, 0, 1, screenHeight), currentMap, adjacentRooms[3]));
-            }
-            return doors;
         }
     }
 }
