@@ -69,7 +69,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             {
                 foreach (Type enemySubject in enemyTypes)
                 {
-                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(enemySubject, playerType, side), typeof(TakeDamageCommand));
+                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(enemySubject, playerType, side), typeof(EnemyTakeDamageCommand));
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Sword), enemySubject, side), typeof(EnemyTakeDamageCommand));
                 }
                 foreach (Type obstacleSubject in obstacleTypes)

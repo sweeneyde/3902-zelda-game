@@ -30,6 +30,7 @@ namespace CrossPlatformDesktopProject.Link
         private int frames_until_color_change;
 
         public int link_health;
+        public Rectangle sameSize;
 
         public Player()
         {
@@ -137,7 +138,7 @@ namespace CrossPlatformDesktopProject.Link
 
         public Rectangle GetRectangle()
         {
-            Rectangle sameSize = LinkTextureStorage.LINK_IDLE_EAST;
+            sameSize = LinkTextureStorage.LINK_IDLE_EAST;
             return new Rectangle((int)xPos, (int)yPos, sameSize.Width * 3, sameSize.Height * 3);
         }
 

@@ -20,6 +20,8 @@ namespace CrossPlatformDesktopProject.Link
             this.player = player;
             this.frames_left = Player.frames_for_sword;
             my_texture_index = 0;
+
+            player.sameSize = LinkTextureStorage.MIRRORED_LINK_SWORD_WEST;
         }
 
         void ILinkState.Draw(SpriteBatch spriteBatch)
@@ -33,7 +35,7 @@ namespace CrossPlatformDesktopProject.Link
         {
             if (--frames_left <= 0)
             {
-                player.currentState = new LinkCantMove(player);
+                player.currentState = new LinkFacingWestState(player);
             }
         }
 

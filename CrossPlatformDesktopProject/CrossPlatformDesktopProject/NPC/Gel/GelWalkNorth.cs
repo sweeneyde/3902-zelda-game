@@ -53,6 +53,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void TakeDamage()
         {
+            gel.currentState = new GelDeath(gel);
         }
     }
 }
