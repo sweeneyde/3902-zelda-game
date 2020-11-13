@@ -108,6 +108,10 @@ namespace CrossPlatformDesktopProject.Levels
                 worldItems[worldItemsIndex],
                 npcs[npcIndex],
                 obstacles[obstaclesIndex],
+                fireball1,
+                fireball2,
+                fireball3,
+                boomerang
             };
         }
 
