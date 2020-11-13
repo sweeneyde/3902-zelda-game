@@ -22,15 +22,15 @@ namespace CrossPlatformDesktopProject.WorldItem
             Rectangle source = ItemTextureStorage.KEY;
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
-                source.Width * 3, source.Height * 3);
+                source.Width, source.Height);
             spriteBatch.Draw(texture, getRectangle(), source, Color.White);
         }
 
         private Rectangle getRectangle()
         {
             return new Rectangle((int)xPos, (int)yPos,
-                ItemTextureStorage.RUPEE.Width * 3,
-                ItemTextureStorage.RUPEE.Height * 3);
+                ItemTextureStorage.RUPEE.Width,
+                ItemTextureStorage.RUPEE.Height);
         }
         Rectangle ICollider.GetRectangle()
         {

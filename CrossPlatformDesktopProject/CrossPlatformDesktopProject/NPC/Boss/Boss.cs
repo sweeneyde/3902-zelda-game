@@ -7,7 +7,7 @@ namespace CrossPlatformDesktopProject.NPC
     {
         public INpcState currentState;
         public float xPos, yPos;
-        private Rectangle hitbox;
+        public Rectangle hitbox;
 
         public Boss(float xPos, float yPos, Fireball fireball1, Fireball fireball2, Fireball fireball3)
         {
@@ -20,7 +20,6 @@ namespace CrossPlatformDesktopProject.NPC
         public void Update()
         {
             currentState.Update();
-            hitbox = new Rectangle((int)xPos, (int)yPos, 100, 100);
         }
 
         public void Draw(SpriteBatch spriteBatch)

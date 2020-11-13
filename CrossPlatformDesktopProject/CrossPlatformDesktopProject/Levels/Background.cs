@@ -21,10 +21,10 @@ namespace CrossPlatformDesktopProject.Levels
 
         public Background(Game1 game, string texture) 
         {
-            screenWidth = game.GraphicsDevice.Viewport.Width;
-            screenHeight = game.GraphicsDevice.Viewport.Height;
-            innerWidth = (screenWidth * 191) / 255 + 6;
-            innerHeight = (screenHeight * 111) / 175 + 6;
+            screenWidth = game.GraphicsDevice.Viewport.Width/3;
+            screenHeight = game.GraphicsDevice.Viewport.Height/3;
+            innerWidth = (screenWidth * 191) / (255) + 6;
+            innerHeight = (screenHeight * 111) / (175) + 6;
             destinationHeight = (screenHeight - innerHeight) / 2 + 1;
             destinationWidth = (screenWidth - innerWidth) / 2 + 1;
             roomTextureID = texture;

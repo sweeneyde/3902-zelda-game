@@ -42,7 +42,7 @@ namespace CrossPlatformDesktopProject.NPC
                 Rectangle source = my_source_frames[my_frame_index];
                 Rectangle destination_fireball = new Rectangle(
                     (int)boomerang.xPos, (int)boomerang.yPos,
-                    NpcTextureStorage.GORIYA_LEFT_1.Width * 2, NpcTextureStorage.GORIYA_LEFT_1.Height * 3);
+                    NpcTextureStorage.GORIYA_LEFT_1.Width, NpcTextureStorage.GORIYA_LEFT_1.Height);
 
                 spriteBatch.Draw(texture, destination_fireball, source, Color.White);
             }

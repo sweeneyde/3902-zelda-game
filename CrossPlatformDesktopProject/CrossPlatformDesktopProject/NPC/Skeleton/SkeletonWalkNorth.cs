@@ -32,6 +32,7 @@ namespace CrossPlatformDesktopProject.NPC
                 (int)xPos, (int)yPos,
                 source.Width * 3, source.Height * 3);
             spriteBatch.Draw(texture, destination, source, Color.White);
+            skeleton.hitbox = destination;
         }
 
         public void Update()

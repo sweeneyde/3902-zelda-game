@@ -20,9 +20,9 @@ namespace CrossPlatformDesktopProject.WorldItem.WorldHandlers
             int xmid = (screenWidth / 2) - (doorWidth / 2);
 
             TargetRoomKey = NextRoomCode;
-            int STEP = 60;
-            int LINKSIZE = LinkTextureStorage.LINK_IDLE_EAST.Width * 3;
-            int THICKNESS = 40;
+            int STEP = 20;
+            int LINKSIZE = LinkTextureStorage.LINK_IDLE_EAST.Width;
+            int THICKNESS = 5;
             int XMID_LINK = (screenWidth / 2) - (LINKSIZE / 2);
             int YMID_LINK = (screenHeight / 2) - (LINKSIZE / 2);
 
