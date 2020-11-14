@@ -1,4 +1,12 @@
 ROOM_010
-CrossPlatformDesktopProject.NPC.Goriya,10,10
-CrossPlatformDesktopProject.WorldItem.DungeonKey,10,10
-CrossPlatformDesktopProject.Obstacles.Stairs,10,10
+CrossPlatformDesktopProject.Obstacles.Block,2,2,CrossPlatformDesktopProject.Obstacles.Block,2,3,CrossPlatformDesktopProject.Obstacles.Block,2,4
+CrossPlatformDesktopProject.Obstacles.Block,2,5,CrossPlatformDesktopProject.Obstacles.Block,2,6,CrossPlatformDesktopProject.Obstacles.Block,2,7
+CrossPlatformDesktopProject.Obstacles.Block,2,8,CrossPlatformDesktopProject.Obstacles.Block,2,9,CrossPlatformDesktopProject.Obstacles.Block,2,10
+CrossPlatformDesktopProject.Obstacles.Block,2,11
+CrossPlatformDesktopProject.Obstacles.Block,6,2,CrossPlatformDesktopProject.Obstacles.Block,6,3,CrossPlatformDesktopProject.Obstacles.Block,6,4
+CrossPlatformDesktopProject.Obstacles.Block,6,5,CrossPlatformDesktopProject.Obstacles.Block,6,8,CrossPlatformDesktopProject.Obstacles.Block,6,9
+CrossPlatformDesktopProject.Obstacles.Block,6,10,CrossPlatformDesktopProject.Obstacles.Block,6,11
+CrossPlatformDesktopProject.Obstacles.Block,3,2,CrossPlatformDesktopProject.Obstacles.Block,4,2,CrossPlatformDesktopProject.Obstacles.Block,5,2
+CrossPlatformDesktopProject.Obstacles.Block,3,11,CrossPlatformDesktopProject.Obstacles.Block,4,11,CrossPlatformDesktopProject.Obstacles.Block,5,11
+CrossPlatformDesktopProject.Obstacles.Statue,3,5,CrossPlatformDesktopProject.Obstacles.Statue,4,4
+CrossPlatformDesktopProject.Obstacles.Statue2,3,8,CrossPlatformDesktopProject.Obstacles.Statue2,4,9

@@ -1,4 +1,13 @@
 ROOM_016
-CrossPlatformDesktopProject.NPC.Goriya,10,10
-CrossPlatformDesktopProject.WorldItem.DungeonKey,10,10
-CrossPlatformDesktopProject.Obstacles.Stairs,10,10
+CrossPlatformDesktopProject.Obstacles.Transparent,4,4,CrossPlatformDesktopProject.Obstacles.Transparent,4,5
+CrossPlatformDesktopProject.Obstacles.Transparent,4,6,CrossPlatformDesktopProject.Obstacles.Transparent,4,7
+CrossPlatformDesktopProject.Obstacles.Transparent,4,8,CrossPlatformDesktopProject.Obstacles.Transparent,4,9
+CrossPlatformDesktopProject.Obstacles.Transparent,2,2,CrossPlatformDesktopProject.Obstacles.Transparent,2,3
+CrossPlatformDesktopProject.Obstacles.Transparent,2,4,CrossPlatformDesktopProject.Obstacles.Transparent,2,9
+CrossPlatformDesktopProject.Obstacles.Transparent,2,10,CrossPlatformDesktopProject.Obstacles.Transparent,2,11
+CrossPlatformDesktopProject.Obstacles.Transparent,3,2,CrossPlatformDesktopProject.Obstacles.Transparent,3,11
+CrossPlatformDesktopProject.Obstacles.Transparent,4,2,CrossPlatformDesktopProject.Obstacles.Transparent,4,11
+CrossPlatformDesktopProject.Obstacles.Transparent,5,2,CrossPlatformDesktopProject.Obstacles.Transparent,5,11
+CrossPlatformDesktopProject.Obstacles.Transparent,6,2,CrossPlatformDesktopProject.Obstacles.Transparent,6,3
+CrossPlatformDesktopProject.Obstacles.Transparent,6,4,CrossPlatformDesktopProject.Obstacles.Transparent,6,9
+CrossPlatformDesktopProject.Obstacles.Transparent,6,10,CrossPlatformDesktopProject.Obstacles.Transparent,6,11
