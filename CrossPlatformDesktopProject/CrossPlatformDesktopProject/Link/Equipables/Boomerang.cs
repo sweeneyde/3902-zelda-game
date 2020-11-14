@@ -24,8 +24,8 @@ namespace CrossPlatformDesktopProject.Equipables
         private Vector2 returnFlight;
         private int my_frame_index;
         private int delay_frame_index;
-        private float boomerangTravelDist = 400f;
-        private float boomSpeed = 50f;
+        private float boomerangTravelDist = 125f;
+        private float boomSpeed = 15f;
         private bool reachedEnd = false;
 
         private static int delay_frames = 5;
@@ -151,7 +151,7 @@ namespace CrossPlatformDesktopProject.Equipables
             Rectangle source = my_source_frames[my_frame_index];
             return new Rectangle(
                 (int)currentPos.X, (int)currentPos.Y,
-                source.Width * 3, source.Height * 3);
+                source.Width, source.Height);
         }
     }
 }

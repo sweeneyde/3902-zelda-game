@@ -26,7 +26,7 @@ namespace CrossPlatformDesktopProject.Link
         {
             Texture2D texture = LinkTextureStorage.Instance.getDamageTexture(my_texture_index);
             Rectangle source = LinkTextureStorage.LINK_SWORD_NORTH;
-            player.DrawSprite(spriteBatch, texture, source, 0, -33);
+            player.DrawSprite(spriteBatch, texture, source, 0, -11);
         }
 
         void ILinkState.Update()
