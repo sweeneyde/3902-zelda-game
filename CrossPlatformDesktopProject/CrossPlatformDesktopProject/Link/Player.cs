@@ -33,8 +33,8 @@ namespace CrossPlatformDesktopProject.Link
         {
             currentState = new LinkFacingSouthState(this);
             linkInventory = new InventoryManager(this);
-            xPos = 10;
-            yPos = 10;
+            xPos = 30;
+            yPos = 30;
         }
 
         public bool IsDamaged()
