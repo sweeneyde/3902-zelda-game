@@ -32,7 +32,6 @@ namespace CrossPlatformDesktopProject.Levels
 
             doorSize = RoomTextureStorage.DOOR_SIDE;
 
-            //screenWidth - (doorWidth / 2)= 7
             topDoorDest = new Rectangle((screenWidth / 2) - (doorSize / 2), 0, doorSize, doorSize);
             leftDoorDest = new Rectangle(0, (screenHeight / 2) - (doorSize / 2), doorSize, doorSize);
             rightDoorDest = new Rectangle(screenWidth - doorSize, (screenHeight / 2) - (doorSize / 2), doorSize, doorSize);
