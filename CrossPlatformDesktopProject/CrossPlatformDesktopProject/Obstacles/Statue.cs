@@ -28,13 +28,14 @@ namespace CrossPlatformDesktopProject.Obstacles
         {
             Texture2D texture = ObstacleTextureStorage.Instance.getObstacleSpriteSheet();
             Rectangle source = ObstacleTextureStorage.OBSTACLE_STATUE;
-            Rectangle destination = new Rectangle((int)xPos, (int)yPos, source.Width * 3, source.Height * 3);
+            Rectangle destination = new Rectangle((int)xPos, (int)yPos, source.Width, source.Height);
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
         public Rectangle GetRectangle()
         {
-            return hitbox;
+            Rectangle source = ObstacleTextureStorage.OBSTACLE_STATUE;
+            return new Rectangle((int)xPos, (int)yPos, source.Width, source.Height);
         }
     }
 }

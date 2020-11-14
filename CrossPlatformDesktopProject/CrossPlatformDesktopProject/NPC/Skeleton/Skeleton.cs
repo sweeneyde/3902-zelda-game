@@ -7,7 +7,7 @@ namespace CrossPlatformDesktopProject.NPC
     {
         public INpcState currentState;
         public float xPos, yPos;
-        private Rectangle hitbox;
+        public Rectangle hitbox;
 
         public Skeleton(float xPos, float yPos)
         {
@@ -20,13 +20,11 @@ namespace CrossPlatformDesktopProject.NPC
         public void Update()
         {
             currentState.Update();
-            hitbox = new Rectangle((int)xPos, (int)yPos, 100, 100);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             currentState.Draw(spriteBatch, xPos, yPos);
-            hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 
         public Rectangle GetRectangle()

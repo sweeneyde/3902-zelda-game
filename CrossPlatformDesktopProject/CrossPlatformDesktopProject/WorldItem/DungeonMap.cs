@@ -25,8 +25,8 @@ namespace CrossPlatformDesktopProject.WorldItem
         private Rectangle getRectangle()
         {
             return new Rectangle((int)xPos, (int)yPos,
-                ItemTextureStorage.RUPEE.Width * 3,
-                ItemTextureStorage.RUPEE.Height * 3);
+                ItemTextureStorage.RUPEE.Width,
+                ItemTextureStorage.RUPEE.Height);
         }
         Rectangle ICollider.GetRectangle()
         {

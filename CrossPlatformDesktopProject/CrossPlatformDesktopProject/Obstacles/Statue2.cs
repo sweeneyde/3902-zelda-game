@@ -12,12 +12,10 @@ namespace CrossPlatformDesktopProject.Obstacles
     class Statue2 : IObstacle
     {
         public float xPos, yPos;
-        private Rectangle hitbox;
         public Statue2(float xPos, float yPos)
         {
             this.xPos = xPos;
             this.yPos = yPos;
-            hitbox = new Rectangle((int)xPos, (int)yPos, 50, 50);
         }
         public void Update()
         {
@@ -28,13 +26,14 @@ namespace CrossPlatformDesktopProject.Obstacles
         {
             Texture2D texture = ObstacleTextureStorage.Instance.getObstacleSpriteSheet();
             Rectangle source = ObstacleTextureStorage.OBSTACLE_STATUE2;
-            Rectangle destination = new Rectangle((int)xPos, (int)yPos, source.Width * 3, source.Height * 3);
+            Rectangle destination = new Rectangle((int)xPos, (int)yPos, source.Width, source.Height);
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
         public Rectangle GetRectangle()
         {
-            return hitbox;
+            Rectangle source = ObstacleTextureStorage.OBSTACLE_STATUE2;
+            return new Rectangle((int)xPos, (int)yPos, source.Width, source.Height);
         }
     }
 }

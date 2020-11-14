@@ -8,7 +8,7 @@ namespace CrossPlatformDesktopProject.NPC
     {
         public INpcState currentState;
         public float xPos, yPos;
-        private Rectangle hitbox;
+        public Rectangle hitbox;
 
         public Gel(float xPos, float yPos)
         {

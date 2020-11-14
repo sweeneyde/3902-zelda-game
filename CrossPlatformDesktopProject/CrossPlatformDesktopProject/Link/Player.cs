@@ -13,7 +13,7 @@ namespace CrossPlatformDesktopProject.Link
         
         public float xPos, yPos, previousXPos, previousYPos;
         public InventoryManager linkInventory;
-        public static float walking_speed = 3.0f;
+        public static float walking_speed = 1.0f;
         public static int frames_per_step = 6;
         public bool itemInUse = false;
         public IEquipable currentItem { get; set; }
@@ -21,7 +21,7 @@ namespace CrossPlatformDesktopProject.Link
         private static int frames_per_damage_color_change = 5;
         private static int damage_frames = 24;
 
-        public static float knockback_speed = 4.0f;
+        public static float knockback_speed = 1.0f;
         public static int knockback_frames = frames_per_damage_color_change * 5;
 
         public static int use_item_frames = 10;
@@ -33,8 +33,8 @@ namespace CrossPlatformDesktopProject.Link
         {
             currentState = new LinkFacingSouthState(this);
             linkInventory = new InventoryManager(this);
-            xPos = 100;
-            yPos = 100;
+            xPos = 10;
+            yPos = 10;
         }
 
         public bool IsDamaged()
@@ -128,14 +128,14 @@ namespace CrossPlatformDesktopProject.Link
         {
             Rectangle destination = new Rectangle(
                 (int)xPos + XOffset, (int)yPos + YOffset,
-                source.Width * 3, source.Height * 3);
+                source.Width, source.Height);
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 
         public Rectangle GetRectangle()
         {
             Rectangle sameSize = LinkTextureStorage.LINK_IDLE_EAST;
-            return new Rectangle((int)xPos, (int)yPos, sameSize.Width * 3, sameSize.Height * 3);
+            return new Rectangle((int)xPos, (int)yPos, sameSize.Width, sameSize.Height);
         }
 
         public List<ICollider> GetColliders()

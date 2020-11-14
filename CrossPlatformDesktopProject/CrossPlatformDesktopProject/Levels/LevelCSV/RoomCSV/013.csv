@@ -1,6 +1,6 @@
 ROOM_013
-CrossPlatformDesktopProject.NPC.Goriya,400,100
-CrossPlatformDesktopProject.NPC.Boss,300,200
-CrossPlatformDesktopProject.WorldItem.DungeonKey,300,300
-CrossPlatformDesktopProject.WorldItem.DungeonKey,500,300
-CrossPlatformDesktopProject.Obstacles.Stairs,200,200
+CrossPlatformDesktopProject.NPC.Goriya,100,25
+CrossPlatformDesktopProject.NPC.Boss,100,75
+CrossPlatformDesktopProject.WorldItem.DungeonKey,100,100
+CrossPlatformDesktopProject.WorldItem.DungeonKey,120,100
+CrossPlatformDesktopProject.Obstacles.Stairs,80,80
