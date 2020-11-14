@@ -67,8 +67,8 @@ namespace CrossPlatformDesktopProject.Levels
             }
 
             string[] adjacentRooms = Map.adjacencies[roomID];
-            int width = game.GraphicsDevice.Viewport.Width / 3;
-            int height = game.GraphicsDevice.Viewport.Height / 3;
+            int width = 255;
+            int height = 175;
             string[] strings = new string[] { "top", "bottom", "left", "right" };
             
             for (int i = 0; i < 4; i++)

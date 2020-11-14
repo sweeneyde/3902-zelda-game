@@ -52,6 +52,7 @@
     <Compile Include="Commands\ResetCommand.cs" />
     <Compile Include="GameStates\GamePlayState.cs" />
     <Compile Include="GameStates\ScreenTextureStorage.cs" />
+    <Compile Include="GameStates\WindowManager.cs" />
     <Compile Include="ICollider.cs" />
     <Compile Include="Commands\ResetGame.cs" />
     <Compile Include="Commands\StartCommand.cs" />
