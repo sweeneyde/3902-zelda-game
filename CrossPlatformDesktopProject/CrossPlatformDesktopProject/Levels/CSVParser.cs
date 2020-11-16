@@ -52,8 +52,8 @@ namespace CrossPlatformDesktopProject.Levels
         {
             int i;
             string grabType;
-            int grabX;
-            int grabY;
+            int row;
+            int column;
             string roomTextureID;
             string[] readLine;
             // TODO: PUT THIS IN DOCS-----
@@ -97,22 +97,24 @@ namespace CrossPlatformDesktopProject.Levels
                     {
                         grabType = readLine[i];
                         i++;
-                        grabX = Int32.Parse(readLine[i]);
+                        row = Int32.Parse(readLine[i]);
                         i++;
-                        grabY = Int32.Parse(readLine[i]);
+                        column = Int32.Parse(readLine[i]);
+
+                        float[] coords = RowsColumns.ConvertRowsColumns(row, column);
 
                         Debug.Print(grabType);
                         Type resolvedType = Type.GetType(grabType);
 
                         if (resolvedType == typeof(Goriya))
                         {
-                            args = new object[] { (float)grabX, (float)grabY, (GoriyaBoomerang)goriyaBoomerang };
+                            args = new object[] { coords[0], coords[1], (GoriyaBoomerang)goriyaBoomerang };
                         } else if (resolvedType == typeof(Boss))
                         {
-                            args = new object[] { (float)grabX, (float)grabY, (Fireball)topFireball, (Fireball)midFireball, (Fireball)botFireball };
+                            args = new object[] { coords[0], coords[1], (Fireball)topFireball, (Fireball)midFireball, (Fireball)botFireball };
                         } else
                         {
-                            args = new object[] { (float)grabX, (float)grabY };
+                            args = new object[] { coords[0], coords[1] };
                         }
 
                         object grabObj = (Activator.CreateInstance(resolvedType, args));
