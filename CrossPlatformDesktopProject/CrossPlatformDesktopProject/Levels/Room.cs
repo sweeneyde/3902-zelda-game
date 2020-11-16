@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace CrossPlatformDesktopProject.Levels
@@ -67,15 +68,24 @@ namespace CrossPlatformDesktopProject.Levels
             }
 
             string[] adjacentRooms = Map.adjacencies[roomID];
-            int width = 255;
-            int height = 175;
+            int width = RoomTextureStorage.BORDER_WIDTH;
+            int height = RoomTextureStorage.BORDER_HEIGHT;
             string[] strings = new string[] { "top", "bottom", "left", "right" };
             
             for (int i = 0; i < 4; i++)
             {
                 if (adjacentRooms[i] != "-1")
                 {
-                    collidables.Add(new Door(strings[i], adjacentRooms[i], width, height));
+                    Door newDoor = new Door(strings[i], adjacentRooms[i], width, height);
+                    Wall newWall1 = new Wall(strings[i], width, height, false);
+                    Wall newWall2 = new Wall(strings[i], width, height, true);
+                    collidables.Add(newDoor);
+                    collidables.Add(newWall1);
+                    collidables.Add(newWall2);
+                }
+                else
+                {
+                    collidables.Add(new Wall(strings[i], width, height));
                 }
             }
             return collidables;

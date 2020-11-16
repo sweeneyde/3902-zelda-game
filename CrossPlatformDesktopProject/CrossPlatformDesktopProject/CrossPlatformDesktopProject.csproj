@@ -42,6 +42,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GameStates\HUDWindow.cs" />
     <Compile Include="GameStates\RoomTransitionState.cs" />
     <Compile Include="CollisionHandler\CollisionResponse.cs" />
     <Compile Include="CollisionHandler\Collision.cs" />
@@ -169,6 +170,7 @@
     <Compile Include="WorldItem\Rupee.cs" />
     <Compile Include="WorldItem\DungeonKey.cs" />
     <Compile Include="WorldItem\WorldHandlers\Door.cs" />
+    <Compile Include="WorldItem\WorldHandlers\Wall.cs" />
     <Compile Include="WorldItem\WorldItemTextureStorage.cs" />
     <Compile Include="WorldItem\Triforce.cs" />
     <Compile Include="WorldItem\Heart.cs" />
