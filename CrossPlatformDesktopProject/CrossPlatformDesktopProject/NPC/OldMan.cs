@@ -38,5 +38,9 @@ namespace CrossPlatformDesktopProject.NPC
         public void TakeDamage(CollisionSides side)
         {
         }
+
+        public void ChangeDirection(CollisionSides side)
+        {
+        }
     }
 }

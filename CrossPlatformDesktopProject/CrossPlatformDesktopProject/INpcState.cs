@@ -14,5 +14,6 @@ namespace CrossPlatformDesktopProject
         void Draw(SpriteBatch spriteBatch, float xPos, float yPos);
         void Update();
         void TakeDamage(CollisionSides side);
+        void ChangeDirection();
     }
 }

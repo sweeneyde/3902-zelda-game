@@ -10,11 +10,13 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos;
         public Rectangle hitbox;
 
+        private static int frames_per_damage_color_change = 4;
         public static float knockback_speed = 2.0f;
+        public static int knockback_frames = frames_per_damage_color_change * 5;
 
         public Skeleton(float xPos, float yPos)
         {
-            currentState = new SkeletonWalkEast(this);
+            currentState = new SkeletonWalkWest(this);
             this.xPos = xPos;
             this.yPos = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
@@ -40,6 +42,11 @@ namespace CrossPlatformDesktopProject.NPC
         public Rectangle GetRectangle()
         {
             return hitbox;
+        }
+
+        public void ChangeDirection()
+        {
+            currentState.ChangeDirection();
         }
 
     }

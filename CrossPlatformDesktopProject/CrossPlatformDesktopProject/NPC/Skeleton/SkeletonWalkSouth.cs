@@ -57,5 +57,10 @@ namespace CrossPlatformDesktopProject.NPC
         {
             skeleton.currentState = new SkeletonKnockedNorth(skeleton);
         }
+
+        public void ChangeDirection()
+        {
+            skeleton.currentState = new SkeletonWalkNorth(skeleton);
+        }
     }
 }

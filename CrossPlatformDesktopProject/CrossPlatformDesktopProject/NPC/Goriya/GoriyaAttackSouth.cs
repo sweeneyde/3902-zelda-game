@@ -26,7 +26,7 @@ namespace CrossPlatformDesktopProject.NPC
             delay_frame_index = 0;
 
             boomerang.travelmarker = 0;
-            boomerang.currentState = new BoomerangDown(boomerang, goriya.xPos + 10, goriya.yPos + 10, true);
+            boomerang.currentState = new BoomerangDown(boomerang, goriya.xPos, goriya.yPos, true);
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -57,6 +57,11 @@ namespace CrossPlatformDesktopProject.NPC
         }
 
         public void TakeDamage(CollisionSides side)
+        {
+            goriya.currentState = new GoriyaKnockedNorth(goriya, boomerang);
+        }
+
+        public void ChangeDirection()
         {
         }
     }

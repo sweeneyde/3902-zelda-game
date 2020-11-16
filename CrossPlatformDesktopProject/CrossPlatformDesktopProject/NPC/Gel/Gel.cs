@@ -37,7 +37,28 @@ namespace CrossPlatformDesktopProject.NPC
         {
             return hitbox;
         }
-        
+
+        public void ChangeDirection(CollisionSides side)
+        {
+            switch (side)
+            {
+                case CollisionSides.Left:
+                    currentState = new GelWalkEast(this);
+                    break;
+                case CollisionSides.Right:
+                    currentState = new GelWalkWest(this);
+                    break;
+                case CollisionSides.Up:
+                    currentState = new GelWalkSouth(this);
+                    break;
+                case CollisionSides.Down:
+                    currentState = new GelWalkNorth(this);
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 
 }

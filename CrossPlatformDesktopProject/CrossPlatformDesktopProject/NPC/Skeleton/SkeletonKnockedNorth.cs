@@ -23,6 +23,7 @@ namespace CrossPlatformDesktopProject.NPC
         public SkeletonKnockedNorth(Skeleton skeleton)
         {
             this.skeleton = skeleton;
+            this.frames_left = Skeleton.knockback_frames;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -50,7 +51,12 @@ namespace CrossPlatformDesktopProject.NPC
                 my_frame_index %= my_source_frames.Count;
             }
         }
+
         public void TakeDamage(CollisionSides side)
+        {
+        }
+
+        public void ChangeDirection()
         {
         }
     }

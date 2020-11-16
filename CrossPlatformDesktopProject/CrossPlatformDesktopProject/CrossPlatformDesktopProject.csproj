@@ -42,6 +42,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\ResetNPCCommand.cs" />
     <Compile Include="GameStates\HUDWindow.cs" />
     <Compile Include="GameStates\InventoryState.cs" />
     <Compile Include="GameStates\InventoryTextureStorage.cs" />
@@ -83,6 +84,10 @@
     <Compile Include="Link\Sword.cs" />
     <Compile Include="NPC\Boss\BossAttack.cs" />
     <Compile Include="NPC\Gel\GelDeath.cs" />
+    <Compile Include="NPC\Goriya\GoriyaKnockedNorth.cs" />
+    <Compile Include="NPC\Goriya\GoriyaKnockedSouth.cs" />
+    <Compile Include="NPC\Goriya\GoriyaKnockedWest.cs" />
+    <Compile Include="NPC\Goriya\GoriyaKnockedEast.cs" />
     <Compile Include="NPC\Goriya\GoriyaAttackNorth.cs" />
     <Compile Include="NPC\Goriya\GoriyaAttackSouth.cs" />
     <Compile Include="NPC\Goriya\GoriyaAttackEast.cs" />

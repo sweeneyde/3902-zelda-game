@@ -36,6 +36,27 @@ namespace CrossPlatformDesktopProject.NPC
         {
             return hitbox;
         }
+
+        public void ChangeDirection(CollisionSides side)
+        {
+            switch (side)
+            {
+                case CollisionSides.Left:
+                    currentState = new BatWalkEast(this);
+                    break;
+                case CollisionSides.Right:
+                    currentState = new BatWalkWest(this);
+                    break;
+                case CollisionSides.Up:
+                    currentState = new BatWalkSouth(this);
+                    break;
+                case CollisionSides.Down:
+                    currentState = new BatWalkNorth(this);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
 }

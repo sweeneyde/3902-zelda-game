@@ -5,11 +5,12 @@ using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class SkeletonKnockedWest : INpcState
+    class GoriyaKnockedNorth : INpcState
     {
         private int my_frame_index = 0;
         private int delay_frame_index = 0;
-        private Skeleton skeleton;
+        private Goriya goriya;
+        private GoriyaBoomerang boomerang;
         private int frames_left;
 
         private static int delay_frames = 10;
@@ -20,10 +21,11 @@ namespace CrossPlatformDesktopProject.NPC
             NpcTextureStorage.SKELETON_HURT_4
         };
 
-        public SkeletonKnockedWest(Skeleton skeleton)
+        public GoriyaKnockedNorth(Goriya goriya, GoriyaBoomerang boomerang)
         {
-            this.skeleton = skeleton;
-            this.frames_left = Skeleton.knockback_frames;
+            this.goriya = goriya;
+            this.boomerang = boomerang;
+            this.frames_left = Goriya.knockback_frames;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -38,10 +40,10 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            skeleton.xPos -= Skeleton.knockback_speed;
+            goriya.yPos -= Goriya.knockback_speed;
             if (--frames_left <= 0)
             {
-                skeleton.currentState = new SkeletonWalkWest(skeleton);
+                goriya.currentState = new GoriyaWalkEast(goriya, boomerang);
             }
 
             if (++delay_frame_index >= delay_frames)
@@ -51,7 +53,6 @@ namespace CrossPlatformDesktopProject.NPC
                 my_frame_index %= my_source_frames.Count;
             }
         }
-
         public void TakeDamage(CollisionSides side)
         {
         }

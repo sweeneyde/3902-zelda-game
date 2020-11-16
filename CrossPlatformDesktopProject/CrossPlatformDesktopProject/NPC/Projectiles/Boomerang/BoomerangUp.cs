@@ -58,7 +58,7 @@ namespace CrossPlatformDesktopProject.NPC
                     delay_frame_index = 0;
                     my_frame_index++;
 
-                    if (boomerang.travelmarker == 1 && boomerang.yPos == 100)
+                    if (boomerang.travelmarker == 1 && boomerang.yPos == starting)
                     {
                         boomerang.start = false;
                     }
