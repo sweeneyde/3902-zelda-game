@@ -1,4 +1,5 @@
-﻿using CrossPlatformDesktopProject.Link;
+﻿using CrossPlatformDesktopProject.GameStates;
+using CrossPlatformDesktopProject.Link;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +10,14 @@ namespace CrossPlatformDesktopProject.Commands
 {
     class StartCommand : ICommand
     {
-        private Player myPlayer;
-        public StartCommand(Player player)
+        private Game1 myGame;
+        public StartCommand(Game1 game)
         {
-            myPlayer = player;
+            myGame = game;
         }
         public void Execute()
         {
-
+            myGame.currentState = new InventoryState(myGame.player);
         }
-            
     }
 }
