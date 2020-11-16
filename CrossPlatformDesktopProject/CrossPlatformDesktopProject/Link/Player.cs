@@ -75,7 +75,7 @@ namespace CrossPlatformDesktopProject.Link
         public void UsePrimary()
         {
             currentState.UsePrimary();
-            SoundStorage.sounds["sword"].Play();
+            SoundStorage.Instance.getSwordSound().Play();
         }
 
         public void UseBomb()
