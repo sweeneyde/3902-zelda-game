@@ -67,12 +67,16 @@ namespace CrossPlatformDesktopProject.Levels
         };
         public static Rectangle TOP_NO_DOOR = new Rectangle(815, 11, DOOR_SIDE, DOOR_SIDE);
         public static Rectangle TOP_OPEN_DOOR = new Rectangle(848, 11, DOOR_SIDE, DOOR_SIDE);
+        public static Rectangle TOP_LOCKED_DOOR = new Rectangle(881, 11, DOOR_SIDE, DOOR_SIDE);
         public static Rectangle BOTTOM_NO_DOOR = new Rectangle(815, 110, DOOR_SIDE, DOOR_SIDE);
         public static Rectangle BOTTOM_OPEN_DOOR = new Rectangle(848, 110, DOOR_SIDE, DOOR_SIDE);
+        public static Rectangle BOTTOM_LOCKED_DOOR = new Rectangle(881, 110, DOOR_SIDE, DOOR_SIDE);
         public static Rectangle LEFT_NO_DOOR = new Rectangle(815, 44, DOOR_SIDE, DOOR_SIDE);
         public static Rectangle LEFT_OPEN_DOOR = new Rectangle(848, 44, DOOR_SIDE, DOOR_SIDE);
+        public static Rectangle LEFT_LOCKED_DOOR = new Rectangle(881, 44, DOOR_SIDE, DOOR_SIDE);
         public static Rectangle RIGHT_NO_DOOR = new Rectangle(815, 77, DOOR_SIDE, DOOR_SIDE);
         public static Rectangle RIGHT_OPEN_DOOR = new Rectangle(848, 77, DOOR_SIDE, DOOR_SIDE);
+        public static Rectangle RIGHT_LOCKED_DOOR = new Rectangle(881, 77, DOOR_SIDE, DOOR_SIDE);
 
     }
 }

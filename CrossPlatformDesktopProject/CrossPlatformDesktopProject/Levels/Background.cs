@@ -60,6 +60,10 @@ namespace CrossPlatformDesktopProject.Levels
             {
                 sb.Draw(texture, topDoorDest, RoomTextureStorage.TOP_NO_DOOR, Color.White);
             }
+            else if(adjacentRooms[0].EndsWith("1"))
+            {
+                sb.Draw(texture, topDoorDest, RoomTextureStorage.TOP_LOCKED_DOOR, Color.White);
+            }
             else
             {
                 sb.Draw(texture, topDoorDest, RoomTextureStorage.TOP_OPEN_DOOR, Color.White);
@@ -68,6 +72,10 @@ namespace CrossPlatformDesktopProject.Levels
             if (adjacentRooms[1].Equals("-1"))
             {
                 sb.Draw(texture, bottomDoorDest, RoomTextureStorage.BOTTOM_NO_DOOR, Color.White);
+            }
+            else if(adjacentRooms[1].EndsWith("1"))
+            {
+                sb.Draw(texture, bottomDoorDest, RoomTextureStorage.BOTTOM_LOCKED_DOOR, Color.White);
             }
             else
             {
@@ -78,6 +86,10 @@ namespace CrossPlatformDesktopProject.Levels
             {
                 sb.Draw(texture, leftDoorDest, RoomTextureStorage.LEFT_NO_DOOR, Color.White);
             }
+            else if(adjacentRooms[2].EndsWith("1"))
+            {
+                sb.Draw(texture, leftDoorDest, RoomTextureStorage.LEFT_LOCKED_DOOR, Color.White);
+            }
             else
             {
                 sb.Draw(texture, leftDoorDest, RoomTextureStorage.LEFT_OPEN_DOOR, Color.White);
@@ -86,6 +98,10 @@ namespace CrossPlatformDesktopProject.Levels
             if (adjacentRooms[3].Equals("-1"))
             {
                 sb.Draw(texture, rightDoorDest, RoomTextureStorage.RIGHT_NO_DOOR, Color.White);
+            }
+            else if(adjacentRooms[3].EndsWith("1"))
+            {
+                sb.Draw(texture, rightDoorDest, RoomTextureStorage.RIGHT_LOCKED_DOOR, Color.White);
             }
             else
             {
