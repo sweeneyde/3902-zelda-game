@@ -75,6 +75,7 @@
     <Compile Include="Levels\Map.cs" />
     <Compile Include="Levels\Room.cs" />
     <Compile Include="Levels\RoomTextureStorage.cs" />
+    <Compile Include="Levels\RowsColumns.cs" />
     <Compile Include="Link\Equipables\Smoke.cs" />
     <Compile Include="Link\Sword.cs" />
     <Compile Include="NPC\Boss\BossAttack.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="NPC\Projectiles\Fireball\MiddleFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\TopFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\Fireball.cs" />
+    <Compile Include="Obstacles\Transparent.cs" />
     <Compile Include="Obstacles\Stairs.cs" />
     <Compile Include="Obstacles\PlainBlock.cs" />
     <Compile Include="Obstacles\Sand.cs" />
