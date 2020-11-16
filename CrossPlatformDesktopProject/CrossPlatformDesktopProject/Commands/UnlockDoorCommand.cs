@@ -11,11 +11,13 @@ namespace CrossPlatformDesktopProject.Commands
         private Player myPlayer;
         private CollisionSides mySide;
         private string roomID;
-        public UnlockDoorCommand(Game1 game, Player player, CollisionSides side)
+        private LockedDoor myDoor;
+        public UnlockDoorCommand(Game1 game, Player player, LockedDoor door, CollisionSides side)
         {
             this.myGame = game;
             this.myPlayer = player;
             this.mySide = side;
+            this.myDoor = door;
             roomID = myGame.currentGamePlayState.CurrentRoom.roomID;
         }
         public void Execute()
@@ -30,18 +32,18 @@ namespace CrossPlatformDesktopProject.Commands
                 {
                     case CollisionSides.Up:
                         unlocked = adjacents[0].Substring(0, 3) + "0";
-                        adjacents[1] = unlocked;
+                        adjacents[0] = unlocked;
                         break;
                     case CollisionSides.Down:
                         unlocked = adjacents[1].Substring(0, 3) + "0";
-                        adjacents[2] = unlocked;
+                        adjacents[1] = unlocked;
                         break;
                     case CollisionSides.Left:
                         unlocked = adjacents[2].Substring(0, 3) + "0";
-                        adjacents[3] = unlocked;
+                        adjacents[2] = unlocked;
                         break;
                     case CollisionSides.Right:
-                        unlocked = adjacents[2].Substring(0, 3) + "0";
+                        unlocked = adjacents[3].Substring(0, 3) + "0";
                         adjacents[3] = unlocked;
                         break;
                     default:
@@ -54,20 +56,20 @@ namespace CrossPlatformDesktopProject.Commands
                 switch(mySide)
                 {
                     case CollisionSides.Left:
-                        myPlayer.xPos = myPlayer.previousXPos - 1;
+                        myPlayer.xPos = myPlayer.previousXPos + 1;
                         myPlayer.yPos = myPlayer.previousYPos;
                         break;
                     case CollisionSides.Right:
-                        myPlayer.xPos = myPlayer.previousXPos + 1;
+                        myPlayer.xPos = myPlayer.previousXPos - 1;
                         myPlayer.yPos = myPlayer.previousYPos;
                         break;
                     case CollisionSides.Up:
                         myPlayer.xPos = myPlayer.previousXPos;
-                        myPlayer.yPos = myPlayer.previousYPos - 1;
+                        myPlayer.yPos = myPlayer.previousYPos + 1;
                         break;
                     case CollisionSides.Down:
                         myPlayer.xPos = myPlayer.previousXPos;
-                        myPlayer.yPos = myPlayer.previousYPos + 1;
+                        myPlayer.yPos = myPlayer.previousYPos - 1;
                         break;
                     default:
                         break;
