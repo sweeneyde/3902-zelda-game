@@ -50,6 +50,7 @@ namespace CrossPlatformDesktopProject.Link
                 damaged_frames_left = damage_frames;
                 frames_until_color_change = frames_per_damage_color_change;
                 currentState.TakeDamage();
+                SoundStorage.Instance.getLinkHitSound().Play();
             }
         }
 
@@ -81,14 +82,18 @@ namespace CrossPlatformDesktopProject.Link
         public void UseBomb()
         {
             linkInventory.UseBomb();
+            SoundStorage.Instance.getdropBombSound().Play();
         }
         public void UseBoomerang()
         {
             linkInventory.UseBoomerang();
+            SoundStorage.Instance.getArrowBoomerangSound().Play();
         }
         public void UseBow()
         {
             linkInventory.UseBow();
+            SoundStorage.Instance.getArrowBoomerangSound().Play();
+
         }
 
         public void UseSecondary1()

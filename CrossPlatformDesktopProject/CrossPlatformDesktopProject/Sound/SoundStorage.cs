@@ -25,6 +25,15 @@ namespace CrossPlatformDesktopProject.Sound
 
         private static SoundEffect swordSound = null;
         private static SoundEffect music = null;
+        private static SoundEffect dropBombSound = null;
+        private static SoundEffect blowUpBombSound = null;
+        private static SoundEffect ArrowBoomerangSound = null;
+        private static SoundEffect getItemSound = null;
+        private static SoundEffect EnemyHitSound = null;
+        private static SoundEffect EnemyDieSound = null;
+        private static SoundEffect LinkHitSound = null;
+        private static SoundEffect LinkDieSound = null;
+
 
 
         private SoundStorage()
@@ -38,7 +47,17 @@ namespace CrossPlatformDesktopProject.Sound
         {
             swordSound = content.Load<SoundEffect>("LOZ_Sword_Slash");
             music = content.Load<SoundEffect>("04 - Dungeon");
-            
+            dropBombSound = content.Load<SoundEffect>("LOZ_Bomb_Drop");
+            blowUpBombSound = content.Load<SoundEffect>("LOZ_Bomb_Blow");
+            ArrowBoomerangSound = content.Load<SoundEffect>("LOZ_Arrow_Boomerang");
+            getItemSound = content.Load<SoundEffect>("LOZ_Get_Item");
+            EnemyHitSound = content.Load<SoundEffect>("LOZ_Enemy_Hit");
+            EnemyDieSound = content.Load<SoundEffect>("LOZ_Enemy_Die");
+            LinkDieSound = content.Load<SoundEffect>("LOZ_Link_Die");
+            LinkHitSound = content.Load<SoundEffect>("LOZ_Link_Hurt");
+
+
+
             // song loops
             var music_instance = music.CreateInstance();
             music_instance.IsLooped = true;
@@ -54,7 +73,38 @@ namespace CrossPlatformDesktopProject.Sound
         {
             return music;
         }
-
+        public SoundEffect getdropBombSound()
+        {
+            return dropBombSound;
+        }
+        public SoundEffect getblowUpBombSound()
+        {
+            return blowUpBombSound;
+        }
+        public SoundEffect getArrowBoomerangSound()
+        {
+            return ArrowBoomerangSound;
+        }
+        public SoundEffect getPickUpItemSound()
+        {
+            return getItemSound;
+        }
+        public SoundEffect getEnemyHitSound()
+        {
+            return EnemyHitSound;
+        }
+        public SoundEffect getEnemyDieSound()
+        {
+            return EnemyDieSound;
+        }
+        public SoundEffect getLinkHitSound()
+        {
+            return LinkHitSound;
+        }
+        public SoundEffect getLinkDieSound()
+        {
+            return LinkDieSound;
+        }
         public static Dictionary<string, SoundEffect> sounds = new Dictionary<string, SoundEffect>
         {
             ["sword"] = swordSound

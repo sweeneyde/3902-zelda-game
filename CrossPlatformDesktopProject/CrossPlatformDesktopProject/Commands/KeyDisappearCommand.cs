@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.Levels;
+using CrossPlatformDesktopProject.Sound;
 using CrossPlatformDesktopProject.WorldItem;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace CrossPlatformDesktopProject.Commands
         public void Execute()
         {
             myRoom.Remove(myKey);
+            SoundStorage.Instance.getPickUpItemSound().Play();
         }
     }
 }
