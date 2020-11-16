@@ -72,6 +72,7 @@ namespace CrossPlatformDesktopProject
             NpcTextureStorage.Instance.LoadAllResources(Content);
             ItemTextureStorage.Instance.LoadAllResources(Content);
             RoomTextureStorage.Instance.LoadAllResources(Content);
+            InventoryTextureStorage.Instance.LoadAllResources(Content);
         }
 
         /// <summary>

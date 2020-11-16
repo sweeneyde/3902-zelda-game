@@ -70,7 +70,7 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.D3, new UseSecondaryCommand3(myPlayer));
 
             this.addCommand(Keys.RightShift, new SelectCommand(myPlayer));
-            this.addCommand(Keys.Enter, new StartCommand(myPlayer));
+            this.addCommand(Keys.Enter, new StartCommand(myGame));
 
             this.addCommand(Keys.E, new TakeDamageCommand(myPlayer));
 
