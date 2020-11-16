@@ -28,6 +28,7 @@ namespace CrossPlatformDesktopProject
 
         public IGameState currentState;
         public GamePlayState currentGamePlayState;
+        public HUDWindow currentHUD;
 
         public Game1()
         {
@@ -47,7 +48,7 @@ namespace CrossPlatformDesktopProject
         {
             player = new Player();
             currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "001"));
-
+            currentHUD = new HUDWindow(player, this);
             windows = new WindowManager(this);
 
             controllerList = new List<IController>()
@@ -74,6 +75,7 @@ namespace CrossPlatformDesktopProject
             ItemTextureStorage.Instance.LoadAllResources(Content);
             RoomTextureStorage.Instance.LoadAllResources(Content);
             InventoryTextureStorage.Instance.LoadAllResources(Content);
+            HUDTextureStorage.Instance.LoadAllResources(Content);
         }
 
         /// <summary>
@@ -104,9 +106,7 @@ namespace CrossPlatformDesktopProject
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             windows.HUDStart(spriteBatch);
-            Texture2D texture = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            texture.SetData<Color>(new Color[] { Color.Black });
-            spriteBatch.Draw(texture, new Rectangle(0, 0, 255, (175 / 2)), Color.Black);
+            currentHUD.Draw(spriteBatch);
             spriteBatch.End();
             
             windows.GameStart(spriteBatch);

@@ -54,7 +54,6 @@ namespace CrossPlatformDesktopProject.GameStates
         /// <returns></returns>
         public static Rectangle getDoorSetRectangle(int doorbits)
         {
-
             int ROOM_RECT_START_X = 519;
             int ROOM_RECT_START_Y = 108;
             int SIZE = 8;

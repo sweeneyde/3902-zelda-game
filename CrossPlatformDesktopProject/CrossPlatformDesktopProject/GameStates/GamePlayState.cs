@@ -30,6 +30,7 @@ public class GamePlayState : IGameState
         }
         collisionDetector.Update();
         CurrentRoom.Update();
+        game.currentHUD.Update();
     }
 
     public void Draw(SpriteBatch sb)
