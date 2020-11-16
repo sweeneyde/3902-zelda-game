@@ -53,13 +53,14 @@ namespace CrossPlatformDesktopProject.NPC
             }
         }
 
-        public void TakeDamage(CollisionSides side)
+        public void TakeDamage()
         {
             skeleton.currentState = new SkeletonKnockedEast(skeleton);
         }
 
         public void ChangeDirection()
         {
+            skeleton.xPos += 5;
             skeleton.currentState = new SkeletonWalkEast(skeleton);
         }
     }

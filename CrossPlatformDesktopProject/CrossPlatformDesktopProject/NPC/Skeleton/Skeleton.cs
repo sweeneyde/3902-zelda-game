@@ -16,7 +16,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public Skeleton(float xPos, float yPos)
         {
-            currentState = new SkeletonWalkWest(this);
+            currentState = new SkeletonWalkEast(this);
             this.xPos = xPos;
             this.yPos = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
@@ -34,9 +34,9 @@ namespace CrossPlatformDesktopProject.NPC
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 
-        public void TakeDamage(CollisionSides side)
+        public void TakeDamage()
         {
-            currentState.TakeDamage(side);
+            currentState.TakeDamage();
         }
 
         public Rectangle GetRectangle()

@@ -55,9 +55,15 @@ namespace CrossPlatformDesktopProject.NPC
             }
         }
 
-        public void TakeDamage(CollisionSides side)
+        public void TakeDamage()
         {
             goriya.currentState = new GoriyaKnockedNorth(goriya, boomerang);
+        }
+
+        public void ChangeDirection()
+        {
+            goriya.yPos -= 5;
+            goriya.currentState = new GoriyaWalkNorth(goriya, boomerang);
         }
     }
 }

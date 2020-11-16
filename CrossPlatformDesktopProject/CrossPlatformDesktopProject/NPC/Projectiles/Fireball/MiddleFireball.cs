@@ -62,7 +62,11 @@ namespace CrossPlatformDesktopProject.NPC
             }
         }
 
-        public void TakeDamage(CollisionSides side)
+        public void TakeDamage()
+        {
+        }
+
+        public void ChangeDirection()
         {
         }
     }

@@ -61,8 +61,14 @@ namespace CrossPlatformDesktopProject.NPC
             }
         }
 
-        public void TakeDamage(CollisionSides side)
+        public void TakeDamage()
         {
+        }
+
+        public void ChangeDirection()
+        {
+            boss.xPos += 5;
+            boss.currentState = new BossWalkEast(boss, fireball1, fireball2, fireball3);
         }
     }
 }

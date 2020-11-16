@@ -54,8 +54,14 @@ namespace CrossPlatformDesktopProject.NPC
             }
         }
 
-        public void TakeDamage(CollisionSides side)
+        public void TakeDamage()
         {
+        }
+
+        public void ChangeDirection()
+        {
+            bat.yPos -= 5;
+            bat.currentState = new BatWalkNE(bat);
         }
     }
 }

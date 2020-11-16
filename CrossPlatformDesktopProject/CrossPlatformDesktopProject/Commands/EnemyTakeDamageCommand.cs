@@ -17,6 +17,6 @@ namespace CrossPlatformDesktopProject.Commands
             this.side = side;
         }
 
-        public void Execute() => npc.TakeDamage(side);
+        public void Execute() => npc.TakeDamage();
     }
 }

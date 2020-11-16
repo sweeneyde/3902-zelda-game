@@ -28,7 +28,7 @@ namespace CrossPlatformDesktopProject.NPC
             currentState.Draw(spriteBatch, xPos, yPos);
         }
 
-        public void TakeDamage(CollisionSides side)
+        public void TakeDamage()
         {
         }
 
@@ -37,25 +37,9 @@ namespace CrossPlatformDesktopProject.NPC
             return hitbox;
         }
 
-        public void ChangeDirection(CollisionSides side)
+        public void ChangeDirection()
         {
-            switch (side)
-            {
-                case CollisionSides.Left:
-                    currentState = new BatWalkEast(this);
-                    break;
-                case CollisionSides.Right:
-                    currentState = new BatWalkWest(this);
-                    break;
-                case CollisionSides.Up:
-                    currentState = new BatWalkSouth(this);
-                    break;
-                case CollisionSides.Down:
-                    currentState = new BatWalkNorth(this);
-                    break;
-                default:
-                    break;
-            }
+            currentState.ChangeDirection();
         }
     }
 

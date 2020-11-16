@@ -53,9 +53,15 @@ namespace CrossPlatformDesktopProject.NPC
             }
         }
 
-        public void TakeDamage(CollisionSides side)
+        public void TakeDamage()
         {
             gel.currentState = new GelDeath(gel);
+        }
+
+        public void ChangeDirection()
+        {
+            gel.yPos -= 5;
+            gel.currentState = new GelWalkNorth(gel);
         }
     }
 }

@@ -29,8 +29,9 @@ namespace CrossPlatformDesktopProject.NPC
             currentState.Draw(spriteBatch, xPos, yPos);
         }
 
-        public void TakeDamage(CollisionSides side)
+        public void TakeDamage()
         {
+            currentState.TakeDamage();
         }
 
         public Rectangle GetRectangle()
@@ -38,25 +39,9 @@ namespace CrossPlatformDesktopProject.NPC
             return hitbox;
         }
 
-        public void ChangeDirection(CollisionSides side)
+        public void ChangeDirection()
         {
-            switch (side)
-            {
-                case CollisionSides.Left:
-                    currentState = new GelWalkEast(this);
-                    break;
-                case CollisionSides.Right:
-                    currentState = new GelWalkWest(this);
-                    break;
-                case CollisionSides.Up:
-                    currentState = new GelWalkSouth(this);
-                    break;
-                case CollisionSides.Down:
-                    currentState = new GelWalkNorth(this);
-                    break;
-                default:
-                    break;
-            }
+            currentState.ChangeDirection();
         }
 
     }

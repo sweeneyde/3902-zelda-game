@@ -9,7 +9,6 @@ namespace CrossPlatformDesktopProject.NPC
         public INpcState currentState;
         public float xPos, yPos;
         public Rectangle hitbox;
-        public GoriyaBoomerang boomerang;
 
         private static int frames_per_damage_color_change = 4;
         public static float knockback_speed = 2.0f;
@@ -17,9 +16,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public Goriya(float xPos, float yPos, GoriyaBoomerang boomerang)
         {
-            this.boomerang = boomerang;
-
-            currentState = new GoriyaWalkEast(this, boomerang);
+            currentState = new GoriyaWalkWest(this, boomerang);
             this.xPos = xPos;
             this.yPos = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
@@ -35,9 +32,9 @@ namespace CrossPlatformDesktopProject.NPC
             currentState.Draw(spriteBatch, xPos, yPos);
         }
 
-        public void TakeDamage(CollisionSides side)
+        public void TakeDamage()
         {
-            currentState.TakeDamage(side);
+            currentState.TakeDamage();
         }
 
         public Rectangle GetRectangle()
