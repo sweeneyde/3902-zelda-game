@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Equipables
 {
-    public class Bomb : IEquipable
+    public class Bomb : IEquipable, ICollider
     {
         private Player player;
         private Vector2 currentPos;
@@ -148,6 +148,11 @@ namespace CrossPlatformDesktopProject.Equipables
             else {
                 return new List<ICollider>();
             }
+        }
+
+        public Rectangle GetRectangle()
+        {
+            return new Rectangle((int)usedX, (int)usedY, my_source_frames[my_frame_index].Width, my_source_frames[my_frame_index].Height);
         }
     }
 }
