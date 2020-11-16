@@ -140,7 +140,7 @@ namespace CrossPlatformDesktopProject.Equipables
         {
             return new Rectangle(
                 (int)currentPos.X, (int)currentPos.Y,
-                source.Width * 3, source.Height * 3);
+                source.Width, source.Height);
         }
 
         Rectangle ICollider.GetRectangle()

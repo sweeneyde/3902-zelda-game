@@ -52,18 +52,13 @@ namespace CrossPlatformDesktopProject.Levels
         {
             int i;
             string grabType;
-            int grabX;
-            int grabY;
+            int row;
+            int column;
             string roomTextureID;
             string[] readLine;
-            // TODO: PUT THIS IN DOCS-----
-            /* Room CSV Format- Filename = "roomID".csv
-             * INPC1, startX, startY, INPC2, startX, startY, ...
-             * 
-             */
-            // Since all room.csv files are named according to their id,
-            // we get something like roomId = "000" & the file is "000.csv"
-            string roomFile = roomID + ".csv";
+           
+            string parsedID = roomID.Substring(0, 3);
+            string roomFile = parsedID + ".csv";
             string roomPath = Path.Combine(roomCSVPath, roomFile);
             List<INpc> npcHolder = new List<INpc>();
             List<IObstacle> obstacleHolder = new List<IObstacle>();
@@ -97,22 +92,24 @@ namespace CrossPlatformDesktopProject.Levels
                     {
                         grabType = readLine[i];
                         i++;
-                        grabX = Int32.Parse(readLine[i]);
+                        row = Int32.Parse(readLine[i]);
                         i++;
-                        grabY = Int32.Parse(readLine[i]);
+                        column = Int32.Parse(readLine[i]);
+
+                        float[] coords = RowsColumns.ConvertRowsColumns(row, column);
 
                         Debug.Print(grabType);
                         Type resolvedType = Type.GetType(grabType);
 
                         if (resolvedType == typeof(Goriya))
                         {
-                            args = new object[] { (float)grabX, (float)grabY, (GoriyaBoomerang)goriyaBoomerang };
+                            args = new object[] { coords[0], coords[1], (GoriyaBoomerang)goriyaBoomerang };
                         } else if (resolvedType == typeof(Boss))
                         {
-                            args = new object[] { (float)grabX, (float)grabY, (Fireball)topFireball, (Fireball)midFireball, (Fireball)botFireball };
+                            args = new object[] { coords[0], coords[1], (Fireball)topFireball, (Fireball)midFireball, (Fireball)botFireball };
                         } else
                         {
-                            args = new object[] { (float)grabX, (float)grabY };
+                            args = new object[] { coords[0], coords[1] };
                         }
 
                         object grabObj = (Activator.CreateInstance(resolvedType, args));

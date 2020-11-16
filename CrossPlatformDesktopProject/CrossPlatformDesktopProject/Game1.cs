@@ -45,7 +45,7 @@ namespace CrossPlatformDesktopProject
         protected override void Initialize()
         {
             player = new Player();
-            currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "013"));
+            currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "001"));
 
             windows = new WindowManager(this);
 
@@ -115,12 +115,12 @@ namespace CrossPlatformDesktopProject
             base.Draw(gameTime);
         }
 
-        public void GoToRoom(Room room2)
+        public void GoToRoom(Room room2, CollisionSides side)
         {
             GameScreenTextureStorage.Instance.SaveScreen(spriteBatch);
             Room room1 = currentGamePlayState.CurrentRoom;
             currentGamePlayState = new GamePlayState(this, room2);
-            currentState = new RoomTransitionState(this, room1, room2);
+            currentState = new RoomTransitionState(this, room1, room2, side);
         }
 
         public void quit()
