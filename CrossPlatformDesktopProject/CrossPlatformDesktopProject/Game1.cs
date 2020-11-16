@@ -24,6 +24,7 @@ namespace CrossPlatformDesktopProject
         private SpriteFont font;
         public Player player;
         private WindowManager windows;
+        public int pauseCooldown;
 
         public IGameState currentState;
         public GamePlayState currentGamePlayState;
