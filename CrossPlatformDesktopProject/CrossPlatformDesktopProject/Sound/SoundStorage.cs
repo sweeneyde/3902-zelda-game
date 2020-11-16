@@ -24,6 +24,8 @@ namespace CrossPlatformDesktopProject.Sound
 
 
         private static SoundEffect swordSound = null;
+        private static SoundEffect music = null;
+
 
         private SoundStorage()
         {
@@ -35,11 +37,22 @@ namespace CrossPlatformDesktopProject.Sound
         public void LoadAllResources(ContentManager content)
         {
             swordSound = content.Load<SoundEffect>("LOZ_Sword_Slash");
+            music = content.Load<SoundEffect>("04 - Dungeon");
+            
+            // song loops
+            var music_instance = music.CreateInstance();
+            music_instance.IsLooped = true;
+            music_instance.Play();
         }
 
         public SoundEffect getSwordSound()
         {
             return swordSound;
+        }
+
+        public SoundEffect getMusic()
+        {
+            return music;
         }
 
         public static Dictionary<string, SoundEffect> sounds = new Dictionary<string, SoundEffect>
