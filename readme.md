@@ -6,6 +6,7 @@ A repo housing the semester project of:
 * Roy Park
 * Dennis Sweeney
 * Joshua (Josh) D. White
+* Will Chiraz
 
 For CSE 3902 at The Ohio State University, Autumn 2020.
 

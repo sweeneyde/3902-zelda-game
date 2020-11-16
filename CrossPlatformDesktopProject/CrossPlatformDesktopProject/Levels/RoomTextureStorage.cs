@@ -8,6 +8,11 @@ namespace CrossPlatformDesktopProject.Levels
     class RoomTextureStorage : ISpriteFactory
     {
         private static RoomTextureStorage instance = null;
+        public const int ROOM_WIDTH = 192;
+        public const int ROOM_HEIGHT = 112;
+        public const int BORDER_WIDTH = 256;
+        public const int BORDER_HEIGHT = 176;
+        public const int DOOR_SIDE = 32;
 
         public static RoomTextureStorage Instance
         {
@@ -39,35 +44,35 @@ namespace CrossPlatformDesktopProject.Levels
             return roomTexture;
         }
 
-        public static Rectangle BORDER = new Rectangle(521, 11, 255, 175);
+        public static Rectangle BORDER = new Rectangle(521, 11, BORDER_WIDTH, BORDER_HEIGHT);
         public static Dictionary<string, Rectangle> ROOM_RECTS = new Dictionary<string, Rectangle>()
         {
-            ["001"] = new Rectangle(196, 192, 191, 111),
-            ["002"] = new Rectangle(391, 192, 191, 111),
-            ["003"] = new Rectangle(1, 192, 191, 111),
-            ["004"] = new Rectangle(586, 192, 191, 111),
-            ["005"] = new Rectangle(781, 192, 191, 111),
-            ["006"] = new Rectangle(976, 192, 191, 111),
-            ["007"] = new Rectangle(781, 192, 191, 111),
-            ["008"] = new Rectangle(391, 307, 191, 111),
-            ["009"] = new Rectangle(781, 307, 191, 111),
-            ["010"] = new Rectangle(976, 307, 191, 111),
-            ["011"] = new Rectangle(586, 192, 191, 111),
-            ["012"] = new Rectangle(1, 307, 191, 111),
-            ["013"] = new Rectangle(976, 882, 191, 111),
-            ["014"] = new Rectangle(196, 307, 191, 111),
-            ["015"] = new Rectangle(586, 307, 191, 111),
-            ["016"] = new Rectangle(196, 422, 191, 111),
-            ["017"] = new Rectangle(1, 422, 191, 111),
+            ["001"] = new Rectangle(196, 192, ROOM_WIDTH, ROOM_HEIGHT),
+            ["002"] = new Rectangle(391, 192, ROOM_WIDTH, ROOM_HEIGHT),
+            ["003"] = new Rectangle(1, 192, ROOM_WIDTH, ROOM_HEIGHT),
+            ["004"] = new Rectangle(586, 192, ROOM_WIDTH, ROOM_HEIGHT),
+            ["005"] = new Rectangle(781, 192, ROOM_WIDTH, ROOM_HEIGHT),
+            ["006"] = new Rectangle(976, 192, ROOM_WIDTH, ROOM_HEIGHT),
+            ["007"] = new Rectangle(781, 192, ROOM_WIDTH, ROOM_HEIGHT),
+            ["008"] = new Rectangle(391, 307, ROOM_WIDTH, ROOM_HEIGHT),
+            ["009"] = new Rectangle(781, 307, ROOM_WIDTH, ROOM_HEIGHT),
+            ["010"] = new Rectangle(976, 307, ROOM_WIDTH, ROOM_HEIGHT),
+            ["011"] = new Rectangle(586, 192, ROOM_WIDTH, ROOM_HEIGHT),
+            ["012"] = new Rectangle(1, 307, ROOM_WIDTH, ROOM_HEIGHT),
+            ["013"] = new Rectangle(976, 882, ROOM_WIDTH, ROOM_HEIGHT),
+            ["014"] = new Rectangle(196, 307, ROOM_WIDTH, ROOM_HEIGHT),
+            ["015"] = new Rectangle(586, 307, ROOM_WIDTH, ROOM_HEIGHT),
+            ["016"] = new Rectangle(196, 422, ROOM_WIDTH, ROOM_HEIGHT),
+            ["017"] = new Rectangle(1, 422, ROOM_WIDTH, ROOM_HEIGHT),
         };
-        public static Rectangle TOP_NO_DOOR = new Rectangle(815, 11, 31, 31);
-        public static Rectangle TOP_OPEN_DOOR = new Rectangle(848, 11, 31, 31);
-        public static Rectangle BOTTOM_NO_DOOR = new Rectangle(815, 110, 31, 31);
-        public static Rectangle BOTTOM_OPEN_DOOR = new Rectangle(848, 110, 31, 31);
-        public static Rectangle LEFT_NO_DOOR = new Rectangle(815, 44, 31, 31);
-        public static Rectangle LEFT_OPEN_DOOR = new Rectangle(848, 44, 31, 31);
-        public static Rectangle RIGHT_NO_DOOR = new Rectangle(815, 77, 31, 31);
-        public static Rectangle RIGHT_OPEN_DOOR = new Rectangle(848, 77, 31, 31);
+        public static Rectangle TOP_NO_DOOR = new Rectangle(815, 11, DOOR_SIDE, DOOR_SIDE);
+        public static Rectangle TOP_OPEN_DOOR = new Rectangle(848, 11, DOOR_SIDE, DOOR_SIDE);
+        public static Rectangle BOTTOM_NO_DOOR = new Rectangle(815, 110, DOOR_SIDE, DOOR_SIDE);
+        public static Rectangle BOTTOM_OPEN_DOOR = new Rectangle(848, 110, DOOR_SIDE, DOOR_SIDE);
+        public static Rectangle LEFT_NO_DOOR = new Rectangle(815, 44, DOOR_SIDE, DOOR_SIDE);
+        public static Rectangle LEFT_OPEN_DOOR = new Rectangle(848, 44, DOOR_SIDE, DOOR_SIDE);
+        public static Rectangle RIGHT_NO_DOOR = new Rectangle(815, 77, DOOR_SIDE, DOOR_SIDE);
+        public static Rectangle RIGHT_OPEN_DOOR = new Rectangle(848, 77, DOOR_SIDE, DOOR_SIDE);
 
     }
 }

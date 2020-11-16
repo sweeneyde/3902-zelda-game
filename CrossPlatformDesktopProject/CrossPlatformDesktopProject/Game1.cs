@@ -23,6 +23,7 @@ namespace CrossPlatformDesktopProject
         public CollisionDetector collisionController;
         private SpriteFont font;
         public Player player;
+        private WindowManager windows;
 
         public IGameState currentState;
         public GamePlayState currentGamePlayState;
@@ -30,6 +31,8 @@ namespace CrossPlatformDesktopProject
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferHeight = 768;
+            graphics.PreferredBackBufferWidth = 1024;
             Content.RootDirectory = "Content";
         }
 
@@ -43,6 +46,8 @@ namespace CrossPlatformDesktopProject
         {
             player = new Player();
             currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "013"));
+
+            windows = new WindowManager(this);
 
             controllerList = new List<IController>()
             {
@@ -67,6 +72,7 @@ namespace CrossPlatformDesktopProject
             NpcTextureStorage.Instance.LoadAllResources(Content);
             ItemTextureStorage.Instance.LoadAllResources(Content);
             RoomTextureStorage.Instance.LoadAllResources(Content);
+            InventoryTextureStorage.Instance.LoadAllResources(Content);
         }
 
         /// <summary>
@@ -92,7 +98,7 @@ namespace CrossPlatformDesktopProject
                 quit();
             }
         }
-
+        
         /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
@@ -100,8 +106,14 @@ namespace CrossPlatformDesktopProject
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            windows.HUDStart(spriteBatch);
+            Texture2D texture = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            texture.SetData<Color>(new Color[] { Color.Black });
+            spriteBatch.Draw(texture, new Rectangle(0, 0, 255, (175 / 2)), Color.Black);
+            spriteBatch.End();
             
-            spriteBatch.Begin();
+            windows.GameStart(spriteBatch);
             currentState.Draw(spriteBatch);
             spriteBatch.End();
 

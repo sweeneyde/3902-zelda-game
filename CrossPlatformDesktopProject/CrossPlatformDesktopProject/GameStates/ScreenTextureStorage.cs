@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace CrossPlatformDesktopProject.GameStates
         {
             myGame = game;
             screenshot = new RenderTarget2D(game.GraphicsDevice, game.GraphicsDevice.Viewport.Width, game.GraphicsDevice.Viewport.Height, false, SurfaceFormat.Color, DepthFormat.Depth24);
-            renderTargetTexture = (Texture2D) screenshot;
+            renderTargetTexture = (Texture2D)screenshot;
         }
 
         public void SaveScreen(SpriteBatch sb)

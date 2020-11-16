@@ -8,7 +8,7 @@ namespace CrossPlatformDesktopProject.NPC
     {
         public INpcState currentState;
         public float xPos, yPos;
-        private Rectangle hitbox;
+        public Rectangle hitbox;
 
         public Goriya(float xPos, float yPos, GoriyaBoomerang boomerang)
         {
@@ -21,7 +21,6 @@ namespace CrossPlatformDesktopProject.NPC
         public void Update()
         {
             currentState.Update();
-            hitbox = new Rectangle((int)xPos, (int)yPos, 40, 40);
         }
 
         public void Draw(SpriteBatch spriteBatch)

@@ -11,8 +11,8 @@ namespace CrossPlatformDesktopProject.Levels
         private int innerHeight;
         private int destinationWidth;
         private int destinationHeight;
-        private int doorWidth;
-        private int doorHeight;
+        private int doorSize;
+
         private string roomTextureID;
         private Rectangle topDoorDest;
         private Rectangle leftDoorDest;
@@ -21,21 +21,21 @@ namespace CrossPlatformDesktopProject.Levels
 
         public Background(Game1 game, string texture) 
         {
-            screenWidth = game.GraphicsDevice.Viewport.Width;
-            screenHeight = game.GraphicsDevice.Viewport.Height;
-            innerWidth = (screenWidth * 191) / 255 + 6;
-            innerHeight = (screenHeight * 111) / 175 + 6;
-            destinationHeight = (screenHeight - innerHeight) / 2 + 1;
-            destinationWidth = (screenWidth - innerWidth) / 2 + 1;
+
+            screenWidth = RoomTextureStorage.BORDER_WIDTH;
+            screenHeight = RoomTextureStorage.BORDER_HEIGHT;
+            innerWidth = RoomTextureStorage.ROOM_WIDTH;
+            innerHeight = RoomTextureStorage.ROOM_HEIGHT;
+            destinationHeight = (screenHeight - innerHeight) / 2;
+            destinationWidth = (screenWidth - innerWidth) / 2;
             roomTextureID = texture;
 
-            doorWidth = (screenWidth * 31) / 255;
-            doorHeight = (screenHeight * 31) / 175;
-            //screenWidth - (doorWidth / 2)= 7
-            topDoorDest = new Rectangle((screenWidth/2) - (doorWidth / 2), 0, doorWidth, doorHeight);
-            leftDoorDest = new Rectangle(0, (screenHeight / 2) - (doorHeight / 2) + 1, doorWidth, doorHeight);
-            rightDoorDest = new Rectangle(screenWidth - doorWidth, (screenHeight / 2) - (doorHeight / 2), doorWidth, doorHeight);
-            bottomDoorDest = new Rectangle((screenWidth / 2) - (doorWidth / 2), screenHeight - doorHeight, doorWidth, doorHeight);
+            doorSize = RoomTextureStorage.DOOR_SIDE;
+
+            topDoorDest = new Rectangle((screenWidth / 2) - (doorSize / 2), 0, doorSize, doorSize);
+            leftDoorDest = new Rectangle(0, (screenHeight / 2) - (doorSize / 2), doorSize, doorSize);
+            rightDoorDest = new Rectangle(screenWidth - doorSize, (screenHeight / 2) - (doorSize / 2), doorSize, doorSize);
+            bottomDoorDest = new Rectangle((screenWidth / 2) - (doorSize / 2), screenHeight - doorSize, doorSize, doorSize);
         }
 
         public void Draw(SpriteBatch sb)
