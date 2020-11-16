@@ -29,12 +29,15 @@ namespace CrossPlatformDesktopProject.Link
         private int damaged_frames_left;
         private int frames_until_color_change;
 
+        public int link_health;
+
         public Player()
         {
             currentState = new LinkFacingSouthState(this);
             linkInventory = new InventoryManager(this);
             xPos = 10;
             yPos = 10;
+            link_health = 0;
         }
 
         public bool IsDamaged()

@@ -8,7 +8,7 @@ namespace CrossPlatformDesktopProject.NPC
     {
         public INpcState currentState;
         public float xPos, yPos;
-        private Rectangle hitbox;
+        public Rectangle hitbox;
 
         private static int frames_per_damage_color_change = 5;
         private static int damage_frames = 24;

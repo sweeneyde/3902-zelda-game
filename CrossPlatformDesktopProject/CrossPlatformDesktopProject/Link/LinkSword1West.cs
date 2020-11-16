@@ -20,8 +20,6 @@ namespace CrossPlatformDesktopProject.Link
             this.player = player;
             this.frames_left = Player.frames_for_sword;
             my_texture_index = 0;
-
-            player.sameSize = LinkTextureStorage.MIRRORED_LINK_SWORD_WEST;
         }
 
         void ILinkState.Draw(SpriteBatch spriteBatch)
