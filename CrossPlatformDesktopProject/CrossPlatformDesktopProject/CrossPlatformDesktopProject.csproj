@@ -101,6 +101,9 @@
     <Compile Include="NPC\Projectiles\Fireball\MiddleFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\TopFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\Fireball.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonKnockedEast.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonKnockedWest.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonKnockedNorth.cs" />
     <Compile Include="NPC\Skeleton\SkeletonKnockedSouth.cs" />
     <Compile Include="Obstacles\Stairs.cs" />
     <Compile Include="Obstacles\PlainBlock.cs" />

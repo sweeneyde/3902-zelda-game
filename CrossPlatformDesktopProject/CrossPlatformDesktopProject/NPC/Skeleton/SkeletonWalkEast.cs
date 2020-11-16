@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -13,8 +14,8 @@ namespace CrossPlatformDesktopProject.NPC
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
-            NpcTextureStorage.SKELETON_1,
-            NpcTextureStorage.SKELETON_2
+            NpcTextureStorage.SKELETON_HURT_4,
+            //NpcTextureStorage.SKELETON_2
         };
 
         public SkeletonWalkEast(Skeleton skeleton)
@@ -26,7 +27,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = NpcTextureStorage.Instance.getSkeletonSpriteSheet();
+            Texture2D texture = NpcTextureStorage.Instance.getSkeletonGoriyaHurtSpriteSheet();
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
@@ -51,9 +52,9 @@ namespace CrossPlatformDesktopProject.NPC
             }
         }
 
-        public void TakeDamage()
+        public void TakeDamage(CollisionSides side)
         {
-            skeleton.currentState = new SkeletonKnockedSouth(skeleton);
+            skeleton.currentState = new SkeletonKnockedWest(skeleton);
         }
     }
 }

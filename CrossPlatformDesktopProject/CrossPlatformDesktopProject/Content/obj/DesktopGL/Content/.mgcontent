@@ -22,9 +22,11 @@
     <File>C:/Users/nerdy/Source/Repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet_Mirrored.png</File>
     <File>C:/Users/nerdy/Source/Repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/NewFont.spritefont</File>
     <File>C:/Users/nerdy/Source/Repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/npc_sheet.png</File>
+    <File>C:/Users/nerdy/Source/Repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/skeleton_hurt_sheet.png</File>
     <File>C:/Users/nerdy/Source/Repos/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/skeleton_sheet.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

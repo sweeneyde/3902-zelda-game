@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -51,7 +52,7 @@ namespace CrossPlatformDesktopProject.NPC
             }
         }
 
-        public void TakeDamage()
+        public void TakeDamage(CollisionSides side)
         {
             skeleton.currentState = new SkeletonKnockedSouth(skeleton);
         }

@@ -1,33 +1,32 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class GelWalkEast : INpcState
+    class SkeletonKnockedWest : INpcState
     {
-        private int my_frame_index;
-        private int delay_frame_index;
-        private int counter;
-        private Gel gel;
+        private int my_frame_index = 0;
+        private int delay_frame_index = 0;
+        private Skeleton skeleton;
+        private int frames_left;
 
-        private static int delay_frames = 6;
+        private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
-            NpcTextureStorage.GEL_1,
-            NpcTextureStorage.GEL_2
+            NpcTextureStorage.SKELETON_1,
+            NpcTextureStorage.SKELETON_2
         };
 
-        public GelWalkEast(Gel gel)
+        public SkeletonKnockedWest(Skeleton skeleton)
         {
-            this.gel = gel;
-            my_frame_index = 0;
-            delay_frame_index = 0;
+            this.skeleton = skeleton;
+            this.frames_left = Skeleton.knockback_frames;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = NpcTextureStorage.Instance.getEnemySpriteSheet();
+            Texture2D texture = NpcTextureStorage.Instance.getSkeletonSpriteSheet();
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
@@ -37,24 +36,21 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (counter == 10)
+            skeleton.xPos -= Skeleton.knockback_speed;
+            if (--frames_left <= 0)
             {
-                gel.currentState = new GelWalkSouth(gel);
+                skeleton.currentState = new SkeletonWalkWest(skeleton);
             }
 
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
-                gel.xPos += 5;
-                counter++;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
         }
-
         public void TakeDamage(CollisionSides side)
         {
-            gel.currentState = new GelDeath(gel);
         }
     }
 }

@@ -25,6 +25,7 @@ namespace CrossPlatformDesktopProject.NPC
         private static Texture2D enemyTextureMirrored = null;
         private static Texture2D goriyaTextureUpDown = null;
         private static Texture2D skeletonTexture = null;
+        private static Texture2D skeletonGoriyaHurtTexture = null;
         private static Texture2D bossTexture = null;
         private static Texture2D npcTexture = null;
 
@@ -38,6 +39,7 @@ namespace CrossPlatformDesktopProject.NPC
             enemyTextureMirrored = content.Load<Texture2D>("enemiesflipped");
             goriyaTextureUpDown = content.Load<Texture2D>("goriya_sheet");
             skeletonTexture = content.Load<Texture2D>("skeleton_sheet");
+            skeletonGoriyaHurtTexture = content.Load<Texture2D>("skeleton_hurt_sheet");
             bossTexture = content.Load<Texture2D>("boss_sheet");
             npcTexture = content.Load<Texture2D>("npc_sheet");
         }
@@ -61,6 +63,11 @@ namespace CrossPlatformDesktopProject.NPC
         public Texture2D getSkeletonSpriteSheet()
         {
             return skeletonTexture;
+        }
+
+        public Texture2D getSkeletonGoriyaHurtSpriteSheet()
+        {
+            return skeletonGoriyaHurtTexture;
         }
 
         public Texture2D getBossSpriteSheet()
@@ -94,6 +101,10 @@ namespace CrossPlatformDesktopProject.NPC
 
         public static Rectangle SKELETON_1 = new Rectangle(1 + 0 * 10, 59, 16, 16);
         public static Rectangle SKELETON_2 = new Rectangle(8 + 1 * 10, 59, 16, 16);
+        public static Rectangle SKELETON_HURT_1 = new Rectangle(544, 8, 16, 16);
+        public static Rectangle SKELETON_HURT_2 = new Rectangle(568, 8, 16, 16);
+        public static Rectangle SKELETON_HURT_3 = new Rectangle(592, 8, 16, 16);
+        public static Rectangle SKELETON_HURT_4 = new Rectangle(616, 8, 16, 16);
 
         public static Rectangle BOSS_1 = new Rectangle(1 + 0 * 10, 11, 24, 32);
         public static Rectangle BOSS_2 = new Rectangle(6 + 2 * 10, 11, 24, 32);

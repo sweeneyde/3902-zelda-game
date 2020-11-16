@@ -40,7 +40,7 @@ namespace CrossPlatformDesktopProject.NPC
             currentState.Draw(spriteBatch, xPos, yPos);
         }
 
-        public void TakeDamage()
+        public void TakeDamage(CollisionSides side)
         {
         }
     }

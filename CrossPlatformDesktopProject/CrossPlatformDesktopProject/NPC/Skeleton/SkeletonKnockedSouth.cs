@@ -14,8 +14,8 @@ namespace CrossPlatformDesktopProject.NPC
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
-            NpcTextureStorage.SKELETON_1,
-            NpcTextureStorage.SKELETON_2
+            NpcTextureStorage.SKELETON_HURT_1,
+            //NpcTextureStorage.SKELETON_2
         };
 
         public SkeletonKnockedSouth(Skeleton skeleton)
@@ -26,7 +26,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = NpcTextureStorage.Instance.getSkeletonSpriteSheet();
+            Texture2D texture = NpcTextureStorage.Instance.getSkeletonGoriyaHurtSpriteSheet();
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
@@ -49,7 +49,7 @@ namespace CrossPlatformDesktopProject.NPC
                 my_frame_index %= my_source_frames.Count;
             }
         }
-        public void TakeDamage()
+        public void TakeDamage(CollisionSides side)
         {
         }
     }

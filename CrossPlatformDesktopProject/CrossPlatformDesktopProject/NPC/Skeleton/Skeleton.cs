@@ -44,14 +44,11 @@ namespace CrossPlatformDesktopProject.NPC
             return damaged_frames_left > 0;
         }
 
-        public void TakeDamage()
+        public void TakeDamage(CollisionSides side)
         {
-            if (!IsDamaged())
-            {
-                damaged_frames_left = damage_frames;
-                frames_until_color_change = frames_per_damage_color_change;
-                currentState.TakeDamage();
-            }
+            damaged_frames_left = damage_frames;
+            frames_until_color_change = frames_per_damage_color_change;
+            currentState.TakeDamage(CollisionSides.Left);
         }
 
         public Rectangle GetRectangle()
