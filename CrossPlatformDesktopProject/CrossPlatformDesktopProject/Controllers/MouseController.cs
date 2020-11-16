@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject
 {
@@ -19,12 +20,14 @@ namespace CrossPlatformDesktopProject
         MouseState currentState;
         int currentID;
         string newID;
+        CollisionSides test;
 
         public MouseController(Game1 game)
         {
             myGame = game;
             oldState = Mouse.GetState();
             currentState = Mouse.GetState();
+            test = CollisionSides.Right;
         }
 
         public void Update()
@@ -47,7 +50,7 @@ namespace CrossPlatformDesktopProject
                     newID = "0";
                 }
                 newID += currentID;
-                myGame.GoToRoom(Room.FromId(myGame, newID));
+                myGame.GoToRoom(Room.FromId(myGame, newID), test);
             }
 
             else if (oldState.LeftButton != ButtonState.Pressed && currentState.LeftButton == ButtonState.Pressed)
@@ -65,7 +68,7 @@ namespace CrossPlatformDesktopProject
                     newID = "0";
                 }
                 newID += currentID;
-                myGame.GoToRoom(Room.FromId(myGame, newID));
+                myGame.GoToRoom(Room.FromId(myGame, newID), test);
             }
         }
 
