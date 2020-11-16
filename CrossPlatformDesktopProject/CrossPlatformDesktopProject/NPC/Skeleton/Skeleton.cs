@@ -10,14 +10,7 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos;
         public Rectangle hitbox;
 
-        private static int frames_per_damage_color_change = 5;
-        private static int damage_frames = 24;
-
-        public static float knockback_speed = 4.0f;
-        public static int knockback_frames = frames_per_damage_color_change * 5;
-
-        private int damaged_frames_left;
-        private int frames_until_color_change;
+        public static float knockback_speed = 2.0f;
 
         public Skeleton(float xPos, float yPos)
         {
@@ -39,16 +32,9 @@ namespace CrossPlatformDesktopProject.NPC
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 
-        public bool IsDamaged()
-        {
-            return damaged_frames_left > 0;
-        }
-
         public void TakeDamage(CollisionSides side)
         {
-            damaged_frames_left = damage_frames;
-            frames_until_color_change = frames_per_damage_color_change;
-            currentState.TakeDamage(CollisionSides.Left);
+            currentState.TakeDamage(side);
         }
 
         public Rectangle GetRectangle()

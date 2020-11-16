@@ -14,23 +14,24 @@ namespace CrossPlatformDesktopProject.NPC
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
-            NpcTextureStorage.SKELETON_1,
-            NpcTextureStorage.SKELETON_2
+            NpcTextureStorage.SKELETON_HURT_1,
+            NpcTextureStorage.SKELETON_HURT_2,
+            NpcTextureStorage.SKELETON_HURT_3,
+            NpcTextureStorage.SKELETON_HURT_4
         };
 
         public SkeletonKnockedWest(Skeleton skeleton)
         {
             this.skeleton = skeleton;
-            this.frames_left = Skeleton.knockback_frames;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = NpcTextureStorage.Instance.getSkeletonSpriteSheet();
+            Texture2D texture = NpcTextureStorage.Instance.getSkeletonGoriyaHurtSpriteSheet();
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
-                source.Width * 3, source.Height * 3);
+                source.Width, source.Height);
             spriteBatch.Draw(texture, destination, source, Color.White);
         }
 

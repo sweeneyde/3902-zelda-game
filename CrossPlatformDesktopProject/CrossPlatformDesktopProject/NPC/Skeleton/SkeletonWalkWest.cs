@@ -31,7 +31,7 @@ namespace CrossPlatformDesktopProject.NPC
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
-                source.Width * 3, source.Height * 3);
+                source.Width, source.Height);
             spriteBatch.Draw(texture, destination, source, Color.White);
             skeleton.hitbox = destination;
         }

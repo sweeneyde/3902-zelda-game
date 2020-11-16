@@ -17,7 +17,7 @@ namespace CrossPlatformDesktopProject.Commands
         }
         public void Execute()
         {
-            myGame.currentState = new InventoryState(myGame.player);
+            //myGame.currentState = new InventoryState(myGame.player);
         }
     }
 }
