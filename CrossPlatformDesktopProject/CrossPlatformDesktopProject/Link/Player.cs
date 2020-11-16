@@ -135,7 +135,7 @@ namespace CrossPlatformDesktopProject.Link
         public Rectangle GetRectangle()
         {
             Rectangle sameSize = LinkTextureStorage.LINK_IDLE_EAST;
-            return new Rectangle((int)xPos, (int)yPos, sameSize.Width, sameSize.Height);
+            return new Rectangle((int)xPos+2, (int)yPos+2, sameSize.Width-2, sameSize.Height-2);
         }
 
         public List<ICollider> GetColliders()

@@ -14,8 +14,8 @@ namespace CrossPlatformDesktopProject.WorldItem.WorldHandlers
 
         public Door(string direction, String NextRoomCode, int screenWidth, int screenHeight)
         {
-            int doorWidth = (screenWidth * 31) / 255;
-            int doorHeight = (screenHeight * 31) / 175;
+            int doorWidth = 31;
+            int doorHeight = 31;
             int ymid = (screenHeight / 2) - (doorHeight / 2) + 1;
             int xmid = (screenWidth / 2) - (doorWidth / 2);
 
