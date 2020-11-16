@@ -29,15 +29,12 @@ namespace CrossPlatformDesktopProject.Link
         private int damaged_frames_left;
         private int frames_until_color_change;
 
-        public int link_health;
-
         public Player()
         {
             currentState = new LinkFacingSouthState(this);
             linkInventory = new InventoryManager(this);
-            xPos = 10;
-            yPos = 10;
-            link_health = 0;
+            xPos = 30;
+            yPos = 30;
         }
 
         public bool IsDamaged()
@@ -137,8 +134,9 @@ namespace CrossPlatformDesktopProject.Link
 
         public Rectangle GetRectangle()
         {
+            int boxOffset = 4;
             Rectangle sameSize = LinkTextureStorage.LINK_IDLE_EAST;
-            return new Rectangle((int)xPos, (int)yPos, sameSize.Width, sameSize.Height);
+            return new Rectangle((int)xPos + boxOffset/2, (int)yPos + boxOffset/2, sameSize.Width - boxOffset, sameSize.Height - boxOffset);
         }
 
         public List<ICollider> GetColliders()

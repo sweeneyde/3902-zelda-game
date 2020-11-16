@@ -1,4 +1,7 @@
 ROOM_001
-CrossPlatformDesktopProject.NPC.Goriya,10,10
-CrossPlatformDesktopProject.WorldItem.DungeonKey,10,10
-CrossPlatformDesktopProject.Obstacles.Stairs,10,10
+CrossPlatformDesktopProject.Obstacles.Statue,2,2,CrossPlatformDesktopProject.Obstacles.Statue,2,5
+CrossPlatformDesktopProject.Obstacles.Statue2,2,8,CrossPlatformDesktopProject.Obstacles.Statue2,2,11
+CrossPlatformDesktopProject.Obstacles.Statue,4,2,CrossPlatformDesktopProject.Obstacles.Statue,4,5
+CrossPlatformDesktopProject.Obstacles.Statue2,4,8,CrossPlatformDesktopProject.Obstacles.Statue2,4,11
+CrossPlatformDesktopProject.Obstacles.Statue,6,2,CrossPlatformDesktopProject.Obstacles.Statue,6,5
+CrossPlatformDesktopProject.Obstacles.Statue2,6,8,CrossPlatformDesktopProject.Obstacles.Statue2,6,11
