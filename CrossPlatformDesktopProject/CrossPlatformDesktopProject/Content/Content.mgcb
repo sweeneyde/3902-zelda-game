@@ -212,6 +212,12 @@
 /processorParam:TextureFormat=Color
 /build:Link_Spritesheet_Mirrored.png
 
+#begin LOZ_Sword_Slash.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:LOZ_Sword_Slash.wav
+
 #begin NewFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor

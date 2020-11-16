@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.Link.Equipables;
+using CrossPlatformDesktopProject.Sound;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -74,6 +75,7 @@ namespace CrossPlatformDesktopProject.Link
         public void UsePrimary()
         {
             currentState.UsePrimary();
+            SoundStorage.sounds["sword"].Play();
         }
 
         public void UseBomb()
