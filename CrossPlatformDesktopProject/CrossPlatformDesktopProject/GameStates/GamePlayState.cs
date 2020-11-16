@@ -19,6 +19,10 @@ public class GamePlayState : IGameState
 
     public void Update()
     {
+        if (game.pauseCooldown > 0)
+        {
+            game.pauseCooldown--;
+        }
         game.player.Update();
         foreach (IController controller in game.controllerList)
         {
@@ -26,6 +30,7 @@ public class GamePlayState : IGameState
         }
         collisionDetector.Update();
         CurrentRoom.Update();
+        game.currentHUD.Update();
     }
 
     public void Draw(SpriteBatch sb)

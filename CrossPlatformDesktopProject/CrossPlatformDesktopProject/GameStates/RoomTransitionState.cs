@@ -79,28 +79,45 @@ namespace CrossPlatformDesktopProject
             if (adjacentRooms1[0].Equals("-1")) 
             {
                 topDoor1 = RoomTextureStorage.TOP_NO_DOOR;
-            } else 
+            } else if(adjacentRooms1[0].EndsWith("1"))
+            {
+                topDoor1 = RoomTextureStorage.TOP_LOCKED_DOOR;
+                System.Console.WriteLine("HEREEEE");
+            }
+            else
             {
                 topDoor1 = RoomTextureStorage.TOP_OPEN_DOOR;
             }
             if (adjacentRooms1[1].Equals("-1")) 
             {
                 bottomDoor1 = RoomTextureStorage.BOTTOM_NO_DOOR;
-            } else 
+            } else if (adjacentRooms1[1].EndsWith("1"))
+            {
+                bottomDoor1 = RoomTextureStorage.BOTTOM_LOCKED_DOOR;
+            }
+            else
             {
                 bottomDoor1 = RoomTextureStorage.BOTTOM_OPEN_DOOR;
             }
             if (adjacentRooms1[2].Equals("-1")) 
             {
                 leftDoor1 = RoomTextureStorage.LEFT_NO_DOOR;
-            } else 
+            } else if (adjacentRooms1[2].EndsWith("1"))
+            {
+                leftDoor1 = RoomTextureStorage.LEFT_LOCKED_DOOR;
+            }
+            else
             {
                 leftDoor1 = RoomTextureStorage.LEFT_OPEN_DOOR;
             }
             if (adjacentRooms1[3].Equals("-1")) 
             {
                 rightDoor1 = RoomTextureStorage.RIGHT_NO_DOOR;
-            } else 
+            } else if (adjacentRooms1[3].EndsWith("1"))
+            {
+                rightDoor1 = RoomTextureStorage.RIGHT_LOCKED_DOOR;
+            }
+            else
             {
                 rightDoor1 = RoomTextureStorage.RIGHT_OPEN_DOOR;
             }
@@ -108,28 +125,44 @@ namespace CrossPlatformDesktopProject
             if (adjacentRooms2[0].Equals("-1")) 
             {
                 topDoor2 = RoomTextureStorage.TOP_NO_DOOR;
-            } else 
+            } else if (adjacentRooms2[0].EndsWith("1"))
+            {
+                topDoor2 = RoomTextureStorage.TOP_LOCKED_DOOR;
+            }
+            else
             {
                 topDoor2 = RoomTextureStorage.TOP_OPEN_DOOR;
             }
             if (adjacentRooms2[1].Equals("-1")) 
             {
                 bottomDoor2 = RoomTextureStorage.BOTTOM_NO_DOOR;
-            } else 
+            } else if (adjacentRooms2[1].EndsWith("1"))
+            {
+                bottomDoor2 = RoomTextureStorage.BOTTOM_LOCKED_DOOR;
+            }
+            else
             {
                 bottomDoor2 = RoomTextureStorage.BOTTOM_OPEN_DOOR;
             }
             if (adjacentRooms2[2].Equals("-1")) 
             {
                 leftDoor2 = RoomTextureStorage.LEFT_NO_DOOR;
-            } else 
+            } else if (adjacentRooms2[2].EndsWith("1"))
+            {
+                leftDoor2 = RoomTextureStorage.LEFT_LOCKED_DOOR;
+            }
+            else
             {
                 leftDoor2 = RoomTextureStorage.LEFT_OPEN_DOOR;
             }
             if (adjacentRooms2[3].Equals("-1")) 
             {
                 rightDoor2 = RoomTextureStorage.RIGHT_NO_DOOR;
-            } else 
+            } else if (adjacentRooms2[3].EndsWith("1"))
+            {
+                rightDoor2 = RoomTextureStorage.RIGHT_LOCKED_DOOR;
+            }
+            else
             {
                 rightDoor2 = RoomTextureStorage.RIGHT_OPEN_DOOR;
             }

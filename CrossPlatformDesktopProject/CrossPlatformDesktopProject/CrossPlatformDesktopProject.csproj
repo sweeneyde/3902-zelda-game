@@ -42,9 +42,12 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-	<Compile Include="GameStates\InventoryState.cs" />
-	<Compile Include="GameStates\InventoryTextureStorage.cs" />
+    <Compile Include="GameStates\InventoryState.cs" />
+    <Compile Include="GameStates\HUDTextureStorage.cs" />
+    <Compile Include="GameStates\InventoryTextureStorage.cs" />
     <Compile Include="GameStates\HUDWindow.cs" />
+    <Compile Include="GameStates\InventoryState.cs" />
+    <Compile Include="GameStates\InventoryTextureStorage.cs" />
     <Compile Include="GameStates\RoomTransitionState.cs" />
     <Compile Include="CollisionHandler\CollisionResponse.cs" />
     <Compile Include="CollisionHandler\Collision.cs" />
