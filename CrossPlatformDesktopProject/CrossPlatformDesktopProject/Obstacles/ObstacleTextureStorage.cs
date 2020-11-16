@@ -49,6 +49,7 @@ namespace CrossPlatformDesktopProject.Link
         public static Rectangle OBSTACLE_BASIC = new Rectangle(984, 11, 16, 16);
         public static Rectangle OBSTACLE_SAND = new Rectangle(1001, 28, 16, 16);
         public static Rectangle OBSTACLE_STAIRS = new Rectangle(1035, 28, 16, 16);
+        public static Rectangle OBSTACLE_TRANSPARENT = new Rectangle(1054, 28, 16, 16);
 
     }
 }

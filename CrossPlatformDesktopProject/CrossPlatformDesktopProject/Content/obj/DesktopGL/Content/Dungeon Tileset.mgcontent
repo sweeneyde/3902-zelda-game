@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/Owner/Documents/GitHub/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Dungeon Tileset.png</SourceFile>
-  <SourceTime>2020-10-26T13:36:43.0993858-04:00</SourceTime>
+  <SourceTime>2020-11-15T20:13:42.4285947-05:00</SourceTime>
   <DestFile>C:/Users/Owner/Documents/GitHub/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/Dungeon Tileset.xnb</DestFile>
-  <DestTime>2020-11-13T12:08:48.0104386-05:00</DestTime>
+  <DestTime>2020-11-15T20:16:04.1447004-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

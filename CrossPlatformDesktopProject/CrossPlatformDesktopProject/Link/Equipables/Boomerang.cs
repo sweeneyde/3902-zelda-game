@@ -24,8 +24,8 @@ namespace CrossPlatformDesktopProject.Equipables
         private Vector2 returnFlight;
         private int my_frame_index;
         private int delay_frame_index;
-        private float boomerangTravelDist = 400f;
-        private float boomSpeed = 50f;
+        private float boomerangTravelDist = 130f;
+        private float boomSpeed = 13f;
         private bool reachedEnd = false;
 
         private static int delay_frames = 5;
@@ -81,7 +81,7 @@ namespace CrossPlatformDesktopProject.Equipables
                 {    
                     //Boomerang is going back to link.
                     returnFlight = DirectionV(new Vector2(player.xPos, player.yPos), currentPos);
-                    currentPos += returnFlight * boomSpeed/1.7f;
+                    currentPos += returnFlight * boomSpeed;
                 }
                 else
                 {
@@ -93,7 +93,7 @@ namespace CrossPlatformDesktopProject.Equipables
                 my_frame_index %= my_source_frames.Count;
             }
 
-            if (reachedEnd && (Math.Abs(currentPos.X - player.xPos) < 30 && Math.Abs(currentPos.Y - player.yPos) < 30))
+            if (reachedEnd && (Math.Abs(currentPos.X - player.xPos) < 10 && Math.Abs(currentPos.Y - player.yPos) < 10))
             {
                 player.linkInventory.TerminateBoomerang();
             }
@@ -151,7 +151,7 @@ namespace CrossPlatformDesktopProject.Equipables
             Rectangle source = my_source_frames[my_frame_index];
             return new Rectangle(
                 (int)currentPos.X, (int)currentPos.Y,
-                source.Width * 3, source.Height * 3);
+                source.Width, source.Height);
         }
     }
 }

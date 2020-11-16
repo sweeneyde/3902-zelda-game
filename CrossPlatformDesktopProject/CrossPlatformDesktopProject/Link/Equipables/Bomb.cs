@@ -57,7 +57,7 @@ namespace CrossPlatformDesktopProject.Equipables
             Rectangle destination;
             if (my_frame_index == 0)
             {
-                destination = new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width * 3, source.Height * 3);
+                destination = new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width, source.Height);
                 spriteBatch.Draw(texture, destination, source, Color.White);
             }
             else
@@ -130,19 +130,19 @@ namespace CrossPlatformDesktopProject.Equipables
             {
                 return new List<ICollider>()
                 {
-                    new Smoke(new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width * 3, source.Height * 3)),
-                    new Smoke(new Rectangle((int)currentPos.X + 48, (int)currentPos.Y, source.Width * 3, source.Height * 3)),
-                    new Smoke(new Rectangle((int)currentPos.X + 24, (int)currentPos.Y + 38, source.Width * 3, source.Height * 3)),
-                    new Smoke(new Rectangle((int)currentPos.X - 24, (int)currentPos.Y - 38, source.Width * 3, source.Height * 3)),
+                    new Smoke(new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width, source.Height)),
+                    new Smoke(new Rectangle((int)currentPos.X + 16, (int)currentPos.Y, source.Width, source.Height)),
+                    new Smoke(new Rectangle((int)currentPos.X + 8, (int)currentPos.Y + 12, source.Width, source.Height)),
+                    new Smoke(new Rectangle((int)currentPos.X - 8, (int)currentPos.Y - 12, source.Width, source.Height)),
                 };
             }
             else if (current_frame == 2) {
                 return new List<ICollider>()
                 {
-                    new Smoke(new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width * 3, source.Height * 3)),
-                    new Smoke(new Rectangle((int)currentPos.X - 48, (int)currentPos.Y, source.Width * 3, source.Height * 3)),
-                    new Smoke(new Rectangle((int)currentPos.X + 24, (int)currentPos.Y - 38, source.Width * 3, source.Height * 3)),
-                    new Smoke(new Rectangle((int)currentPos.X - 24, (int)currentPos.Y + 38, source.Width * 3, source.Height * 3)),
+                    new Smoke(new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width, source.Height)),
+                    new Smoke(new Rectangle((int)currentPos.X - 16, (int)currentPos.Y, source.Width, source.Height)),
+                    new Smoke(new Rectangle((int)currentPos.X + 8, (int)currentPos.Y - 12, source.Width, source.Height)),
+                    new Smoke(new Rectangle((int)currentPos.X - 8, (int)currentPos.Y + 12, source.Width, source.Height)),
                 };
             }
             else {

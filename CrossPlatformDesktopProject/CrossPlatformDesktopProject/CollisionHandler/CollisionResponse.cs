@@ -51,7 +51,6 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             // Weapon Types
             Type[] weaponTypes = {typeof(Sword), typeof(Boomerang), typeof(Smoke), typeof(Bow) };
 
-
             //Obstacle Types
             var typeOfObstacle = typeof(IObstacle);
             var obstacleTypes = AppDomain.CurrentDomain.GetAssemblies()
@@ -71,6 +70,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 {
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(enemySubject, playerType, side), typeof(TakeDamageCommand));
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Sword), enemySubject, side), typeof(EnemyTakeDamageCommand));
+                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Wall), enemySubject, side), typeof(ResetCommand));
                 }
                 foreach (Type obstacleSubject in obstacleTypes)
                 {
@@ -81,6 +81,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, worldItemTarget, side), typeof(KeyDisappearCommand));
                 }
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(Door), side), typeof(TransportRoomCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Wall), playerType, side), typeof(ResetCommand));
             }
         }
 

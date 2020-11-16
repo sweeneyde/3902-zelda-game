@@ -46,7 +46,7 @@ namespace CrossPlatformDesktopProject
         protected override void Initialize()
         {
             player = new Player();
-            currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "013"));
+            currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "001"));
 
             windows = new WindowManager(this);
 

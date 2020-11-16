@@ -1,4 +1,7 @@
 ROOM_002
-CrossPlatformDesktopProject.NPC.Bat,10,10
-CrossPlatformDesktopProject.WorldItem.DungeonKey,10,10
-CrossPlatformDesktopProject.Obstacles.Stairs,10,10
+CrossPlatformDesktopProject.Obstacles.Block,3,3,CrossPlatformDesktopProject.Obstacles.Block,4,3,CrossPlatformDesktopProject.Obstacles.Block,5,3
+CrossPlatformDesktopProject.Obstacles.Block,3,4,CrossPlatformDesktopProject.Obstacles.Block,4,4,CrossPlatformDesktopProject.Obstacles.Block,5,4
+CrossPlatformDesktopProject.Obstacles.Block,3,9,CrossPlatformDesktopProject.Obstacles.Block,4,9,CrossPlatformDesktopProject.Obstacles.Block,5,9
+CrossPlatformDesktopProject.Obstacles.Block,3,10,CrossPlatformDesktopProject.Obstacles.Block,4,10,CrossPlatformDesktopProject.Obstacles.Block,5,10
+# CrossPlatformDesktopProject.NPC.Skeleton,6,4,CrossPlatformDesktopProject.NPC.Skeleton,5,8,CrossPlatformDesktopProject.NPC.Skeleton,2,7
+# CrossPlatformDesktopProject.NPC.Skeleton,2,10,CrossPlatformDesktopProject.NPC.Skeleton,5,11
