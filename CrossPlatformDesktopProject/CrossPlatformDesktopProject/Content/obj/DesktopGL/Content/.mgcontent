@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/04 - Dungeon.mp3</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/ArrowSpriteSheet.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/boss_sheet.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Dungeon Tileset.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/enemies.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/enemiesflipped.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Fonty.spritefont</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/goriya_sheet.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/HUD_spritesheet.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/item_sheet.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/link_damaged_black.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/link_damaged_black_mirrored.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/link_damaged_blue.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/link_damaged_blue_mirrored.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/link_damaged_red.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/link_damaged_red_mirrored.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/Link_Spritesheet_Mirrored.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/LOZ_Arrow_Boomerang.wav</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/LOZ_Bomb_Blow.wav</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/LOZ_Bomb_Drop.wav</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/LOZ_Enemy_Die.wav</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/LOZ_Enemy_Hit.wav</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/LOZ_Get_Item.wav</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/LOZ_Link_Die.wav</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/LOZ_Link_Hurt.wav</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/LOZ_Sword_Slash.wav</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/NewFont.spritefont</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/npc_sheet.png</File>
+    <File>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/skeleton_sheet.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

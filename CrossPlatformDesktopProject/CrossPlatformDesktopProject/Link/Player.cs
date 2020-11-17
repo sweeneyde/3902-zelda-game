@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.Link.Equipables;
+using CrossPlatformDesktopProject.Sound;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -57,6 +58,7 @@ namespace CrossPlatformDesktopProject.Link
                 damaged_frames_left = damage_frames;
                 frames_until_color_change = frames_per_damage_color_change;
                 currentState.TakeDamage();
+                SoundStorage.Instance.getLinkHitSound().Play();
             }
         }
 
@@ -82,19 +84,24 @@ namespace CrossPlatformDesktopProject.Link
         public void UsePrimary()
         {
             currentState.UsePrimary();
+            SoundStorage.Instance.getSwordSound().Play();
         }
 
         public void UseBomb()
         {
             linkInventory.UseBomb();
+            SoundStorage.Instance.getdropBombSound().Play();
         }
         public void UseBoomerang()
         {
             linkInventory.UseBoomerang();
+            SoundStorage.Instance.getArrowBoomerangSound().Play();
         }
         public void UseBow()
         {
             linkInventory.UseBow();
+            SoundStorage.Instance.getArrowBoomerangSound().Play();
+
         }
 
         public void UseSecondary()

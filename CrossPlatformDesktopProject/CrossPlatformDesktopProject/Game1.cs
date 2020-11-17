@@ -1,12 +1,13 @@
 ﻿using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.WorldItem;
-using CrossPlatformDesktopProject.Levels;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.GameStates;
+using CrossPlatformDesktopProject.Levels;
+using CrossPlatformDesktopProject.Sound;
 
 namespace CrossPlatformDesktopProject
 {
@@ -77,6 +78,9 @@ namespace CrossPlatformDesktopProject
             RoomTextureStorage.Instance.LoadAllResources(Content);
             InventoryTextureStorage.Instance.LoadAllResources(Content);
             HUDTextureStorage.Instance.LoadAllResources(Content);
+
+            SoundStorage.Instance.LoadAllResources(Content);
+
         }
 
         /// <summary>
