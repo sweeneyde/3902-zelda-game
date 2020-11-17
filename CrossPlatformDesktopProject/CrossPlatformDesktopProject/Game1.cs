@@ -135,6 +135,10 @@ namespace CrossPlatformDesktopProject
             Exit();
         }
 
+        public void Die()
+        {
+            this.currentState = new DeathMenuState(this, font);
+        }
 
         public void Pause()
         {
