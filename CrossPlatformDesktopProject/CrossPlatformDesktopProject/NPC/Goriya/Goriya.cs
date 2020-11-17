@@ -7,9 +7,8 @@ namespace CrossPlatformDesktopProject.NPC
     class Goriya : INpc
     {
         public INpcState currentState;
-        public float xPos, yPos;
+        public float xPos, yPos, initialX, initialY;
         public Rectangle hitbox;
-        public bool knockback;
 
         private static int frames_per_damage_color_change = 4;
         public static float knockback_speed = 3.0f;
@@ -19,9 +18,10 @@ namespace CrossPlatformDesktopProject.NPC
         {
             currentState = new GoriyaWalkEast(this, boomerang);
             this.xPos = xPos;
+            this.initialX = xPos;
             this.yPos = yPos;
+            this.initialY = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
-            knockback = false;
         }
 
         public void Update()

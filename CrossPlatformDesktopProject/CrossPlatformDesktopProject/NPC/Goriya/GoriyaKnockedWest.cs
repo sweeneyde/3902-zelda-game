@@ -11,7 +11,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int delay_frame_index = 0;
         private Goriya goriya;
         private GoriyaBoomerang boomerang;
-        private int frames_left;
+        private int counter;
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
@@ -23,9 +23,7 @@ namespace CrossPlatformDesktopProject.NPC
         {
             this.goriya = goriya;
             this.boomerang = boomerang;
-            this.frames_left = Goriya.knockback_frames;
-
-            goriya.knockback = true;
+            counter = 0;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -40,18 +38,16 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (goriya.knockback)
+            if (counter == 5)
             {
-                goriya.xPos -= Goriya.knockback_speed;
-                if (--frames_left <= 0)
-                {
-                    goriya.currentState = new GoriyaWalkEast(goriya, boomerang);
-                }
+                goriya.currentState = new GoriyaWalkEast(goriya, boomerang);
             }
 
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
+                goriya.xPos -= 15;
+                counter++;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
@@ -62,9 +58,6 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
-            goriya.knockback = false;
-            goriya.xPos += 5;
-            goriya.currentState = new GoriyaWalkEast(goriya, boomerang);
         }
     }
 }
