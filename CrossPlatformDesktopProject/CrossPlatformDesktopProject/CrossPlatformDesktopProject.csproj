@@ -44,7 +44,8 @@
   <ItemGroup>
     <Compile Include="CollisionHandler\CollisionManager.cs" />
     <Compile Include="Commands\UnlockDoorCommand.cs" />
-    <Compile Include="Link\LinkDeath.cs" />
+    <Compile Include="Link\LinkDeathPart2.cs" />
+    <Compile Include="Link\LinkDeathPart1.cs" />
     <Compile Include="WorldItem\WorldHandlers\LockedDoor.cs" />
     <Compile Include="GameStates\InventoryState.cs" />
     <Compile Include="GameStates\HUDTextureStorage.cs" />

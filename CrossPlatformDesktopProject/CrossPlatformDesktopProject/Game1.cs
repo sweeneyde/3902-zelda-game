@@ -96,11 +96,6 @@ namespace CrossPlatformDesktopProject
         protected override void Update(GameTime gameTime)
         {
             currentState.Update();
-
-            if (player.link_health == 0)
-            {
-                quit();
-            }
         }
         
         /// <summary>

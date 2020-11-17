@@ -41,7 +41,7 @@ namespace CrossPlatformDesktopProject.Link
             yPos = 30;
 
             currentlyEquipped = EquippedEnum.boomerang;
-            link_health = 6;
+            link_health = 2;
         }
 
         public bool IsDamaged()
@@ -53,7 +53,12 @@ namespace CrossPlatformDesktopProject.Link
         {
             if (link_health == 0)
             {
-                currentState = new LinkDeath(this);
+                if (!IsDamaged())
+                {
+                    damaged_frames_left = damage_frames;
+                    frames_until_color_change = frames_per_damage_color_change;
+                    currentState = new LinkDeathPart1(this);
+                }
             } else
             {
                 if (!IsDamaged())
