@@ -1,10 +1,8 @@
 ﻿using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.Levels;
-<<<<<<< HEAD
-using CrossPlatformDesktopProject.Sound;
-=======
 using CrossPlatformDesktopProject.Link;
->>>>>>> master
+using CrossPlatformDesktopProject.Sound;
+using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.WorldItem;
 using System;
 using System.Collections.Generic;
