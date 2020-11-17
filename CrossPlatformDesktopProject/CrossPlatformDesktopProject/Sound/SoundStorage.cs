@@ -22,7 +22,6 @@ namespace CrossPlatformDesktopProject.Sound
             }
         }
 
-
         private static SoundEffect swordSound = null;
         private static SoundEffect music = null;
         private static SoundEffect dropBombSound = null;
@@ -33,7 +32,7 @@ namespace CrossPlatformDesktopProject.Sound
         private static SoundEffect EnemyDieSound = null;
         private static SoundEffect LinkHitSound = null;
         private static SoundEffect LinkDieSound = null;
-
+        private static SoundEffectInstance music_instance = null;
 
 
         private SoundStorage()
@@ -56,23 +55,23 @@ namespace CrossPlatformDesktopProject.Sound
             LinkDieSound = content.Load<SoundEffect>("LOZ_Link_Die");
             LinkHitSound = content.Load<SoundEffect>("LOZ_Link_Hurt");
 
-
-
-            // song loops
-            var music_instance = music.CreateInstance();
+            if(music_instance != null)
+            {
+                music_instance.Stop();
+            }
+            
+            music_instance = music.CreateInstance();
             music_instance.IsLooped = true;
             music_instance.Play();
+           
         }
+
 
         public SoundEffect getSwordSound()
         {
             return swordSound;
         }
 
-        public SoundEffect getMusic()
-        {
-            return music;
-        }
         public SoundEffect getdropBombSound()
         {
             return dropBombSound;
