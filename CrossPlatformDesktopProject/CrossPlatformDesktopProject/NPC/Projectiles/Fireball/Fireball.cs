@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -33,6 +34,14 @@ namespace CrossPlatformDesktopProject.NPC
         public Rectangle GetRectangle()
         {
             return hitbox;
+        }
+
+        public void TakeDamage()
+        {
+        }
+
+        public void ChangeDirection()
+        {
         }
     }
 
