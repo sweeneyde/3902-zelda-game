@@ -88,8 +88,12 @@
     <Compile Include="Link\Equipables\EquippedEnum.cs" />
     <Compile Include="Link\Equipables\Smoke.cs" />
     <Compile Include="Link\Sword.cs" />
+    <Compile Include="NPC\Bat\BatDeath.cs" />
     <Compile Include="NPC\Boss\BossAttack.cs" />
+    <Compile Include="NPC\Boss\BossDeath.cs" />
+    <Compile Include="NPC\Boss\BossDamaged.cs" />
     <Compile Include="NPC\Gel\GelDeath.cs" />
+    <Compile Include="NPC\Goriya\GoriyaDeath.cs" />
     <Compile Include="NPC\Goriya\GoriyaKnockedNorth.cs" />
     <Compile Include="NPC\Goriya\GoriyaKnockedSouth.cs" />
     <Compile Include="NPC\Goriya\GoriyaKnockedWest.cs" />
@@ -117,6 +121,7 @@
     <Compile Include="NPC\Projectiles\Fireball\MiddleFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\TopFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\Fireball.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonDeath.cs" />
     <Compile Include="NPC\Skeleton\SkeletonKnockedEast.cs" />
     <Compile Include="NPC\Skeleton\SkeletonKnockedWest.cs" />
     <Compile Include="NPC\Skeleton\SkeletonKnockedNorth.cs" />
