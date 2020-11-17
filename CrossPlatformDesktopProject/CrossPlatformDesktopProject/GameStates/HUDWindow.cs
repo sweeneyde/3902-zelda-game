@@ -99,7 +99,7 @@ namespace CrossPlatformDesktopProject.GameStates
             Rectangle source;
             sb.Draw(emptyTexture, HUDTextureStorage.ITEM_SLOT_B, Color.White);
             sb.Draw(emptyTexture, HUDTextureStorage.ITEM_SLOT_A, Color.White);
-            sb.Draw(emptyTexture, new Rectangle(0, 0, HUDTextureStorage.HEALTH_OFFSET_X, HUDTextureStorage.HUD_WINDOW.Height), Color.White);
+            sb.Draw(emptyTexture, new Rectangle(0, 0, HUDTextureStorage.ITEM_WINDOW_OFFSET_X - 10, HUDTextureStorage.HUD_WINDOW.Height), Color.White);
 
             switch (myPlayer.currentlyEquipped)
             {
@@ -126,24 +126,23 @@ namespace CrossPlatformDesktopProject.GameStates
             int offsetY = HUDTextureStorage.HEALTH_OFFSET_Y;
             int tokenSize = HUDTextureStorage.TOKEN_HEIGHT;
             sb.Draw(emptyTexture, HUDTextureStorage.HEALTH_BAR, Color.White);
-            for (i = 0; i < health/2; i++)
-            {
-                Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
-                sb.Draw(texture, destination, HUDTextureStorage.FULL_HEART, Color.White);
-                index = i;
-            }
-            if (health % 2 == 1)
-            {
-                Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
-                sb.Draw(texture, destination, HUDTextureStorage.HALF_HEART, Color.White);
-                index += 1;
-            }
-            index += 1;
-            for (i = index; i < max_health/2; i++)
+            for (i = 0; i < (max_health) / 2; i++)
             {
                 Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
                 sb.Draw(texture, destination, HUDTextureStorage.EMPTY_HEART, Color.White);
             }
+            for (i = 0; i < health / 2; i++)
+            {
+                Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
+                sb.Draw(texture, destination, HUDTextureStorage.FULL_HEART, Color.White);
+                index = i + 1;
+            }
+            if (health % 2 == 1)
+            {
+                Rectangle destination = new Rectangle(offsetX + index * tokenSize, offsetY, tokenSize, tokenSize);
+                sb.Draw(texture, destination, HUDTextureStorage.HALF_HEART, Color.White);
+            }
+
         }
     }
 }
