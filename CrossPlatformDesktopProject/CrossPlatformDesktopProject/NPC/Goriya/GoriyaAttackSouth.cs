@@ -43,16 +43,15 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (boomerang.yPos == goriya.yPos && boomerang.travelmarker == 1)
-            {
-                goriya.currentState = new GoriyaWalkWest(goriya, boomerang);
-            }
+            goriya.health--;
 
-            if (++delay_frame_index >= delay_frames)
+            if (goriya.health == 0)
             {
-                delay_frame_index = 0;
-                my_frame_index++;
-                my_frame_index %= my_source_frames.Count;
+                goriya.currentState = new GoriyaDeath(goriya, boomerang);
+            }
+            else
+            {
+                goriya.currentState = new GoriyaKnockedNorth(goriya, boomerang);
             }
         }
 

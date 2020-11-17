@@ -65,6 +65,16 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void TakeDamage()
         {
+            boss.health--;
+
+            if (boss.health == 0)
+            {
+                boss.currentState = new BossDeath(boss, fireball1, fireball2, fireball3);
+            }
+            else
+            {
+                boss.currentState = new BossDamaged(boss, fireball1, fireball2, fireball3);
+            }
         }
 
         public void ChangeDirection()

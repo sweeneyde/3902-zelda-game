@@ -58,7 +58,16 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void TakeDamage()
         {
-            goriya.currentState = new GoriyaKnockedEast(goriya, boomerang);
+            goriya.health--;
+
+            if (goriya.health == 0)
+            {
+                goriya.currentState = new GoriyaDeath(goriya, boomerang);
+            }
+            else
+            {
+                goriya.currentState = new GoriyaKnockedEast(goriya, boomerang);
+            }
         }
 
         public void ChangeDirection()

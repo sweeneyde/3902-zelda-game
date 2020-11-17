@@ -99,7 +99,7 @@ namespace CrossPlatformDesktopProject
 
             if (player.link_health == 0)
             {
-                quit();
+                Die();
             }
         }
         
@@ -133,6 +133,11 @@ namespace CrossPlatformDesktopProject
         public void quit()
         {
             Exit();
+        }
+
+        public void Die()
+        {
+            this.currentState = new DeathMenuState(this, font);
         }
 
 

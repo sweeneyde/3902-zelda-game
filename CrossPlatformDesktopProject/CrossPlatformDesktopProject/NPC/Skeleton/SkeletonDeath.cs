@@ -5,15 +5,15 @@ using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class GelDeath : INpcState
+    class SkeletonDeath : INpcState
     {
-        private Gel gel;
+        private Skeleton skeleton;
 
-        public GelDeath(Gel gel)
+        public SkeletonDeath(Skeleton skeleton)
         {
-            this.gel = gel;
-            gel.hitboxX = 0;
-            gel.hitboxY = 0;
+            this.skeleton = skeleton;
+            skeleton.hitboxX = 0;
+            skeleton.hitboxY = 0;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos) // make sure to set source = transparent frame if counter has been reached
