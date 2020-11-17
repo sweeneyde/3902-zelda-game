@@ -99,6 +99,7 @@ namespace CrossPlatformDesktopProject.GameStates
             Rectangle source;
             sb.Draw(emptyTexture, HUDTextureStorage.ITEM_SLOT_B, Color.White);
             sb.Draw(emptyTexture, HUDTextureStorage.ITEM_SLOT_A, Color.White);
+            sb.Draw(emptyTexture, new Rectangle(0, 0, HUDTextureStorage.HEALTH_OFFSET_X, HUDTextureStorage.HUD_WINDOW.Height), Color.White);
 
             switch (myPlayer.currentlyEquipped)
             {
