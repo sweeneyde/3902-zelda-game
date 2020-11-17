@@ -32,6 +32,7 @@ namespace CrossPlatformDesktopProject.Link
         private int frames_until_color_change;
 
         public int link_health;
+        public int link_max_health;
 
         public Player()
         {
@@ -40,8 +41,8 @@ namespace CrossPlatformDesktopProject.Link
             xPos = 30;
             yPos = 30;
 
-            currentlyEquipped = EquippedEnum.boomerang;
-            link_health = 6;
+            currentlyEquipped = EquippedEnum.none;
+            link_max_health = link_health = 6;
         }
 
         public bool IsDamaged()
