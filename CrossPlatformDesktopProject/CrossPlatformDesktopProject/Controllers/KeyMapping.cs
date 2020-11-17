@@ -43,12 +43,6 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.R, new ResetGame(myGame));
 
             gameActions.Add(Keys.D0);
-            gameActions.Add(Keys.T);
-            gameActions.Add(Keys.Y);
-            gameActions.Add(Keys.U);
-            gameActions.Add(Keys.I);
-            gameActions.Add(Keys.O);
-            gameActions.Add(Keys.P);
             gameActions.Add(Keys.Q);
             gameActions.Add(Keys.R);
 
@@ -62,21 +56,19 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.Down, new MoveDownCommand(myPlayer));
             this.addCommand(Keys.Right, new MoveRightCommand(myPlayer));
             this.addCommand(Keys.Left, new MoveLeftCommand(myPlayer));
-            
+
             this.addCommand(Keys.N, new UsePrimaryCommand(myPlayer));
             this.addCommand(Keys.Z, new UsePrimaryCommand(myPlayer));
             this.addCommand(Keys.X, new UseSecondaryCommand(myPlayer));
+            this.addCommand(Keys.M, new UseSecondaryCommand(myPlayer));
 
             this.addCommand(Keys.RightShift, new SelectCommand(myPlayer));
             this.addCommand(Keys.Enter, new StartCommand(myGame));
 
-            this.addCommand(Keys.E, new TakeDamageCommand(myPlayer));
-
-            
-
-            priorityActions.Add(Keys.N);
+            priorityActions.Add(Keys.X);
             priorityActions.Add(Keys.Z);
-            priorityActions.Add(Keys.E);
+            priorityActions.Add(Keys.N);
+            priorityActions.Add(Keys.M);
 
             acceptedStates.Remove(Keys.D0);
         }
