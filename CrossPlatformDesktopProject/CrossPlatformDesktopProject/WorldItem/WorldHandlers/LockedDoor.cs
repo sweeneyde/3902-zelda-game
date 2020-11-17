@@ -17,7 +17,7 @@ namespace CrossPlatformDesktopProject.WorldItem.WorldHandlers
             int ymid = (screenHeight / 2) - (doorHeight / 2) + 1;
             int xmid = (screenWidth / 2) - (doorWidth / 2);
 
-            int THICKNESS = 30;
+            int THICKNESS = 31;
 
             switch (direction)
             {
