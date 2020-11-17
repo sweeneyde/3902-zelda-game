@@ -58,7 +58,15 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void TakeDamage()
         {
-            skeleton.currentState = new SkeletonKnockedWest(skeleton);
+            skeleton.health--;
+
+            if (skeleton.health == 0)
+            {
+                skeleton.currentState = new SkeletonDeath(skeleton);
+            } else
+            {
+                skeleton.currentState = new SkeletonKnockedWest(skeleton);
+            }
         }
 
         public void ChangeDirection()

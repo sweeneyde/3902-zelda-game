@@ -9,21 +9,27 @@ namespace CrossPlatformDesktopProject.NPC
         public INpcState currentState;
         public float xPos, yPos, initialX, initialY;
         public Rectangle hitbox;
+        public int health, hitboxX, hitboxY;
 
         public Skeleton(float xPos, float yPos)
         {
             currentState = new SkeletonWalkEast(this);
+
+            health = 2;
             this.xPos = xPos;
             this.initialX = xPos;
             this.yPos = yPos;
             this.initialY = yPos;
-            hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
+
+            hitboxX = 150;
+            hitboxY = 150;
+            hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
         }
 
         public void Update()
         {
             currentState.Update();
-            hitbox = new Rectangle((int)xPos, (int)yPos, 150, 150);
+            hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
         }
 
         public void Draw(SpriteBatch spriteBatch)
