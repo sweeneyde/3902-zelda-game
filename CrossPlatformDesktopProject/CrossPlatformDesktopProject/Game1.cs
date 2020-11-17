@@ -140,6 +140,7 @@ namespace CrossPlatformDesktopProject
             this.currentState = new DeathMenuState(this, font);
         }
 
+
         public void Pause()
         {
             if (pauseCooldown == 0)
