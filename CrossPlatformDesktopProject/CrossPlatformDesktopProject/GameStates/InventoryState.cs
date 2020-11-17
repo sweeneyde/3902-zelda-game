@@ -16,24 +16,27 @@ namespace CrossPlatformDesktopProject.GameStates
 
         private static List<EquippedEnum> item_kinds = new List<EquippedEnum>()
         {
-            EquippedEnum.bomb, EquippedEnum.boomerang, EquippedEnum.bow
+            EquippedEnum.bomb, EquippedEnum.boomerang, EquippedEnum.bow, EquippedEnum.none
         };
-
+        private Texture2D emptyTexture;
         private Boolean[] player_has_item;
         private int item_index;
         private int framecount;
         public InventoryState(Game1 game)
         {
             this.game = game;
+            game.currentHUD.activate(false);
             this.player = game.player;
             this.item_index = item_kinds.FindIndex(x => x == player.currentlyEquipped);
             if (item_index == -1) { throw new ArgumentException(); }
             player_has_item = new Boolean[]
             {
-                true, // if player can equip boomerang
-                true, // if player can equip bomb
-                true, // if player can equip bow
+                player.linkInventory.inventory.Contains(typeof(Boomerang)), // if player can equip boomerang
+                player.linkInventory.inventory.Contains(typeof(Bomb)), // if player can equip bomb
+                player.linkInventory.inventory.Contains(typeof(Bow)), // if player can equip bow
             };
+            emptyTexture = new Texture2D(game.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            emptyTexture.SetData<Color>(new Color[] { Color.Black });
         }
 
         static List<List<int>> room_map = new List<List<int>>
@@ -232,7 +235,8 @@ namespace CrossPlatformDesktopProject.GameStates
                         source = InventoryTextureStorage.BOW;
                         break;
                     default:
-                        throw new ArgumentException();
+                        source = HUDTextureStorage.EMPTY_ITEM;
+                        break;
                 }
                 sb.Draw(texture, destination, source, Color.White);
             }
@@ -248,6 +252,82 @@ namespace CrossPlatformDesktopProject.GameStates
                     source.Width, source.Height
                     );
                 sb.Draw(texture, destination, source, Color.White);
+            }
+
+            // HUD Elements
+            int yOffsetHUD = 118;
+            {
+                int windowXOffset = HUDTextureStorage.ITEM_WINDOW_OFFSET_X;
+                int tokenHeight = HUDTextureStorage.TOKEN_HEIGHT;
+                int tokenWidth = HUDTextureStorage.TOKEN_WIDTH;
+                int[] itemCounts = { player.linkInventory.rupeeCount, player.linkInventory.bombCount, player.linkInventory.keyCount };
+                int[] itemOffsets = { HUDTextureStorage.RUPEE_WINDOW_OFFSET_Y, HUDTextureStorage.BOMB_WINDOW_OFFSET_Y, HUDTextureStorage.KEY_WINDOW_OFFSET_Y };
+
+                //Draw Rupees, Keys, Bombs
+                for (int k = 0; k < itemCounts.Length; k++)
+                {
+                    int yOffset = itemOffsets[k] + yOffsetHUD;
+                    Rectangle xDestination = new Rectangle(windowXOffset, yOffset, tokenWidth + 1, tokenHeight);
+                    Rectangle tensDestination = new Rectangle(windowXOffset + tokenWidth, yOffset, tokenWidth + 1, tokenHeight);
+                    Rectangle onesDestination = new Rectangle(windowXOffset + 2 * tokenWidth, yOffset, tokenWidth + 1, tokenHeight);
+
+                    sb.Draw(texture, xDestination, HUDTextureStorage.X_TOKEN, Color.White);
+                    sb.Draw(texture, tensDestination, HUDTextureStorage.getTensToken(itemCounts[k]), Color.White);
+                    sb.Draw(texture, onesDestination, HUDTextureStorage.getOnesToken(itemCounts[k]), Color.White);
+                }
+
+
+                //Draw item slots
+                Rectangle source;
+                switch (item_index)
+                {
+                    case 1:
+                        source = HUDTextureStorage.BOOMERANG;
+                        break;
+                    case 2:
+                        source = HUDTextureStorage.BOW;
+                        break;
+                    case 0:
+                        source = HUDTextureStorage.BOMB;
+                        break;
+                    default:
+                        source = HUDTextureStorage.EMPTY_ITEM;
+                        break;
+                }
+                
+                Rectangle slotB = HUDTextureStorage.ITEM_SLOT_B;
+                Rectangle destinationB = new Rectangle(slotB.X, slotB.Y + yOffsetHUD, slotB.Width, slotB.Height);
+                sb.Draw(emptyTexture, destinationB, Color.White);
+                sb.Draw(texture, destinationB, source, Color.White);
+                Rectangle slotA = HUDTextureStorage.ITEM_SLOT_A;
+                Rectangle destinationA = new Rectangle(slotA.X, slotA.Y + yOffsetHUD, slotA.Width, slotA.Height);
+                sb.Draw(emptyTexture, destinationA, Color.White);
+                sb.Draw(texture, destinationA, HUDTextureStorage.SWORD, Color.White);
+
+                //Draw health
+                int i = 0, index = 0;
+                int offsetX = HUDTextureStorage.HEALTH_OFFSET_X;
+                int offsetY = HUDTextureStorage.HEALTH_OFFSET_Y + yOffsetHUD;
+                int tokenSize = HUDTextureStorage.TOKEN_HEIGHT;
+                Rectangle healthRect = new Rectangle(HUDTextureStorage.HEALTH_BAR.X, HUDTextureStorage.HEALTH_BAR.Y + yOffsetHUD, HUDTextureStorage.HEALTH_BAR.Width, HUDTextureStorage.HEALTH_BAR.Height);
+                sb.Draw(emptyTexture, healthRect, Color.White);
+                for (i = 0; i < player.link_health / 2; i++)
+                {
+                    Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
+                    sb.Draw(texture, destination, HUDTextureStorage.FULL_HEART, Color.White);
+                    index = i;
+                }
+                if (player.link_health % 2 == 1)
+                {
+                    Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
+                    sb.Draw(texture, destination, HUDTextureStorage.HALF_HEART, Color.White);
+                    index += 1;
+                }
+                for (i = index; i < player.link_max_health / 2; i++)
+                {
+                    Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
+                    sb.Draw(texture, destination, HUDTextureStorage.EMPTY_HEART, Color.White);
+                }
             }
         }
 
@@ -299,6 +379,7 @@ namespace CrossPlatformDesktopProject.GameStates
             if (keys.Contains(Keys.Enter))
             {
                 game.currentState = game.currentGamePlayState;
+                game.currentHUD.activate(true);
                 return;
             }
 

@@ -66,7 +66,7 @@ namespace CrossPlatformDesktopProject.Equipables
                 if (reachedEnd)
                 {
                     //Here temp
-                    player.linkInventory.TerminateBoomerang();
+                    player.linkInventory.TerminateBow();
                 }
                 else
                 {

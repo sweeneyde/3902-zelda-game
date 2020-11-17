@@ -21,6 +21,8 @@ namespace CrossPlatformDesktopProject.Commands
         public void Execute()
         {
             myGame.GoToRoom(Room.FromId(myGame, myDoor.TargetRoomKey), mySide);
+            myPlayer.previousXPos = myDoor.PlayerXPosAfterTravel;
+            myPlayer.previousYPos = myDoor.PlayerYPosAfterTravel;
             myPlayer.xPos = myDoor.PlayerXPosAfterTravel;
             myPlayer.yPos = myDoor.PlayerYPosAfterTravel;
         }

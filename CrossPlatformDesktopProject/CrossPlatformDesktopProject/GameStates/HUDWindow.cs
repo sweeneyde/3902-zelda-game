@@ -17,6 +17,7 @@ namespace CrossPlatformDesktopProject.GameStates
         private InventoryManager myInv;
         private Texture2D texture;
         private Texture2D emptyTexture;
+        private Boolean show = true;
 
         //Player info
         private int max_health = 6;
@@ -30,14 +31,14 @@ namespace CrossPlatformDesktopProject.GameStates
             myGame = game;
             myInv = player.linkInventory;
             rupeeCount = bombCount = keyCount = 0;
-
+            health = player.link_health;
             emptyTexture = new Texture2D(myGame.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             emptyTexture.SetData<Color>(new Color[] { Color.Black });
         }
 
         public void Update()
         {
-            health = 5;
+            health = myPlayer.link_health;
             rupeeCount = myInv.rupeeCount;
             bombCount = myInv.bombCount;
             keyCount = myInv.keyCount;
@@ -45,14 +46,22 @@ namespace CrossPlatformDesktopProject.GameStates
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            texture = HUDTextureStorage.Instance.texture;
-            //Draw HUD Outline
-            Rectangle Destination = new Rectangle(0, 0, HUDTextureStorage.WIDTH, HUDTextureStorage.HEIGHT);
-            spriteBatch.Draw(texture, Destination, HUDTextureStorage.HUD_WINDOW, Color.White);
+            if (show)
+            {
+                texture = HUDTextureStorage.Instance.texture;
+                //Draw HUD Outline
+                Rectangle Destination = new Rectangle(0, 0, HUDTextureStorage.WIDTH, HUDTextureStorage.HEIGHT);
+                spriteBatch.Draw(texture, Destination, HUDTextureStorage.HUD_WINDOW, Color.White);
 
-            DrawEquipped(spriteBatch, texture);
-            DrawItems(spriteBatch, texture);
-            DrawHealth(spriteBatch, texture);
+                DrawEquipped(spriteBatch, texture);
+                DrawItems(spriteBatch, texture);
+                DrawHealth(spriteBatch, texture);
+            }
+        }
+
+        public void activate(Boolean active)
+        {
+            show = active;
         }
 
         public void DrawItems(SpriteBatch sb, Texture2D texture)
@@ -91,16 +100,16 @@ namespace CrossPlatformDesktopProject.GameStates
             sb.Draw(emptyTexture, HUDTextureStorage.ITEM_SLOT_B, Color.White);
             sb.Draw(emptyTexture, HUDTextureStorage.ITEM_SLOT_A, Color.White);
 
-            switch (name)
+            switch (myPlayer.currentlyEquipped)
             {
-                case "Boomerang":
+                case EquippedEnum.bomb:
+                    source = HUDTextureStorage.BOMB;
+                    break;
+                case EquippedEnum.boomerang:
                     source = HUDTextureStorage.BOOMERANG;
                     break;
-                case "Bow":
+                case EquippedEnum.bow:
                     source = HUDTextureStorage.BOW;
-                    break;
-                case "Bomb":
-                    source = HUDTextureStorage.BOMB;
                     break;
                 default:
                     source = HUDTextureStorage.EMPTY_ITEM;
@@ -120,13 +129,15 @@ namespace CrossPlatformDesktopProject.GameStates
             {
                 Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
                 sb.Draw(texture, destination, HUDTextureStorage.FULL_HEART, Color.White);
+                index = i;
             }
             if (health % 2 == 1)
             {
                 Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
                 sb.Draw(texture, destination, HUDTextureStorage.HALF_HEART, Color.White);
-                index = i + 1;
+                index += 1;
             }
+            index += 1;
             for (i = index; i < max_health/2; i++)
             {
                 Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);

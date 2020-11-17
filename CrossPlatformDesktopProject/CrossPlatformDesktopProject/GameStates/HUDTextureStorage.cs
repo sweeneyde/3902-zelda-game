@@ -49,7 +49,7 @@ namespace CrossPlatformDesktopProject.GameStates
         public static Rectangle SWORD = new Rectangle(555, 137, 8, 16);
         public static Rectangle BOOMERANG = new Rectangle(584, 137, 8, 16);
         public static Rectangle BOMB = new Rectangle(604, 137, 8, 16);
-        public static Rectangle BOW = new Rectangle(633, 156, 16, 16);
+        public static Rectangle BOW = new Rectangle(633, 137, 8, 16);
         public static Rectangle EMPTY_ITEM = new Rectangle(725, 156, 16, 16);
 
         public static int HEALTH_OFFSET_X = 434 - HUD_WINDOW.X;

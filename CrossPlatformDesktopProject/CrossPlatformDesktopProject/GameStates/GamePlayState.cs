@@ -13,6 +13,7 @@ public class GamePlayState : IGameState
     {
         this.game = game;
         game.collisionManager.createDetector(room, game.player);
+        game.currentHUD.activate(true);
         CurrentRoom = room;
     }
 

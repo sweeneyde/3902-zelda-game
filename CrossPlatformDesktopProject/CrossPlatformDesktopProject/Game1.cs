@@ -48,8 +48,8 @@ namespace CrossPlatformDesktopProject
         {
             player = new Player();
             collisionManager = new CollisionManager(this);
-            currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "001"));
             currentHUD = new HUDWindow(player, this);
+            currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "001"));
             windows = new WindowManager(this);
 
             controllerList = new List<IController>()
@@ -111,12 +111,12 @@ namespace CrossPlatformDesktopProject
         {
             GraphicsDevice.Clear(Color.Black);
 
-            windows.HUDStart(spriteBatch);
-            currentHUD.Draw(spriteBatch);
-            spriteBatch.End();
-            
             windows.GameStart(spriteBatch);
             currentState.Draw(spriteBatch);
+            spriteBatch.End();
+
+            windows.HUDStart(spriteBatch);
+            currentHUD.Draw(spriteBatch);
             spriteBatch.End();
 
             base.Draw(gameTime);

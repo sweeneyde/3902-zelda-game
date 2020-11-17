@@ -13,7 +13,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
 {
     public class InventoryManager
     {
-        public static HashSet<IEquipable> inventory;
+        public HashSet<Type> inventory;
         private Player player;
         private IEquipable currentItem;
         /* Once the user picks up an item, they are initialize */
@@ -27,15 +27,12 @@ namespace CrossPlatformDesktopProject.Link.Equipables
         public int keyCount;
 
         public IEquipable equippedItem;
-
         public InventoryManager(Player player)
         {
-            inventory = new HashSet<IEquipable>();
+            inventory = new HashSet<Type>();
             this.player = player;
             //for now this is added here
-            inventory.Add(boomerang);
-            inventory.Add(bomb);
-            inventory.Add(bow);
+            inventory.Add(typeof(Bomb));
 
             equippedItem = null;
 
@@ -47,14 +44,14 @@ namespace CrossPlatformDesktopProject.Link.Equipables
             Type eType = collidable.GetType();
             switch(eType.Name)
             {
-                case "Boomerang":
-                    inventory.Add(boomerang);
+                case "BoomerangItem":
+                    inventory.Add(typeof(Boomerang));
                     break;
-                case "Bow":
-                    inventory.Add(bow);
+                case "BowItem":
+                    inventory.Add(typeof(Bow));
                     break;
-                case "Bomb":
-                    inventory.Add(bomb);
+                case "BombItem":
+                    inventory.Add(typeof(Bomb));
                     bombCount += 1;
                     break;
                 case "DungeonKey":
@@ -83,7 +80,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
         {
             if (currentItem == null)
             {
-                if (inventory.Contains(boomerang))
+                if (inventory.Contains(typeof(Boomerang)))
                 {
                     boomerang = new Boomerang(player);
                     currentItem = boomerang;
@@ -95,7 +92,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
         {
             if (currentItem == null)
             {
-                if (inventory.Contains(bow))
+                if (inventory.Contains(typeof(Bow)))
                 {
                     bow = new Bow(player);
                     currentItem = bow;
@@ -107,7 +104,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
         {
             if (currentItem == null)
             {
-                if (inventory.Contains(bomb) && bombCount > 0)
+                if (inventory.Contains(typeof(Bomb)) && bombCount > 0)
                 {
                     bomb = new Bomb(player);
                     currentItem = bomb;
@@ -125,8 +122,16 @@ namespace CrossPlatformDesktopProject.Link.Equipables
             }   
         }
 
-        public void TerminateBomb()
+        public void TerminateBow()
         {
+            if (currentItem != null)
+            {
+                currentItem = null;
+                bow = null;
+            }
+        }
+
+        public void TerminateBomb(){
             if (currentItem != null)
             {
                 currentItem = null;
