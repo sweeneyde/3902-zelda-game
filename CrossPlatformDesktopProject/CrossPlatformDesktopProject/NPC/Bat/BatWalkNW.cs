@@ -56,11 +56,13 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void TakeDamage()
         {
+            bat.currentState = new BatDeath(bat);
         }
 
         public void ChangeDirection()
         {
-            bat.yPos += 5;
+            bat.yPos += 8;
+            bat.xPos += 10;
             bat.currentState = new BatWalkSE(bat);
         }
     }

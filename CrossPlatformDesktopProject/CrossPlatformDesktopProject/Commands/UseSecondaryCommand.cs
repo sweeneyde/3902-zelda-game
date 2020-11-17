@@ -2,13 +2,13 @@
 
 namespace CrossPlatformDesktopProject.Commands
 {
-    class UseSecondaryCommand3 : ICommand
+    class UseSecondaryCommand : ICommand
     {
         private Player myPlayer;
-        public UseSecondaryCommand3(Player player)
+        public UseSecondaryCommand(Player player)
         {
             myPlayer = player;
         }
-        public void Execute() => myPlayer.UseSecondary3();
+        public void Execute() => myPlayer.UseSecondary();
     }
 }

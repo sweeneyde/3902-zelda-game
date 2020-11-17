@@ -74,21 +74,8 @@ namespace CrossPlatformDesktopProject.Link
             player.currentState = new LinkSword1South(player);
         }
 
-        public void UseSecondary1()
+        public void UseSecondary()
         {
-            player.UseBomb();
-            player.currentState = new LinkUsingItemSouth(player);
-        }
-
-        public void UseSecondary2()
-        {
-            player.UseBoomerang();
-            player.currentState = new LinkUsingItemSouth(player);
-        }
-
-        public void UseSecondary3()
-        {
-            player.UseBow();
             player.currentState = new LinkUsingItemSouth(player);
         }
 

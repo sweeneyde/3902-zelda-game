@@ -47,6 +47,9 @@ namespace CrossPlatformDesktopProject.NPC
 
             if (++delay_frame_index >= delay_frames)
             {
+                goriya.initialX = goriya.xPos;
+                goriya.initialY = goriya.yPos;
+
                 delay_frame_index = 0;
                 goriya.yPos -= 5;
                 counter++;
@@ -57,12 +60,21 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void TakeDamage()
         {
-            goriya.currentState = new GoriyaKnockedSouth(goriya, boomerang);
+            goriya.health--;
+
+            if (goriya.health == 0)
+            {
+                goriya.currentState = new GoriyaDeath(goriya, boomerang);
+            }
+            else
+            {
+                goriya.currentState = new GoriyaKnockedSouth(goriya, boomerang);
+            }
         }
 
         public void ChangeDirection()
         {
-            goriya.yPos += 5;
+            goriya.yPos = goriya.initialY;
             goriya.currentState = new GoriyaWalkSouth(goriya, boomerang);
         }
     }

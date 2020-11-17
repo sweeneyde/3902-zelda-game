@@ -43,10 +43,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CollisionHandler\CollisionManager.cs" />
-    <Compile Include="Commands\UnlockDoorCommand.cs" />
+    <Compile Include="Commands\UnlockDoorCommand.cs" /> 
     <Compile Include="WorldItem\BombItem.cs" />
     <Compile Include="WorldItem\BoomerangItem.cs" />
     <Compile Include="WorldItem\BowItem.cs" />
+    <Compile Include="Commands\UseSecondaryCommand.cs" />
+    <Compile Include="GameStates\PauseState.cs" />
     <Compile Include="WorldItem\WorldHandlers\LockedDoor.cs" />
     <Compile Include="GameStates\InventoryState.cs" />
     <Compile Include="GameStates\HUDTextureStorage.cs" />
@@ -71,9 +73,6 @@
     <Compile Include="Commands\StartCommand.cs" />
     <Compile Include="Commands\SelectCommand.cs" />
     <Compile Include="Commands\TakeDamageCommand.cs" />
-    <Compile Include="Commands\UseSecondaryCommand1.cs" />
-    <Compile Include="Commands\UseSecondaryCommand2.cs" />
-    <Compile Include="Commands\UseSecondaryCommand3.cs" />
     <Compile Include="Commands\UsePrimaryCommand.cs" />
     <Compile Include="Commands\MoveDownCommand.cs" />
     <Compile Include="Commands\MoveRightCommand.cs" />
@@ -92,8 +91,12 @@
     <Compile Include="Link\Equipables\EquippedEnum.cs" />
     <Compile Include="Link\Equipables\Smoke.cs" />
     <Compile Include="Link\Sword.cs" />
+    <Compile Include="NPC\Bat\BatDeath.cs" />
     <Compile Include="NPC\Boss\BossAttack.cs" />
+    <Compile Include="NPC\Boss\BossDeath.cs" />
+    <Compile Include="NPC\Boss\BossDamaged.cs" />
     <Compile Include="NPC\Gel\GelDeath.cs" />
+    <Compile Include="NPC\Goriya\GoriyaDeath.cs" />
     <Compile Include="NPC\Goriya\GoriyaKnockedNorth.cs" />
     <Compile Include="NPC\Goriya\GoriyaKnockedSouth.cs" />
     <Compile Include="NPC\Goriya\GoriyaKnockedWest.cs" />
@@ -121,6 +124,7 @@
     <Compile Include="NPC\Projectiles\Fireball\MiddleFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\TopFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\Fireball.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonDeath.cs" />
     <Compile Include="NPC\Skeleton\SkeletonKnockedEast.cs" />
     <Compile Include="NPC\Skeleton\SkeletonKnockedWest.cs" />
     <Compile Include="NPC\Skeleton\SkeletonKnockedNorth.cs" />

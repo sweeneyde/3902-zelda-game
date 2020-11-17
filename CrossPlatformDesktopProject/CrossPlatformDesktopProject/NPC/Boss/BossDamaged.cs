@@ -5,33 +5,34 @@ using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class GoriyaKnockedWest : INpcState
+    class BossDamaged : INpcState
     {
         private int my_frame_index = 0;
         private int delay_frame_index = 0;
-        private Goriya goriya;
-        private GoriyaBoomerang boomerang;
+        private Boss Boss;
+        private Fireball fireball1, fireball2, fireball3;
         private int counter;
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
-            NpcTextureStorage.GORIYA_HURT_WEST_1,
-            NpcTextureStorage.GORIYA_HURT_WEST_2,
+            NpcTextureStorage.BOSS_1,
+            NpcTextureStorage.BOSS_2,
+            NpcTextureStorage.BOSS_3,
+            NpcTextureStorage.BOSS_4
         };
 
-        public GoriyaKnockedWest(Goriya goriya, GoriyaBoomerang boomerang)
+        public BossDamaged(Boss Boss, Fireball fireball1, Fireball fireball2, Fireball fireball3)
         {
-            this.goriya = goriya;
-            this.boomerang = boomerang;
+            this.Boss = Boss;
+            this.fireball1 = fireball1;
+            this.fireball2 = fireball2;
+            this.fireball3 = fireball3;
             counter = 0;
-
-            goriya.initialX = goriya.xPos;
-            goriya.initialY = goriya.yPos;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
         {
-            Texture2D texture = NpcTextureStorage.Instance.getSkeletonGoriyaHurtSpriteSheet();
+            Texture2D texture = NpcTextureStorage.Instance.getBossSpriteSheet();
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
@@ -43,13 +44,12 @@ namespace CrossPlatformDesktopProject.NPC
         {
             if (counter == 5)
             {
-                goriya.currentState = new GoriyaWalkEast(goriya, boomerang);
+                Boss.currentState = new BossWalkEast(Boss, fireball1, fireball2, fireball3);
             }
 
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
-                goriya.xPos -= 15;
                 counter++;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;

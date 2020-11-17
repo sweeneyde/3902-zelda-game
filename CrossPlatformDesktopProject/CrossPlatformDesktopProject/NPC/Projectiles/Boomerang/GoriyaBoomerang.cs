@@ -11,6 +11,8 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos;
         public int travelmarker;
         public bool start;
+        public Rectangle hitbox;
+        public int hitboxX, hitboxY;
 
         public GoriyaBoomerang()
         {
@@ -19,20 +21,21 @@ namespace CrossPlatformDesktopProject.NPC
             yPos = 0;
             travelmarker = 0;
             start = false;
+
+            hitboxX = NpcTextureStorage.BOOMERANG_1.Width;
+            hitboxY = NpcTextureStorage.BOOMERANG_1.Height;
+            hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
         }
 
         public void Update()
         {
             currentState.Update();
+            hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
         }
 
         public Rectangle GetRectangle()
         {
-            return new Rectangle(
-                (int)xPos, (int)yPos, 
-                NpcTextureStorage.BOOMERANG_1.Width, 
-                NpcTextureStorage.BOOMERANG_1.Height
-            );
+            return hitbox;
         }
 
         public void Draw(SpriteBatch spriteBatch)
