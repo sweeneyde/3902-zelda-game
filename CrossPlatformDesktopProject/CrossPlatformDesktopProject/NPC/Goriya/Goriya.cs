@@ -9,6 +9,7 @@ namespace CrossPlatformDesktopProject.NPC
         public INpcState currentState;
         public float xPos, yPos;
         public Rectangle hitbox;
+        public bool knockback;
 
         private static int frames_per_damage_color_change = 4;
         public static float knockback_speed = 3.0f;
@@ -20,6 +21,7 @@ namespace CrossPlatformDesktopProject.NPC
             this.xPos = xPos;
             this.yPos = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
+            knockback = false;
         }
 
         public void Update()

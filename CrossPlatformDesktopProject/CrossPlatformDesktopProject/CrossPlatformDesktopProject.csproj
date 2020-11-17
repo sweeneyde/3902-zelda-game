@@ -85,6 +85,7 @@
     <Compile Include="Levels\RowsColumns.cs" />
     <Compile Include="Link\Equipables\Smoke.cs" />
     <Compile Include="Link\Sword.cs" />
+    <Compile Include="NPC\Bat\BatDeath.cs" />
     <Compile Include="NPC\Boss\BossAttack.cs" />
     <Compile Include="NPC\Gel\GelDeath.cs" />
     <Compile Include="NPC\Goriya\GoriyaKnockedNorth.cs" />
