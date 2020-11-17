@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.Equipables;
 using CrossPlatformDesktopProject.Link;
+using CrossPlatformDesktopProject.Link.Equipables;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -12,10 +13,27 @@ namespace CrossPlatformDesktopProject.GameStates
     {
         Player player;
         Game1 game;
+
+        private static List<EquippedEnum> item_kinds = new List<EquippedEnum>()
+        {
+            EquippedEnum.bomb, EquippedEnum.boomerang, EquippedEnum.bow
+        };
+
+        private Boolean[] player_has_item;
+        private int item_index;
+        private int framecount;
         public InventoryState(Game1 game)
         {
             this.game = game;
             this.player = game.player;
+            this.item_index = item_kinds.FindIndex(x => x == player.currentlyEquipped);
+            if (item_index == -1) { throw new ArgumentException(); }
+            player_has_item = new Boolean[]
+            {
+                true, // if player can equip boomerang
+                true, // if player can equip bomb
+                true, // if player can equip bow
+            };
         }
 
         static List<List<int>> room_map = new List<List<int>>
@@ -158,6 +176,7 @@ namespace CrossPlatformDesktopProject.GameStates
             }
 
             // if (player has bombs)
+            if (player_has_item[0])
             {
                 Rectangle source = InventoryTextureStorage.BOMB;
                 Rectangle destination = new Rectangle(
@@ -169,10 +188,23 @@ namespace CrossPlatformDesktopProject.GameStates
             }
 
             // if (player has boomerang)
+            if (player_has_item[1])
             {
                 Rectangle source = InventoryTextureStorage.BOOMERANG;
                 Rectangle destination = new Rectangle(
                     156,
+                    destinations[0].Y + 47,
+                    source.Width, source.Height
+                );
+                sb.Draw(texture, destination, source, Color.White);
+            }
+
+            // if (player has bow)
+            if (player_has_item[2])
+            {
+                Rectangle source = InventoryTextureStorage.BOW;
+                Rectangle destination = new Rectangle(
+                    180,
                     destinations[0].Y + 47,
                     source.Width, source.Height
                 );
@@ -187,32 +219,76 @@ namespace CrossPlatformDesktopProject.GameStates
                     InventoryTextureStorage.BOMB.Width,
                     InventoryTextureStorage.BOMB.Height
                 );
-                IEquipable current = this.player.currentItem;
-                if (current is Bomb)
+                Rectangle source;
+                switch (player.currentlyEquipped)
                 {
-                    sb.Draw(texture, destination, InventoryTextureStorage.BOMB, Color.White);
+                    case EquippedEnum.bomb:
+                        source = InventoryTextureStorage.BOMB;
+                        break;
+                    case EquippedEnum.boomerang:
+                        source = InventoryTextureStorage.BOOMERANG;
+                        break;
+                    case EquippedEnum.bow:
+                        source = InventoryTextureStorage.BOW;
+                        break;
+                    default:
+                        throw new ArgumentException();
                 }
-                //else if (current is Boomerang)
-                {
-                    sb.Draw(texture, destination, InventoryTextureStorage.BOOMERANG, Color.White);
-                }
+                sb.Draw(texture, destination, source, Color.White);
+            }
+
+            // draw the cursor
+            {
+                Rectangle source = (framecount / 8) % 2 == 0
+                    ? InventoryTextureStorage.BLUE_CURSOR
+                    : InventoryTextureStorage.RED_CURSOR;
+                Rectangle destination = new Rectangle(
+                    128 + item_index * 24,
+                    -9,
+                    source.Width, source.Height
+                    );
+                sb.Draw(texture, destination, source, Color.White);
             }
         }
 
         public void CursorLeft()
         {
-
+            int n = player_has_item.Length;
+            int item_index_0 = item_index;
+            do
+            {
+                item_index += n - 1;
+                item_index %= n;
+                if (item_index == item_index_0)
+                {
+                    // no items
+                    return;
+                }
+            } while (!player_has_item[item_index]);
+            player.currentlyEquipped = item_kinds[item_index];
         }
 
         public void CursorRight()
         {
-
+            int n = player_has_item.Length;
+            int item_index_0 = item_index;
+            do
+            {
+                item_index += 1;
+                item_index %= n;
+                if (item_index == item_index_0)
+                {
+                    // no items
+                    return;
+                }
+            } while (!player_has_item[item_index]);
+            player.currentlyEquipped = item_kinds[item_index];
         }
 
         private int keypressCooldown = 10;
         public void Update()
         {
-            
+            framecount++;
             if (keypressCooldown > 0)
             {
                 keypressCooldown--;
@@ -233,10 +309,10 @@ namespace CrossPlatformDesktopProject.GameStates
                 return;
             }
 
-            if (keys.Contains(Keys.Left))
+            if (keys.Contains(Keys.Right))
             {
                 keypressCooldown = 10;
-                CursorLeft();
+                CursorRight();
                 return;
             }
         }
