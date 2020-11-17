@@ -24,6 +24,9 @@ namespace CrossPlatformDesktopProject.NPC
             this.goriya = goriya;
             this.boomerang = boomerang;
             counter = 0;
+
+            goriya.initialX = goriya.xPos;
+            goriya.initialY = goriya.yPos;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)

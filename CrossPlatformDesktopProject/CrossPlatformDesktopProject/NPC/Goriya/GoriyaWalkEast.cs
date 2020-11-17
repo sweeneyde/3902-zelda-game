@@ -48,6 +48,9 @@ namespace CrossPlatformDesktopProject.NPC
 
             if (++delay_frame_index >= delay_frames)
             {
+                goriya.initialX = goriya.xPos;
+                goriya.initialY = goriya.yPos;
+
                 delay_frame_index = 0;
                 goriya.xPos += 5;
                 counter++;
