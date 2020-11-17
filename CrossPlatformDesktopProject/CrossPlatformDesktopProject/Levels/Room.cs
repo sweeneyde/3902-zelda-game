@@ -76,7 +76,7 @@ namespace CrossPlatformDesktopProject.Levels
             {
                 // This needs changed for locked doors behavior
                 // Locked doors can be detected by adjacentRooms[i].EndsWith("1")
-                if (adjacentRooms[i].EndsWith("1"))
+                if (adjacentRooms[i].EndsWith("1") && adjacentRooms[i] != "-1")
                 {
                     LockedDoor newDoor = new LockedDoor(strings[i], width, height);
                     Wall newWall1 = new Wall(strings[i], width, height, false);

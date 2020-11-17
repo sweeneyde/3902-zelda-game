@@ -75,6 +75,7 @@ namespace CrossPlatformDesktopProject.Commands
                         break;
                 }
             }
+            myGame.collisionManager.removeCollider(this.myDoor);
         }
     }
 }

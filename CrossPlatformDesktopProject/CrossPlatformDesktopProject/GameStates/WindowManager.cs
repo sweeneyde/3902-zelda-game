@@ -14,12 +14,10 @@ namespace CrossPlatformDesktopProject.GameStates
         private int screenWidth;
         private int screenHeight;
 
-        private float gameHeightWidthRatio;
         private int gameOffSetY;
 
-        private float hudHeightWidthRatio;
         private int hudOffSetY;
-
+        
         private float windowScalar;
         private int windowOffSetX;
 
