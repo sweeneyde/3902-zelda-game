@@ -38,8 +38,11 @@ namespace CrossPlatformDesktopProject.GameStates
         public static Rectangle YOU_ARE_HERE = new Rectangle(519, 126, 3, 3);
         public static Rectangle BOOMERANG = new Rectangle(584, 137, 8, 16);
         public static Rectangle BOMB = new Rectangle(602, 137, 10, 16);
+        public static Rectangle BOW = new Rectangle(632, 137, 10, 16);
         public static Rectangle MAP = new Rectangle(601, 156, 10, 16);
         public static Rectangle COMPASS = new Rectangle(612, 156, 16, 16);
+        public static Rectangle RED_CURSOR = new Rectangle(519, 137, 16, 16);
+        public static Rectangle BLUE_CURSOR = new Rectangle(536, 137, 16, 16);
 
         /// <summary>
         /// Return a source texture rectangle on the texture for
