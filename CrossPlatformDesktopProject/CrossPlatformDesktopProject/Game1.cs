@@ -135,6 +135,18 @@ namespace CrossPlatformDesktopProject
             Exit();
         }
 
+
+        public void Pause()
+        {
+            if (pauseCooldown == 0)
+            {
+                pauseCooldown = 10;
+                this.currentState = new PauseState(this, font);
+            }
+
+
+        }
+
         public void reset()
         {
             this.Initialize();
