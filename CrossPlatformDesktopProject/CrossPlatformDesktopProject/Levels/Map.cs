@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CrossPlatformDesktopProject.Levels
 {
@@ -6,5 +7,6 @@ namespace CrossPlatformDesktopProject.Levels
     {
         // See documentation for CSV explanations
         public static Dictionary<string, string[]> adjacencies = CSVParser.ParseRoomAdjacencies();
+
     }
 }

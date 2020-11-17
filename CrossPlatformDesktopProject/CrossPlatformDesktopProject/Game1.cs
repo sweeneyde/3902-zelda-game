@@ -21,13 +21,15 @@ namespace CrossPlatformDesktopProject
 
         public List<IController> controllerList;
         
-        public CollisionDetector collisionController;
         private SpriteFont font;
         public Player player;
         private WindowManager windows;
+        public int pauseCooldown;
 
         public IGameState currentState;
         public GamePlayState currentGamePlayState;
+        public HUDWindow currentHUD;
+        public CollisionManager collisionManager;
 
         public Game1()
         {
@@ -46,8 +48,9 @@ namespace CrossPlatformDesktopProject
         protected override void Initialize()
         {
             player = new Player();
+            collisionManager = new CollisionManager(this);
             currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "001"));
-
+            currentHUD = new HUDWindow(player, this);
             windows = new WindowManager(this);
 
             controllerList = new List<IController>()
@@ -74,7 +77,10 @@ namespace CrossPlatformDesktopProject
             ItemTextureStorage.Instance.LoadAllResources(Content);
             RoomTextureStorage.Instance.LoadAllResources(Content);
             InventoryTextureStorage.Instance.LoadAllResources(Content);
+            HUDTextureStorage.Instance.LoadAllResources(Content);
+
             SoundStorage.Instance.LoadAllResources(Content);
+
         }
 
         /// <summary>
@@ -94,6 +100,11 @@ namespace CrossPlatformDesktopProject
         protected override void Update(GameTime gameTime)
         {
             currentState.Update();
+
+            if (player.link_health == 0)
+            {
+                quit();
+            }
         }
         
         /// <summary>
@@ -102,12 +113,10 @@ namespace CrossPlatformDesktopProject
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             windows.HUDStart(spriteBatch);
-            Texture2D texture = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
-            texture.SetData<Color>(new Color[] { Color.Black });
-            spriteBatch.Draw(texture, new Rectangle(0, 0, 255, (175 / 2)), Color.Black);
+            currentHUD.Draw(spriteBatch);
             spriteBatch.End();
             
             windows.GameStart(spriteBatch);
@@ -117,17 +126,29 @@ namespace CrossPlatformDesktopProject
             base.Draw(gameTime);
         }
 
-        public void GoToRoom(Room room2)
+        public void GoToRoom(Room room2, CollisionSides side)
         {
             GameScreenTextureStorage.Instance.SaveScreen(spriteBatch);
             Room room1 = currentGamePlayState.CurrentRoom;
             currentGamePlayState = new GamePlayState(this, room2);
-            currentState = new RoomTransitionState(this, room1, room2);
+            currentState = new RoomTransitionState(this, room1, room2, side);
         }
 
         public void quit()
         {
             Exit();
+        }
+
+
+        public void Pause()
+        {
+            if (pauseCooldown == 0)
+            {
+                pauseCooldown = 10;
+                this.currentState = new PauseState(this, font);
+            }
+
+
         }
 
         public void reset()

@@ -17,7 +17,9 @@ namespace CrossPlatformDesktopProject.Link
         public static float walking_speed = 1.0f;
         public static int frames_per_step = 6;
         public bool itemInUse = false;
-        public IEquipable currentItem { get; set; }
+        public EquippedEnum currentlyEquipped;
+
+
         public static int frames_for_sword = 18;
         private static int frames_per_damage_color_change = 5;
         private static int damage_frames = 24;
@@ -30,12 +32,17 @@ namespace CrossPlatformDesktopProject.Link
         private int damaged_frames_left;
         private int frames_until_color_change;
 
+        public int link_health;
+
         public Player()
         {
             currentState = new LinkFacingSouthState(this);
             linkInventory = new InventoryManager(this);
             xPos = 30;
             yPos = 30;
+
+            currentlyEquipped = EquippedEnum.boomerang;
+            link_health = 6;
         }
 
         public bool IsDamaged()
@@ -96,19 +103,15 @@ namespace CrossPlatformDesktopProject.Link
 
         }
 
-        public void UseSecondary1()
+        public void UseSecondary()
         {
-            currentState.UseSecondary1();
-        }
-
-        public void UseSecondary2()
-        {
-            currentState.UseSecondary2();
-        }
-
-        public void UseSecondary3()
-        {
-            currentState.UseSecondary3();
+            switch (currentlyEquipped)
+            {
+                case EquippedEnum.bomb: UseBomb(); break;
+                case EquippedEnum.boomerang: UseBoomerang(); break;
+                case EquippedEnum.bow: UseBow(); break;
+            }
+            currentState.UseSecondary();
         }
 
         public void Update()

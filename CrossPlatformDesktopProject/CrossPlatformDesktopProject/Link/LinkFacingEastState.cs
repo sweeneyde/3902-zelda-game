@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.Commands;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
@@ -40,6 +41,7 @@ namespace CrossPlatformDesktopProject.Link
         }
         void ILinkState.TakeDamage()
         {
+            player.link_health--;
             player.currentState = new LinkKnockedWest(player);
         }
 
@@ -74,21 +76,8 @@ namespace CrossPlatformDesktopProject.Link
             player.currentState = new LinkSword1East(player);
         }
 
-        public void UseSecondary1()
+        public void UseSecondary()
         {
-            player.UseBomb();
-            player.currentState = new LinkUsingItemEast(player);
-        }
-
-        public void UseSecondary2()
-        {
-            player.UseBoomerang();
-            player.currentState = new LinkUsingItemEast(player);
-        }
-
-        public void UseSecondary3()
-        {
-            player.UseBow();
             player.currentState = new LinkUsingItemEast(player);
         }
     }

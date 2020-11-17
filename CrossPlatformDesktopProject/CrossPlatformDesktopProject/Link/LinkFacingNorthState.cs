@@ -40,6 +40,7 @@ namespace CrossPlatformDesktopProject.Link
         }
         void ILinkState.TakeDamage()
         {
+            player.link_health--;
             player.currentState = new LinkKnockedSouth(player);
         }
 
@@ -73,22 +74,8 @@ namespace CrossPlatformDesktopProject.Link
         {
             player.currentState = new LinkSword1North(player);
         }
-
-        public void UseSecondary1()
+        public void UseSecondary()
         {
-            player.UseBomb();
-            player.currentState = new LinkUsingItemNorth(player);
-        }
-
-        public void UseSecondary2()
-        {
-            player.UseBoomerang();
-            player.currentState = new LinkUsingItemNorth(player);
-        }
-
-        public void UseSecondary3()
-        {
-            player.UseBow();
             player.currentState = new LinkUsingItemNorth(player);
         }
 

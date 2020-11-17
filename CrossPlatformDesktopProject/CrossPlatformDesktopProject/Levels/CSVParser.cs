@@ -56,14 +56,9 @@ namespace CrossPlatformDesktopProject.Levels
             int column;
             string roomTextureID;
             string[] readLine;
-            // TODO: PUT THIS IN DOCS-----
-            /* Room CSV Format- Filename = "roomID".csv
-             * INPC1, startX, startY, INPC2, startX, startY, ...
-             * 
-             */
-            // Since all room.csv files are named according to their id,
-            // we get something like roomId = "000" & the file is "000.csv"
-            string roomFile = roomID + ".csv";
+           
+            string parsedID = roomID.Substring(0, 3);
+            string roomFile = parsedID + ".csv";
             string roomPath = Path.Combine(roomCSVPath, roomFile);
             List<INpc> npcHolder = new List<INpc>();
             List<IObstacle> obstacleHolder = new List<IObstacle>();

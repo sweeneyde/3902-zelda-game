@@ -70,18 +70,19 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 {
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(enemySubject, playerType, side), typeof(TakeDamageCommand));
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Sword), enemySubject, side), typeof(EnemyTakeDamageCommand));
-                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Wall), enemySubject, side), typeof(ResetCommand));
+                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Wall), enemySubject, side), typeof(ResetNPCCommand));
                 }
                 foreach (Type obstacleSubject in obstacleTypes)
                 {
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, side), typeof(ResetCommand));
                 }
-                foreach (Type worldItemTarget in itemTypes)
+                foreach (Type itemSubject in itemTypes)
                 {
-                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, worldItemTarget, side), typeof(KeyDisappearCommand));
+                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, itemSubject, side), typeof(KeyDisappearCommand));
                 }
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(Door), side), typeof(TransportRoomCommand));
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Wall), playerType, side), typeof(ResetCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(LockedDoor), side), typeof(UnlockDoorCommand));
             }
         }
 
@@ -96,6 +97,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 new Type[] { targetType, typeof(CollisionSides) },
                 new Type[] { targetType, typeof(Room) },
                 new Type[] { subjectType, targetType, typeof(CollisionSides) },
+                new Type[] { subjectType, targetType, typeof(Room) },
                 new Type[] { typeof(Game1), subjectType, targetType, typeof(CollisionSides) }
             };
 
@@ -122,7 +124,14 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                         return (ICommand)commandConstructor.Invoke(new object[] { target, side });
                     }
                 case 3:
-                    return (ICommand)commandConstructor.Invoke(new object[] { subject, target, side });
+                    if (commandConstructor.GetParameters()[2].ParameterType == typeof(Room))
+                    {
+                        return (ICommand)commandConstructor.Invoke(new object[] { subject, target, myRoom });
+                    }
+                    else
+                    {
+                        return (ICommand)commandConstructor.Invoke(new object[] { subject, target, side });
+                    }
                 case 4:
                     return (ICommand)commandConstructor.Invoke(new object[] { myGame, subject, target, side });
                 default:

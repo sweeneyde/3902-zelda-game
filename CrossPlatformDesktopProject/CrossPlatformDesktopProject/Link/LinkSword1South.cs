@@ -43,6 +43,7 @@ namespace CrossPlatformDesktopProject.Link
         }
         void ILinkState.TakeDamage()
         {
+            player.link_health--;
             player.currentState = new LinkKnockedNorth(player);
         }
 
@@ -68,16 +69,6 @@ namespace CrossPlatformDesktopProject.Link
         {
         }
 
-        public void UseSecondary1()
-        {
-        }
-
-        public void UseSecondary2()
-        {
-        }
-
-        public void UseSecondary3()
-        {
-        }
+        public void UseSecondary() { }
     }
 }

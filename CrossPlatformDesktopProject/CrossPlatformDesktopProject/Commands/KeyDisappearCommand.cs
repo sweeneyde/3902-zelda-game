@@ -1,6 +1,10 @@
 ﻿using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.Levels;
+<<<<<<< HEAD
 using CrossPlatformDesktopProject.Sound;
+=======
+using CrossPlatformDesktopProject.Link;
+>>>>>>> master
 using CrossPlatformDesktopProject.WorldItem;
 using System;
 using System.Collections.Generic;
@@ -12,18 +16,22 @@ namespace CrossPlatformDesktopProject.Commands
 {
     class KeyDisappearCommand : ICommand
     {
-        private DungeonKey myKey;
+        private Player myPlayer;
+        private IWorldItem myItem;
         private Room myRoom;
-        public KeyDisappearCommand(DungeonKey key, Room room)
+        public KeyDisappearCommand(Player player, IWorldItem item, Room room)
         {
-            myKey = key;
+            myPlayer = player;
+            myItem = item;
             myRoom = room;
         }
 
         public void Execute()
         {
-            myRoom.Remove(myKey);
-            SoundStorage.Instance.getPickUpItemSound().Play();
+
+            myRoom.Remove(myItem);
+            myPlayer.linkInventory.ItemPickedUp(myItem);
+
         }
     }
 }

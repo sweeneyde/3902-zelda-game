@@ -17,6 +17,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
         private List<ICollider> colliders;
         private Player myPlayer;
         private Room myRoom;
+        private List<ICollider> delete;
 
         public CollisionDetector(Room room, Player player, Game1 game)
         {
@@ -24,11 +25,16 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             colliders = room.GetColliders();
             myPlayer = player;
             responder = new CollisionResponse(room, game);
+            delete = new List<ICollider>();
         }
 
         public void AddColliders(ICollider collider)
         {
             colliders.Add(collider);
+        }
+        public void RemoveColliders(ICollider collider)
+        {
+            delete.Add(collider);
         }
 
         public Boolean CheckCollision(Rectangle subject, Rectangle target)
@@ -71,6 +77,10 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                         responder.HandleCollision(subject, target, orientation);
                     }
                 }
+            }
+            foreach(ICollider collider in delete)
+            {
+                colliders.Remove(collider);
             }
         } 
     }

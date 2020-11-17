@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -25,7 +26,7 @@ namespace CrossPlatformDesktopProject.NPC
             delay_frame_index = 0;
 
             boomerang.travelmarker = 0;
-            boomerang.currentState = new BoomerangRight(boomerang, goriya.xPos + 10, goriya.yPos + 10, true);
+            boomerang.currentState = new BoomerangRight(boomerang, goriya.xPos, goriya.yPos, true);
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -53,6 +54,15 @@ namespace CrossPlatformDesktopProject.NPC
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
+        }
+
+        public void TakeDamage()
+        {
+            goriya.currentState = new GoriyaKnockedWest(goriya, boomerang);
+        }
+
+        public void ChangeDirection()
+        {
         }
     }
 }

@@ -10,14 +10,13 @@ namespace CrossPlatformDesktopProject.Commands
     class EnemyTakeDamageCommand : ICommand
     {
         private INpc npc;
+        CollisionSides side;
         public EnemyTakeDamageCommand(INpc npc, CollisionSides side)
         {
             this.npc = npc;
+            this.side = side;
         }
 
-        public void Execute()
-        {
-            Console.WriteLine("Enemy took damage!");
-        }
+        public void Execute() => npc.TakeDamage();
     }
 }

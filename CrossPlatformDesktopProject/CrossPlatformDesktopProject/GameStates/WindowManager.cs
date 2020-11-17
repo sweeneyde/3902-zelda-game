@@ -14,12 +14,10 @@ namespace CrossPlatformDesktopProject.GameStates
         private int screenWidth;
         private int screenHeight;
 
-        private float gameHeightWidthRatio;
         private int gameOffSetY;
 
-        private float hudHeightWidthRatio;
         private int hudOffSetY;
-
+        
         private float windowScalar;
         private int windowOffSetX;
 
@@ -37,8 +35,9 @@ namespace CrossPlatformDesktopProject.GameStates
             gameWindowWidth = roomSize.Width;
             gameWindowHeight = roomSize.Height;
 
-            hudWindowWidth = roomSize.Width;
-            hudWindowHeight = roomSize.Height / 2;
+            Rectangle hudSize = HUDTextureStorage.HUD_WINDOW;
+            hudWindowWidth = hudSize.Width;
+            hudWindowHeight = hudSize.Height;
 
             FitGameWindow();
         }
@@ -68,7 +67,7 @@ namespace CrossPlatformDesktopProject.GameStates
         }
         public void HUDStart(SpriteBatch sb)
         {
-            sb.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Matrix.CreateTranslation(new Vector3(windowOffSetX, hudOffSetY, 0)) * Matrix.CreateScale(windowScalar));
+            sb.Begin(SpriteSortMode.Deferred, null, null, null, null, null, Matrix.CreateTranslation(new Vector3(windowOffSetX, 0, 0)) * Matrix.CreateScale(windowScalar));
         }
         public void GameStart(SpriteBatch sb)
         {

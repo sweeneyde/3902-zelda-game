@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -31,6 +32,14 @@ namespace CrossPlatformDesktopProject.NPC
         }
 
         public void Update()
+        {
+        }
+
+        public void TakeDamage()
+        {
+        }
+
+        public void ChangeDirection()
         {
         }
     }

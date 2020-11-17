@@ -72,7 +72,6 @@ namespace CrossPlatformDesktopProject.WorldItem.WorldHandlers
         }
         public Wall(string direction, int screenWidth, int screenHeight)
         {
-            int THICKNESS = 5;
             switch (direction)
             {
                 case "top":
