@@ -87,6 +87,7 @@
     <Compile Include="Link\Sword.cs" />
     <Compile Include="NPC\Bat\BatDeath.cs" />
     <Compile Include="NPC\Boss\BossAttack.cs" />
+    <Compile Include="NPC\Boss\BossDeath.cs" />
     <Compile Include="NPC\Gel\GelDeath.cs" />
     <Compile Include="NPC\Goriya\GoriyaDeath.cs" />
     <Compile Include="NPC\Goriya\GoriyaKnockedNorth.cs" />

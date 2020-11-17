@@ -10,6 +10,7 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos;
         public bool start;
         private Rectangle hitbox;
+        public int hitboxX, hitboxY;
 
         public Fireball()
         {
@@ -17,13 +18,16 @@ namespace CrossPlatformDesktopProject.NPC
             xPos = 0;
             yPos = 0;
             start = false;
-            hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
+
+            hitboxX = NpcTextureStorage.BOSS_1.Height / 3;
+            hitboxY = NpcTextureStorage.BOSS_1.Width / 3;
+            hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
         }
 
         public void Update()
         {
             currentState.Update();
-            hitbox = new Rectangle((int)xPos, (int)yPos, NpcTextureStorage.BOSS_1.Height / 3, NpcTextureStorage.BOSS_1.Width / 3);
+            hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
         }
 
         public void Draw(SpriteBatch spriteBatch)
