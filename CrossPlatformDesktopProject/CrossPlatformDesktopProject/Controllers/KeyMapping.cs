@@ -65,9 +65,7 @@ namespace CrossPlatformDesktopProject
             
             this.addCommand(Keys.N, new UsePrimaryCommand(myPlayer));
             this.addCommand(Keys.Z, new UsePrimaryCommand(myPlayer));
-            this.addCommand(Keys.D1, new UseSecondaryCommand1(myPlayer));
-            this.addCommand(Keys.D2, new UseSecondaryCommand2(myPlayer));
-            this.addCommand(Keys.D3, new UseSecondaryCommand3(myPlayer));
+            this.addCommand(Keys.X, new UseSecondaryCommand(myPlayer));
 
             this.addCommand(Keys.RightShift, new SelectCommand(myPlayer));
             this.addCommand(Keys.Enter, new StartCommand(myGame));

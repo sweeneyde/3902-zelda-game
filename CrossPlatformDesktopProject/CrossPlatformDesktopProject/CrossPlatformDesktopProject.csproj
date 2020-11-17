@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CollisionHandler\CollisionManager.cs" />
     <Compile Include="Commands\UnlockDoorCommand.cs" />
+    <Compile Include="Commands\UseSecondaryCommand.cs" />
     <Compile Include="WorldItem\WorldHandlers\LockedDoor.cs" />
     <Compile Include="GameStates\InventoryState.cs" />
     <Compile Include="GameStates\HUDTextureStorage.cs" />
@@ -68,9 +69,6 @@
     <Compile Include="Commands\StartCommand.cs" />
     <Compile Include="Commands\SelectCommand.cs" />
     <Compile Include="Commands\TakeDamageCommand.cs" />
-    <Compile Include="Commands\UseSecondaryCommand1.cs" />
-    <Compile Include="Commands\UseSecondaryCommand2.cs" />
-    <Compile Include="Commands\UseSecondaryCommand3.cs" />
     <Compile Include="Commands\UsePrimaryCommand.cs" />
     <Compile Include="Commands\MoveDownCommand.cs" />
     <Compile Include="Commands\MoveRightCommand.cs" />
