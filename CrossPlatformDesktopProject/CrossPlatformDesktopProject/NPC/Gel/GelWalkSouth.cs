@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -50,6 +51,17 @@ namespace CrossPlatformDesktopProject.NPC
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
+        }
+
+        public void TakeDamage()
+        {
+            gel.currentState = new GelDeath(gel);
+        }
+
+        public void ChangeDirection()
+        {
+            gel.yPos -= 5;
+            gel.currentState = new GelWalkNorth(gel);
         }
     }
 }

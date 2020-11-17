@@ -45,6 +45,7 @@
     <Compile Include="GameStates\InventoryState.cs" />
     <Compile Include="GameStates\HUDTextureStorage.cs" />
     <Compile Include="GameStates\InventoryTextureStorage.cs" />
+    <Compile Include="Commands\ResetNPCCommand.cs" />
     <Compile Include="GameStates\HUDWindow.cs" />
     <Compile Include="GameStates\InventoryState.cs" />
     <Compile Include="GameStates\InventoryTextureStorage.cs" />
@@ -85,6 +86,11 @@
     <Compile Include="Link\Equipables\Smoke.cs" />
     <Compile Include="Link\Sword.cs" />
     <Compile Include="NPC\Boss\BossAttack.cs" />
+    <Compile Include="NPC\Gel\GelDeath.cs" />
+    <Compile Include="NPC\Goriya\GoriyaKnockedNorth.cs" />
+    <Compile Include="NPC\Goriya\GoriyaKnockedSouth.cs" />
+    <Compile Include="NPC\Goriya\GoriyaKnockedWest.cs" />
+    <Compile Include="NPC\Goriya\GoriyaKnockedEast.cs" />
     <Compile Include="NPC\Goriya\GoriyaAttackNorth.cs" />
     <Compile Include="NPC\Goriya\GoriyaAttackSouth.cs" />
     <Compile Include="NPC\Goriya\GoriyaAttackEast.cs" />
@@ -108,6 +114,10 @@
     <Compile Include="NPC\Projectiles\Fireball\MiddleFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\TopFireball.cs" />
     <Compile Include="NPC\Projectiles\Fireball\Fireball.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonKnockedEast.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonKnockedWest.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonKnockedNorth.cs" />
+    <Compile Include="NPC\Skeleton\SkeletonKnockedSouth.cs" />
     <Compile Include="Obstacles\Transparent.cs" />
     <Compile Include="Obstacles\Stairs.cs" />
     <Compile Include="Obstacles\PlainBlock.cs" />

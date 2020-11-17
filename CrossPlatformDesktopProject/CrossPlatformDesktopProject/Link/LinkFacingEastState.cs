@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.Commands;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
@@ -40,6 +41,7 @@ namespace CrossPlatformDesktopProject.Link
         }
         void ILinkState.TakeDamage()
         {
+            player.link_health--;
             player.currentState = new LinkKnockedWest(player);
         }
 

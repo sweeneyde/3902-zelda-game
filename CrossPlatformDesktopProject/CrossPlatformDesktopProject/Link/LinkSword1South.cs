@@ -43,6 +43,7 @@ namespace CrossPlatformDesktopProject.Link
         }
         void ILinkState.TakeDamage()
         {
+            player.link_health--;
             player.currentState = new LinkKnockedNorth(player);
         }
 

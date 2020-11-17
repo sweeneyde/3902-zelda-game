@@ -43,6 +43,7 @@ namespace CrossPlatformDesktopProject.Link
         void ILinkState.TakeDamage()
         {
         }
+
         // Controls are not allowed during knocked state.
         void ILinkState.MoveDown() { }
         void ILinkState.MoveLeft() { }
