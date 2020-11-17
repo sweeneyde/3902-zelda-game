@@ -37,7 +37,7 @@ namespace CrossPlatformDesktopProject.Link
             linkInventory = new InventoryManager(this);
             xPos = 30;
             yPos = 30;
-            link_health = 0;
+            link_health = 6;
         }
 
         public bool IsDamaged()

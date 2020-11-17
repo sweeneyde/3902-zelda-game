@@ -96,7 +96,7 @@ namespace CrossPlatformDesktopProject
         {
             currentState.Update();
 
-            if (player.link_health == 6)
+            if (player.link_health == 0)
             {
                 quit();
             }
