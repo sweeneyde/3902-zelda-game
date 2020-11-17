@@ -11,5 +11,6 @@ namespace CrossPlatformDesktopProject.Link.Equipables
         boomerang,
         bomb,
         bow,
+        none
     }
 }
