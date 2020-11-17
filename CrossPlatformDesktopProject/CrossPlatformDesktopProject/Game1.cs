@@ -99,7 +99,7 @@ namespace CrossPlatformDesktopProject
 
             if (player.link_health == 0)
             {
-                quit();
+                Die();
             }
         }
         
