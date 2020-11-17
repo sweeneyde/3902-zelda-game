@@ -1,10 +1,4 @@
 ﻿using CrossPlatformDesktopProject.GameStates;
-using CrossPlatformDesktopProject.Link;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Commands
 {
@@ -17,7 +11,11 @@ namespace CrossPlatformDesktopProject.Commands
         }
         public void Execute()
         {
-            //myGame.currentState = new InventoryState(myGame.player);
-        }
+            if (myGame.pauseCooldown == 0)
+            {
+                myGame.pauseCooldown = 10;
+                myGame.currentState = new InventoryState(myGame);
+            }
+        }   
     }
 }
