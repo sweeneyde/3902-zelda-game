@@ -1,6 +1,10 @@
 ﻿using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.Levels;
+<<<<<<< HEAD
+using CrossPlatformDesktopProject.Sound;
+=======
 using CrossPlatformDesktopProject.Link;
+>>>>>>> master
 using CrossPlatformDesktopProject.WorldItem;
 using System;
 using System.Collections.Generic;
@@ -24,8 +28,10 @@ namespace CrossPlatformDesktopProject.Commands
 
         public void Execute()
         {
+
             myRoom.Remove(myItem);
             myPlayer.linkInventory.ItemPickedUp(myItem);
+
         }
     }
 }
