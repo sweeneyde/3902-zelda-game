@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -40,11 +41,11 @@ namespace CrossPlatformDesktopProject.NPC
                 Texture2D texture = NpcTextureStorage.Instance.getEnemySpriteSheet();
 
                 Rectangle source = my_source_frames[my_frame_index];
-                Rectangle destination_fireball = new Rectangle(
+                Rectangle destination = new Rectangle(
                     (int)boomerang.xPos, (int)boomerang.yPos,
-                    NpcTextureStorage.GORIYA_LEFT_1.Width, NpcTextureStorage.GORIYA_LEFT_1.Height);
+                    NpcTextureStorage.BOOMERANG_1.Width, NpcTextureStorage.BOOMERANG_1.Height);
 
-                spriteBatch.Draw(texture, destination_fireball, source, Color.White);
+                spriteBatch.Draw(texture, destination, source, Color.White);
             }
         }
 
@@ -80,6 +81,14 @@ namespace CrossPlatformDesktopProject.NPC
                     my_frame_index %= my_source_frames.Count;
                 }
             }
+        }
+
+        public void TakeDamage()
+        {
+        }
+
+        public void ChangeDirection()
+        {
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -52,6 +53,17 @@ namespace CrossPlatformDesktopProject.NPC
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
+        }
+
+        public void TakeDamage()
+        {
+            goriya.currentState = new GoriyaKnockedEast(goriya, boomerang);
+        }
+
+        public void ChangeDirection()
+        {
+            goriya.xPos += 5;
+            goriya.currentState = new GoriyaWalkEast(goriya, boomerang);
         }
     }
 }

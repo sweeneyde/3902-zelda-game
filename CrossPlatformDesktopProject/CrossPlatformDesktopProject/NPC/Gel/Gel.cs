@@ -29,11 +29,21 @@ namespace CrossPlatformDesktopProject.NPC
             currentState.Draw(spriteBatch, xPos, yPos);
         }
 
+        public void TakeDamage()
+        {
+            currentState.TakeDamage();
+        }
+
         public Rectangle GetRectangle()
         {
             return hitbox;
         }
-        
+
+        public void ChangeDirection()
+        {
+            currentState.ChangeDirection();
+        }
+
     }
 
 }

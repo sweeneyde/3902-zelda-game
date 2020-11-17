@@ -20,7 +20,6 @@ namespace CrossPlatformDesktopProject
 
         public List<IController> controllerList;
         
-        public CollisionDetector collisionController;
         private SpriteFont font;
         public Player player;
         private WindowManager windows;
@@ -29,6 +28,7 @@ namespace CrossPlatformDesktopProject
         public IGameState currentState;
         public GamePlayState currentGamePlayState;
         public HUDWindow currentHUD;
+        public CollisionManager collisionManager;
 
         public Game1()
         {
@@ -47,6 +47,7 @@ namespace CrossPlatformDesktopProject
         protected override void Initialize()
         {
             player = new Player();
+            collisionManager = new CollisionManager(this);
             currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "001"));
             currentHUD = new HUDWindow(player, this);
             windows = new WindowManager(this);
@@ -95,6 +96,11 @@ namespace CrossPlatformDesktopProject
         protected override void Update(GameTime gameTime)
         {
             currentState.Update();
+
+            if (player.link_health == 0)
+            {
+                quit();
+            }
         }
         
         /// <summary>

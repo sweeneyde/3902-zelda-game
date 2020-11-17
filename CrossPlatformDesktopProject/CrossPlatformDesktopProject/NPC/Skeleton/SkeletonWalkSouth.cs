@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -30,7 +31,7 @@ namespace CrossPlatformDesktopProject.NPC
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination = new Rectangle(
                 (int)xPos, (int)yPos,
-                source.Width * 3, source.Height * 3);
+                source.Width, source.Height);
             spriteBatch.Draw(texture, destination, source, Color.White);
             skeleton.hitbox = destination;
         }
@@ -50,6 +51,17 @@ namespace CrossPlatformDesktopProject.NPC
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
+        }
+
+        public void TakeDamage()
+        {
+            skeleton.currentState = new SkeletonKnockedNorth(skeleton);
+        }
+
+        public void ChangeDirection()
+        {
+            skeleton.yPos -= 5;
+            skeleton.currentState = new SkeletonWalkNorth(skeleton);
         }
     }
 }
