@@ -15,10 +15,8 @@ namespace CrossPlatformDesktopProject.NPC
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
-            NpcTextureStorage.SKELETON_HURT_1,
-            NpcTextureStorage.SKELETON_HURT_2,
-            NpcTextureStorage.SKELETON_HURT_3,
-            NpcTextureStorage.SKELETON_HURT_4
+            NpcTextureStorage.GORIYA_HURT_WEST_1,
+            NpcTextureStorage.GORIYA_HURT_WEST_2,
         };
 
         public GoriyaKnockedWest(Goriya goriya, GoriyaBoomerang boomerang)

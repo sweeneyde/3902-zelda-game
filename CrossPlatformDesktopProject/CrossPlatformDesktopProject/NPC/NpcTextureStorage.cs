@@ -94,6 +94,14 @@ namespace CrossPlatformDesktopProject.NPC
         public static Rectangle GORIYA_UP_2 = new Rectangle(3 + 27 * 10, 11, 16, 16);
         public static Rectangle GORIYA_DOWN_1 = new Rectangle(12 + 21 * 10, 11, 16, 16);
         public static Rectangle GORIYA_DOWN_2 = new Rectangle(9 + 23 * 10, 11, 16, 16);
+        public static Rectangle GORIYA_HURT_WEST_1 = new Rectangle(513, 32, 16, 16);
+        public static Rectangle GORIYA_HURT_WEST_2 = new Rectangle(295, 32, 16, 16);
+        public static Rectangle GORIYA_HURT_EAST_1 = new Rectangle(415, 32, 16, 16);
+        public static Rectangle GORIYA_HURT_EAST_2 = new Rectangle(200, 32, 16, 16);
+        public static Rectangle GORIYA_HURT_NORTH_1 = new Rectangle(559, 32, 16, 16);
+        public static Rectangle GORIYA_HURT_NORTH_2 = new Rectangle(345, 32, 16, 16);
+        public static Rectangle GORIYA_HURT_SOUTH_1 = new Rectangle(464, 32, 16, 16);
+        public static Rectangle GORIYA_HURT_SOUTH_2 = new Rectangle(248, 32, 16, 16);
 
         public static Rectangle BOOMERANG_1 = new Rectangle(10 + 28 * 10, 11, 8, 16);
         public static Rectangle BOOMERANG_2 = new Rectangle(9 + 29 * 10, 11, 8, 16);
