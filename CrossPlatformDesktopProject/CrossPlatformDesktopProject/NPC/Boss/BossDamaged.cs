@@ -1,21 +1,19 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using CrossPlatformDesktopProject.CollisionHandler;
 
 namespace CrossPlatformDesktopProject.NPC
 {
-    class BossWalkEast : INpcState
+    class BossDamaged : INpcState
     {
-        private int my_frame_index;
-        private int delay_frame_index;
+        private int my_frame_index = 0;
+        private int delay_frame_index = 0;
+        private Boss Boss;
+        private Fireball fireball1, fireball2, fireball3;
         private int counter;
-        private Boss boss;
-        private Fireball fireball1;
-        private Fireball fireball2;
-        private Fireball fireball3;
 
-        private static int delay_frames = 15;
+        private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
             NpcTextureStorage.BOSS_1,
             NpcTextureStorage.BOSS_2,
@@ -23,14 +21,13 @@ namespace CrossPlatformDesktopProject.NPC
             NpcTextureStorage.BOSS_4
         };
 
-        public BossWalkEast(Boss boss, Fireball fireball1, Fireball fireball2, Fireball fireball3)
+        public BossDamaged(Boss Boss, Fireball fireball1, Fireball fireball2, Fireball fireball3)
         {
-            this.boss = boss;
+            this.Boss = Boss;
             this.fireball1 = fireball1;
             this.fireball2 = fireball2;
             this.fireball3 = fireball3;
-            my_frame_index = 0;
-            delay_frame_index = 0;
+            counter = 0;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -41,44 +38,29 @@ namespace CrossPlatformDesktopProject.NPC
                 (int)xPos, (int)yPos,
                 source.Width, source.Height);
             spriteBatch.Draw(texture, destination, source, Color.White);
-            boss.hitbox = destination;
         }
 
         public void Update()
         {
-            if (counter == 10)
+            if (counter == 5)
             {
-                boss.currentState = new BossAttack(boss, fireball1, fireball2, fireball3);
+                Boss.currentState = new BossWalkEast(Boss, fireball1, fireball2, fireball3);
             }
 
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
-                boss.xPos += 3;
                 counter++;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
         }
-
         public void TakeDamage()
         {
-            boss.health--;
-
-            if (boss.health == 0)
-            {
-                boss.currentState = new BossDeath(boss, fireball1, fireball2, fireball3);
-            }
-            else
-            {
-                boss.currentState = new BossDamaged(boss, fireball1, fireball2, fireball3);
-            }
         }
 
         public void ChangeDirection()
         {
-            boss.xPos -= 5;
-            boss.currentState = new BossWalkWest(boss, fireball1, fireball2, fireball3);
         }
     }
 }

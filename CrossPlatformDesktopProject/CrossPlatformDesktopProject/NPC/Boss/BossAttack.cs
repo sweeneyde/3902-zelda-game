@@ -73,7 +73,7 @@ namespace CrossPlatformDesktopProject.NPC
             }
             else
             {
-                boss.currentState = new BossWalkEast(boss, fireball1, fireball2, fireball3);
+                boss.currentState = new BossDamaged(boss, fireball1, fireball2, fireball3);
             }
         }
 
