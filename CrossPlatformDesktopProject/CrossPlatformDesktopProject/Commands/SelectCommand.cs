@@ -9,15 +9,11 @@ namespace CrossPlatformDesktopProject.Commands
 {
     class SelectCommand : ICommand
     {
-        private Player myPlayer;
-        public SelectCommand(Player player)
+        private Game1 myGame;
+        public SelectCommand(Game1 game)
         {
-            myPlayer = player;
+            myGame = game;
         }
-        public void Execute()
-        {
-
-        }
-            
+        public void Execute() => myGame.Pause();
     }
 }

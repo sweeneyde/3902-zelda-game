@@ -104,7 +104,7 @@ namespace CrossPlatformDesktopProject
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Black);
 
             windows.HUDStart(spriteBatch);
             currentHUD.Draw(spriteBatch);
@@ -128,6 +128,18 @@ namespace CrossPlatformDesktopProject
         public void quit()
         {
             Exit();
+        }
+
+
+        public void Pause()
+        {
+            if (pauseCooldown == 0)
+            {
+                pauseCooldown = 10;
+                this.currentState = new PauseState(this, font);
+            }
+
+
         }
 
         public void reset()

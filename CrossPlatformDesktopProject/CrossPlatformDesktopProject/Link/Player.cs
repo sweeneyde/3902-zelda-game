@@ -107,19 +107,15 @@ namespace CrossPlatformDesktopProject.Link
             linkInventory.UseBow();
         }
 
-        public void UseSecondary1()
+        public void UseSecondary()
         {
-            currentState.UseSecondary1();
-        }
-
-        public void UseSecondary2()
-        {
-            currentState.UseSecondary2();
-        }
-
-        public void UseSecondary3()
-        {
-            currentState.UseSecondary3();
+            switch (currentlyEquipped)
+            {
+                case EquippedEnum.bomb: UseBomb(); break;
+                case EquippedEnum.boomerang: UseBoomerang(); break;
+                case EquippedEnum.bow: UseBow(); break;
+            }
+            currentState.UseSecondary();
         }
 
         public void Update()
