@@ -7,18 +7,16 @@ namespace CrossPlatformDesktopProject.NPC
     class Skeleton : INpc
     {
         public INpcState currentState;
-        public float xPos, yPos;
+        public float xPos, yPos, initialX, initialY;
         public Rectangle hitbox;
-
-        private static int frames_per_damage_color_change = 4;
-        public static float knockback_speed = 2.0f;
-        public static int knockback_frames = frames_per_damage_color_change * 5;
 
         public Skeleton(float xPos, float yPos)
         {
             currentState = new SkeletonWalkEast(this);
             this.xPos = xPos;
+            this.initialX = xPos;
             this.yPos = yPos;
+            this.initialY = yPos;
             hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 
@@ -31,7 +29,6 @@ namespace CrossPlatformDesktopProject.NPC
         public void Draw(SpriteBatch spriteBatch)
         {
             currentState.Draw(spriteBatch, xPos, yPos);
-            hitbox = new Rectangle((int)xPos, (int)yPos, 0, 0);
         }
 
         public void TakeDamage()

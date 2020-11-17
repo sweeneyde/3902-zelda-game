@@ -45,6 +45,9 @@ namespace CrossPlatformDesktopProject.NPC
 
             if (++delay_frame_index >= delay_frames)
             {
+                skeleton.initialX = skeleton.xPos;
+                skeleton.initialY = skeleton.yPos;
+
                 delay_frame_index = 0;
                 skeleton.yPos += 5;
                 counter++;
@@ -60,7 +63,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
-            skeleton.yPos -= 5;
+            skeleton.yPos = skeleton.initialY;
             skeleton.currentState = new SkeletonWalkNorth(skeleton);
         }
     }

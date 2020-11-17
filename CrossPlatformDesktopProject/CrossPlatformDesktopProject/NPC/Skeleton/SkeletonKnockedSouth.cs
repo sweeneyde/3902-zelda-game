@@ -10,7 +10,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int my_frame_index = 0;
         private int delay_frame_index = 0;
         private Skeleton skeleton;
-        private int frames_left;
+        private int counter;
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
@@ -23,7 +23,10 @@ namespace CrossPlatformDesktopProject.NPC
         public SkeletonKnockedSouth(Skeleton skeleton)
         {
             this.skeleton = skeleton;
-            this.frames_left = Skeleton.knockback_frames;
+            counter = 0;
+
+            skeleton.initialX = skeleton.xPos;
+            skeleton.initialY = skeleton.yPos;
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -38,15 +41,16 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            skeleton.yPos += Skeleton.knockback_speed;
-            if (--frames_left <= 0)
+            if (counter == 5)
             {
-                skeleton.currentState = new SkeletonWalkSouth(skeleton);
+                skeleton.currentState = new SkeletonWalkNorth(skeleton);
             }
 
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
+                skeleton.yPos += 15;
+                counter++;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
             }
