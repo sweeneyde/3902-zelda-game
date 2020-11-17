@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/LOZ_Link_Die.wav</SourceFile>
-  <SourceTime>2016-09-20T23:49:54-04:00</SourceTime>
-  <DestFile>C:/Users/ababe/Documents/Will Git CSE/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/LOZ_Link_Die.xnb</DestFile>
-  <DestTime>2020-11-16T13:05:00.6106026-05:00</DestTime>
+  <SourceFile>C:/Users/Owner/Documents/GitHub/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/LOZ_Link_Die.wav</SourceFile>
+  <SourceTime>2020-11-16T23:57:08.0321487-05:00</SourceTime>
+  <DestFile>C:/Users/Owner/Documents/GitHub/3902-zelda-game/CrossPlatformDesktopProject/CrossPlatformDesktopProject/Content/bin/DesktopGL/Content/LOZ_Link_Die.xnb</DestFile>
+  <DestTime>2020-11-16T23:57:40.0219784-05:00</DestTime>
   <Importer>WavImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>
