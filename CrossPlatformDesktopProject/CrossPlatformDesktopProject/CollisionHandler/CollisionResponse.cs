@@ -83,6 +83,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 }
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(Door), side), typeof(TransportRoomCommand));
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Wall), playerType, side), typeof(ResetCommand));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(LockedDoor), side), typeof(UnlockDoorCommand));
             }
         }
 

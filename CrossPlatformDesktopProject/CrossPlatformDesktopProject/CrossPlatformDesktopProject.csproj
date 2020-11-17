@@ -42,6 +42,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CollisionHandler\CollisionManager.cs" />
+    <Compile Include="Commands\UnlockDoorCommand.cs" />
+    <Compile Include="WorldItem\WorldHandlers\LockedDoor.cs" />
     <Compile Include="GameStates\InventoryState.cs" />
     <Compile Include="GameStates\HUDTextureStorage.cs" />
     <Compile Include="GameStates\InventoryTextureStorage.cs" />
@@ -83,6 +86,7 @@
     <Compile Include="Levels\Room.cs" />
     <Compile Include="Levels\RoomTextureStorage.cs" />
     <Compile Include="Levels\RowsColumns.cs" />
+    <Compile Include="Link\Equipables\EquippedEnum.cs" />
     <Compile Include="Link\Equipables\Smoke.cs" />
     <Compile Include="Link\Sword.cs" />
     <Compile Include="NPC\Bat\BatDeath.cs" />

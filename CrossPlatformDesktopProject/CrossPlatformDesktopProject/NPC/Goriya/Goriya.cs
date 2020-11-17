@@ -11,6 +11,10 @@ namespace CrossPlatformDesktopProject.NPC
         public Rectangle hitbox;
         public int health, hitboxX, hitboxY;
 
+        private static int frames_per_damage_color_change = 4;
+        public static float knockback_speed = 3.0f;
+        public static int knockback_frames = frames_per_damage_color_change * 5;
+
         public Goriya(float xPos, float yPos, GoriyaBoomerang boomerang)
         {
             currentState = new GoriyaWalkEast(this, boomerang);
