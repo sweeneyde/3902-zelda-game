@@ -8,6 +8,7 @@ using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.GameStates;
 using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.Sound;
+using Microsoft.Xna.Framework.Audio;
 
 namespace CrossPlatformDesktopProject
 {
@@ -78,7 +79,6 @@ namespace CrossPlatformDesktopProject
             RoomTextureStorage.Instance.LoadAllResources(Content);
             InventoryTextureStorage.Instance.LoadAllResources(Content);
             HUDTextureStorage.Instance.LoadAllResources(Content);
-
             SoundStorage.Instance.LoadAllResources(Content);
 
         }
@@ -159,6 +159,14 @@ namespace CrossPlatformDesktopProject
         public void reset()
         {
             this.Initialize();
+        }
+
+        public void mute()
+        {
+            if (SoundEffect.MasterVolume == 0.0f)
+                SoundEffect.MasterVolume = 1.0f;
+            else
+                SoundEffect.MasterVolume = 0.0f;
         }
     }
 }

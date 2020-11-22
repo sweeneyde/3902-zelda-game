@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CrossPlatformDesktopProject.Sound;
 
 namespace CrossPlatformDesktopProject
 {
@@ -24,6 +25,7 @@ namespace CrossPlatformDesktopProject
         {
             myGame = game;
             myPlayer = player;
+
 
             mappings = new Dictionary<Keys, ICommand>();
             acceptedStates = new List<Keys>();
@@ -64,6 +66,8 @@ namespace CrossPlatformDesktopProject
 
             this.addCommand(Keys.RightShift, new SelectCommand(myGame));
             this.addCommand(Keys.Enter, new StartCommand(myGame));
+
+            this.addCommand(Keys.Space, new MuteCommand(myGame));
 
             priorityActions.Add(Keys.X);
             priorityActions.Add(Keys.Z);
