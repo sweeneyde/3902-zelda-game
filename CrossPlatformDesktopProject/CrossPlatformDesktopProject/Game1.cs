@@ -130,8 +130,18 @@ namespace CrossPlatformDesktopProject
         {
             GameScreenTextureStorage.Instance.SaveScreen(spriteBatch);
             Room room1 = currentGamePlayState.CurrentRoom;
+            Map.visitedRoom.Add(room1);
+            string targetID = room2.roomID;
+            foreach (Room rm in Map.visitedRoom)
+            {
+                if (rm.roomID == targetID)
+                {
+                    room2 = rm;
+                }
+            }
             currentGamePlayState = new GamePlayState(this, room2);
             currentState = new RoomTransitionState(this, room1, room2, side);
+
         }
 
         public void quit()
