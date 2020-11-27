@@ -14,23 +14,50 @@ namespace CrossPlatformDesktopProject.Commands
 {
     class ChestOpenCommand : ICommand
     {
-        private Sword mySword;
         private IWorldItem myItem;
-        private Room myRoom;
-        public ChestOpenCommand(Sword playerSword, IWorldItem item, Room room)
+        private CollisionSides mySide;
+        private Player myPlayer;
+
+        public ChestOpenCommand(Player player, IWorldItem item, CollisionSides side)
         {
-            mySword = playerSword;
+            myPlayer = player;
+            //mySword = playerSword;
             myItem = item;
-            myRoom = room;
+            mySide = side;
         }
 
         public void Execute()
         {
-            Chest cItem = (Chest)myItem;
-            if (!cItem.IsOpen)
+            switch (mySide)
             {
-                cItem.IsOpen = true;
+                case CollisionSides.Up:
+                    Chest cItem = (Chest)myItem;
+                    if (!cItem.IsOpen)
+                    {
+                        cItem.IsOpen = true;
+                        // Holder for now, just wanna see something happen
+                        myPlayer.UseBomb();
+                    }
+
+                    myPlayer.xPos = myPlayer.previousXPos;
+                    myPlayer.yPos = myPlayer.previousYPos + 1;
+                    break;
+                case CollisionSides.Down:
+                    myPlayer.xPos = myPlayer.previousXPos;
+                    myPlayer.yPos = myPlayer.previousYPos - 1;
+                    break;
+                case CollisionSides.Right:
+                    myPlayer.xPos = myPlayer.previousXPos - 1;
+                    myPlayer.yPos = myPlayer.previousYPos; 
+                    break;
+                case CollisionSides.Left:
+                    myPlayer.xPos = myPlayer.previousXPos + 1;
+                    myPlayer.yPos = myPlayer.previousYPos;
+                    break;
+                default: break;
             }
+            
+            
             // Animation here?
 
         }

@@ -85,17 +85,12 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 {
                     if (itemSubject.Equals(typeof(Chest)))
                     {
-                        
-                        commandMap.Add(new Tuple<Type, Type, CollisionSides>(itemSubject, playerType, side), typeof(ResetCommand));
-                        commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Sword), itemSubject, side), typeof(ChestOpenCommand));
-                        //
+                        commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, itemSubject, side), typeof(ChestOpenCommand));
                     }
                     else
                     {
                         commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, itemSubject, side), typeof(KeyDisappearCommand));
-                    }
-                    
-                    
+                    }    
                 }
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(Door), side), typeof(TransportRoomCommand));
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Wall), playerType, side), typeof(ResetCommand));

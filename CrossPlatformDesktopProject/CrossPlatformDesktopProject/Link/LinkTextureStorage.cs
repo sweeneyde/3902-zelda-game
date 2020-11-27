@@ -135,5 +135,7 @@ namespace CrossPlatformDesktopProject.Link
         public static Rectangle BOMB_EXPLOSION_2 = new Rectangle(155, 185, 16, 16);
         public static Rectangle BOMB_EXPLOSION_3 = new Rectangle(172, 185, 16, 16);
 
+        public static Rectangle LINK_PICKUP_ITEM = new Rectangle(231, 11, 16, 16);
+
     }
 }
