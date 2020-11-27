@@ -36,6 +36,7 @@ namespace CrossPlatformDesktopProject.Commands
                     {
                         cItem.IsOpen = true;
                         // Holder for now, just wanna see something happen
+                        IWorldItem itemGrabbed = cItem.getItemInChest();
                         myPlayer.UseBomb();
                     }
 
@@ -56,10 +57,6 @@ namespace CrossPlatformDesktopProject.Commands
                     break;
                 default: break;
             }
-            
-            
-            // Animation here?
-
         }
     }
 }

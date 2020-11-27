@@ -1,4 +1,5 @@
 ﻿using CrossPlatformDesktopProject.NPC;
+using CrossPlatformDesktopProject.WorldItem;
 using Microsoft.VisualBasic.FileIO;
 using System;
 using System.Collections.Generic;
@@ -56,7 +57,10 @@ namespace CrossPlatformDesktopProject.Levels
             int column;
             string roomTextureID;
             string[] readLine;
-           
+
+            bool isChestContents = false;
+            bool chestFlag = false;
+            Chest grabChest = null;
             string parsedID = roomID.Substring(0, 3);
             string roomFile = parsedID + ".csv";
             string roomPath = Path.Combine(roomCSVPath, roomFile);
@@ -107,7 +111,12 @@ namespace CrossPlatformDesktopProject.Levels
                         } else if (resolvedType == typeof(Boss))
                         {
                             args = new object[] { coords[0], coords[1], (Fireball)topFireball, (Fireball)midFireball, (Fireball)botFireball };
-                        } else
+                        } else if(resolvedType == typeof(Chest))
+                        {
+                            chestFlag = true;
+                            args = new object[] { coords[0], coords[1] };
+                        }
+                        else
                         {
                             args = new object[] { coords[0], coords[1] };
                         }
@@ -126,7 +135,20 @@ namespace CrossPlatformDesktopProject.Levels
                         {
                             obstacleHolder.Add((IObstacle)grabObj);
                             Debug.Print("Added Obstacle");
-                        } else if(grabObj is IWorldItem)
+                        } else if(grabObj is IWorldItem && isChestContents)
+                        {
+                            isChestContents = false;
+                            grabChest.putItemInChest((IWorldItem)grabObj);
+                            Debug.Print("Added item into Chest");
+
+                        }
+                        else if (grabObj is IWorldItem && chestFlag)
+                        {
+                            grabChest = (Chest)grabObj;
+                            worldItemHolder.Add(grabChest);
+                            Debug.Print("Added Chest Item");
+                        }
+                        else if (grabObj is IWorldItem)
                         {
                             worldItemHolder.Add((IWorldItem)grabObj);
                             Debug.Print("Added World Item");
@@ -134,6 +156,12 @@ namespace CrossPlatformDesktopProject.Levels
                         else
                         {
                             Debug.Print("Couldn't finalize interface of Object");
+                        }
+
+                        if (chestFlag)
+                        {
+                            chestFlag = false;
+                            isChestContents = true;
                         }
                         i++;
                     }

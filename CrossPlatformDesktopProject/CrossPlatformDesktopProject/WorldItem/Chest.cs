@@ -2,6 +2,7 @@
 using CrossPlatformDesktopProject.WorldItem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 namespace CrossPlatformDesktopProject.WorldItem
@@ -34,6 +35,32 @@ namespace CrossPlatformDesktopProject.WorldItem
                 source = ItemTextureStorage.CHEST_CLOSED;
             }
             spriteBatch.Draw(texture, getRectangle(), source, Color.LightSteelBlue);
+        }
+
+        public void putItemInChest(IWorldItem contentOfChest)
+        {
+            content = contentOfChest;
+        }
+
+        public IWorldItem getItemInChest()
+        {
+            Type resolvedType = content.GetType();
+            if (resolvedType.Equals(typeof(DungeonMap)))
+            {
+                return (DungeonMap)content;
+            } else if (resolvedType.Equals(typeof(BowItem)))
+            {
+                return (BowItem)content;
+            } else if (resolvedType.Equals(typeof(BoomerangItem)))
+            {
+                return (BoomerangItem)content;
+            }
+            else
+            {
+                Console.WriteLine("Type of WorldItem is not resolvable. May be unsafe to use.");
+                return content;
+            }
+            
         }
 
         private Rectangle getRectangle()
