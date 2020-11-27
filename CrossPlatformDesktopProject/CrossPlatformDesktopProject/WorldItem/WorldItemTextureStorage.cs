@@ -49,5 +49,7 @@ namespace CrossPlatformDesktopProject.WorldItem
         public static Rectangle KEY = new Rectangle(24 * 10, 0 , 8 , 16);
         public static Rectangle RUPEE = new Rectangle(2 + 7 * 10, 0, 8, 16);
         public static Rectangle MAP = new Rectangle(8 + 8 * 10, 0, 8, 16);
+        public static Rectangle CHEST_CLOSED = new Rectangle(23, 84, 16, 16);
+        public static Rectangle CHEST_OPEN = new Rectangle(44, 82, 16, 18);
     }
 }
