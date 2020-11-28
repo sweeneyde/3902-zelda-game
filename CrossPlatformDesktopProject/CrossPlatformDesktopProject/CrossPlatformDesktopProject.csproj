@@ -46,6 +46,7 @@
     <Compile Include="Commands\ChestOpenCommand.cs" />
     <Compile Include="Commands\MuteCommand.cs" />
     <Compile Include="Commands\UnlockDoorCommand.cs" />
+    <Compile Include="Link\LinkShowingItem.cs" />
     <Compile Include="WorldItem\BombItem.cs" />
     <Compile Include="WorldItem\BoomerangItem.cs" />
     <Compile Include="WorldItem\BowItem.cs" />

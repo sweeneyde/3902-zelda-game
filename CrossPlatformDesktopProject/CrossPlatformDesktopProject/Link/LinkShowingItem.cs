@@ -8,43 +8,41 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Link
 {
-    class LinkKnockedSouth : ILinkState
+    class LinkShowingItem : ILinkState
     {
         private int my_texture_index;
         private Player player;
-        private int frames_left;
+        private int frames_left = 85;
+        private IWorldItem content;
 
-        public LinkKnockedSouth(Player player)
+        public LinkShowingItem(IWorldItem itemToShow, Player player)
         {
             this.player = player;
-            this.frames_left = Player.knockback_frames;
+            content = itemToShow;
             this.my_texture_index = 0;
         }
 
         void ILinkState.Draw(SpriteBatch spriteBatch)
         {
             Texture2D texture = LinkTextureStorage.Instance.getDamageTexture(my_texture_index);
-            Rectangle source = LinkTextureStorage.LINK_IDLE_NORTH;
+            Rectangle source = LinkTextureStorage.LINK_PICKUP_ITEM;
+            
             player.DrawSprite(spriteBatch, texture, source);
+            content.Draw(spriteBatch);
         }
-        void ILinkState.setTextureIndex(int index)
-        {
-            my_texture_index = index;
-        }
+        void ILinkState.setTextureIndex(int index) { }
 
         void ILinkState.Update()
         {
-            player.yPos += Player.knockback_speed;
             if (--frames_left <= 0)
             {
-                player.currentState = new LinkFacingNorthState(player);
+                // Add item to inventory
+                player.currentState = new LinkFacingSouthState(player);
             }
         }
-        void ILinkState.TakeDamage()
-        {
-        }
 
-        // Controls are not allowed during knocked state.
+        void ILinkState.TakeDamage() { }
+        // Controls are not allowed during pick up sequence.
         void ILinkState.MoveDown() { }
         void ILinkState.MoveLeft() { }
         void ILinkState.MoveRight() { }

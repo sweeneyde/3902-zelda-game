@@ -36,8 +36,8 @@ namespace CrossPlatformDesktopProject.Commands
                     {
                         cItem.IsOpen = true;
                         // Holder for now, just wanna see something happen
-                        IWorldItem itemGrabbed = cItem.getItemInChest();
-                        myPlayer.UseBomb();
+                        
+                        myPlayer.PickupItem(cItem.getItemInChest());
                     }
 
                     myPlayer.xPos = myPlayer.previousXPos;
