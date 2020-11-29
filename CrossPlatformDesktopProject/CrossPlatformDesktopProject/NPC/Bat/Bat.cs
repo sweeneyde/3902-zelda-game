@@ -16,8 +16,8 @@ namespace CrossPlatformDesktopProject.NPC
             currentState = new BatWalkEast(this);
             this.xPos = xPos;
             this.yPos = yPos;
-            hitboxX = 16;
-            hitboxY = 16;
+            hitboxX = 25;
+            hitboxY = 25;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
         }
 
@@ -34,6 +34,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void TakeDamage()
         {
+            currentState.TakeDamage();
         }
 
         public Rectangle GetRectangle()

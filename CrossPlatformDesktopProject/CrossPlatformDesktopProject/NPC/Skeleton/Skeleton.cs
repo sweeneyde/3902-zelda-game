@@ -21,8 +21,8 @@ namespace CrossPlatformDesktopProject.NPC
             this.yPos = yPos;
             this.initialY = yPos;
 
-            hitboxX = 150;
-            hitboxY = 150;
+            hitboxX = 100;
+            hitboxY = 100;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
         }
 
