@@ -9,6 +9,8 @@ using CrossPlatformDesktopProject.GameStates;
 using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.Sound;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Input;
+using CrossPlatformDesktopProject.Controllers;
 
 namespace CrossPlatformDesktopProject
 {
@@ -58,6 +60,7 @@ namespace CrossPlatformDesktopProject
             {
                 new KeyboardController(this, player),
                 new MouseController(this),
+                new GamePadController(this, player),
             };
 
             base.Initialize();
