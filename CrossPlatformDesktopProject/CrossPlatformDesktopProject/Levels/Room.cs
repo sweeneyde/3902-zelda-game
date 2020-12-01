@@ -116,5 +116,13 @@ namespace CrossPlatformDesktopProject.Levels
                 obstacles.Remove((IObstacle)entity);
             }
         }
+
+        public void RemoveNPC(ICollider entity)
+        {
+            if (npcs.Contains((INpc)entity))
+            {
+                npcs.Remove((INpc)entity);
+            }
+        }
     }
 }

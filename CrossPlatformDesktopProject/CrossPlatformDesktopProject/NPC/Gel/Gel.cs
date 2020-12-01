@@ -10,9 +10,11 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos;
         public Rectangle hitbox;
         public int hitboxX, hitboxY;
+        public Game1 myGame;
 
-        public Gel(float xPos, float yPos)
+        public Gel(float xPos, float yPos, Game1 game)
         {
+            this.myGame = game;
             currentState = new GelWalkEast(this);
             this.xPos = xPos;
             this.yPos = yPos;

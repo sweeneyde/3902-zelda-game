@@ -103,11 +103,15 @@ namespace CrossPlatformDesktopProject.Levels
 
                         if (resolvedType == typeof(Goriya))
                         {
-                            args = new object[] { coords[0], coords[1], (GoriyaBoomerang)goriyaBoomerang };
+                            args = new object[] { coords[0], coords[1], (GoriyaBoomerang)goriyaBoomerang, game };
                         } else if (resolvedType == typeof(Boss))
                         {
-                            args = new object[] { coords[0], coords[1], (Fireball)topFireball, (Fireball)midFireball, (Fireball)botFireball };
-                        } else
+                            args = new object[] { coords[0], coords[1], (Fireball)topFireball, (Fireball)midFireball, (Fireball)botFireball, game };
+                        } else if (resolvedType == typeof(Gel) || resolvedType == typeof(Bat) || resolvedType == typeof(Skeleton))
+                        {
+                            args = new object[] { coords[0], coords[1], game };
+                        }
+                        else
                         {
                             args = new object[] { coords[0], coords[1] };
                         }

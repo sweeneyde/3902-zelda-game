@@ -10,14 +10,16 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos;
         public Rectangle hitbox;
         public int hitboxX, hitboxY;
+        public Game1 myGame;
 
-        public Bat(float xPos, float yPos)
+        public Bat(float xPos, float yPos, Game1 game)
         {
+            this.myGame = game;
             currentState = new BatWalkEast(this);
             this.xPos = xPos;
             this.yPos = yPos;
-            hitboxX = 25;
-            hitboxY = 25;
+            hitboxX = 16;
+            hitboxY = 16;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
         }
 

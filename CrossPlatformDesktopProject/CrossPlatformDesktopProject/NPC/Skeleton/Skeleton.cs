@@ -10,9 +10,11 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos, initialX, initialY;
         public Rectangle hitbox;
         public int health, hitboxX, hitboxY;
+        public Game1 myGame;
 
-        public Skeleton(float xPos, float yPos)
+        public Skeleton(float xPos, float yPos, Game1 game)
         {
+            this.myGame = game;
             currentState = new SkeletonWalkEast(this);
 
             health = 2;

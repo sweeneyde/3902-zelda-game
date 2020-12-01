@@ -27,9 +27,15 @@ namespace CrossPlatformDesktopProject.CollisionHandler
         {
             detector = new CollisionDetector(room, player, myGame);
         }
+
         public void removeCollider(ICollider collider)
         {
             detector.RemoveColliders(collider);
+        }
+
+        public void removeNPC(ICollider collider)
+        {
+            detector.RemoveNPC(collider);
         }
     }
 }

@@ -10,9 +10,12 @@ namespace CrossPlatformDesktopProject.NPC
         public float xPos, yPos;
         public Rectangle hitbox;
         public int health, hitboxX, hitboxY;
+        public Game1 myGame;
 
-        public Boss(float xPos, float yPos, Fireball fireball1, Fireball fireball2, Fireball fireball3)
+        public Boss(float xPos, float yPos, Fireball fireball1, Fireball fireball2, Fireball fireball3, Game1 game)
         {
+            this.myGame = game;
+
             currentState = new BossWalkWest(this, fireball1, fireball2, fireball3);
             health = 8;
 
