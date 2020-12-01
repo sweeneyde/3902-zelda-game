@@ -10,7 +10,7 @@ A repo housing the semester project of:
 
 For CSE 3902 at The Ohio State University, Autumn 2020.
 
-Program Controls:
+Program Controls (Keyboard):
 
 * W & Up Arrow: Move Link Up
 * A & Left Arrow: Move Link Left
@@ -25,7 +25,25 @@ Program Controls:
 
 * Q: Quit Game
 * R: Reset Game
+* Space Bar: Mute
 
+
+Program Controls (GamePad):
+
+* Left Analog Stick Up & Up on DPad: Move Link Up
+* Left Analog Stick Left & Left on DPad: Move Link Left
+* Left Analog Stick Down & Down on DPad: Move Link Down
+* Left Analog Stick Right & Right on DPad: Move Link Right
+
+* A: Swing Link's Sword
+
+* X: Use Secondary
+
+* Start: Pause
+
+* Y: Quit Game
+* Back: Reset Game
+* B: Mute
 
 Levels
 ---
