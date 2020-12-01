@@ -41,9 +41,9 @@ Program Controls (GamePad):
 
 * Start: Pause
 
-* Y: Quit Game
-* Back: Reset Game
-* B: Mute
+* Back: Quit Game
+* B: Reset Game
+* Y: Mute
 
 Levels
 ---
