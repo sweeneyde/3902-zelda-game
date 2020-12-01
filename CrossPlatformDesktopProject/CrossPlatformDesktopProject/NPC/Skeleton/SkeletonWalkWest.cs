@@ -11,6 +11,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int delay_frame_index;
         private int counter;
         private Skeleton skeleton;
+        private System.Random random;
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
@@ -20,6 +21,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public SkeletonWalkWest(Skeleton skeleton)
         {
+            this.random = new System.Random();
             this.skeleton = skeleton;
             my_frame_index = 0;
             delay_frame_index = 0;
@@ -38,9 +40,26 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (counter == 10)
+            if (counter == 4)
             {
-                skeleton.currentState = new SkeletonWalkNorth(skeleton);
+                skeleton.movementRNG = random.Next(1, 4);
+
+                if (skeleton.movementRNG == 1)
+                {
+                    skeleton.currentState = new SkeletonWalkSouth(skeleton);
+                }
+                else if (skeleton.movementRNG == 2)
+                {
+                    skeleton.currentState = new SkeletonWalkNorth(skeleton);
+                }
+                else if (skeleton.movementRNG == 3)
+                {
+                    skeleton.currentState = new SkeletonWalkWest(skeleton);
+                }
+                else
+                {
+                    skeleton.currentState = new SkeletonWalkEast(skeleton);
+                }
             }
 
             if (++delay_frame_index >= delay_frames)
@@ -73,6 +92,7 @@ namespace CrossPlatformDesktopProject.NPC
         public void ChangeDirection()
         {
             skeleton.xPos = skeleton.initialX;
+            skeleton.yPos = skeleton.initialY;
             skeleton.currentState = new SkeletonWalkEast(skeleton);
         }
     }
