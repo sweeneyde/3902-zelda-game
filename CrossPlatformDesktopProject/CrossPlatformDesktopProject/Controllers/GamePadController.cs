@@ -37,25 +37,27 @@ namespace CrossPlatformDesktopProject.Controllers
             // Get the current state of Controller1
             GamePadState state = GamePad.GetState(PlayerIndex.One);
 
-            if (state.ThumbSticks.Left.X < -0.5f)
+            if (state.ThumbSticks.Left.X < -0.5f || state.IsButtonDown(Buttons.DPadLeft))
                 new MoveLeftCommand(myPlayer).Execute();
-            if (state.ThumbSticks.Left.X > 0.5f)
+            if (state.ThumbSticks.Left.X > 0.5f || state.IsButtonDown(Buttons.DPadRight))
                 new MoveRightCommand(myPlayer).Execute();
-            if (state.ThumbSticks.Left.Y < -0.5f)
+            if (state.ThumbSticks.Left.Y < -0.5f || state.IsButtonDown(Buttons.DPadDown))
                 new MoveDownCommand(myPlayer).Execute();
-            if (state.ThumbSticks.Left.Y > 0.5f)
+            if (state.ThumbSticks.Left.Y > 0.5f || state.IsButtonDown(Buttons.DPadUp))
                 new MoveUpCommand(myPlayer).Execute();
             if (state.IsButtonDown(Buttons.A))
                 new UsePrimaryCommand(myPlayer).Execute();
             if (state.IsButtonDown(Buttons.X))
                 new UseSecondaryCommand(myPlayer).Execute();
-            if (state.IsButtonDown(Buttons.B))
+            if (state.IsButtonDown(Buttons.Y))
                 new MuteCommand(myGame).Execute();
-            if (state.IsButtonDown(Buttons.Back))
+            if (state.IsButtonDown(Buttons.B))
                 new ResetGame(myGame).Execute();
             if (state.IsButtonDown(Buttons.Start))
                 new SelectCommand(myGame).Execute();
-            
+            if (state.IsButtonDown(Buttons.Back))
+                new Quit(myGame).Execute();
+
 
 
         }
