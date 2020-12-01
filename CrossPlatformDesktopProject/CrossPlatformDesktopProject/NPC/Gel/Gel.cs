@@ -9,19 +9,38 @@ namespace CrossPlatformDesktopProject.NPC
         public INpcState currentState;
         public float xPos, yPos;
         public Rectangle hitbox;
-        public int hitboxX, hitboxY;
+        public int hitboxX, hitboxY, movementRNG;
         public Game1 myGame;
+        public System.Random random;
 
         public Gel(float xPos, float yPos, Game1 game)
         {
+            this.random = new System.Random();
             this.myGame = game;
-            currentState = new GelWalkEast(this);
             this.xPos = xPos;
             this.yPos = yPos;
 
             hitboxX = 16;
             hitboxY = 16;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
+
+            movementRNG = random.Next(1, 4);
+
+            switch(movementRNG)
+            {
+                case 1:
+                    currentState = new GelWalkSouth(this);
+                    break;
+                case 2:
+                    currentState = new GelWalkNorth(this);
+                    break;
+                case 3:
+                    currentState = new GelWalkWest(this);
+                    break;
+                case 4:
+                    currentState = new GelWalkEast(this);
+                    break;
+            }
         }
 
         public void Update()

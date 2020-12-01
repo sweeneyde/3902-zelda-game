@@ -40,7 +40,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (counter == 10)
+            if (counter == 6)
             {
                 goriya.currentState = new GoriyaAttackSouth(goriya, boomerang);
             }

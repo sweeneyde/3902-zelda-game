@@ -45,7 +45,23 @@ namespace CrossPlatformDesktopProject.NPC
         {
             if (boomerang.yPos == goriya.yPos && boomerang.travelmarker == 1)
             {
-                goriya.currentState = new GoriyaWalkEast(goriya, boomerang);
+                goriya.movementRNG = goriya.random.Next(1, 4);
+
+                switch (goriya.movementRNG)
+                {
+                    case 1:
+                        goriya.currentState = new GoriyaWalkSouth(goriya, boomerang);
+                        break;
+                    case 2:
+                        goriya.currentState = new GoriyaWalkNorth(goriya, boomerang);
+                        break;
+                    case 3:
+                        goriya.currentState = new GoriyaWalkWest(goriya, boomerang);
+                        break;
+                    case 4:
+                        goriya.currentState = new GoriyaWalkEast(goriya, boomerang);
+                        break;
+                }
             }
 
             if (++delay_frame_index >= delay_frames)

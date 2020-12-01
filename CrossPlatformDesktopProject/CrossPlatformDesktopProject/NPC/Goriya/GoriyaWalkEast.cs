@@ -40,7 +40,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (counter == 10)
+            if (counter == 6)
             {
                 boomerang.travelmarker = 0;
                 goriya.currentState = new GoriyaAttackEast(goriya, boomerang);

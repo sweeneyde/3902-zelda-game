@@ -73,7 +73,7 @@ namespace CrossPlatformDesktopProject.NPC
                         boomerang.yPos += 10;
                     }
 
-                    if (counter == 15)
+                    if (counter == 10)
                     {
                         boomerang.travelmarker = 1;
                     }

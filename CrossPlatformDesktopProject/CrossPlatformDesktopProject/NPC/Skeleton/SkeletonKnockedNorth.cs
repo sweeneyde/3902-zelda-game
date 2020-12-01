@@ -49,7 +49,7 @@ namespace CrossPlatformDesktopProject.NPC
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
-                skeleton.yPos -= 15;
+                skeleton.yPos -= 5;
                 counter++;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;

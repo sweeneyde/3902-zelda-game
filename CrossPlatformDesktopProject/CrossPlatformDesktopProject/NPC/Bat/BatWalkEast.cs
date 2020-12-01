@@ -38,9 +38,37 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (counter == 10)
+            if (counter == 4) 
             {
-                bat.currentState = new BatWalkSouth(bat);
+                bat.movementRNG = bat.random.Next(1, 8);
+
+                switch (bat.movementRNG)
+                {
+                    case 1:
+                        bat.currentState = new BatWalkSouth(bat);
+                        break;
+                    case 2:
+                        bat.currentState = new BatWalkNorth(bat);
+                        break;
+                    case 3:
+                        bat.currentState = new BatWalkEast(bat);
+                        break;
+                    case 4:
+                        bat.currentState = new BatWalkWest(bat);
+                        break;
+                    case 5:
+                        bat.currentState = new BatWalkSE(bat);
+                        break;
+                    case 6:
+                        bat.currentState = new BatWalkSW(bat);
+                        break;
+                    case 7:
+                        bat.currentState = new BatWalkNE(bat);
+                        break;
+                    case 8:
+                        bat.currentState = new BatWalkNW(bat);
+                        break;
+                }
             }
 
             if (++delay_frame_index >= delay_frames)

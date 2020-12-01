@@ -9,8 +9,9 @@ namespace CrossPlatformDesktopProject.NPC
         public INpcState currentState;
         public float xPos, yPos, initialX, initialY;
         public Rectangle hitbox;
-        public int health, hitboxX, hitboxY;
+        public int health, hitboxX, hitboxY, movementRNG;
         public Game1 myGame;
+        public System.Random random;
 
         private static int frames_per_damage_color_change = 4;
         public static float knockback_speed = 3.0f;
@@ -18,8 +19,8 @@ namespace CrossPlatformDesktopProject.NPC
 
         public Goriya(float xPos, float yPos, GoriyaBoomerang boomerang, Game1 game)
         {
+            this.random = new System.Random();
             this.myGame = game;
-            currentState = new GoriyaWalkEast(this, boomerang);
             health = 3;
 
             this.xPos = xPos;
@@ -30,6 +31,24 @@ namespace CrossPlatformDesktopProject.NPC
             hitboxX = 25;
             hitboxY = 25;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
+
+            movementRNG = random.Next(1, 4);
+
+            switch(movementRNG)
+            {
+                case 1:
+                    currentState = new GoriyaWalkSouth(this, boomerang);
+                    break;
+                case 2:
+                    currentState = new GoriyaWalkNorth(this, boomerang);
+                    break;
+                case 3:
+                    currentState = new GoriyaWalkWest(this, boomerang);
+                    break;
+                case 4:
+                    currentState = new GoriyaWalkEast(this, boomerang);
+                    break;
+            }
         }
 
         public void Update()

@@ -11,7 +11,6 @@ namespace CrossPlatformDesktopProject.NPC
         private int delay_frame_index;
         private int counter;
         private Skeleton skeleton;
-        private System.Random random;
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
@@ -21,8 +20,6 @@ namespace CrossPlatformDesktopProject.NPC
 
         public SkeletonWalkEast(Skeleton skeleton)
         {
-            this.random = new System.Random();
-
             this.skeleton = skeleton;
             my_frame_index = 0;
             delay_frame_index = 0;
@@ -43,21 +40,22 @@ namespace CrossPlatformDesktopProject.NPC
         {
             if (counter == 4)
             {
-                skeleton.movementRNG = random.Next(1, 4);
+                skeleton.movementRNG = skeleton.random.Next(1, 4);
 
-                if (skeleton.movementRNG == 1)
+                switch (skeleton.movementRNG)
                 {
-                    skeleton.currentState = new SkeletonWalkSouth(skeleton);
-                } else if (skeleton.movementRNG == 2)
-                {
-                    skeleton.currentState = new SkeletonWalkNorth(skeleton);
-                } else if (skeleton.movementRNG == 3)
-                {
-                    skeleton.currentState = new SkeletonWalkWest(skeleton);
-                } 
-                else
-                {
-                    skeleton.currentState = new SkeletonWalkEast(skeleton);
+                    case 1:
+                        skeleton.currentState = new SkeletonWalkSouth(skeleton);
+                        break;
+                    case 2:
+                        skeleton.currentState = new SkeletonWalkNorth(skeleton);
+                        break;
+                    case 3:
+                        skeleton.currentState = new SkeletonWalkWest(skeleton);
+                        break;
+                    case 4:
+                        skeleton.currentState = new SkeletonWalkEast(skeleton);
+                        break;
                 }
             }
 

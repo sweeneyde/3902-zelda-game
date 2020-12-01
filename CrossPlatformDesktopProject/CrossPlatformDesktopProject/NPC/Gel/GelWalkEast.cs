@@ -38,9 +38,25 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (counter == 10)
+            if (counter == 4)
             {
-                gel.currentState = new GelWalkSouth(gel);
+                gel.movementRNG = gel.random.Next(1, 4);
+
+                switch (gel.movementRNG)
+                {
+                    case 1:
+                        gel.currentState = new GelWalkSouth(gel);
+                        break;
+                    case 2:
+                        gel.currentState = new GelWalkNorth(gel);
+                        break;
+                    case 3:
+                        gel.currentState = new GelWalkWest(gel);
+                        break;
+                    case 4:
+                        gel.currentState = new GelWalkEast(gel);
+                        break;
+                }
             }
 
             if (++delay_frame_index >= delay_frames)

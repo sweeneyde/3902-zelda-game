@@ -11,11 +11,11 @@ namespace CrossPlatformDesktopProject.NPC
         public Rectangle hitbox;
         public int health, hitboxX, hitboxY, movementRNG;
         public Game1 myGame;
+        public System.Random random;
 
         public Skeleton(float xPos, float yPos, Game1 game)
         {
-            System.Random random = new System.Random();
-
+            this.random = new System.Random();
             this.myGame = game;
 
             health = 2;
@@ -30,21 +30,20 @@ namespace CrossPlatformDesktopProject.NPC
 
             movementRNG = random.Next(1, 4);
 
-            if (movementRNG == 1)
+            switch(movementRNG)
             {
-                currentState = new SkeletonWalkSouth(this);
-            }
-            else if (movementRNG == 2)
-            {
-                currentState = new SkeletonWalkNorth(this);
-            }
-            else if (movementRNG == 3)
-            {
-                currentState = new SkeletonWalkWest(this);
-            }
-            else
-            {
-                currentState = new SkeletonWalkEast(this);
+                case 1:
+                    currentState = new SkeletonWalkSouth(this);
+                    break;
+                case 2:
+                    currentState = new SkeletonWalkNorth(this);
+                    break;
+                case 3:
+                    currentState = new SkeletonWalkWest(this);
+                    break;
+                case 4:
+                    currentState = new SkeletonWalkEast(this);
+                    break;
             }
         }
 
