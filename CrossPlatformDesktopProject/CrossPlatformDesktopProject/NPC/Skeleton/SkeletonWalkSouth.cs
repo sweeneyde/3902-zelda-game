@@ -12,6 +12,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int counter;
         private Skeleton skeleton;
         private System.Random random;
+        private string linkState;
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
@@ -40,7 +41,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (counter == 4)
+            if (counter == 2)
             {
                 skeleton.movementRNG = skeleton.random.Next(1, 4);
 
@@ -63,9 +64,6 @@ namespace CrossPlatformDesktopProject.NPC
 
             if (++delay_frame_index >= delay_frames)
             {
-                skeleton.initialX = skeleton.xPos;
-                skeleton.initialY = skeleton.yPos;
-
                 delay_frame_index = 0;
                 skeleton.yPos += 5;
                 counter++;
@@ -76,6 +74,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void TakeDamage()
         {
+            linkState = skeleton.myGame.player.currentState.GetType().Name;
             skeleton.health--;
 
             if (skeleton.health == 0)
@@ -84,14 +83,28 @@ namespace CrossPlatformDesktopProject.NPC
             }
             else
             {
-                skeleton.currentState = new SkeletonKnockedNorth(skeleton);
+                if (linkState.Contains("East"))
+                {
+                    skeleton.currentState = new SkeletonKnockedEast(skeleton);
+                }
+                else if (linkState.Contains("West"))
+                {
+                    skeleton.currentState = new SkeletonKnockedWest(skeleton);
+                }
+                else if (linkState.Contains("North"))
+                {
+                    skeleton.currentState = new SkeletonKnockedNorth(skeleton);
+                }
+                else
+                {
+                    skeleton.currentState = new SkeletonKnockedSouth(skeleton);
+                }
             }
         }
 
         public void ChangeDirection()
         {
-            skeleton.xPos = skeleton.initialX;
-            skeleton.yPos = skeleton.initialY;
+            skeleton.yPos -= 5;
             skeleton.currentState = new SkeletonWalkNorth(skeleton);
         }
     }

@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.Link;
 
 namespace CrossPlatformDesktopProject.NPC
 {
@@ -11,6 +12,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int delay_frame_index;
         private int counter;
         private Skeleton skeleton;
+        private string linkState;
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
@@ -38,7 +40,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (counter == 4)
+            if (counter == 2)
             {
                 skeleton.movementRNG = skeleton.random.Next(1, 4);
 
@@ -61,9 +63,6 @@ namespace CrossPlatformDesktopProject.NPC
 
             if (++delay_frame_index >= delay_frames)
             {
-                skeleton.initialX = skeleton.xPos;
-                skeleton.initialY = skeleton.yPos;
-
                 delay_frame_index = 0;
                 skeleton.xPos += 5;
                 counter++;
@@ -74,6 +73,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void TakeDamage()
         {
+            linkState = skeleton.myGame.player.currentState.GetType().Name;
             skeleton.health--;
 
             if (skeleton.health == 0)
@@ -81,14 +81,28 @@ namespace CrossPlatformDesktopProject.NPC
                 skeleton.currentState = new SkeletonDeath(skeleton);
             } else
             {
-                skeleton.currentState = new SkeletonKnockedWest(skeleton);
+                if (linkState.Contains("East"))
+                {
+                    skeleton.currentState = new SkeletonKnockedEast(skeleton);
+                }
+                else if (linkState.Contains("West"))
+                {
+                    skeleton.currentState = new SkeletonKnockedWest(skeleton);
+                }
+                else if (linkState.Contains("North"))
+                {
+                    skeleton.currentState = new SkeletonKnockedNorth(skeleton);
+                }
+                else
+                {
+                    skeleton.currentState = new SkeletonKnockedSouth(skeleton);
+                }
             }
         }
 
         public void ChangeDirection()
         {
-            skeleton.xPos = skeleton.initialX;
-            skeleton.yPos = skeleton.initialY;
+            skeleton.xPos -= 5;
             skeleton.currentState = new SkeletonWalkWest(skeleton);
         }
     }

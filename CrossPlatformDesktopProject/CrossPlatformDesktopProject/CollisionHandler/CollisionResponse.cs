@@ -57,7 +57,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 .SelectMany(s => s.GetTypes())
                 .Where(p => typeOfObstacle.IsAssignableFrom(p));
 
-            //Obstacle Types
+            //Item Types
             var typeOfItems = typeof(IWorldItem);
             var itemTypes = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
