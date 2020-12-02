@@ -11,6 +11,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int delay_frame_index;
         private Goriya goriya;
         private GoriyaBoomerang boomerang;
+        private string linkState;
 
         private static int delay_frames = 6;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
@@ -74,6 +75,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void TakeDamage()
         {
+            linkState = goriya.myGame.player.currentState.GetType().Name;
             goriya.health--;
 
             if (goriya.health == 0)
@@ -82,7 +84,22 @@ namespace CrossPlatformDesktopProject.NPC
             }
             else
             {
-                goriya.currentState = new GoriyaKnockedEast(goriya, boomerang);
+                if (linkState.Contains("East"))
+                {
+                    goriya.currentState = new GoriyaKnockedEast(goriya, boomerang);
+                }
+                else if (linkState.Contains("West"))
+                {
+                    goriya.currentState = new GoriyaKnockedWest(goriya, boomerang);
+                }
+                else if (linkState.Contains("North"))
+                {
+                    goriya.currentState = new GoriyaKnockedNorth(goriya, boomerang);
+                }
+                else
+                {
+                    goriya.currentState = new GoriyaKnockedSouth(goriya, boomerang);
+                }
             }
         }
 
