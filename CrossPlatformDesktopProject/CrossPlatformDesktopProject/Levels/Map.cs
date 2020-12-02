@@ -7,6 +7,6 @@ namespace CrossPlatformDesktopProject.Levels
     {
         // See documentation for CSV explanations
         public static Dictionary<string, string[]> adjacencies = CSVParser.ParseRoomAdjacencies();
-
+        public static List<Room> visitedRoom = new List<Room>();
     }
 }
