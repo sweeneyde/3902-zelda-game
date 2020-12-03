@@ -57,6 +57,7 @@ namespace CrossPlatformDesktopProject.Link
             if (delay_frame_index >= delay_frames)
             {
                 my_frame_index++;
+                delay_frame_index = 0;
             }
             if (my_frame_index > 3)
             {
