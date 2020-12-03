@@ -141,7 +141,7 @@ namespace CrossPlatformDesktopProject
 
         public void Die()
         {
-            this.currentState = new DeathMenuState(this, font);
+            player.currentState = new Death(player, this, font);
         }
 
 
