@@ -121,10 +121,18 @@ namespace CrossPlatformDesktopProject.Levels
                         if (grabObj is INpc)
                         {
                             npcHolder.Add((INpc)grabObj);
-                            npcHolder.Add(goriyaBoomerang);
-                            npcHolder.Add(topFireball);
-                            npcHolder.Add(midFireball);
-                            npcHolder.Add(botFireball);
+                            Type npcType = grabObj.GetType();
+                            if (npcType == typeof(Goriya))
+                            {
+                                npcHolder.Add(goriyaBoomerang);
+                            }
+                            else if (npcType == typeof(Boss))
+                            {
+                                npcHolder.Add(topFireball);
+                                npcHolder.Add(midFireball);
+                                npcHolder.Add(botFireball);
+                            }
+
                             Debug.Print("Added NPC");
                         } else if(grabObj is IObstacle)
                         {
