@@ -26,6 +26,7 @@ Program Controls (Keyboard):
 * Q: Quit Game
 * R: Reset Game
 * Space Bar: Mute
+* Enter: View Inventory
 
 
 Program Controls (GamePad):
@@ -37,13 +38,14 @@ Program Controls (GamePad):
 
 * A: Swing Link's Sword
 
-* X: Use Secondary
+* B: Use Secondary
 
 * Start: Pause
 
 * Back: Quit Game
-* B: Reset Game
+* Right Trigger: Reset Game
 * Y: Mute
+* X: View Inventory
 
 Levels
 ---
