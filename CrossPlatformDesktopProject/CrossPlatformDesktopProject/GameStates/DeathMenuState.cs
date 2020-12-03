@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace CrossPlatformDesktopProject.GameStates
@@ -44,14 +45,15 @@ namespace CrossPlatformDesktopProject.GameStates
         {
             bool select_pressed = Keyboard.GetState().IsKeyDown(Keys.RightShift);
             bool start_pressed = Keyboard.GetState().IsKeyDown(Keys.Enter);
+            GamePadState state = GamePad.GetState(PlayerIndex.One);
 
-            if (start_pressed && !previously_start)
+            if ((start_pressed && !previously_start) || state.IsButtonDown(Buttons.A))
             {
                 ConfirmOption();
                 return;
             }
-
-            if (select_pressed && !previously_select)
+            
+            if ((select_pressed && !previously_select) || state.ThumbSticks.Left.Y < -0.5f || state.ThumbSticks.Left.Y > 0.5f || state.IsButtonDown(Buttons.DPadDown) || state.IsButtonDown(Buttons.DPadUp))
             {
                 MoveCursor();
             }

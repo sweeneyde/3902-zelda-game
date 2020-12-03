@@ -14,25 +14,15 @@ namespace CrossPlatformDesktopProject.Controllers
     {
         private Game1 myGame;
         private Player myPlayer;
-        //private GamePadState oldState;
-        //private GamePadState currentState;
         
-
         public GamePadController(Game1 game, Player player)
         {
             myGame = game;
             myPlayer = player;
-            //oldState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
-            //currentState = GamePad.GetState(PlayerIndex.One, GamePadDeadZone.Circular);
         }
-
 
         public void Update()
         {
-            // Check the device for Player One
-            GamePadCapabilities capabilities = GamePad.GetCapabilities(
-                                               PlayerIndex.One);
-
 
             // Get the current state of Controller1
             GamePadState state = GamePad.GetState(PlayerIndex.One);
@@ -47,16 +37,18 @@ namespace CrossPlatformDesktopProject.Controllers
                 new MoveUpCommand(myPlayer).Execute();
             if (state.IsButtonDown(Buttons.A))
                 new UsePrimaryCommand(myPlayer).Execute();
-            if (state.IsButtonDown(Buttons.X))
+            if (state.IsButtonDown(Buttons.B))
                 new UseSecondaryCommand(myPlayer).Execute();
             if (state.IsButtonDown(Buttons.Y))
                 new MuteCommand(myGame).Execute();
-            if (state.IsButtonDown(Buttons.B))
+            if (state.IsButtonDown(Buttons.RightTrigger))
                 new ResetGame(myGame).Execute();
             if (state.IsButtonDown(Buttons.Start))
                 new SelectCommand(myGame).Execute();
             if (state.IsButtonDown(Buttons.Back))
                 new Quit(myGame).Execute();
+            if (state.IsButtonDown(Buttons.X))
+                new StartCommand(myGame).Execute();
 
 
 
