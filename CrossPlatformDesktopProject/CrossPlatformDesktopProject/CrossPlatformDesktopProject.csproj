@@ -42,6 +42,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+	<Compile Include="Link\Death.cs" />
     <Compile Include="CollisionHandler\CollisionManager.cs" />
     <Compile Include="Commands\MuteCommand.cs" />
     <Compile Include="Commands\UnlockDoorCommand.cs" />
