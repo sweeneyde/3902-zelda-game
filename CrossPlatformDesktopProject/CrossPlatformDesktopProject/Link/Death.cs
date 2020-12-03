@@ -48,7 +48,8 @@ namespace CrossPlatformDesktopProject.Link
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination;
             destination = new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width, source.Height);
-            spriteBatch.Draw(texture, destination, source, Color.White);
+            //spriteBatch.Draw(texture, destination, source, Color.White);
+            player.DrawSprite(spriteBatch, texture, source);
         }
 
         public void Update()
