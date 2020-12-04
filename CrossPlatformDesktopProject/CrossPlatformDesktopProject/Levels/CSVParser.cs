@@ -50,7 +50,7 @@ namespace CrossPlatformDesktopProject.Levels
 
         public static Room RoomParse(Game1 game, string roomID)
         {
-            int i, j, k;
+            int i, j;
             string grabType;
             int row;
             int column;
@@ -91,7 +91,6 @@ namespace CrossPlatformDesktopProject.Levels
                 {
                     i = 0;
                     j = 0;
-                    k = 0;
                     // Read current line fields, pointer moves to the next line.
                     readLine = csvParser.ReadFields();
                     while(i < readLine.Length)
@@ -173,7 +172,6 @@ namespace CrossPlatformDesktopProject.Levels
                         }
                         i++;
                         j++;
-                        k++;
                     }
                 }
             }
