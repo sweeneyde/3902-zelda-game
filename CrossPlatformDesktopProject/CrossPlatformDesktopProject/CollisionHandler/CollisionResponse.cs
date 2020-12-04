@@ -4,6 +4,7 @@ using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.Link.Equipables;
 using CrossPlatformDesktopProject.NPC;
+using CrossPlatformDesktopProject.Obstacles;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 .SelectMany(s => s.GetTypes())
                 .Where(p => typeOfObstacle.IsAssignableFrom(p));
 
-            //Obstacle Types
+            //Item Types
             var typeOfItems = typeof(IWorldItem);
             var itemTypes = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
@@ -75,11 +76,26 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Smoke), enemySubject, side), typeof(EnemyTakeDamageCommand));
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Wall), enemySubject, side), typeof(ResetNPCCommand));
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Door), enemySubject, side), typeof(ResetNPCCommand));
+                    foreach (Type obstacleSubject in obstacleTypes)
+                    {
+                        commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, enemySubject, side), typeof(ResetNPCCommand));
+                    }
                 }
+
+                foreach (Type obstacleSubject in obstacleTypes)
+                {
+                    commandMap.Remove(new Tuple<Type, Type, CollisionSides>(obstacleSubject, batType, side));
+                }
+
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(DoorBlock), batType, side), typeof(ResetNPCCommand));
+
                 foreach (Type obstacleSubject in obstacleTypes)
                 {
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, side), typeof(ResetCommand));
                 }
+
+                commandMap.Remove(new Tuple<Type, Type, CollisionSides>(typeof(DoorBlock), playerType, side));
+
                 foreach (Type itemSubject in itemTypes)
                 {
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, itemSubject, side), typeof(KeyDisappearCommand));

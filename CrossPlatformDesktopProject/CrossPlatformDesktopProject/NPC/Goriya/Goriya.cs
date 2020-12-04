@@ -9,15 +9,18 @@ namespace CrossPlatformDesktopProject.NPC
         public INpcState currentState;
         public float xPos, yPos, initialX, initialY;
         public Rectangle hitbox;
-        public int health, hitboxX, hitboxY;
+        public int health, hitboxX, hitboxY, movementRNG;
+        public Game1 myGame;
+        public System.Random random;
 
         private static int frames_per_damage_color_change = 4;
         public static float knockback_speed = 3.0f;
         public static int knockback_frames = frames_per_damage_color_change * 5;
 
-        public Goriya(float xPos, float yPos, GoriyaBoomerang boomerang)
+        public Goriya(float xPos, float yPos, GoriyaBoomerang boomerang, Game1 game)
         {
-            currentState = new GoriyaWalkEast(this, boomerang);
+            this.random = new System.Random();
+            this.myGame = game;
             health = 3;
 
             this.xPos = xPos;
@@ -25,9 +28,27 @@ namespace CrossPlatformDesktopProject.NPC
             this.yPos = yPos;
             this.initialY = yPos;
 
-            hitboxX = 100;
-            hitboxY = 100;
+            hitboxX = NpcTextureStorage.GORIYA_RIGHT_1.Width;
+            hitboxY = NpcTextureStorage.GORIYA_RIGHT_1.Height;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
+
+            movementRNG = random.Next(1, 4);
+
+            switch(movementRNG)
+            {
+                case 1:
+                    currentState = new GoriyaWalkSouth(this, boomerang);
+                    break;
+                case 2:
+                    currentState = new GoriyaWalkNorth(this, boomerang);
+                    break;
+                case 3:
+                    currentState = new GoriyaWalkWest(this, boomerang);
+                    break;
+                case 4:
+                    currentState = new GoriyaWalkEast(this, boomerang);
+                    break;
+            }
         }
 
         public void Update()

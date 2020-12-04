@@ -58,7 +58,14 @@ namespace CrossPlatformDesktopProject.Link.Equipables
                     keyCount += 1;
                     break;
                 case "Heart":
-                    keyCount += 1;
+                    if (player.link_health == 5 || player.link_health == 6)
+                    {
+                        player.link_health = 6;
+                    }
+                    else
+                    {
+                        player.link_health += 2;
+                    }
                     break;
                 case "Rupee":
                     rupeeCount += 1;

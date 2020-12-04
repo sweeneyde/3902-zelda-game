@@ -12,8 +12,8 @@ namespace CrossPlatformDesktopProject.NPC
         public GelDeath(Gel gel)
         {
             this.gel = gel;
-            gel.hitboxX = 0;
-            gel.hitboxY = 0;
+
+            gel.myGame.collisionManager.removeNPC(gel);
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos) // make sure to set source = transparent frame if counter has been reached

@@ -14,10 +14,9 @@ namespace CrossPlatformDesktopProject.NPC
         {
             this.goriya = goriya;
             this.boomerang = boomerang;
-            goriya.hitboxX = 0;
-            goriya.hitboxY = 0;
-            boomerang.hitboxX = 0;
-            boomerang.hitboxY = 0;
+
+            goriya.myGame.collisionManager.removeNPC(goriya);
+            goriya.myGame.collisionManager.removeNPC(boomerang);
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos) // make sure to set source = transparent frame if counter has been reached

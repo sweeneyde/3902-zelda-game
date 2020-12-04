@@ -119,6 +119,8 @@ namespace CrossPlatformDesktopProject.NPC
         public static Rectangle BOSS_3 = new Rectangle(1 + 5 * 10, 11, 24, 32);
         public static Rectangle BOSS_4 = new Rectangle(6 + 7 * 10, 11, 24, 32);
 
+        public static Rectangle BOSS_HURT = new Rectangle(6 + 15 * 10, 11, 24, 32);
+
         public static Rectangle BOSS_ATTACK_1 = new Rectangle(1 + 10 * 10, 11, 8, 15);
         public static Rectangle BOSS_ATTACK_2 = new Rectangle(0 + 11 * 10, 11, 8, 15);
         public static Rectangle BOSS_ATTACK_3 = new Rectangle(9 + 11 * 10, 11, 8, 15);
