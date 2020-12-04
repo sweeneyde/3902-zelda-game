@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using CrossPlatformDesktopProject.GameStates;
+using CrossPlatformDesktopProject.Sound;
 
 namespace CrossPlatformDesktopProject.Link
 {
@@ -19,13 +20,21 @@ namespace CrossPlatformDesktopProject.Link
         private int delay_frame_index;
         private int delay_frames;
         private int times_spun;
+        private int first_frame_change_delay;
+        private int end_game_frames;
+        private int pop_frames;
+        private int blank_frames;
+        private Boolean changed;
+        private Boolean endGame;
 
         private static List<Rectangle> my_source_frames = new List<Rectangle>
         {
             LinkTextureStorage.LINK_IDLE_SOUTH,
             LinkTextureStorage.LINK_IDLE_EAST,
             LinkTextureStorage.LINK_IDLE_NORTH,
-            LinkTextureStorage.MIRRORED_LINK_IDLE_WEST
+            LinkTextureStorage.MIRRORED_LINK_IDLE_WEST,
+            LinkTextureStorage.POP,
+            LinkTextureStorage.BLANK
         };
 
         public Death(Player player, Game1 game, SpriteFont font)
@@ -40,6 +49,12 @@ namespace CrossPlatformDesktopProject.Link
             delay_frame_index = 0;
             delay_frames = 5;
             times_spun = 0;
+            first_frame_change_delay = 60;
+            changed = false;
+            endGame = false;
+            end_game_frames = 120;
+            pop_frames = 60;
+            blank_frames = 70;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -48,26 +63,52 @@ namespace CrossPlatformDesktopProject.Link
             Rectangle source = my_source_frames[my_frame_index];
             Rectangle destination;
             destination = new Rectangle((int)currentPos.X, (int)currentPos.Y, source.Width, source.Height);
-            //spriteBatch.Draw(texture, destination, source, Color.White);
-            player.DrawSprite(spriteBatch, texture, source);
+            if (my_frame_index == 4)
+            {
+                player.DrawSprite(spriteBatch, texture, source, 4, 4);
+            }
+            else
+            {
+                player.DrawSprite(spriteBatch, texture, source);
+            }
         }
 
         public void Update()
         {
             delay_frame_index++;
-            if (delay_frame_index >= delay_frames)
+            if (delay_frame_index == first_frame_change_delay && !changed)
             {
-                my_frame_index++;
+                changed = true;
                 delay_frame_index = 0;
+                SoundStorage.Instance.getLinkDieSound().Play();
             }
-            if (my_frame_index > 3)
+            if (changed && !endGame)
             {
-                my_frame_index = 0;
-                times_spun++;
+                if (times_spun == 5)
+                {
+                    endGame = true;
+                    my_frame_index = 0;
+                }
+                if (delay_frame_index == delay_frames)
+                {
+                    my_frame_index++;
+                    delay_frame_index = 0;
+                }
+                if (my_frame_index > 3)
+                {
+                    my_frame_index = 0;
+                    times_spun++;
+                }
             }
-            if (times_spun == 4)
+            if (endGame && delay_frame_index == end_game_frames)
             {
                 myGame.currentState = new DeathMenuState(myGame, myFont);
+            } else if (endGame && delay_frame_index == pop_frames)
+            {
+                my_frame_index = 4;
+            } else if (endGame && delay_frame_index == blank_frames)
+            {
+                my_frame_index = 5;
             }
         }
 
