@@ -21,6 +21,7 @@ namespace CrossPlatformDesktopProject.NPC
         public BatWalkSouth(Bat bat)
         {
             this.bat = bat;
+            bat.initialY = bat.yPos;
             my_frame_index = 0;
             delay_frame_index = 0;
         }
@@ -40,35 +41,7 @@ namespace CrossPlatformDesktopProject.NPC
         {
             if (counter == 4)
             {
-                bat.movementRNG = bat.random.Next(1, 8);
-
-                switch (bat.movementRNG)
-                {
-                    case 1:
-                        bat.currentState = new BatWalkSouth(bat);
-                        break;
-                    case 2:
-                        bat.currentState = new BatWalkNorth(bat);
-                        break;
-                    case 3:
-                        bat.currentState = new BatWalkEast(bat);
-                        break;
-                    case 4:
-                        bat.currentState = new BatWalkWest(bat);
-                        break;
-                    case 5:
-                        bat.currentState = new BatWalkSE(bat);
-                        break;
-                    case 6:
-                        bat.currentState = new BatWalkSW(bat);
-                        break;
-                    case 7:
-                        bat.currentState = new BatWalkNE(bat);
-                        break;
-                    case 8:
-                        bat.currentState = new BatWalkNW(bat);
-                        break;
-                }
+                bat.currentState = new BatWalkWest(bat);
             }
 
             if (++delay_frame_index >= delay_frames)
@@ -88,8 +61,11 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
-            bat.yPos -= 5;
-            bat.currentState = new BatWalkNorth(bat);
+            if (System.Math.Abs(bat.yPos - bat.initialY) > 2)
+            {
+                bat.yPos -= 5;
+                bat.currentState = new BatWalkNorth(bat);
+            }
         }
     }
 }

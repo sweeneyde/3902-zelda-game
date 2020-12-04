@@ -1,6 +1,9 @@
 ROOM_005
 CrossPlatformDesktopProject.Obstacles.Block,3,3,CrossPlatformDesktopProject.Obstacles.Block,3,10
 CrossPlatformDesktopProject.Obstacles.Block,5,3,CrossPlatformDesktopProject.Obstacles.Block,5,10
+CrossPlatformDesktopProject.Obstacles.DoorBlock,0,6,CrossPlatformDesktopProject.Obstacles.DoorBlock,0,7
+CrossPlatformDesktopProject.Obstacles.DoorBlock,8,6,CrossPlatformDesktopProject.Obstacles.DoorBlock,8,7
+CrossPlatformDesktopProject.Obstacles.DoorBlock,4,0,CrossPlatformDesktopProject.Obstacles.DoorBlock,4,13
 CrossPlatformDesktopProject.NPC.Skeleton,1,4,CrossPlatformDesktopProject.NPC.Skeleton,5,8,CrossPlatformDesktopProject.NPC.Skeleton,2,7
 CrossPlatformDesktopProject.NPC.Skeleton,2,10,CrossPlatformDesktopProject.NPC.Skeleton,2,2
 CrossPlatformDesktopProject.WorldItem.DungeonKey,3,7

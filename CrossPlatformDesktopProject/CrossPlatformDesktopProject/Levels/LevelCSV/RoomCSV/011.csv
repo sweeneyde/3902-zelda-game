@@ -1,5 +1,7 @@
 ROOM_011
 CrossPlatformDesktopProject.Obstacles.Block,3,6,CrossPlatformDesktopProject.Obstacles.Block,4,6,CrossPlatformDesktopProject.Obstacles.Block,5,6
 CrossPlatformDesktopProject.Obstacles.Block,3,7,CrossPlatformDesktopProject.Obstacles.Block,4,7,CrossPlatformDesktopProject.Obstacles.Block,5,7
+CrossPlatformDesktopProject.Obstacles.DoorBlock,4,13,CrossPlatformDesktopProject.Obstacles.DoorBlock,0,6
+CrossPlatformDesktopProject.Obstacles.DoorBlock,0,7
 CrossPlatformDesktopProject.NPC.Bat,2,2,CrossPlatformDesktopProject.NPC.Bat,6,2,CrossPlatformDesktopProject.NPC.Bat,5,5
 CrossPlatformDesktopProject.NPC.Bat,1,9,CrossPlatformDesktopProject.NPC.Bat,7,9,CrossPlatformDesktopProject.NPC.Bat,3,3

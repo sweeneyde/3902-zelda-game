@@ -23,6 +23,8 @@ namespace CrossPlatformDesktopProject.NPC
         public SkeletonWalkEast(Skeleton skeleton)
         {
             this.skeleton = skeleton;
+
+            skeleton.initialX = skeleton.xPos;
             my_frame_index = 0;
             delay_frame_index = 0;
         }
@@ -43,7 +45,6 @@ namespace CrossPlatformDesktopProject.NPC
             if (counter == 2)
             {
                 skeleton.movementRNG = skeleton.random.Next(1, 4);
-
                 switch (skeleton.movementRNG)
                 {
                     case 1:
@@ -102,8 +103,11 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
-            skeleton.xPos -= 6;
-            skeleton.currentState = new SkeletonWalkWest(skeleton);
+            if (System.Math.Abs(skeleton.xPos - skeleton.initialX) > 2)
+            {
+                skeleton.xPos -= 5;
+                skeleton.currentState = new SkeletonWalkWest(skeleton);
+            }
         }
     }
 }

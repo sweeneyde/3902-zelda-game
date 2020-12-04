@@ -11,7 +11,6 @@ namespace CrossPlatformDesktopProject.NPC
         private int delay_frame_index;
         private int counter;
         private Skeleton skeleton;
-        private System.Random random;
         private string linkState;
 
         private static int delay_frames = 10;
@@ -22,8 +21,9 @@ namespace CrossPlatformDesktopProject.NPC
 
         public SkeletonWalkSouth(Skeleton skeleton)
         {
-            this.random = new System.Random();
             this.skeleton = skeleton;
+
+            skeleton.initialY = skeleton.xPos;
             my_frame_index = 0;
             delay_frame_index = 0;
         }
@@ -44,7 +44,6 @@ namespace CrossPlatformDesktopProject.NPC
             if (counter == 2)
             {
                 skeleton.movementRNG = skeleton.random.Next(1, 4);
-
                 switch (skeleton.movementRNG)
                 {
                     case 1:
@@ -104,8 +103,11 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
-            skeleton.yPos -= 6;
-            skeleton.currentState = new SkeletonWalkNorth(skeleton);
+            if (System.Math.Abs(skeleton.yPos - skeleton.initialY) > 2)
+            {
+                skeleton.yPos -= 5;
+                skeleton.currentState = new SkeletonWalkNorth(skeleton);
+            }
         }
     }
 }

@@ -7,7 +7,7 @@ namespace CrossPlatformDesktopProject.NPC
     class Bat : INpc
     {
         public INpcState currentState;
-        public float xPos, yPos;
+        public float xPos, yPos, initialX, initialY;
         public Rectangle hitbox;
         public int hitboxX, hitboxY, movementRNG;
         public Game1 myGame;
@@ -19,8 +19,10 @@ namespace CrossPlatformDesktopProject.NPC
             this.myGame = game;
             this.xPos = xPos;
             this.yPos = yPos;
-            hitboxX = 16;
-            hitboxY = 16;
+            this.initialX = xPos;
+            this.initialY = yPos;
+            hitboxX = NpcTextureStorage.BAT_1.Width;
+            hitboxY = NpcTextureStorage.BAT_1.Height;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
 
             movementRNG = random.Next(1, 8);

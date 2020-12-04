@@ -7,7 +7,7 @@ namespace CrossPlatformDesktopProject.NPC
     class Gel : INpc
     {
         public INpcState currentState;
-        public float xPos, yPos;
+        public float xPos, yPos, initialX, initialY;
         public Rectangle hitbox;
         public int hitboxX, hitboxY, movementRNG;
         public Game1 myGame;
@@ -17,11 +17,14 @@ namespace CrossPlatformDesktopProject.NPC
         {
             this.random = new System.Random();
             this.myGame = game;
-            this.xPos = xPos;
-            this.yPos = yPos;
 
-            hitboxX = 10;
-            hitboxY = 10;
+            this.xPos = xPos;
+            this.initialX = xPos;
+            this.yPos = yPos;
+            this.initialY = yPos;
+
+            hitboxX = NpcTextureStorage.GEL_1.Width;
+            hitboxY = NpcTextureStorage.GEL_1.Height;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
 
             movementRNG = random.Next(1, 4);

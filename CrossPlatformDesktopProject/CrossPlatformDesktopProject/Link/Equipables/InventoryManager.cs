@@ -36,7 +36,8 @@ namespace CrossPlatformDesktopProject.Link.Equipables
 
             equippedItem = null;
 
-            rupeeCount = keyCount = bombCount = 1;
+            rupeeCount = bombCount = 1;
+            keyCount = 10;
         }
 
         public void ItemPickedUp(ICollider collidable)

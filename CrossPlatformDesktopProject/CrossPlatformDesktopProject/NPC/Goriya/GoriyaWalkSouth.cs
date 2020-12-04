@@ -24,6 +24,7 @@ namespace CrossPlatformDesktopProject.NPC
         {
             this.goriya = goriya;
             this.boomerang = boomerang;
+            goriya.initialY = goriya.yPos;
             my_frame_index = 0;
             delay_frame_index = 0;
         }
@@ -88,8 +89,11 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
-            goriya.yPos -= 5;
-            goriya.currentState = new GoriyaWalkNorth(goriya, boomerang);
+            if (System.Math.Abs(goriya.yPos - goriya.initialY) > 2)
+            {
+                goriya.yPos -= 5;
+                goriya.currentState = new GoriyaWalkNorth(goriya, boomerang);
+            }
         }
     }
 }

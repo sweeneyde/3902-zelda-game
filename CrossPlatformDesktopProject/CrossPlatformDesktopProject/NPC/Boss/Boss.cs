@@ -9,7 +9,7 @@ namespace CrossPlatformDesktopProject.NPC
         public INpcState currentState;
         public float xPos, yPos;
         public Rectangle hitbox;
-        public int health, hitboxX, hitboxY, movementRNG;
+        public int health, hitboxX, hitboxY;
         public Game1 myGame;
         public System.Random random;
         public bool movement;
@@ -25,8 +25,8 @@ namespace CrossPlatformDesktopProject.NPC
             this.xPos = xPos;
             this.yPos = yPos;
 
-            hitboxX = 24;
-            hitboxY = 32;
+            hitboxX = NpcTextureStorage.BOSS_1.Width;
+            hitboxY = NpcTextureStorage.BOSS_1.Height;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
 
             currentState = new BossWalkWest(this, fireball1, fireball2, fireball3);

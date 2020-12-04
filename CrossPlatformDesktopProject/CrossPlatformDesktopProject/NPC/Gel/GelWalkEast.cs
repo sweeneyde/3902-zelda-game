@@ -21,6 +21,7 @@ namespace CrossPlatformDesktopProject.NPC
         public GelWalkEast(Gel gel)
         {
             this.gel = gel;
+            gel.initialX = gel.xPos;
             my_frame_index = 0;
             delay_frame_index = 0;
         }
@@ -76,8 +77,11 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
-            gel.xPos -= 5;
-            gel.currentState = new GelWalkWest(gel);
+            if (System.Math.Abs(gel.xPos - gel.initialX) > 2)
+            {
+                gel.xPos -= 5;
+                gel.currentState = new GelWalkWest(gel);
+            }
         }
     }
 }

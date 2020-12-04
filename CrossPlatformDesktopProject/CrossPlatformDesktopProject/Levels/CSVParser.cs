@@ -50,7 +50,7 @@ namespace CrossPlatformDesktopProject.Levels
 
         public static Room RoomParse(Game1 game, string roomID)
         {
-            int i;
+            int i, j, k;
             string grabType;
             int row;
             int column;
@@ -64,7 +64,9 @@ namespace CrossPlatformDesktopProject.Levels
             List<IObstacle> obstacleHolder = new List<IObstacle>();
             List<IWorldItem> worldItemHolder = new List<IWorldItem>();
             object[] args;
-            INpc goriyaBoomerang;
+            INpc goriyaBoomerang1;
+            INpc goriyaBoomerang2;
+            INpc goriyaBoomerang3;
             INpc topFireball;
             INpc midFireball;
             INpc botFireball;
@@ -78,7 +80,9 @@ namespace CrossPlatformDesktopProject.Levels
                 readLine = csvParser.ReadFields();
                 roomTextureID = readLine[0];
 
-                goriyaBoomerang = new GoriyaBoomerang();
+                goriyaBoomerang1 = new GoriyaBoomerang();
+                goriyaBoomerang2 = new GoriyaBoomerang();
+                goriyaBoomerang3 = new GoriyaBoomerang();
                 topFireball = new Fireball();
                 midFireball = new Fireball();
                 botFireball = new Fireball();
@@ -86,6 +90,8 @@ namespace CrossPlatformDesktopProject.Levels
                 while (!csvParser.EndOfData)
                 {
                     i = 0;
+                    j = 0;
+                    k = 0;
                     // Read current line fields, pointer moves to the next line.
                     readLine = csvParser.ReadFields();
                     while(i < readLine.Length)
@@ -103,7 +109,16 @@ namespace CrossPlatformDesktopProject.Levels
 
                         if (resolvedType == typeof(Goriya))
                         {
-                            args = new object[] { coords[0], coords[1], (GoriyaBoomerang)goriyaBoomerang, game };
+                            if (j == 0)
+                            {
+                                args = new object[] { coords[0], coords[1], (GoriyaBoomerang)goriyaBoomerang1, game };
+                            } else if (j == 1)
+                            {
+                                args = new object[] { coords[0], coords[1], (GoriyaBoomerang)goriyaBoomerang2, game };
+                            } else
+                            {
+                                args = new object[] { coords[0], coords[1], (GoriyaBoomerang)goriyaBoomerang3, game };
+                            }
                         } else if (resolvedType == typeof(Boss))
                         {
                             args = new object[] { coords[0], coords[1], (Fireball)topFireball, (Fireball)midFireball, (Fireball)botFireball, game };
@@ -124,7 +139,16 @@ namespace CrossPlatformDesktopProject.Levels
                             Type npcType = grabObj.GetType();
                             if (npcType == typeof(Goriya))
                             {
-                                npcHolder.Add(goriyaBoomerang);
+                                if (j == 0)
+                                {
+                                    npcHolder.Add(goriyaBoomerang1);
+                                } else if (j == 1)
+                                {
+                                    npcHolder.Add(goriyaBoomerang2);
+                                } else
+                                {
+                                    npcHolder.Add(goriyaBoomerang3);
+                                }
                             }
                             else if (npcType == typeof(Boss))
                             {
@@ -148,6 +172,8 @@ namespace CrossPlatformDesktopProject.Levels
                             Debug.Print("Couldn't finalize interface of Object");
                         }
                         i++;
+                        j++;
+                        k++;
                     }
                 }
             }

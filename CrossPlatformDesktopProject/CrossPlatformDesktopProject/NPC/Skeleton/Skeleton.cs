@@ -24,8 +24,8 @@ namespace CrossPlatformDesktopProject.NPC
             this.yPos = yPos;
             this.initialY = yPos;
 
-            hitboxX = 20;
-            hitboxY = 20;
+            hitboxX = NpcTextureStorage.SKELETON_1.Width;
+            hitboxY = NpcTextureStorage.SKELETON_1.Height;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
 
             movementRNG = random.Next(1, 4);

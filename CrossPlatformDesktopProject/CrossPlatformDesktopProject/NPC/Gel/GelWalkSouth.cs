@@ -23,6 +23,7 @@ namespace CrossPlatformDesktopProject.NPC
         {
             this.random = new System.Random();
             this.gel = gel;
+            gel.initialY = gel.yPos;
             my_frame_index = 0;
             delay_frame_index = 0;
         }
@@ -78,8 +79,11 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
-            gel.yPos -= 5;
-            gel.currentState = new GelWalkNorth(gel);
+            if (System.Math.Abs(gel.yPos - gel.initialY) > 2)
+            {
+                gel.yPos -= 5;
+                gel.currentState = new GelWalkNorth(gel);
+            }
         }
     }
 }
