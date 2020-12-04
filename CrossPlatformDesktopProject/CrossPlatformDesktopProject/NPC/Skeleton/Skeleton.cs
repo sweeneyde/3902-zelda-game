@@ -24,8 +24,8 @@ namespace CrossPlatformDesktopProject.NPC
             this.yPos = yPos;
             this.initialY = yPos;
 
-            hitboxX = 25;
-            hitboxY = 25;
+            hitboxX = 20;
+            hitboxY = 20;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
 
             movementRNG = random.Next(1, 4);

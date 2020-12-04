@@ -89,7 +89,7 @@ namespace CrossPlatformDesktopProject.NPC
         public void ChangeDirection()
         {
             goriya.yPos += 5;
-            goriya.currentState = new GoriyaWalkSouth(goriya, boomerang);
+            goriya.currentState = new GoriyaWalkEast(goriya, boomerang);
         }
     }
 }

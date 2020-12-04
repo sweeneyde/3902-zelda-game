@@ -9,14 +9,17 @@ namespace CrossPlatformDesktopProject.NPC
         public INpcState currentState;
         public float xPos, yPos;
         public Rectangle hitbox;
-        public int health, hitboxX, hitboxY;
+        public int health, hitboxX, hitboxY, movementRNG;
         public Game1 myGame;
+        public System.Random random;
+        public bool movement;
 
         public Boss(float xPos, float yPos, Fireball fireball1, Fireball fireball2, Fireball fireball3, Game1 game)
         {
+            this.random = new System.Random();
             this.myGame = game;
+            this.movement = false;
 
-            currentState = new BossWalkWest(this, fireball1, fireball2, fireball3);
             health = 8;
 
             this.xPos = xPos;
@@ -25,6 +28,8 @@ namespace CrossPlatformDesktopProject.NPC
             hitboxX = 24;
             hitboxY = 32;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
+
+            currentState = new BossWalkWest(this, fireball1, fireball2, fireball3);
         }
 
         public void Update()

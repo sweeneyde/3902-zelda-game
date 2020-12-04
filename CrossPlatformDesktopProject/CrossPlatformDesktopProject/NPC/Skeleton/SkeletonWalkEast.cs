@@ -102,7 +102,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
-            skeleton.xPos -= 5;
+            skeleton.xPos -= 6;
             skeleton.currentState = new SkeletonWalkWest(skeleton);
         }
     }

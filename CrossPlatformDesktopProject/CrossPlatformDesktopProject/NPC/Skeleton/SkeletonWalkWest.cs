@@ -101,8 +101,8 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
-            skeleton.xPos += 5;
-            skeleton.currentState = new SkeletonWalkEast(skeleton);
+            skeleton.xPos += 6;
+            skeleton.currentState = new SkeletonWalkSouth(skeleton);
         }
     }
 }

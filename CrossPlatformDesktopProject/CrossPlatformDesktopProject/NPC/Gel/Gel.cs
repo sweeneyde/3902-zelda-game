@@ -20,8 +20,8 @@ namespace CrossPlatformDesktopProject.NPC
             this.xPos = xPos;
             this.yPos = yPos;
 
-            hitboxX = 16;
-            hitboxY = 16;
+            hitboxX = 10;
+            hitboxY = 10;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
 
             movementRNG = random.Next(1, 4);

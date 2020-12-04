@@ -65,12 +65,12 @@ namespace CrossPlatformDesktopProject.NPC
 
                     if (boomerang.travelmarker == 0)
                     {
-                        boomerang.xPos += 10;
+                        boomerang.xPos += 5;
                         counter++;
                     }
                     else if (boomerang.travelmarker == 1)
                     {
-                        boomerang.xPos -= 10;
+                        boomerang.xPos -= 5;
                     }
 
                     if (counter == 10)

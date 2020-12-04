@@ -51,7 +51,7 @@ namespace CrossPlatformDesktopProject
             player = new Player();
             collisionManager = new CollisionManager(this);
             currentHUD = new HUDWindow(player, this);
-            currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "001"));
+            currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "009"));
             windows = new WindowManager(this);
 
             controllerList = new List<IController>()

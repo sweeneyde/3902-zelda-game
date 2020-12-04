@@ -79,7 +79,7 @@ namespace CrossPlatformDesktopProject.NPC
         public void ChangeDirection()
         {
             gel.yPos += 5;
-            gel.currentState = new GelWalkSouth(gel);
+            gel.currentState = new GelWalkEast(gel);
         }
     }
 }
