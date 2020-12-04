@@ -37,6 +37,7 @@ namespace CrossPlatformDesktopProject.Link
             if (--frames_left <= 0)
             {
                 // Add item to inventory
+                player.linkInventory.ItemPickedUp(content);
                 player.currentState = new LinkFacingSouthState(player);
             }
         }
