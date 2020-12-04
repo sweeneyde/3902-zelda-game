@@ -42,11 +42,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+	<Compile Include="Link\Death.cs" />
     <Compile Include="CollisionHandler\CollisionManager.cs" />
     <Compile Include="Commands\ChestOpenCommand.cs" />
     <Compile Include="Commands\MuteCommand.cs" />
     <Compile Include="Commands\UnlockDoorCommand.cs" />
     <Compile Include="Link\LinkShowingItem.cs" />
+    <Compile Include="Controllers\GamePadController.cs" />
     <Compile Include="WorldItem\BombItem.cs" />
     <Compile Include="WorldItem\BoomerangItem.cs" />
     <Compile Include="WorldItem\BowItem.cs" />
