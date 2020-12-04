@@ -53,7 +53,7 @@ namespace CrossPlatformDesktopProject
             player = new Player();
             collisionManager = new CollisionManager(this);
             currentHUD = new HUDWindow(player, this);
-            currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "016"));
+            currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "001"));
             windows = new WindowManager(this);
             Map.visitedRoom = new List<Room>();
             Map.adjacencies = CSVParser.ParseRoomAdjacencies();
