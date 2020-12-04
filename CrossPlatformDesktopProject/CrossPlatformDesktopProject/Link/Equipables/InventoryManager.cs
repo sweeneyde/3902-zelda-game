@@ -31,13 +31,12 @@ namespace CrossPlatformDesktopProject.Link.Equipables
         {
             inventory = new HashSet<Type>();
             this.player = player;
-            //for now this is added here
-            inventory.Add(typeof(Bomb));
 
             equippedItem = null;
 
-            rupeeCount = bombCount = 1;
-            keyCount = 10;
+            rupeeCount = 1;
+            keyCount = 1;
+            bombCount = 0;
         }
 
         public void ItemPickedUp(ICollider collidable)

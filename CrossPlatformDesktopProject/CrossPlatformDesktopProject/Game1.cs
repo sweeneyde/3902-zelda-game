@@ -9,6 +9,8 @@ using CrossPlatformDesktopProject.GameStates;
 using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.Sound;
 using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Input;
+using CrossPlatformDesktopProject.Controllers;
 
 namespace CrossPlatformDesktopProject
 {
@@ -53,11 +55,14 @@ namespace CrossPlatformDesktopProject
             currentHUD = new HUDWindow(player, this);
             currentState = currentGamePlayState = new GamePlayState(this, Room.FromId(this, "016"));
             windows = new WindowManager(this);
+            Map.visitedRoom = new List<Room>();
+            Map.adjacencies = CSVParser.ParseRoomAdjacencies();
 
             controllerList = new List<IController>()
             {
                 new KeyboardController(this, player),
                 new MouseController(this),
+                new GamePadController(this, player),
             };
 
             base.Initialize();
@@ -104,6 +109,7 @@ namespace CrossPlatformDesktopProject
             if (player.link_health == 0)
             {
                 Die();
+                player.link_health = -1;
             }
         }
         
@@ -130,8 +136,18 @@ namespace CrossPlatformDesktopProject
         {
             GameScreenTextureStorage.Instance.SaveScreen(spriteBatch);
             Room room1 = currentGamePlayState.CurrentRoom;
+            Map.visitedRoom.Add(room1);
+            string targetID = room2.roomID;
+            foreach (Room rm in Map.visitedRoom)
+            {
+                if (rm.roomID == targetID)
+                {
+                    room2 = rm;
+                }
+            }
             currentGamePlayState = new GamePlayState(this, room2);
             currentState = new RoomTransitionState(this, room1, room2, side);
+
         }
 
         public void quit()
@@ -141,7 +157,8 @@ namespace CrossPlatformDesktopProject
 
         public void Die()
         {
-            this.currentState = new DeathMenuState(this, font);
+            player.currentState = new Death(player, this, font);
+            SoundStorage.music_instance.Stop();
         }
 
 
