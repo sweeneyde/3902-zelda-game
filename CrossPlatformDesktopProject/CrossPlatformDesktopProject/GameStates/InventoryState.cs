@@ -31,9 +31,10 @@ namespace CrossPlatformDesktopProject.GameStates
             if (item_index == -1) { throw new ArgumentException(); }
             player_has_item = new Boolean[]
             {
-                player.linkInventory.inventory.Contains(typeof(Boomerang)), // if player can equip boomerang
                 player.linkInventory.inventory.Contains(typeof(Bomb)), // if player can equip bomb
+                player.linkInventory.inventory.Contains(typeof(Boomerang)), // if player can equip boomerang
                 player.linkInventory.inventory.Contains(typeof(Bow)), // if player can equip bow
+                true, // if player can equip none
             };
             emptyTexture = new Texture2D(game.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             emptyTexture.SetData<Color>(new Color[] { Color.Black });
