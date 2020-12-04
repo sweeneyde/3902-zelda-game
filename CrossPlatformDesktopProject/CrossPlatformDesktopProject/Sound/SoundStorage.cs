@@ -32,7 +32,7 @@ namespace CrossPlatformDesktopProject.Sound
         private static SoundEffect EnemyDieSound = null;
         private static SoundEffect LinkHitSound = null;
         private static SoundEffect LinkDieSound = null;
-        private static SoundEffectInstance music_instance = null;
+        public static SoundEffectInstance music_instance = null;
 
 
         private SoundStorage()

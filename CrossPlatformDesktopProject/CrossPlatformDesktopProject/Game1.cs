@@ -109,6 +109,7 @@ namespace CrossPlatformDesktopProject
             if (player.link_health == 0)
             {
                 Die();
+                player.link_health = -1;
             }
         }
         
@@ -156,7 +157,8 @@ namespace CrossPlatformDesktopProject
 
         public void Die()
         {
-            this.currentState = new DeathMenuState(this, font);
+            player.currentState = new Death(player, this, font);
+            SoundStorage.music_instance.Stop();
         }
 
 
