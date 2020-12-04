@@ -147,7 +147,6 @@ namespace CrossPlatformDesktopProject
             }
             currentGamePlayState = new GamePlayState(this, room2);
             currentState = new RoomTransitionState(this, room1, room2, side);
-
         }
 
         public void quit()
@@ -169,21 +168,11 @@ namespace CrossPlatformDesktopProject
                 pauseCooldown = 10;
                 this.currentState = new PauseState(this, font);
             }
-
-
         }
 
         public void reset()
         {
             this.Initialize();
-        }
-
-        public void mute()
-        {
-            if (SoundEffect.MasterVolume == 0.0f)
-                SoundEffect.MasterVolume = 1.0f;
-            else
-                SoundEffect.MasterVolume = 0.0f;
         }
     }
 }

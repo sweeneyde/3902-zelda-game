@@ -103,6 +103,9 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(Door), side), typeof(TransportRoomCommand));
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Wall), playerType, side), typeof(ResetCommand));
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(LockedDoor), side), typeof(UnlockDoorCommand));
+                commandMap.Remove(new Tuple<Type, Type, CollisionSides>(playerType, typeof(EmptyRoomNotifier), side));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(EmptyRoomNotifier), side), typeof(ThunderDomeWaveCommand));
+
             }
         }
 
@@ -118,7 +121,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 new Type[] { targetType, typeof(Room) },
                 new Type[] { subjectType, targetType, typeof(CollisionSides) },
                 new Type[] { subjectType, targetType, typeof(Room) },
-                new Type[] { typeof(Game1), subjectType, targetType, typeof(CollisionSides) }
+                new Type[] { typeof(Game1), subjectType, targetType, typeof(CollisionSides) },
             };
 
             ConstructorInfo commandConstructor = null;
@@ -163,6 +166,10 @@ namespace CrossPlatformDesktopProject.CollisionHandler
         {
             Type subjectType = subject.GetType();
             Type targetType = target.GetType();
+            if(targetType == typeof(EmptyRoomNotifier))
+            {
+                Console.WriteLine("die");
+            }
             Tuple<Type, Type, CollisionSides> key = new Tuple<Type, Type, CollisionSides>(subjectType, targetType, side);
             if (keySet.Contains(key))
             {
