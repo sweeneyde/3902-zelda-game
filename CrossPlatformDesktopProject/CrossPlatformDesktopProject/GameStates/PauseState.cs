@@ -44,7 +44,7 @@ namespace CrossPlatformDesktopProject.GameStates
                 return;
             }
 
-            if (Keyboard.GetState().GetPressedKeys().Contains(Keys.RightShift))
+            if (Keyboard.GetState().GetPressedKeys().Contains(Keys.RightShift) || GamePad.GetState(PlayerIndex.One).IsButtonDown(Buttons.Start))
             {
                 game.pauseCooldown = 10;
                 unpause();
