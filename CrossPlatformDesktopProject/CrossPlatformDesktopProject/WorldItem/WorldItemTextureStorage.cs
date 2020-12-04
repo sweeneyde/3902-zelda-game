@@ -28,6 +28,7 @@ namespace CrossPlatformDesktopProject.WorldItem
 
 
         private static Texture2D itemTexture = null;
+        private static Texture2D HUDTexture = null;
 
         private ItemTextureStorage()
         {
@@ -36,6 +37,7 @@ namespace CrossPlatformDesktopProject.WorldItem
         public void LoadAllResources(ContentManager content)
         {
             itemTexture = content.Load<Texture2D>("item_sheet");
+            HUDTexture = content.Load<Texture2D>("heart_sheet");
         }
 
 
@@ -44,7 +46,12 @@ namespace CrossPlatformDesktopProject.WorldItem
             return itemTexture;
         }
 
-        public static Rectangle HEART = new Rectangle(5 + 2 * 10, 1, 13, 16);
+        public Texture2D getHeartSpriteSheet()
+        {
+            return HUDTexture;
+        }
+
+        public static Rectangle HEART = new Rectangle(645, 117, 8, 8);
         public static Rectangle TRIFORCE = new Rectangle(5 + 27 * 10, 1, 10, 16);
         public static Rectangle KEY = new Rectangle(24 * 10, 0 , 8 , 16);
         public static Rectangle RUPEE = new Rectangle(2 + 7 * 10, 0, 8, 16);
