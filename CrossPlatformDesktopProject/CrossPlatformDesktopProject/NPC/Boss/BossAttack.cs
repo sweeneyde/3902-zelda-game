@@ -31,9 +31,9 @@ namespace CrossPlatformDesktopProject.NPC
             my_frame_index = 0;
             delay_frame_index = 0;
 
-            fireball1.currentState = new TopFireball(fireball1, boss.xPos - 10, boss.yPos + 10, true);
-            fireball2.currentState = new MiddleFireball(fireball2, boss.xPos - 10, boss.yPos + 30, true);
-            fireball3.currentState = new BottomFireball(fireball3, boss.xPos - 10, boss.yPos + 50, true);
+            fireball1.currentState = new TopFireball(fireball1, boss.xPos - 10, boss.yPos, true);
+            fireball2.currentState = new MiddleFireball(fireball2, boss.xPos - 10, boss.yPos + 20, true);
+            fireball3.currentState = new BottomFireball(fireball3, boss.xPos - 10, boss.yPos + 40, true);
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos)
@@ -52,7 +52,16 @@ namespace CrossPlatformDesktopProject.NPC
         {
             if (fireball2.xPos < 3)
             {
-                boss.currentState = new BossWalkWest(boss, fireball1, fireball2, fireball3);
+                if (!boss.movement)
+                {
+                    boss.currentState = new BossWalkEast(boss, fireball1, fireball2, fireball3);
+                    boss.movement = true;
+                } else
+                {
+                    boss.currentState = new BossWalkWest(boss, fireball1, fireball2, fireball3);
+                    boss.movement = false;
+
+                }
             }
 
             if (++delay_frame_index >= delay_frames)

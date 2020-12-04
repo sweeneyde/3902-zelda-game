@@ -9,11 +9,14 @@ namespace CrossPlatformDesktopProject.NPC
         public INpcState currentState;
         public float xPos, yPos, initialX, initialY;
         public Rectangle hitbox;
-        public int health, hitboxX, hitboxY;
+        public int health, hitboxX, hitboxY, movementRNG;
+        public Game1 myGame;
+        public System.Random random;
 
-        public Skeleton(float xPos, float yPos)
+        public Skeleton(float xPos, float yPos, Game1 game)
         {
-            currentState = new SkeletonWalkEast(this);
+            this.random = new System.Random();
+            this.myGame = game;
 
             health = 2;
             this.xPos = xPos;
@@ -21,9 +24,27 @@ namespace CrossPlatformDesktopProject.NPC
             this.yPos = yPos;
             this.initialY = yPos;
 
-            hitboxX = 150;
-            hitboxY = 150;
+            hitboxX = NpcTextureStorage.SKELETON_1.Width;
+            hitboxY = NpcTextureStorage.SKELETON_1.Height;
             hitbox = new Rectangle((int)xPos, (int)yPos, hitboxX, hitboxY);
+
+            movementRNG = random.Next(1, 4);
+
+            switch(movementRNG)
+            {
+                case 1:
+                    currentState = new SkeletonWalkSouth(this);
+                    break;
+                case 2:
+                    currentState = new SkeletonWalkNorth(this);
+                    break;
+                case 3:
+                    currentState = new SkeletonWalkWest(this);
+                    break;
+                case 4:
+                    currentState = new SkeletonWalkEast(this);
+                    break;
+            }
         }
 
         public void Update()

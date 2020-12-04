@@ -12,8 +12,8 @@ namespace CrossPlatformDesktopProject.NPC
         public BatDeath(Bat bat)
         {
             this.bat = bat;
-            bat.hitboxX = 0;
-            bat.hitboxY = 0;
+
+            bat.myGame.collisionManager.removeNPC(bat);
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos) // make sure to set source = transparent frame if counter has been reached

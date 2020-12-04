@@ -9,21 +9,24 @@ namespace CrossPlatformDesktopProject.NPC
     {
         private int my_frame_index = 0;
         private int delay_frame_index = 0;
-        private Boss Boss;
+        private Boss boss;
         private Fireball fireball1, fireball2, fireball3;
         private int counter;
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
             NpcTextureStorage.BOSS_1,
+            NpcTextureStorage.BOSS_HURT,
             NpcTextureStorage.BOSS_2,
+            NpcTextureStorage.BOSS_HURT,
             NpcTextureStorage.BOSS_3,
+            NpcTextureStorage.BOSS_HURT,
             NpcTextureStorage.BOSS_4
         };
 
-        public BossDamaged(Boss Boss, Fireball fireball1, Fireball fireball2, Fireball fireball3)
+        public BossDamaged(Boss boss, Fireball fireball1, Fireball fireball2, Fireball fireball3)
         {
-            this.Boss = Boss;
+            this.boss = boss;
             this.fireball1 = fireball1;
             this.fireball2 = fireball2;
             this.fireball3 = fireball3;
@@ -44,7 +47,14 @@ namespace CrossPlatformDesktopProject.NPC
         {
             if (counter == 5)
             {
-                Boss.currentState = new BossWalkEast(Boss, fireball1, fireball2, fireball3);
+                if (boss.movement)
+                {
+                    boss.currentState = new BossWalkEast(boss, fireball1, fireball2, fireball3);
+                }
+                else
+                {
+                    boss.currentState = new BossWalkWest(boss, fireball1, fireball2, fireball3);
+                }
             }
 
             if (++delay_frame_index >= delay_frames)

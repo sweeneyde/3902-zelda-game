@@ -66,11 +66,11 @@ namespace CrossPlatformDesktopProject.Levels
 
             npcs = new List<INpc>
             {
-                new Boss(xPosNPC, yPosNPC, (Fireball) fireball1, (Fireball) fireball2, (Fireball) fireball3),
-                new Bat(xPosNPC, yPosNPC),
-                new Goriya(xPosNPC, yPosNPC, (GoriyaBoomerang) boomerang),
-                new Gel(xPosNPC, yPosNPC),
-                new Skeleton(xPosNPC, yPosNPC),
+                new Boss(xPosNPC, yPosNPC, (Fireball) fireball1, (Fireball) fireball2, (Fireball) fireball3, game),
+                new Bat(xPosNPC, yPosNPC, game),
+                new Goriya(xPosNPC, yPosNPC, (GoriyaBoomerang) boomerang, game),
+                new Gel(xPosNPC, yPosNPC, game),
+                new Skeleton(xPosNPC, yPosNPC, game),
                 new OldMan(xPosNPC, yPosNPC),
             };
         }

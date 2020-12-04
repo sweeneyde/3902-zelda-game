@@ -11,6 +11,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int delay_frame_index;
         private int counter;
         private Skeleton skeleton;
+        private string linkState;
 
         private static int delay_frames = 10;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
@@ -21,6 +22,8 @@ namespace CrossPlatformDesktopProject.NPC
         public SkeletonWalkSouth(Skeleton skeleton)
         {
             this.skeleton = skeleton;
+
+            skeleton.initialY = skeleton.xPos;
             my_frame_index = 0;
             delay_frame_index = 0;
         }
@@ -38,16 +41,28 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (counter == 10)
+            if (counter == 2)
             {
-                skeleton.currentState = new SkeletonWalkWest(skeleton);
+                skeleton.movementRNG = skeleton.random.Next(1, 4);
+                switch (skeleton.movementRNG)
+                {
+                    case 1:
+                        skeleton.currentState = new SkeletonWalkSouth(skeleton);
+                        break;
+                    case 2:
+                        skeleton.currentState = new SkeletonWalkNorth(skeleton);
+                        break;
+                    case 3:
+                        skeleton.currentState = new SkeletonWalkWest(skeleton);
+                        break;
+                    case 4:
+                        skeleton.currentState = new SkeletonWalkEast(skeleton);
+                        break;
+                }
             }
 
             if (++delay_frame_index >= delay_frames)
             {
-                skeleton.initialX = skeleton.xPos;
-                skeleton.initialY = skeleton.yPos;
-
                 delay_frame_index = 0;
                 skeleton.yPos += 5;
                 counter++;
@@ -58,6 +73,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void TakeDamage()
         {
+            linkState = skeleton.myGame.player.currentState.GetType().Name;
             skeleton.health--;
 
             if (skeleton.health == 0)
@@ -66,14 +82,32 @@ namespace CrossPlatformDesktopProject.NPC
             }
             else
             {
-                skeleton.currentState = new SkeletonKnockedNorth(skeleton);
+                if (linkState.Contains("East"))
+                {
+                    skeleton.currentState = new SkeletonKnockedEast(skeleton);
+                }
+                else if (linkState.Contains("West"))
+                {
+                    skeleton.currentState = new SkeletonKnockedWest(skeleton);
+                }
+                else if (linkState.Contains("North"))
+                {
+                    skeleton.currentState = new SkeletonKnockedNorth(skeleton);
+                }
+                else
+                {
+                    skeleton.currentState = new SkeletonKnockedSouth(skeleton);
+                }
             }
         }
 
         public void ChangeDirection()
         {
-            skeleton.yPos = skeleton.initialY;
-            skeleton.currentState = new SkeletonWalkNorth(skeleton);
+            if (System.Math.Abs(skeleton.yPos - skeleton.initialY) > 2)
+            {
+                skeleton.yPos -= 5;
+                skeleton.currentState = new SkeletonWalkNorth(skeleton);
+            }
         }
     }
 }

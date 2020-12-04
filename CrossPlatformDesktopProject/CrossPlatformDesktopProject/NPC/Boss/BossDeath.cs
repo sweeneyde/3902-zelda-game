@@ -17,15 +17,10 @@ namespace CrossPlatformDesktopProject.NPC
             this.fireball2 = fireball2;
             this.fireball3 = fireball3;
 
-            boss.hitboxX = 0;
-            boss.hitboxY = 0;
-
-            fireball1.hitboxX = 0;
-            fireball1.hitboxY = 0;
-            fireball2.hitboxX = 0;
-            fireball2.hitboxY = 0;
-            fireball3.hitboxX = 0;
-            fireball3.hitboxY = 0;
+            boss.myGame.collisionManager.removeNPC(boss);
+            boss.myGame.collisionManager.removeNPC(fireball1);
+            boss.myGame.collisionManager.removeNPC(fireball2);
+            boss.myGame.collisionManager.removeNPC(fireball3);
         }
 
         public void Draw(SpriteBatch spriteBatch, float xPos, float yPos) // make sure to set source = transparent frame if counter has been reached
