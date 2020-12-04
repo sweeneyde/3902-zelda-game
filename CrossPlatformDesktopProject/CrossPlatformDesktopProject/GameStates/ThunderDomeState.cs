@@ -89,10 +89,11 @@ public class ThunderDomeState : IGameState
         coords = RowsColumns.ConvertRowsColumns(8, 10);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
 
-
-        //Provide some kind of countdown
-
         waveNumber += 1;
+        if(waveNumber > enemyWaves.Count)
+        {
+            waveNumber -= 1;
+        }
 
         //Load enemies by wave number
         for (int i = 0; i < waveNumber; i++)
