@@ -377,21 +377,22 @@ namespace CrossPlatformDesktopProject.GameStates
             }
 
             var keys = new HashSet<Keys>(Keyboard.GetState().GetPressedKeys());
-            if (keys.Contains(Keys.Enter))
+            GamePadState state = GamePad.GetState(PlayerIndex.One);
+            if (keys.Contains(Keys.Enter) || state.IsButtonDown(Buttons.X))
             {
                 game.currentState = game.currentGamePlayState;
                 game.currentHUD.activate(true);
                 return;
             }
 
-            if (keys.Contains(Keys.Left))
+            if (keys.Contains(Keys.Left) || state.ThumbSticks.Left.X < -0.5f || state.IsButtonDown(Buttons.DPadLeft))
             {
                 keypressCooldown = 10;
                 CursorLeft();
                 return;
             }
 
-            if (keys.Contains(Keys.Right))
+            if (keys.Contains(Keys.Right) || state.ThumbSticks.Left.X > 0.5f || state.IsButtonDown(Buttons.DPadRight))
             {
                 keypressCooldown = 10;
                 CursorRight();
