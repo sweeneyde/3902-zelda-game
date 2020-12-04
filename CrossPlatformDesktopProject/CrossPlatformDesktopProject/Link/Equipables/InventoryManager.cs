@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.Equipables;
+using CrossPlatformDesktopProject.WorldItem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -20,6 +21,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
         public static Boomerang boomerang;
         public static Bow bow;
         public static Bomb bomb;
+        private static DungeonMap dMap;
 
         /* If a user does not have the resource for an item, it cannot be used */
         public int rupeeCount;
@@ -42,6 +44,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
         public void ItemPickedUp(ICollider collidable)
         {
             Type eType = collidable.GetType();
+
             switch(eType.Name)
             {
                 case "BoomerangItem":
@@ -74,7 +77,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
                     keyCount += 1;
                     break;
                 case "DungeonMap":
-                    keyCount += 1;
+                    inventory.Add(typeof(DungeonMap));
                     break;
                 default:
                     Debug.Print("ERROR: could not find IEquipable. @ Inventory Manager.");

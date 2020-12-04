@@ -120,5 +120,7 @@ namespace CrossPlatformDesktopProject.Link
         public void MoveRight() { }
         public void UsePrimary() { }
         public void UseSecondary() { }
+
+        public void PickUp(IWorldItem contentOfChest) { }
     }
 }
