@@ -1,4 +1,6 @@
 ROOM_007
 CrossPlatformDesktopProject.Obstacles.Block,3,3,CrossPlatformDesktopProject.Obstacles.Block,3,10
 CrossPlatformDesktopProject.Obstacles.Block,5,3,CrossPlatformDesktopProject.Obstacles.Block,5,10
+CrossPlatformDesktopProject.Obstacles.DoorBlock,8,6,CrossPlatformDesktopProject.Obstacles.DoorBlock,8,7
+CrossPlatformDesktopProject.Obstacles.DoorBlock,4,0,CrossPlatformDesktopProject.Obstacles.DoorBlock,4,13
 CrossPlatformDesktopProject.NPC.Goriya,2,9,CrossPlatformDesktopProject.NPC.Goriya,5,8,CrossPlatformDesktopProject.NPC.Goriya,3,11

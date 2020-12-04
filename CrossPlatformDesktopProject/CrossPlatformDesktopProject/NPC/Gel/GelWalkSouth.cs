@@ -11,6 +11,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int delay_frame_index;
         private int counter;
         private Gel gel;
+        private System.Random random;
 
         private static int delay_frames = 6;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
@@ -20,7 +21,9 @@ namespace CrossPlatformDesktopProject.NPC
 
         public GelWalkSouth(Gel gel)
         {
+            this.random = new System.Random();
             this.gel = gel;
+            gel.initialY = gel.yPos;
             my_frame_index = 0;
             delay_frame_index = 0;
         }
@@ -38,9 +41,25 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (counter == 10)
+            if (counter == 4)
             {
-                gel.currentState = new GelWalkWest(gel);
+                gel.movementRNG = gel.random.Next(1, 4);
+
+                switch (gel.movementRNG)
+                {
+                    case 1:
+                        gel.currentState = new GelWalkSouth(gel);
+                        break;
+                    case 2:
+                        gel.currentState = new GelWalkNorth(gel);
+                        break;
+                    case 3:
+                        gel.currentState = new GelWalkWest(gel);
+                        break;
+                    case 4:
+                        gel.currentState = new GelWalkEast(gel);
+                        break;
+                }
             }
 
             if (++delay_frame_index >= delay_frames)
@@ -60,8 +79,11 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
-            gel.yPos -= 5;
-            gel.currentState = new GelWalkNorth(gel);
+            if (System.Math.Abs(gel.yPos - gel.initialY) > 2)
+            {
+                gel.yPos -= 5;
+                gel.currentState = new GelWalkNorth(gel);
+            }
         }
     }
 }

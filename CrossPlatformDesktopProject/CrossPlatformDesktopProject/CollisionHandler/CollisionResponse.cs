@@ -4,6 +4,7 @@ using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.Link.Equipables;
 using CrossPlatformDesktopProject.NPC;
+using CrossPlatformDesktopProject.Obstacles;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 .SelectMany(s => s.GetTypes())
                 .Where(p => typeOfObstacle.IsAssignableFrom(p));
 
-            //Obstacle Types
+            //Item Types
             var typeOfItems = typeof(IWorldItem);
             var itemTypes = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
@@ -75,11 +76,26 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Smoke), enemySubject, side), typeof(EnemyTakeDamageCommand));
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Wall), enemySubject, side), typeof(ResetNPCCommand));
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Door), enemySubject, side), typeof(ResetNPCCommand));
+                    foreach (Type obstacleSubject in obstacleTypes)
+                    {
+                        commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, enemySubject, side), typeof(ResetNPCCommand));
+                    }
                 }
+
+                foreach (Type obstacleSubject in obstacleTypes)
+                {
+                    commandMap.Remove(new Tuple<Type, Type, CollisionSides>(obstacleSubject, batType, side));
+                }
+
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(DoorBlock), batType, side), typeof(ResetNPCCommand));
+
                 foreach (Type obstacleSubject in obstacleTypes)
                 {
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(obstacleSubject, playerType, side), typeof(ResetCommand));
                 }
+
+                commandMap.Remove(new Tuple<Type, Type, CollisionSides>(typeof(DoorBlock), playerType, side));
+
                 foreach (Type itemSubject in itemTypes)
                 {
                     commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, itemSubject, side), typeof(KeyDisappearCommand));
@@ -87,6 +103,9 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(Door), side), typeof(TransportRoomCommand));
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Wall), playerType, side), typeof(ResetCommand));
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(LockedDoor), side), typeof(UnlockDoorCommand));
+                commandMap.Remove(new Tuple<Type, Type, CollisionSides>(playerType, typeof(EmptyRoomNotifier), side));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(EmptyRoomNotifier), side), typeof(ThunderDomeWaveCommand));
+
             }
         }
 
@@ -102,7 +121,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 new Type[] { targetType, typeof(Room) },
                 new Type[] { subjectType, targetType, typeof(CollisionSides) },
                 new Type[] { subjectType, targetType, typeof(Room) },
-                new Type[] { typeof(Game1), subjectType, targetType, typeof(CollisionSides) }
+                new Type[] { typeof(Game1), subjectType, targetType, typeof(CollisionSides) },
             };
 
             ConstructorInfo commandConstructor = null;
@@ -147,6 +166,10 @@ namespace CrossPlatformDesktopProject.CollisionHandler
         {
             Type subjectType = subject.GetType();
             Type targetType = target.GetType();
+            if(targetType == typeof(EmptyRoomNotifier))
+            {
+                Console.WriteLine("die");
+            }
             Tuple<Type, Type, CollisionSides> key = new Tuple<Type, Type, CollisionSides>(subjectType, targetType, side);
             if (keySet.Contains(key))
             {

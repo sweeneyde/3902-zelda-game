@@ -68,6 +68,8 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.Enter, new StartCommand(myGame));
 
             this.addCommand(Keys.Space, new MuteCommand(myGame));
+            this.addCommand(Keys.J, new EnterThunderDome(myGame));
+
 
             priorityActions.Add(Keys.X);
             priorityActions.Add(Keys.Z);
@@ -98,7 +100,7 @@ namespace CrossPlatformDesktopProject
 
             foreach (Keys k in priorityActions)
             {
-                if (currentState.Contains(k))
+                if (!heldKeys.Contains(k) && currentState.Contains(k))
                 {
                     mappings[k].Execute();
                     return;

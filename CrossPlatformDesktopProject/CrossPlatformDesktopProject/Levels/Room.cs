@@ -47,7 +47,10 @@ namespace CrossPlatformDesktopProject.Levels
         public void Draw(SpriteBatch sb)
         {
             background.Draw(sb);
-            foreach (IWorldItem x in worldItems) { x.Draw(sb); }
+            if(npcs.Count == 0)
+            {
+                foreach (IWorldItem x in worldItems) { x.Draw(sb); }
+            }
             foreach (IObstacle x in obstacles) { x.Draw(sb); }
             foreach (INpc x in npcs) { x.Draw(sb); }
         }
@@ -55,9 +58,14 @@ namespace CrossPlatformDesktopProject.Levels
         public List<ICollider> GetColliders()
         {
             List<ICollider> collidables = new List<ICollider>();
-            foreach(IWorldItem x in worldItems){
-                collidables.Add((ICollider)x);
+            if(npcs.Count == 0)
+            {
+                foreach (IWorldItem x in worldItems)
+                {
+                    collidables.Add((ICollider)x);
+                }
             }
+            
             foreach (IObstacle x in obstacles)
             {
                 collidables.Add((ICollider)x);
@@ -115,6 +123,19 @@ namespace CrossPlatformDesktopProject.Levels
             {
                 obstacles.Remove((IObstacle)entity);
             }
+        }
+
+        public void RemoveNPC(ICollider entity)
+        {
+            if (npcs.Contains((INpc)entity))
+            {
+                npcs.Remove((INpc)entity);
+            }
+        }
+
+        public void Add(INpc entity)
+        {
+            npcs.Add((INpc)entity);
         }
     }
 }

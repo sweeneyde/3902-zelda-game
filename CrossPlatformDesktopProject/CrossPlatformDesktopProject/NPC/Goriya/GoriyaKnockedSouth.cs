@@ -49,7 +49,7 @@ namespace CrossPlatformDesktopProject.NPC
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
-                goriya.yPos += 15;
+                goriya.yPos += 5;
                 counter++;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
@@ -61,6 +61,26 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
+            goriya.xPos = goriya.initialX;
+            goriya.yPos = goriya.initialY;
+
+            goriya.movementRNG = goriya.random.Next(1, 4);
+
+            switch (goriya.movementRNG)
+            {
+                case 1:
+                    goriya.currentState = new GoriyaWalkSouth(goriya, boomerang);
+                    break;
+                case 2:
+                    goriya.currentState = new GoriyaWalkNorth(goriya, boomerang);
+                    break;
+                case 3:
+                    goriya.currentState = new GoriyaWalkWest(goriya, boomerang);
+                    break;
+                case 4:
+                    goriya.currentState = new GoriyaWalkEast(goriya, boomerang);
+                    break;
+            }
         }
     }
 }

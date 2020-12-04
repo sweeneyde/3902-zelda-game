@@ -11,6 +11,7 @@ namespace CrossPlatformDesktopProject.NPC
         private int delay_frame_index;
         private Goriya goriya;
         private GoriyaBoomerang boomerang;
+        private string linkState;
 
         private static int delay_frames = 6;
         private static List<Rectangle> my_source_frames = new List<Rectangle>{
@@ -43,6 +44,38 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
+            if (boomerang.yPos == goriya.yPos && boomerang.travelmarker == 1)
+            {
+                goriya.movementRNG = goriya.random.Next(1, 4);
+
+                switch (goriya.movementRNG)
+                {
+                    case 1:
+                        goriya.currentState = new GoriyaWalkSouth(goriya, boomerang);
+                        break;
+                    case 2:
+                        goriya.currentState = new GoriyaWalkNorth(goriya, boomerang);
+                        break;
+                    case 3:
+                        goriya.currentState = new GoriyaWalkWest(goriya, boomerang);
+                        break;
+                    case 4:
+                        goriya.currentState = new GoriyaWalkEast(goriya, boomerang);
+                        break;
+                }
+            }
+
+            if (++delay_frame_index >= delay_frames)
+            {
+                delay_frame_index = 0;
+                my_frame_index++;
+                my_frame_index %= my_source_frames.Count;
+            }
+        }
+
+        public void TakeDamage()
+        {
+            linkState = goriya.myGame.player.currentState.GetType().Name;
             goriya.health--;
 
             if (goriya.health == 0)
@@ -51,13 +84,23 @@ namespace CrossPlatformDesktopProject.NPC
             }
             else
             {
-                goriya.currentState = new GoriyaKnockedNorth(goriya, boomerang);
+                if (linkState.Contains("East"))
+                {
+                    goriya.currentState = new GoriyaKnockedEast(goriya, boomerang);
+                }
+                else if (linkState.Contains("West"))
+                {
+                    goriya.currentState = new GoriyaKnockedWest(goriya, boomerang);
+                }
+                else if (linkState.Contains("North"))
+                {
+                    goriya.currentState = new GoriyaKnockedNorth(goriya, boomerang);
+                }
+                else
+                {
+                    goriya.currentState = new GoriyaKnockedSouth(goriya, boomerang);
+                }
             }
-        }
-
-        public void TakeDamage()
-        {
-            goriya.currentState = new GoriyaKnockedNorth(goriya, boomerang);
         }
 
         public void ChangeDirection()

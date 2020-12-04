@@ -41,7 +41,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (counter == 5)
+            if (counter == 6)
             {
                 skeleton.currentState = new SkeletonWalkNorth(skeleton);
             }
@@ -49,7 +49,7 @@ namespace CrossPlatformDesktopProject.NPC
             if (++delay_frame_index >= delay_frames)
             {
                 delay_frame_index = 0;
-                skeleton.yPos += 15;
+                skeleton.yPos += 5;
                 counter++;
                 my_frame_index++;
                 my_frame_index %= my_source_frames.Count;
@@ -62,6 +62,26 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
+            skeleton.xPos = skeleton.initialX;
+            skeleton.yPos = skeleton.initialY;
+
+            skeleton.movementRNG = skeleton.random.Next(1, 4);
+
+            switch (skeleton.movementRNG)
+            {
+                case 1:
+                    skeleton.currentState = new SkeletonWalkSouth(skeleton);
+                    break;
+                case 2:
+                    skeleton.currentState = new SkeletonWalkNorth(skeleton);
+                    break;
+                case 3:
+                    skeleton.currentState = new SkeletonWalkWest(skeleton);
+                    break;
+                case 4:
+                    skeleton.currentState = new SkeletonWalkEast(skeleton);
+                    break;
+            }
         }
     }
 }

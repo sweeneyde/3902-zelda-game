@@ -1,6 +1,6 @@
 using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.Link;
-
+using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -32,9 +32,15 @@ namespace CrossPlatformDesktopProject.CollisionHandler
         {
             colliders.Add(collider);
         }
+
         public void RemoveColliders(ICollider collider)
         {
             delete.Add(collider);
+        }
+
+        public void RemoveNPC(ICollider collider)
+        {
+            myRoom.RemoveNPC(collider);
         }
 
         public Boolean CheckCollision(Rectangle subject, Rectangle target)

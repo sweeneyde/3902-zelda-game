@@ -109,6 +109,7 @@ namespace CrossPlatformDesktopProject
             if (player.link_health == 0)
             {
                 Die();
+                player.link_health = -1;
             }
         }
         
@@ -146,7 +147,6 @@ namespace CrossPlatformDesktopProject
             }
             currentGamePlayState = new GamePlayState(this, room2);
             currentState = new RoomTransitionState(this, room1, room2, side);
-
         }
 
         public void quit()
@@ -156,7 +156,8 @@ namespace CrossPlatformDesktopProject
 
         public void Die()
         {
-            this.currentState = new DeathMenuState(this, font);
+            player.currentState = new Death(player, this, font);
+            SoundStorage.music_instance.Stop();
         }
 
 
@@ -167,21 +168,11 @@ namespace CrossPlatformDesktopProject
                 pauseCooldown = 10;
                 this.currentState = new PauseState(this, font);
             }
-
-
         }
 
         public void reset()
         {
             this.Initialize();
-        }
-
-        public void mute()
-        {
-            if (SoundEffect.MasterVolume == 0.0f)
-                SoundEffect.MasterVolume = 1.0f;
-            else
-                SoundEffect.MasterVolume = 0.0f;
         }
     }
 }

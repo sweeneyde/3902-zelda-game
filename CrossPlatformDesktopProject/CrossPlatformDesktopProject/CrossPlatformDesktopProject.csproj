@@ -42,10 +42,15 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\ThunderDomeWaveCommand.cs" />
+    <Compile Include="Link\Death.cs" />
     <Compile Include="CollisionHandler\CollisionManager.cs" />
     <Compile Include="Commands\MuteCommand.cs" />
+    <Compile Include="Commands\EnterThunderDomeCommand.cs" />
     <Compile Include="Commands\UnlockDoorCommand.cs" />
     <Compile Include="Controllers\GamePadController.cs" />
+    <Compile Include="Obstacles\DoorBlock.cs" />
+    <Compile Include="GameStates\ThunderDomeState.cs" />
     <Compile Include="WorldItem\BombItem.cs" />
     <Compile Include="WorldItem\BoomerangItem.cs" />
     <Compile Include="WorldItem\BowItem.cs" />
@@ -58,8 +63,6 @@
     <Compile Include="GameStates\InventoryTextureStorage.cs" />
     <Compile Include="Commands\ResetNPCCommand.cs" />
     <Compile Include="GameStates\HUDWindow.cs" />
-    <Compile Include="GameStates\InventoryState.cs" />
-    <Compile Include="GameStates\InventoryTextureStorage.cs" />
     <Compile Include="GameStates\RoomTransitionState.cs" />
     <Compile Include="CollisionHandler\CollisionResponse.cs" />
     <Compile Include="CollisionHandler\Collision.cs" />
@@ -71,8 +74,6 @@
     <Compile Include="GameStates\GamePlayState.cs" />
     <Compile Include="GameStates\ScreenTextureStorage.cs" />
     <Compile Include="GameStates\WindowManager.cs" />
-    <Compile Include="GameStates\InventoryState.cs" />
-    <Compile Include="GameStates\InventoryTextureStorage.cs" />
     <Compile Include="ICollider.cs" />
     <Compile Include="Commands\ResetGame.cs" />
     <Compile Include="Commands\StartCommand.cs" />
@@ -202,6 +203,7 @@
     <Compile Include="WorldItem\Rupee.cs" />
     <Compile Include="WorldItem\DungeonKey.cs" />
     <Compile Include="WorldItem\WorldHandlers\Door.cs" />
+    <Compile Include="WorldItem\WorldHandlers\EmptyRoomNotifier.cs" />
     <Compile Include="WorldItem\WorldHandlers\Wall.cs" />
     <Compile Include="WorldItem\WorldItemTextureStorage.cs" />
     <Compile Include="WorldItem\Triforce.cs" />
@@ -283,6 +285,7 @@
     <None Include="Levels\LevelCSV\RoomCSV\014.csv" />
     <None Include="Levels\LevelCSV\RoomCSV\015.csv" />
     <None Include="Levels\LevelCSV\RoomCSV\016.csv" />
+    <None Include="Levels\LevelCSV\RoomCSV\018.csv" />
     <None Include="Levels\LevelCSV\RoomCSV\017.csv" />
   </ItemGroup>
   <ItemGroup />

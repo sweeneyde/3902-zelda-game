@@ -21,6 +21,7 @@ namespace CrossPlatformDesktopProject.NPC
         public BatWalkSE(Bat bat)
         {
             this.bat = bat;
+            bat.initialX = bat.xPos;
             my_frame_index = 0;
             delay_frame_index = 0;
         }
@@ -38,7 +39,7 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void Update()
         {
-            if (counter == 10)
+            if (counter == 4)
             {
                 bat.currentState = new BatWalkEast(bat);
             }
@@ -61,9 +62,12 @@ namespace CrossPlatformDesktopProject.NPC
 
         public void ChangeDirection()
         {
-            bat.yPos -= 5;
-            bat.xPos -= 5;
-            bat.currentState = new BatWalkNW(bat);
+            if (System.Math.Abs(bat.xPos - bat.initialX) > 2)
+            {
+                bat.xPos -= 5;
+                bat.yPos -= 5;
+                bat.currentState = new BatWalkWest(bat);
+            }
         }
     }
 }
