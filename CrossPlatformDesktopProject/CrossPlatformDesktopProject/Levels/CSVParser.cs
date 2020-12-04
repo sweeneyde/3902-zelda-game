@@ -102,7 +102,6 @@ namespace CrossPlatformDesktopProject.Levels
 
                         float[] coords = RowsColumns.ConvertRowsColumns(row, column);
 
-                        Debug.Print(grabType);
                         Type resolvedType = Type.GetType(grabType);
 
                         if (resolvedType == typeof(Goriya))

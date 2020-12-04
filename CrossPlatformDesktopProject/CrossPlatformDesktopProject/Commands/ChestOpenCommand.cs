@@ -35,8 +35,6 @@ namespace CrossPlatformDesktopProject.Commands
                     if (!cItem.IsOpen)
                     {
                         cItem.IsOpen = true;
-                        // Holder for now, just wanna see something happen
-                        
                         myPlayer.PickupItem(cItem.getItemInChest());
                     }
 
