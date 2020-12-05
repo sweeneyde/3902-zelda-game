@@ -73,6 +73,8 @@ namespace CrossPlatformDesktopProject.GameStates
             ["015"] = new int[] { 3, 3 },
             ["016"] = new int[] { 2, 3 },
             ["017"] = new int[] { 2, 2 },
+            ["018"] = new int[] { 0, 0 },
+
         };
 
         public void Draw(SpriteBatch sb)
