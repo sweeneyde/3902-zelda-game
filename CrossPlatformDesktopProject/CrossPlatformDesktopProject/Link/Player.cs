@@ -81,6 +81,11 @@ namespace CrossPlatformDesktopProject.Link
             currentState.MoveRight();
         }
 
+        public void PickupItem(IWorldItem contentOfChest)
+        {
+            currentState.PickUp(contentOfChest);
+        }
+
         public void UsePrimary()
         {
             if (!this.currentState.GetType().Name.Contains("Sword"))

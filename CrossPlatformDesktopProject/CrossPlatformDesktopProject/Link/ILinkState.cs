@@ -14,5 +14,6 @@ namespace CrossPlatformDesktopProject
         void MoveRight();
         void UsePrimary();
         void UseSecondary();
+        void PickUp(IWorldItem contentOfChest);
     }
 }

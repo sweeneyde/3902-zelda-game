@@ -6,6 +6,7 @@ using CrossPlatformDesktopProject.Link.Equipables;
 using CrossPlatformDesktopProject.NPC;
 using CrossPlatformDesktopProject.Obstacles;
 using CrossPlatformDesktopProject.WorldItem.WorldHandlers;
+using CrossPlatformDesktopProject.WorldItem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -98,7 +99,14 @@ namespace CrossPlatformDesktopProject.CollisionHandler
 
                 foreach (Type itemSubject in itemTypes)
                 {
-                    commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, itemSubject, side), typeof(KeyDisappearCommand));
+                    if (itemSubject.Equals(typeof(Chest)))
+                    {
+                        commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, itemSubject, side), typeof(ChestOpenCommand));
+                    }
+                    else
+                    {
+                        commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, itemSubject, side), typeof(KeyDisappearCommand));
+                    }    
                 }
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(Door), side), typeof(TransportRoomCommand));
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(typeof(Wall), playerType, side), typeof(ResetCommand));

@@ -45,9 +45,11 @@
     <Compile Include="Commands\ThunderDomeWaveCommand.cs" />
     <Compile Include="Link\Death.cs" />
     <Compile Include="CollisionHandler\CollisionManager.cs" />
+    <Compile Include="Commands\ChestOpenCommand.cs" />
     <Compile Include="Commands\MuteCommand.cs" />
     <Compile Include="Commands\EnterThunderDomeCommand.cs" />
     <Compile Include="Commands\UnlockDoorCommand.cs" />
+    <Compile Include="Link\LinkShowingItem.cs" />
     <Compile Include="Controllers\GamePadController.cs" />
     <Compile Include="Obstacles\DoorBlock.cs" />
     <Compile Include="GameStates\ThunderDomeState.cs" />
@@ -57,6 +59,7 @@
     <Compile Include="Commands\UseSecondaryCommand.cs" />
     <Compile Include="GameStates\DeathMenuState.cs" />
     <Compile Include="GameStates\PauseState.cs" />
+    <Compile Include="WorldItem\Chest.cs" />
     <Compile Include="WorldItem\WorldHandlers\LockedDoor.cs" />
     <Compile Include="GameStates\InventoryState.cs" />
     <Compile Include="GameStates\HUDTextureStorage.cs" />

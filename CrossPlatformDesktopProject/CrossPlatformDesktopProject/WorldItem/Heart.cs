@@ -18,7 +18,7 @@ namespace CrossPlatformDesktopProject.WorldItem
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            Texture2D texture = ItemTextureStorage.Instance.getItemSpriteSheet();
+            Texture2D texture = ItemTextureStorage.Instance.getHeartSpriteSheet();
             Rectangle source = ItemTextureStorage.HEART;
             spriteBatch.Draw(texture, getRectangle(), source, Color.White);
         }
