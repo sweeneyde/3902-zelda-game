@@ -108,4 +108,5 @@ In an attempt to keep scope under control and meet deadlines, the team made the 
 - Pushable blocks omitted
 
 Bonus Implementation
+---
 The thunderdome was implemented as a multi-wave battle for the user to test their skills against respawning enemies.
