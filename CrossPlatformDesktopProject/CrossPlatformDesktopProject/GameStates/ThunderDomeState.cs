@@ -1,5 +1,6 @@
 ﻿using CrossPlatformDesktopProject;
 using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.Commands;
 using CrossPlatformDesktopProject.GameStates;
 using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.Link;
@@ -49,7 +50,6 @@ public class ThunderDomeState : IGameState
         {
             game.player.link_health = -1;
             game.player.currentState = new Death(game.player, game, game.font);
-            game.currentState = new ThunderDomeDefeatState(game, game.font);
             SoundStorage.music_instance.Stop();
         }
         foreach (IController controller in game.controllerList)
@@ -74,11 +74,6 @@ public class ThunderDomeState : IGameState
 
     public void StartCountdown()
     {
-        waveNumber += 1;
-        if (waveNumber >= enemyWaves.Count)
-        {
-            game.currentState = new ThunderDomeVictoryState(game, game.font);
-        }
         if (timer <= 0)
         {
             timer = 150;
@@ -113,6 +108,12 @@ public class ThunderDomeState : IGameState
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
         coords = RowsColumns.ConvertRowsColumns(7, 12);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
+
+        waveNumber += 1;
+        if (waveNumber >= enemyWaves.Count)
+        {
+            game.currentState = new ThunderDomeVictoryState(game, game.font);
+        }
 
         //Load enemies by wave number
         for (int i = 0; i < waveNumber; i++)

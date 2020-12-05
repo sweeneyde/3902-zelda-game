@@ -102,7 +102,7 @@ namespace CrossPlatformDesktopProject.Link
             }
             if (endGame && delay_frame_index == end_game_frames)
             {
-                myGame.currentState = new DeathMenuState(myGame, myFont);
+                (new DeathStateCommand(myGame)).Execute();
             } else if (endGame && delay_frame_index == pop_frames)
             {
                 my_frame_index = 4;
