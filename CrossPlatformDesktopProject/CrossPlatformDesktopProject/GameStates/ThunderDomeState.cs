@@ -19,6 +19,10 @@ public class ThunderDomeState : IGameState
     private List<INpc> enemyWaves = new List<INpc>();
     private int waveNumber = 0;
     private int timer = 500;
+    private Fireball fb1 = new Fireball();
+    private Fireball fb2 = new Fireball();
+    private Fireball fb3 = new Fireball();
+
 
     public ThunderDomeState(Game1 game, Room room)
     {
@@ -76,7 +80,7 @@ public class ThunderDomeState : IGameState
             }
             else
             {
-                sb.DrawString(game.font, "Wave " + (waveNumber) + "\n  " + (timer / 60 + 1), location, Color.Red);
+                sb.DrawString(game.font, "Wave " + (waveNumber + 1) + "\n  " + (timer / 60 + 1), location, Color.Red);
             }
         }
     }
@@ -101,18 +105,17 @@ public class ThunderDomeState : IGameState
         coords = RowsColumns.ConvertRowsColumns(7, 9);
         enemyWaves.Add(new Bat(coords[0], coords[1], game));
 
-        coords = RowsColumns.ConvertRowsColumns(1, 12);
+        coords = RowsColumns.ConvertRowsColumns(2, 11);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
-        coords = RowsColumns.ConvertRowsColumns(4, 12);
+        coords = RowsColumns.ConvertRowsColumns(5, 11);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
-        coords = RowsColumns.ConvertRowsColumns(7, 12);
-        enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
-
-        coords = RowsColumns.ConvertRowsColumns(3, 3);
+        coords = RowsColumns.ConvertRowsColumns(7, 11);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
 
+        coords = RowsColumns.ConvertRowsColumns(3, 5);
+        enemyWaves.Add(new Boss(coords[0], coords[1], fb1, fb2, fb3, game));
 
-        if (waveNumber > enemyWaves.Count)
+        if (waveNumber >= enemyWaves.Count)
         {
             game.currentState = new ThunderDomeVictoryState(game, game.font);
         }
@@ -120,16 +123,23 @@ public class ThunderDomeState : IGameState
         if (timer <= 0)
         {
             timer = 150;
-            waveNumber += 1;
         }
     }
 
     private void GenerateNextWave()
     {
         //Load enemies by wave number
+
+        waveNumber += 1;
         for (int i = 0; i < waveNumber; i++)
         {
             CurrentRoom.Add(enemyWaves[i]);
+            if(enemyWaves[i].GetType() == typeof(Boss))
+            {
+                CurrentRoom.Add(fb1);
+                CurrentRoom.Add(fb2);
+                CurrentRoom.Add(fb3);
+            }
         }
     }
 }
