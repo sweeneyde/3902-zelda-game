@@ -61,7 +61,6 @@ namespace CrossPlatformDesktopProject
             controllerList = new List<IController>()
             {
                 new KeyboardController(this, player),
-                new MouseController(this),
                 new GamePadController(this, player),
             };
 
