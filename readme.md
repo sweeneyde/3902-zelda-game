@@ -88,10 +88,6 @@ During Sprint 4, locked doors & keys were introduced into Map.csv. While no posi
 Known Bugs
 ---
 This section of the file will enumerate the most intrusive, found bugs in the game.
-
-- Enemies knockback into walls
-    - When an enemy recieves damage and is knocked back into a wall, the enemy has a chance of flying behind the wall, trapping them out of the screen.
-
 - Sound bugs
     - Though there are a few bugs of this nature, the most intrusive were found when the player holds a button and repeats an action. This causes the sound file to play on loop and overlap itself.
 
