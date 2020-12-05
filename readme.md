@@ -28,6 +28,8 @@ Program Controls (Keyboard):
 * Space Bar: Mute
 * Enter: View Inventory
 
+* J: THUNDERDOME
+
 
 Program Controls (GamePad):
 
@@ -104,3 +106,6 @@ In an attempt to keep scope under control and meet deadlines, the team made the 
 - Mission hints from the "Old Man" omitted
 
 - Pushable blocks omitted
+
+#Bonus Implementation
+The thunderdome was implemented as a multi-wave battle for the user to test their skills against respawning enemies.
