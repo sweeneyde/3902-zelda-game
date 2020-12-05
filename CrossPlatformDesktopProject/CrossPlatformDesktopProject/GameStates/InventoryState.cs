@@ -314,7 +314,8 @@ namespace CrossPlatformDesktopProject.GameStates
                 int offsetX = HUDTextureStorage.HEALTH_OFFSET_X;
                 int offsetY = HUDTextureStorage.HEALTH_OFFSET_Y + yOffsetHUD;
                 int tokenSize = HUDTextureStorage.TOKEN_HEIGHT;
-                sb.Draw(emptyTexture, HUDTextureStorage.HEALTH_BAR, Color.White);
+                Rectangle INV_HEALTH = new Rectangle(offsetX - 1, offsetY - tokenSize - 1, HUDTextureStorage.HEALTH_BAR.Width, HUDTextureStorage.HEALTH_BAR.Height);
+                sb.Draw(emptyTexture, INV_HEALTH, Color.White);
                 for (i = 0; i < (player.link_max_health) / 2; i++)
                 {
                     Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
