@@ -124,7 +124,7 @@ namespace CrossPlatformDesktopProject.Levels
                             }
                         } else if (resolvedType == typeof(Boss))
                         {
-                            args = new object[] { coords[0], coords[1], (Fireball)topFireball, (Fireball)midFireball, (Fireball)botFireball };
+                            args = new object[] { coords[0], coords[1], (Fireball)topFireball, (Fireball)midFireball, (Fireball)botFireball, game};
                         } else if(resolvedType == typeof(Chest))
                         {
                             chestFlag = true;
