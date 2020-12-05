@@ -28,6 +28,7 @@ public class ThunderDomeState : IGameState
         CurrentRoom = room;
         game.player.currentState = new LinkFacingEastState(game.player);
         game.player.link_health = game.player.link_max_health;
+
     }
         
     public void Update()
@@ -107,8 +108,9 @@ public class ThunderDomeState : IGameState
         coords = RowsColumns.ConvertRowsColumns(7, 12);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
 
-        coords = RowsColumns.ConvertRowsColumns(3,2);
+        coords = RowsColumns.ConvertRowsColumns(3, 3);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
+
 
         if (waveNumber > enemyWaves.Count)
         {

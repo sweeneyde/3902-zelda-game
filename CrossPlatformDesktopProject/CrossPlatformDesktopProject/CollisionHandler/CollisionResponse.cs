@@ -149,7 +149,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 case 1:
                     if (commandConstructor.GetParameters()[0].ParameterType == typeof(Game1)) 
                     {
-                        return (ICommand)commandConstructor.Invoke(new object[] { typeof(Game1) });
+                        return (ICommand)commandConstructor.Invoke(new object[] { myGame });
                     }
                     else 
                     {
