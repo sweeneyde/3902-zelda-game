@@ -18,7 +18,7 @@ public class ThunderDomeState : IGameState
     public Room CurrentRoom { get; }
     private List<INpc> enemyWaves = new List<INpc>();
     private int waveNumber = 0;
-    private int timer = 150;
+    private int timer = 500;
 
     public ThunderDomeState(Game1 game, Room room)
     {
@@ -68,7 +68,15 @@ public class ThunderDomeState : IGameState
         if(timer > 0)
         {
             var location = new Vector2(RoomTextureStorage.ROOM_WIDTH/2, RoomTextureStorage.ROOM_HEIGHT/3);
-            sb.DrawString(game.font, "Wave " + (waveNumber + 1) + "\n  " + (timer/60 + 1), location, Color.Red);
+            if (waveNumber == 0)
+            {
+                location = new Vector2(RoomTextureStorage.ROOM_WIDTH / 3, RoomTextureStorage.ROOM_HEIGHT / 3);
+                sb.DrawString(game.font, "  Welcome to the \n   Thunderdome", location, Color.Red);
+            }
+            else
+            {
+                sb.DrawString(game.font, "Wave " + (waveNumber + 1) + "\n  " + (timer / 60 + 1), location, Color.Red);
+            }
         }
     }
 
