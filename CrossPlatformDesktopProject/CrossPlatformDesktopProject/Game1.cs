@@ -24,7 +24,7 @@ namespace CrossPlatformDesktopProject
 
         public List<IController> controllerList;
         
-        private SpriteFont font;
+        public SpriteFont font;
         public Player player;
         private WindowManager windows;
         public int pauseCooldown;

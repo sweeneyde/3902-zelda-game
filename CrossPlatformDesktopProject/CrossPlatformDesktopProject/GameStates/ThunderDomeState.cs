@@ -2,6 +2,7 @@
 using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.NPC;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,11 @@ public class ThunderDomeState : IGameState
     {
         CurrentRoom.Draw(sb);
         game.player.Draw(sb);
+        if(timer > 0)
+        {
+            var location = new Vector2(RoomTextureStorage.ROOM_WIDTH/2, RoomTextureStorage.ROOM_HEIGHT/3);
+            sb.DrawString(game.font, "Wave " + (waveNumber + 1) + "\n  " + (timer/60 + 1), location, Color.Red);
+        }
     }
 
     public void StartCountdown()
