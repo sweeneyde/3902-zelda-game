@@ -32,6 +32,7 @@ namespace CrossPlatformDesktopProject.Sound
         private static SoundEffect EnemyDieSound = null;
         private static SoundEffect LinkHitSound = null;
         private static SoundEffect LinkDieSound = null;
+        private static SoundEffect Thunder = null;
         public static SoundEffectInstance music_instance = null;
 
 
@@ -54,8 +55,9 @@ namespace CrossPlatformDesktopProject.Sound
             EnemyDieSound = content.Load<SoundEffect>("LOZ_Enemy_Die");
             LinkDieSound = content.Load<SoundEffect>("LOZ_Link_Die");
             LinkHitSound = content.Load<SoundEffect>("LOZ_Link_Hurt");
+            Thunder = content.Load<SoundEffect>("ACDC  Thunderstruck");
 
-            if(music_instance != null)
+            if (music_instance != null)
             {
                 music_instance.Stop();
             }
@@ -66,7 +68,10 @@ namespace CrossPlatformDesktopProject.Sound
            
         }
 
-
+        public SoundEffect getThunderSound()
+        {
+            return Thunder;
+        }
         public SoundEffect getSwordSound()
         {
             return swordSound;
