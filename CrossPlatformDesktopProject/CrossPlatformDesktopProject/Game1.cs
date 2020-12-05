@@ -24,7 +24,7 @@ namespace CrossPlatformDesktopProject
 
         public List<IController> controllerList;
         
-        private SpriteFont font;
+        public SpriteFont font;
         public Player player;
         private WindowManager windows;
         public int pauseCooldown;
@@ -105,12 +105,6 @@ namespace CrossPlatformDesktopProject
         protected override void Update(GameTime gameTime)
         {
             currentState.Update();
-
-            if (player.link_health == 0)
-            {
-                Die();
-                player.link_health = -1;
-            }
         }
         
         /// <summary>
@@ -152,12 +146,6 @@ namespace CrossPlatformDesktopProject
         public void quit()
         {
             Exit();
-        }
-
-        public void Die()
-        {
-            player.currentState = new Death(player, this, font);
-            SoundStorage.music_instance.Stop();
         }
 
 

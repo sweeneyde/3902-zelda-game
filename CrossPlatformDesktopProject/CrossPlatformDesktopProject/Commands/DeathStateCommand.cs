@@ -1,4 +1,5 @@
 ﻿using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.GameStates;
 using CrossPlatformDesktopProject.Levels;
 using CrossPlatformDesktopProject.Link;
 using System;
@@ -9,17 +10,23 @@ using System.Threading.Tasks;
 
 namespace CrossPlatformDesktopProject.Commands
 {
-    class EnterThunderDome : ICommand
+    class DeathStateCommand : ICommand
     {
         private Game1 myGame;
-        public EnterThunderDome(Game1 game)
+        public DeathStateCommand(Game1 game)
         {
             myGame = game;
         }
         public void Execute()
         {
-            myGame.currentGamePlayState = new GamePlayState(myGame, Room.FromId(myGame, "018"));
-            myGame.currentState = new ThunderDomeState(myGame, Room.FromId(myGame, "018"));
+            if (myGame.currentState.GetType() == typeof(ThunderDomeState))
+            {
+                myGame.currentState = new ThunderDomeDefeatState(myGame, myGame.font);
+            }
+            else
+            {
+                myGame.currentState = new DeathMenuState(myGame, myGame.font);
+            }
         }
     }
 }

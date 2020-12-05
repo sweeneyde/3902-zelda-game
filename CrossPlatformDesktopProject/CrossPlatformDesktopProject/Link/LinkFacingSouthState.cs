@@ -78,6 +78,10 @@ namespace CrossPlatformDesktopProject.Link
         {
             player.currentState = new LinkUsingItemSouth(player);
         }
+        void ILinkState.PickUp(IWorldItem contentOfChest) 
+        {
+            player.currentState = new LinkShowingItem(contentOfChest, player);
+        }
 
     }
 }
