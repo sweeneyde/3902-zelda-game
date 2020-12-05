@@ -75,23 +75,13 @@ public class ThunderDomeState : IGameState
             }
             else
             {
-                sb.DrawString(game.font, "Wave " + (waveNumber + 1) + "\n  " + (timer / 60 + 1), location, Color.Red);
+                sb.DrawString(game.font, "Wave " + (waveNumber) + "\n  " + (timer / 60 + 1), location, Color.Red);
             }
         }
     }
 
     public void StartCountdown()
     {
-        if (timer <= 0)
-        {
-            timer = 150;
-        }
-    }
-
-    private void GenerateNextWave()
-    {
-        //Generate new entities on each reload
-        //Don't use Goriya or Boss here, the leave additional INpc objects in the room
         float[] coords;
 
         //Add enemies in order of appearance
@@ -117,12 +107,23 @@ public class ThunderDomeState : IGameState
         coords = RowsColumns.ConvertRowsColumns(7, 12);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
 
-        waveNumber += 1;
-        if (waveNumber >= enemyWaves.Count)
+        coords = RowsColumns.ConvertRowsColumns(3,2);
+        enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
+
+        if (waveNumber > enemyWaves.Count)
         {
             game.currentState = new ThunderDomeVictoryState(game, game.font);
         }
 
+        if (timer <= 0)
+        {
+            timer = 150;
+            waveNumber += 1;
+        }
+    }
+
+    private void GenerateNextWave()
+    {
         //Load enemies by wave number
         for (int i = 0; i < waveNumber; i++)
         {
