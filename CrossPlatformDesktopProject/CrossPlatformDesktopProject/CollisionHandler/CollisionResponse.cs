@@ -113,6 +113,8 @@ namespace CrossPlatformDesktopProject.CollisionHandler
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(LockedDoor), side), typeof(UnlockDoorCommand));
                 commandMap.Remove(new Tuple<Type, Type, CollisionSides>(playerType, typeof(EmptyRoomNotifier), side));
                 commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(EmptyRoomNotifier), side), typeof(ThunderDomeWaveCommand));
+                commandMap.Remove(new Tuple<Type, Type, CollisionSides>(playerType, typeof(Triforce), side));
+                commandMap.Add(new Tuple<Type, Type, CollisionSides>(playerType, typeof(Triforce), side), typeof(EnterThunderDome));
 
             }
         }
@@ -125,6 +127,7 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             // Search for a valid constructor for this commandType.
             List<Type[]> signatures = new List<Type[]> {
                 new Type[] { targetType },
+                new Type[] { typeof(Game1) },
                 new Type[] { targetType, typeof(CollisionSides) },
                 new Type[] { targetType, typeof(Room) },
                 new Type[] { subjectType, targetType, typeof(CollisionSides) },
@@ -144,7 +147,14 @@ namespace CrossPlatformDesktopProject.CollisionHandler
             switch (commandConstructor.GetParameters().Length)
             {
                 case 1:
-                    return (ICommand)commandConstructor.Invoke(new object[] { target });
+                    if (commandConstructor.GetParameters()[0].ParameterType == typeof(Game1)) 
+                    {
+                        return (ICommand)commandConstructor.Invoke(new object[] { myGame });
+                    }
+                    else 
+                    {
+                        return (ICommand)commandConstructor.Invoke(new object[] { target });
+                    }
                 case 2:
                     if (commandConstructor.GetParameters()[1].ParameterType == typeof(Room))
                     {

@@ -42,6 +42,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Commands\DeathStateCommand.cs" />
+    <Compile Include="GameStates\ThunderDomeDefeatState.cs" />
+    <Compile Include="GameStates\ThunderDomeVictoryState.cs" />
     <Compile Include="Commands\ThunderDomeWaveCommand.cs" />
     <Compile Include="Link\Death.cs" />
     <Compile Include="CollisionHandler\CollisionManager.cs" />

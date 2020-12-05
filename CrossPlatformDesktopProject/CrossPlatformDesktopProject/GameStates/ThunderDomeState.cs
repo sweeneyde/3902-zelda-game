@@ -1,11 +1,16 @@
 ﻿using CrossPlatformDesktopProject;
 using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.Commands;
+using CrossPlatformDesktopProject.GameStates;
 using CrossPlatformDesktopProject.Levels;
+using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.NPC;
+using CrossPlatformDesktopProject.Sound;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 public class ThunderDomeState : IGameState
 {
@@ -13,7 +18,11 @@ public class ThunderDomeState : IGameState
     public Room CurrentRoom { get; }
     private List<INpc> enemyWaves = new List<INpc>();
     private int waveNumber = 0;
-    private int timer = 150;
+    private int timer = 500;
+    private Fireball fb1 = new Fireball();
+    private Fireball fb2 = new Fireball();
+    private Fireball fb3 = new Fireball();
+
 
     public ThunderDomeState(Game1 game, Room room)
     {
@@ -21,6 +30,9 @@ public class ThunderDomeState : IGameState
         game.collisionManager.createDetector(room, game.player);
         game.currentHUD.activate(true);
         CurrentRoom = room;
+        game.player.currentState = new LinkFacingEastState(game.player);
+        game.player.link_health = game.player.link_max_health;
+
     }
         
     public void Update()
@@ -38,6 +50,13 @@ public class ThunderDomeState : IGameState
             }
         }
         game.player.Update();
+        //player death
+        if (game.player.link_health == 0)
+        {
+            game.player.link_health = -1;
+            game.player.currentState = new Death(game.player, game, game.font);
+            SoundStorage.music_instance.Stop();
+        }
         foreach (IController controller in game.controllerList)
         {
             controller.Update();
@@ -54,22 +73,20 @@ public class ThunderDomeState : IGameState
         if(timer > 0)
         {
             var location = new Vector2(RoomTextureStorage.ROOM_WIDTH/2, RoomTextureStorage.ROOM_HEIGHT/3);
-            sb.DrawString(game.font, "Wave " + (waveNumber + 1) + "\n  " + (timer/60 + 1), location, Color.Red);
+            if (waveNumber == 0)
+            {
+                location = new Vector2(RoomTextureStorage.ROOM_WIDTH / 3, RoomTextureStorage.ROOM_HEIGHT / 3);
+                sb.DrawString(game.font, "  Welcome to the \n   Thunderdome", location, Color.Red);
+            }
+            else
+            {
+                sb.DrawString(game.font, "Wave " + (waveNumber + 1) + "\n  " + (timer / 60 + 1), location, Color.Red);
+            }
         }
     }
 
     public void StartCountdown()
     {
-        if (timer <= 0)
-        {
-            timer = 150;
-        }
-    }
-
-    private void GenerateNextWave()
-    {
-        //Generate new entities on each reload
-        //Don't use Goriya or Boss here, the leave additional INpc objects in the room
         float[] coords;
 
         //Add enemies in order of appearance
@@ -88,23 +105,41 @@ public class ThunderDomeState : IGameState
         coords = RowsColumns.ConvertRowsColumns(7, 9);
         enemyWaves.Add(new Bat(coords[0], coords[1], game));
 
-        coords = RowsColumns.ConvertRowsColumns(1, 12);
+        coords = RowsColumns.ConvertRowsColumns(2, 11);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
-        coords = RowsColumns.ConvertRowsColumns(4, 12);
+        coords = RowsColumns.ConvertRowsColumns(5, 11);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
-        coords = RowsColumns.ConvertRowsColumns(7, 12);
+        coords = RowsColumns.ConvertRowsColumns(7, 11);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
 
-        waveNumber += 1;
-        if(waveNumber > enemyWaves.Count)
+        coords = RowsColumns.ConvertRowsColumns(3, 5);
+        enemyWaves.Add(new Boss(coords[0], coords[1], fb1, fb2, fb3, game));
+
+        if (waveNumber >= enemyWaves.Count)
         {
-            waveNumber -= 1;
+            game.currentState = new ThunderDomeVictoryState(game, game.font);
         }
 
+        if (timer <= 0)
+        {
+            timer = 150;
+        }
+    }
+
+    private void GenerateNextWave()
+    {
         //Load enemies by wave number
+
+        waveNumber += 1;
         for (int i = 0; i < waveNumber; i++)
         {
             CurrentRoom.Add(enemyWaves[i]);
+            if(enemyWaves[i].GetType() == typeof(Boss))
+            {
+                CurrentRoom.Add(fb1);
+                CurrentRoom.Add(fb2);
+                CurrentRoom.Add(fb3);
+            }
         }
     }
 }
