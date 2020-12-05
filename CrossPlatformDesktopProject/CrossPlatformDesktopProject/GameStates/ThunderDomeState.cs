@@ -1,11 +1,15 @@
 ﻿using CrossPlatformDesktopProject;
 using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.GameStates;
 using CrossPlatformDesktopProject.Levels;
+using CrossPlatformDesktopProject.Link;
 using CrossPlatformDesktopProject.NPC;
+using CrossPlatformDesktopProject.Sound;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 public class ThunderDomeState : IGameState
 {
@@ -21,6 +25,8 @@ public class ThunderDomeState : IGameState
         game.collisionManager.createDetector(room, game.player);
         game.currentHUD.activate(true);
         CurrentRoom = room;
+        game.player.currentState = new LinkFacingEastState(game.player);
+        game.player.link_health = game.player.link_max_health;
     }
         
     public void Update()
@@ -38,6 +44,14 @@ public class ThunderDomeState : IGameState
             }
         }
         game.player.Update();
+        //player death
+        if (game.player.link_health == 0)
+        {
+            game.player.link_health = -1;
+            game.player.currentState = new Death(game.player, game, game.font);
+            game.currentState = new ThunderDomeDefeatState(game, game.font);
+            SoundStorage.music_instance.Stop();
+        }
         foreach (IController controller in game.controllerList)
         {
             controller.Update();
@@ -60,6 +74,11 @@ public class ThunderDomeState : IGameState
 
     public void StartCountdown()
     {
+        waveNumber += 1;
+        if (waveNumber >= enemyWaves.Count)
+        {
+            game.currentState = new ThunderDomeVictoryState(game, game.font);
+        }
         if (timer <= 0)
         {
             timer = 150;
@@ -94,12 +113,6 @@ public class ThunderDomeState : IGameState
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
         coords = RowsColumns.ConvertRowsColumns(7, 12);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
-
-        waveNumber += 1;
-        if(waveNumber > enemyWaves.Count)
-        {
-            waveNumber -= 1;
-        }
 
         //Load enemies by wave number
         for (int i = 0; i < waveNumber; i++)

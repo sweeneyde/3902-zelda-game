@@ -1,6 +1,8 @@
 ﻿using CrossPlatformDesktopProject;
 using CrossPlatformDesktopProject.CollisionHandler;
 using CrossPlatformDesktopProject.Levels;
+using CrossPlatformDesktopProject.Link;
+using CrossPlatformDesktopProject.Sound;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
@@ -24,6 +26,13 @@ public class GamePlayState : IGameState
             game.pauseCooldown--;
         }
         game.player.Update();
+        if (game.player.link_health == 0)
+        {
+            game.player.link_health = -1;
+            game.player.currentState = new Death(game.player, game, game.font);
+            SoundStorage.music_instance.Stop();
+        }
+
         foreach (IController controller in game.controllerList)
         {
             controller.Update();

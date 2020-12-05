@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using CrossPlatformDesktopProject.Commands;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
@@ -33,7 +34,7 @@ namespace CrossPlatformDesktopProject.GameStates
             {
                 case 0:
                     Thread.Sleep(500);
-                    game.reset();
+                    (new EnterThunderDome(game)).Execute();
                     break;
                 case 1:
                     game.quit();

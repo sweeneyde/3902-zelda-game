@@ -1,4 +1,6 @@
-﻿using CrossPlatformDesktopProject.Levels;
+﻿using CrossPlatformDesktopProject.CollisionHandler;
+using CrossPlatformDesktopProject.Levels;
+using CrossPlatformDesktopProject.Link;
 using System;
 using System.Collections.Generic;
 using System.Linq;
