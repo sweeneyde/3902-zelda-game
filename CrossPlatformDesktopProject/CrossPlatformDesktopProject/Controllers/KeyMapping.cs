@@ -16,9 +16,11 @@ namespace CrossPlatformDesktopProject
         private Game1 myGame;
         private Player myPlayer;
         private Dictionary<Keys, ICommand> mappings;
+        private Dictionary<Keys, int> debouncing = new Dictionary<Keys,int>();
+        private int debounceTimer = 10;
         private List<Keys> acceptedStates;
-        private List<Keys> gameActions;
         private List<Keys> priorityActions;
+        private List<Keys> sensitiveActions;
         private Keys lastAction;
 
         public KeyMapping(Game1 game, Player player)
@@ -29,8 +31,8 @@ namespace CrossPlatformDesktopProject
 
             mappings = new Dictionary<Keys, ICommand>();
             acceptedStates = new List<Keys>();
-            gameActions = new List<Keys>();
             priorityActions = new List<Keys>();
+            sensitiveActions = new List<Keys>();
 
             lastAction = Keys.W;
 
@@ -44,9 +46,9 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.Q, new Quit(myGame));
             this.addCommand(Keys.R, new ResetGame(myGame));
 
-            gameActions.Add(Keys.D0);
-            gameActions.Add(Keys.Q);
-            gameActions.Add(Keys.R);
+            priorityActions.Add(Keys.D0);
+            priorityActions.Add(Keys.Q);
+            priorityActions.Add(Keys.R);
 
             //Player Commands
             this.addCommand(Keys.W, new MoveUpCommand(myPlayer));
@@ -68,11 +70,15 @@ namespace CrossPlatformDesktopProject
             this.addCommand(Keys.Enter, new StartCommand(myGame));
 
             this.addCommand(Keys.Space, new MuteCommand(myGame));
+            this.addCommand(Keys.J, new EnterThunderDome(myGame));
 
             priorityActions.Add(Keys.X);
             priorityActions.Add(Keys.Z);
             priorityActions.Add(Keys.N);
             priorityActions.Add(Keys.M);
+            priorityActions.Add(Keys.Space);
+
+            sensitiveActions.AddRange(priorityActions);
 
             acceptedStates.Remove(Keys.D0);
         }
@@ -83,29 +89,44 @@ namespace CrossPlatformDesktopProject
             acceptedStates.Add(key);
         }
 
-        public void callCommands(Keys[] heldKeys, Keys[] pressedKeys)
+        public void callCommands(List<Keys> heldKeys, List<Keys> pressedKeys)
         {
-            Keys[] currentState = pressedKeys;
-
-            foreach (Keys k in gameActions)
+            //Update stored debounce keys and filter pressed keys
+            List<Keys> storedKeys = new List<Keys>(debouncing.Keys);
+            foreach (Keys k in storedKeys)
             {
-                if (currentState.Contains(k))
+                debouncing[k] -= 1;
+                if(debouncing[k] < 0)
                 {
-                    mappings[k].Execute();
-                    return;
+                    debouncing.Remove(k);
+                }
+                else if(pressedKeys.Contains(k)){
+                    pressedKeys.Remove(k);
+                }
+
+            }
+
+            //Handle debounced keys and game actions
+            foreach (Keys k in pressedKeys)
+            {
+                if (sensitiveActions.Contains(k))
+                {
+                    debouncing[k] = debounceTimer;
                 }
             }
 
+            //First handle Priority Actions
             foreach (Keys k in priorityActions)
             {
-                if (currentState.Contains(k))
+                if (pressedKeys.Contains(k))
                 {
                     mappings[k].Execute();
                     return;
                 }
             }
 
-            foreach (Keys k in currentState)
+            //Second prioritize new inputs
+            foreach (Keys k in pressedKeys)
             {
                 if (!heldKeys.Contains(k) && acceptedStates.Contains(k))
                 {
@@ -115,13 +136,15 @@ namespace CrossPlatformDesktopProject
                 }
             }
 
-            if (currentState.Contains(lastAction))
+            //Fixes movement bugs
+            if (pressedKeys.Contains(lastAction))
             {
                 mappings[lastAction].Execute();
                 return;
             }
 
-            foreach (Keys k in currentState)
+            //Handle remaining inputs
+            foreach (Keys k in pressedKeys)
             {
                 if (acceptedStates.Contains(k))
                 {

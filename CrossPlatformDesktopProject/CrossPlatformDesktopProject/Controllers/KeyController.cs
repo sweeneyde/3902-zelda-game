@@ -12,14 +12,14 @@ namespace CrossPlatformDesktopProject
 {
     class KeyboardController : IController
     {
-        private Keys[] oldState;
-        private Keys[] currentState;
+        private List<Keys> oldState;
+        private List<Keys> currentState;
         private KeyMapping keyMap;
 
         public KeyboardController(Game1 game, Player player)
         {
-            oldState = Keyboard.GetState().GetPressedKeys();
-            currentState = Keyboard.GetState().GetPressedKeys();
+            oldState = new List<Keys>(Keyboard.GetState().GetPressedKeys());
+            currentState = new List<Keys>(Keyboard.GetState().GetPressedKeys());
             keyMap = new KeyMapping(game, player);
         }
 
@@ -27,7 +27,7 @@ namespace CrossPlatformDesktopProject
         public void Update()
         {
             oldState = currentState;
-            currentState = Keyboard.GetState().GetPressedKeys();
+            currentState = new List<Keys>(Keyboard.GetState().GetPressedKeys());
             keyMap.callCommands(oldState, currentState);
         }
     }

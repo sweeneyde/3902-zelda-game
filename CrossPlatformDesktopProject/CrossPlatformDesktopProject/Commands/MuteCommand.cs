@@ -1,4 +1,5 @@
 ﻿using CrossPlatformDesktopProject.Sound;
+using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,12 @@ namespace CrossPlatformDesktopProject.Commands
         {
             myGame = g;
         }
-        public void Execute() => myGame.mute();
+        public void Execute()
+        {
+            if (SoundEffect.MasterVolume == 0.0f)
+                SoundEffect.MasterVolume = 1.0f;
+            else
+                SoundEffect.MasterVolume = 0.0f;
+        }
     }
 }

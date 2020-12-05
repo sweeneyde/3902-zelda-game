@@ -37,7 +37,7 @@ namespace CrossPlatformDesktopProject.Link.Equipables
             equippedItem = null;
 
             rupeeCount = 1;
-            keyCount = 1;
+            keyCount = 0;
             bombCount = 0;
         }
 

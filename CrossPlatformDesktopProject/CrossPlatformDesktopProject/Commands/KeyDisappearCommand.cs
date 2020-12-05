@@ -26,7 +26,6 @@ namespace CrossPlatformDesktopProject.Commands
 
         public void Execute()
         {
-
             myRoom.Remove(myItem);
             myPlayer.linkInventory.ItemPickedUp(myItem);
 

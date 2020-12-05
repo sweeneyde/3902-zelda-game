@@ -132,5 +132,10 @@ namespace CrossPlatformDesktopProject.Levels
                 npcs.Remove((INpc)entity);
             }
         }
+
+        public void Add(INpc entity)
+        {
+            npcs.Add((INpc)entity);
+        }
     }
 }

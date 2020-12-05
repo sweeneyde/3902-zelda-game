@@ -88,8 +88,11 @@ namespace CrossPlatformDesktopProject.Link
 
         public void UsePrimary()
         {
-            currentState.UsePrimary();
-            SoundStorage.Instance.getSwordSound().Play();
+            if (!this.currentState.GetType().Name.Contains("Sword"))
+            {
+                currentState.UsePrimary();
+                SoundStorage.Instance.getSwordSound().Play();
+            }
         }
 
         public void UseBomb()

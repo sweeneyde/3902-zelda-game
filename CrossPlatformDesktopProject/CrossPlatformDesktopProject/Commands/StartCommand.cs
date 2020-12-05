@@ -14,7 +14,7 @@ namespace CrossPlatformDesktopProject.Commands
             if (myGame.pauseCooldown == 0)
             {
                 myGame.pauseCooldown = 10;
-                myGame.currentState = new InventoryState(myGame);
+                myGame.currentState = new InventoryState(myGame, myGame.currentState);
             }
         }   
     }

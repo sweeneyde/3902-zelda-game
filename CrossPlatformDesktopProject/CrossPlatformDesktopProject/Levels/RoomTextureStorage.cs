@@ -64,6 +64,7 @@ namespace CrossPlatformDesktopProject.Levels
             ["015"] = new Rectangle(586, 307, ROOM_WIDTH, ROOM_HEIGHT),
             ["016"] = new Rectangle(196, 422, ROOM_WIDTH, ROOM_HEIGHT),
             ["017"] = new Rectangle(1, 422, ROOM_WIDTH, ROOM_HEIGHT),
+            ["018"] = new Rectangle(976, 882, ROOM_WIDTH, ROOM_HEIGHT),
         };
         public static Rectangle TOP_NO_DOOR = new Rectangle(815, 11, DOOR_SIDE, DOOR_SIDE);
         public static Rectangle TOP_OPEN_DOOR = new Rectangle(848, 11, DOOR_SIDE, DOOR_SIDE);

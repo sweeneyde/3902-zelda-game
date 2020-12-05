@@ -22,9 +22,11 @@ namespace CrossPlatformDesktopProject.GameStates
         private Boolean[] player_has_item;
         private int item_index;
         private int framecount;
-        public InventoryState(Game1 game)
+        private IGameState previousState;
+        public InventoryState(Game1 game, IGameState pvsState)
         {
             this.game = game;
+            previousState = pvsState;
             game.currentHUD.activate(false);
             this.player = game.player;
             this.item_index = item_kinds.FindIndex(x => x == player.currentlyEquipped);
@@ -71,6 +73,8 @@ namespace CrossPlatformDesktopProject.GameStates
             ["015"] = new int[] { 3, 3 },
             ["016"] = new int[] { 2, 3 },
             ["017"] = new int[] { 2, 2 },
+            ["018"] = new int[] { 0, 0 },
+
         };
 
         public void Draw(SpriteBatch sb)
@@ -310,24 +314,23 @@ namespace CrossPlatformDesktopProject.GameStates
                 int offsetX = HUDTextureStorage.HEALTH_OFFSET_X;
                 int offsetY = HUDTextureStorage.HEALTH_OFFSET_Y + yOffsetHUD;
                 int tokenSize = HUDTextureStorage.TOKEN_HEIGHT;
-                Rectangle healthRect = new Rectangle(HUDTextureStorage.HEALTH_BAR.X, HUDTextureStorage.HEALTH_BAR.Y + yOffsetHUD, HUDTextureStorage.HEALTH_BAR.Width, HUDTextureStorage.HEALTH_BAR.Height);
-                sb.Draw(emptyTexture, healthRect, Color.White);
+                Rectangle INV_HEALTH = new Rectangle(offsetX - 1, offsetY - tokenSize - 1, HUDTextureStorage.HEALTH_BAR.Width, HUDTextureStorage.HEALTH_BAR.Height);
+                sb.Draw(emptyTexture, INV_HEALTH, Color.White);
+                for (i = 0; i < (player.link_max_health) / 2; i++)
+                {
+                    Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
+                    sb.Draw(texture, destination, HUDTextureStorage.EMPTY_HEART, Color.White);
+                }
                 for (i = 0; i < player.link_health / 2; i++)
                 {
                     Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
                     sb.Draw(texture, destination, HUDTextureStorage.FULL_HEART, Color.White);
-                    index = i;
+                    index = i + 1;
                 }
                 if (player.link_health % 2 == 1)
                 {
-                    Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
+                    Rectangle destination = new Rectangle(offsetX + index * tokenSize, offsetY, tokenSize, tokenSize);
                     sb.Draw(texture, destination, HUDTextureStorage.HALF_HEART, Color.White);
-                    index += 1;
-                }
-                for (i = index; i < player.link_max_health / 2; i++)
-                {
-                    Rectangle destination = new Rectangle(offsetX + i * tokenSize, offsetY, tokenSize, tokenSize);
-                    sb.Draw(texture, destination, HUDTextureStorage.EMPTY_HEART, Color.White);
                 }
             }
         }
@@ -380,7 +383,7 @@ namespace CrossPlatformDesktopProject.GameStates
             GamePadState state = GamePad.GetState(PlayerIndex.One);
             if (keys.Contains(Keys.Enter) || state.IsButtonDown(Buttons.X))
             {
-                game.currentState = game.currentGamePlayState;
+                game.currentState = previousState;
                 game.currentHUD.activate(true);
                 return;
             }
