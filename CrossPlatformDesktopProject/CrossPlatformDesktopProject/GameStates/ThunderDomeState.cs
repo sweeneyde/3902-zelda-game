@@ -68,25 +68,25 @@ public class ThunderDomeState : IGameState
 
         //Add enemies in order of appearance
         enemyWaves = new List<INpc>();
-        coords = RowsColumns.ConvertRowsColumns(2, 5);
+        coords = RowsColumns.ConvertRowsColumns(2, 7);
         enemyWaves.Add(new Gel(coords[0], coords[1], game));
-        coords = RowsColumns.ConvertRowsColumns(5, 5);
+        coords = RowsColumns.ConvertRowsColumns(5, 7);
         enemyWaves.Add(new Gel(coords[0], coords[1], game));
-        coords = RowsColumns.ConvertRowsColumns(7, 5);
+        coords = RowsColumns.ConvertRowsColumns(7, 7);
         enemyWaves.Add(new Gel(coords[0], coords[1], game));
 
-        coords = RowsColumns.ConvertRowsColumns(2, 6);
+        coords = RowsColumns.ConvertRowsColumns(2, 9);
         enemyWaves.Add(new Bat(coords[0], coords[1], game));
-        coords = RowsColumns.ConvertRowsColumns(5, 6);
+        coords = RowsColumns.ConvertRowsColumns(5, 9);
         enemyWaves.Add(new Bat(coords[0], coords[1], game));
-        coords = RowsColumns.ConvertRowsColumns(7, 6);
+        coords = RowsColumns.ConvertRowsColumns(7, 9);
         enemyWaves.Add(new Bat(coords[0], coords[1], game));
 
-        coords = RowsColumns.ConvertRowsColumns(2, 10);
+        coords = RowsColumns.ConvertRowsColumns(1, 12);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
-        coords = RowsColumns.ConvertRowsColumns(5, 10);
+        coords = RowsColumns.ConvertRowsColumns(4, 12);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
-        coords = RowsColumns.ConvertRowsColumns(8, 10);
+        coords = RowsColumns.ConvertRowsColumns(7, 12);
         enemyWaves.Add(new Skeleton(coords[0], coords[1], game));
 
         waveNumber += 1;
